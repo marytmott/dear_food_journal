@@ -1,0 +1,29 @@
+{
+  "name": "dear_food_journal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marytmott/dear_food_journal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marytmott/dear_food_journal/issues"
+  },
+  "homepage": "https://github.com/marytmott/dear_food_journal#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "body-parser": "^1.14.1",
+    "cookie-session": "^1.2.0",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.2.9",
+    "morgan": "^1.6.1"
+  }
+}
