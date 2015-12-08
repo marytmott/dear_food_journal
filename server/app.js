@@ -9,7 +9,7 @@ var routes = require('./controllers');
 
 app.use('/css', express.static(path.join(__dirname, '../client/css')));
 app.use('/js', express.static(path.join(__dirname, '../client/js')));
-app.use('/partials', express.static(path.join(__dirname, '../client/js/partials')));
+app.use('/templates', express.static(path.join(__dirname, '../client/js/templates')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
