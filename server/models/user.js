@@ -70,6 +70,8 @@ userSchema.methods.checkPassword = function(password, callback) {
   });
 };
 
+// TODO: add post delete hook to remove all their stuff
+
 var User = mongoose.model('User', userSchema);
 
 module.exports = User;
