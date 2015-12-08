@@ -6,21 +6,15 @@ var methodOverride = require('method-override');
 var morgan = require('morgan');
 var path = require('path');
 var routes = require('./controllers');
-// var session = require('cookie-session');
 
 app.use('/css', express.static(path.join(__dirname, '../client/css')));
 app.use('/js', express.static(path.join(__dirname, '../client/js')));
-app.use('/templates', express.static(path.join(__dirname, '../client/js/templates')));
+app.use('/partials', express.static(path.join(__dirname, '../client/js/partials')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 app.use(morgan('tiny'));
-// app.use(session({
-//   //maxAge?
-//   name: 'dfj',
-//   secret: '2342424@#I$H@#*$(23432r'
-// }));
 
 app.use('/api/users', routes.users);
 

@@ -2,10 +2,10 @@
   'use strict';
 
   angular
-    .module('dearFoodJournal', [
+    .module('dearFoodJ', [
       'ngRoute',
       'ngResource',
-      'dearFoodJournal.users'
+      'dearFoodJ.users'
     ])
     .config(configRoutes);
 
@@ -14,6 +14,7 @@
   function configRoutes($routeProvider, $locationProvider) {
     $routeProvider
       .otherwise({redirectTo: '/'});
-      // $location
+
+    $locationProvider.html5Mode(true);
   }
 })();
