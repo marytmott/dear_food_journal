@@ -3,13 +3,27 @@
 <head>
   <meta charset="utf-8">
   <title></title>
+  <link rel="stylesheet" href="/css/styles.css" />
   <base href="/">
 </head>
 <body>
+  <!-- make header or nav a directive? -->
+  <header>
+    <nav>
+      <a href="/">Dear Food Journal</a>
+      <a href="/signup">Sign up</a>
+      <a href="/login">Login</a>
+    </nav>
+  </header>
+
+  <!-- add left sidebar -->
+
+  <!-- add right sidebar -->
+
+TESTING
 
   <div ng-view></div>
 
-TESTING
   <!-- Third-party JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
@@ -21,6 +35,8 @@ TESTING
   <!-- users -->
   <script src="/js/angular/app/users/users.module.js"></script>
   <script src="/js/angular/app/users/config.route.js"></script>
+  <script src="/js/angular/app/users/users.controller.js"></script>
+  <script src="/js/angular/app/users/users.factory.js"></script>
 
 
 </body>

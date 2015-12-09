@@ -1,0 +1,26 @@
+<form action="#" novalidate>
+  <label for="firstname">first name:
+  <input type="text" placeholder="your first name" ng-model="vm.user.firstname" />
+  <label for="email">email:
+  <input type="text" id="email" placeholder="enter your email" ng-model="vm.user.email" />
+  <label for="password">password:
+  <input type="password" placeholder="enter a password" ng-model="vm.user.password" />
+  <label for="verifypw">password again:
+  <input type="password" placeholder="enter your password again" ng-model="vm.verifypw" />
+  <button ng-click="vm.signup()">Sign up!</button>
+</form>
+
+
+  <!-- email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    minlength: 6,
+    required: true
+  },
+  firstName: {
+    type: String
+  } -->
