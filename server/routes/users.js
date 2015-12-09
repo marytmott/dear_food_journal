@@ -1,6 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../models');
+var jwt = require('jsonwebtoken');
+var secret = 'secret pw'; // for dev only, production will be process.env
+var token;
+
+
 
 // signup (create)
 router.post('/signup', function(req, res) {
@@ -35,14 +40,13 @@ router.post('/logout', function(req, res) {
 
 // show
 router.get('/:id', function(req, res) {
-  console.log(req.body);
-  // db.User.findById(req.body.id, function(err, user) {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     // res.json()
-  //   }
-  // });
+  db.User.findById(req.params.id, function(err, user) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(user);
+    }
+  });
 });
 
 // edit

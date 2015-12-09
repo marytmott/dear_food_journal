@@ -5,7 +5,7 @@ var ejs = require('ejs');
 var methodOverride = require('method-override');
 var morgan = require('morgan');
 var path = require('path');
-var routes = require('./controllers/index');
+var routes = require('./routes/index');
 
 app.use('/css', express.static(path.join(__dirname, '../client/css')));
 app.use('/js', express.static(path.join(__dirname, '../client/js')));
@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 app.use(morgan('tiny'));
 
+app.use(routes.router);
 app.use('/api/users', routes.users);
 
 // send to angular
