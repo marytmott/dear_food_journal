@@ -5,18 +5,18 @@ var db = require('../models');
 // signup (create)
 router.post('/signup', function(req, res) {
   console.log(req.body);
-  // db.User.create(req.body, function(err, user) {
-  //   if (err) {
-  //     console.log(err);
-  //     // send back errors?
-  //     // return res.status(400).send
-  //   } else {
-  //     res.status(200).send(user);
-  //     // log user in
-  //     // create web token
-  //     // send back status?
-  //   }
-  // });
+  db.User.create(req.body, function(err, user) {
+    if (err) {
+      console.log(err);
+      res.status(400).send(err);
+      // send back errors?
+    } else {
+      res.status(200).send(user);
+      // log user in
+      // create web token
+      // send back status?
+    }
+  });
 });
 
 // login
@@ -35,13 +35,14 @@ router.post('/logout', function(req, res) {
 
 // show
 router.get('/:id', function(req, res) {
-  db.User.findById(req.body.id, function(err, user) {
-    if (err) {
-      console.log(err);
-    } else {
-      // res.json()
-    }
-  });
+  console.log(req.body);
+  // db.User.findById(req.body.id, function(err, user) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     // res.json()
+  //   }
+  // });
 });
 
 // edit

@@ -15,8 +15,11 @@
 
 
     function signup() {
-      return UserService.signup().get(vm.user).then(function(data) {
+      // console.log(vm.user);
+      return UserService.signup(vm.user).then(function(data) {
         console.log(data);
+
+        // token data?
       });
 
     }
