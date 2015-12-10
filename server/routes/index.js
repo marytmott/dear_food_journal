@@ -7,8 +7,9 @@ var users = require('./users');
 
 // only allow ajax calls
 function checkHeaders(req, res, next) {
+  console.log(req.headers);
   // if header does not request with ajax, send to angular main site...?
-  if (!req.headers['x-requested-with']) {
+  if (!req.headers['X-Requested-With']) {
     res.sendFile(path.join(__dirname, '../../client', 'index.html'));
   } else {
     // call next route handler

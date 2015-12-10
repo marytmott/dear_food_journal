@@ -12,6 +12,7 @@
 
     vm.user = {};
     vm.signup = signup;
+    vm.login = login;
 
 
     function signup() {
@@ -21,7 +22,15 @@
 
         // token data?
       });
+    }
 
+    function login() {
+      UserService.login(vm.user).then(function(data) {
+        console.log(data);
+        UserService.setCurrentUser(data);
+      }).catch(function(errors) {
+        console.log('errors: ', errors);
+      });
     }
   }
 })();

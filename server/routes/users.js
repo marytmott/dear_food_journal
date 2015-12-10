@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var db = require('../models');
 var jwt = require('jsonwebtoken');
+// bcrypt value of secret?
 var secret = 'secret pw'; // for dev only, production will be process.env
-var token;
 
 // check for same user
 function checkTokenUser(req, res, next) {
@@ -16,13 +16,26 @@ function checkTokenUser(req, res, next) {
       res.status(401).send('Not authorized');
     }
   } catch(err) {
+    console.log(err);
     res.status(500).send('nope!');
+  }
+}
+
+// do not need this function?
+// check token, will indicate they are logged in
+function checkToken(req, res, next) {
+  try {
+    var decoded = jwt.verify(req.headers.authorization.split(' ')[1], secret);
+    next();
+  } catch(err) {
+    console.log(err);
+    res.status(500).send(err);
   }
 }
 
 // test token from server:
 // {
-//   "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU2NjhiNzc1ODgxOGU2ZDU1MmIzMzdhMyIsImlhdCI6MTQ0OTcwNDU2M30.eEEASY0inbi5SGCDcwZuSf-8InU__bn6NPS3ZfhRh-Y",
+  // "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU2NjhiNzc1ODgxOGU2ZDU1MmIzMzdhMyIsImlhdCI6MTQ0OTcwNDU2M30.eEEASY0inbi5SGCDcwZuSf-8InU__bn6NPS3ZfhRh-Y",
 //   "user": {
 //     "id": "5668b7758818e6d552b337a3",
 //     "firstName": null
@@ -34,6 +47,7 @@ function checkTokenUser(req, res, next) {
 router.post('/signup', function(req, res) {
   db.User.create(req.body, function(err, user) {
     var responseItems;
+    var token;
 
     if (err) {
       console.log(err);
@@ -52,8 +66,10 @@ router.post('/signup', function(req, res) {
 
 // login user
 router.post('/login', function(req, res) {
+  console.log(req.body);
   db.User.authenticate(req.body, function(err, user) {
     var responseItems;
+    var token;
 
     if (err || !user) {
       return res.status(400).send(err);
@@ -67,6 +83,7 @@ router.post('/login', function(req, res) {
 // show
 router.get('/:id', checkTokenUser, function(req, res) {
   db.User.findById(req.params.id, function(err, user) {
+    // var userItems = { user}
     if (err) {
       console.log(err);
       res.send(500).send(err);
@@ -80,16 +97,15 @@ router.get('/:id', checkTokenUser, function(req, res) {
 });
 
 // edit
-router.put('/:id', function(req, res) {
+router.put('/:id', checkTokenUser, function(req, res) {
 
   // if user changes password, change token?
   // db.User.findById(req.body.id, )
 });
 
 //delete
-router.delete('/:id', function(req, res) {
+router.delete('/:id', checkTokenUser, function(req, res) {
 
 });
-
 
 module.exports = router;
