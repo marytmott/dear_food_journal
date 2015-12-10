@@ -20,6 +20,7 @@
         controllerAs: 'vm'
       })
       .when('/logout', {
+        // remove token, do not need to reach server?
         // need to add specs
       })
       .when('/:user_id', {

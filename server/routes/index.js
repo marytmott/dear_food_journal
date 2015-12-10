@@ -5,7 +5,7 @@ var path = require('path');
 // route files
 var users = require('./users');
 
-//only allow ajax calls
+// only allow ajax calls
 function checkHeaders(req, res, next) {
   // if header does not request with ajax, send to angular main site...?
   if (!req.headers['x-requested-with']) {
