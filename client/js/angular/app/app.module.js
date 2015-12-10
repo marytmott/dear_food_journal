@@ -5,7 +5,8 @@
     .module('dearFoodJ', [
       'ngRoute',
       'ngResource',
-      'dearFoodJ.users'
+      'dearFoodJ.users',
+      'dearFoodJ.auth'
     ])
     .config(configRoutes)
     .run(runApp);
@@ -17,6 +18,8 @@
       .otherwise({redirectTo: '/'});
 
     $locationProvider.html5Mode(true);
+      // console.log(AuthInterceptor);
+
   }
 
   runApp.$inject = ['$rootScope', '$location', '$window'];
