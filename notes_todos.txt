@@ -1,0 +1,35 @@
+tests to run:
+
+1. secure backend
+	ensure logged in
+	ensure correct user
+
+
+// to dos: 
+clean up index.js routes (from app.js)
+
+— error handling on login shit/journal
+
+
+localStorage.setItem
+
+set expiration time and renewal on web tokens
+
+
+take out console logs
+
+clear blank lines at bottom of files
+
+- web token hash server pw
+
+
+
+
+
+
+
+
+http://onehungrymind.com/winning-http-interceptors-angularjs/
+
+Hi Lukas Ruebbelke, great write up and intro to Interceptors. It was a clear way for me to learn something new. However, I would advise that you update the article to explicitly point out the problem when you don’t manually reject the promise in the responseError or requestError handlers for the interceptor (e.g. $q.reject(response)) . Basically causing failed requests (eg. 40x response codes) being handled by the successHandler.
+
