@@ -5,9 +5,9 @@
     .module('dearFoodJ.users')
     .config(ConfigUsers);
 
-  ConfigUsers.$inject = ['$routeProvider', '$httpProvider'];
+  ConfigUsers.$inject = ['$routeProvider', '$httpProvider', '$locationProvider'];
 
-  function ConfigUsers($routeProvider, $httpProvider) {
+  function ConfigUsers($routeProvider, $httpProvider, $locationProvider) {
     // restricted - restricted to same user
     // preventIfLoggedIn - do not allow to go here if logged in
     $routeProvider
@@ -25,19 +25,28 @@
       })
       .when('/logout', {
         // need to add specs
-        restricted: true
+        resolve: {
+          logout: function(UserService, $location) {
+            UserService.logout();
+            $location.path('/login');
+          }
+        }
       })
       .when('/:user_id', {
         templateUrl: '/partials/users/login.html',
         controller: 'UsersController',
         controllerAs: 'vm',
-        preventIfLoggedIn: true
+        restricted: true,
+        resolve: {
+          user: function(UserService) {
+            console.log($route);
+            // return UserService.$get($route.current.params.user_id);
+          }
+        }
       })
       .when('/:user_id/edit', {
         // need to add specs
+        restricted: true
       });
-
-    // you cannot inject services and factories into ng .config function, but you can call like this?
-    $httpProvider.interceptors.push('AuthInterceptor');
   }
 })();
