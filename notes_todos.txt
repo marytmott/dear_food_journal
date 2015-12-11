@@ -10,8 +10,7 @@ clean up index.js routes (from app.js)
 
 — error handling on login shit/journal
 
-
-localStorage.setItem
+— finish user crud on front/back ends
 
 set expiration time and renewal on web tokens
 
@@ -22,6 +21,9 @@ clear blank lines at bottom of files
 
 - web token hash server pw
 
+— clean up super nested routing?
+
+— add token middleware for check tokens on server side to DRY code up
 
 
 
@@ -29,6 +31,10 @@ clear blank lines at bottom of files
 
 
 
+* only providers can go into ng.config()
+
+
+* note on $q in interceptors————>
 http://onehungrymind.com/winning-http-interceptors-angularjs/
 
 Hi Lukas Ruebbelke, great write up and intro to Interceptors. It was a clear way for me to learn something new. However, I would advise that you update the article to explicitly point out the problem when you don’t manually reject the promise in the responseError or requestError handlers for the interceptor (e.g. $q.reject(response)) . Basically causing failed requests (eg. 40x response codes) being handled by the successHandler.
