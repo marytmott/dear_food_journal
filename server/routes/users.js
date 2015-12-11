@@ -55,11 +55,25 @@ router.post('/signup', function(req, res) {
       return res.status(400).send(err);
       // send back errors?
     }
-    // add expiresIn to token?
-    // DRY this up w/ login!
-    responseItems = { id: user._id, firstName: user.firstName || null }
-    token = jwt.sign({ id: user._id }, secret);
-    res.json({ token: token, user: responseItems });
+    // create new journal for user
+    db.Journal.create({}, function(err, journal) {
+      if (err) {
+        console.log(err);
+        return res.status(500).send(err);
+      }
+      journal.user.push(user._id);
+      journal.save();
+      user.journal.push(journal._id);
+      user.save();
+      console.log(user);
+      console.log(journal);
+
+      // add expiresIn to token?
+      // DRY this up w/ login!
+      responseItems = { id: user._id, firstName: user.firstName || null, journal: journal.id }
+      token = jwt.sign({ id: user._id }, secret);
+      res.json({ token: token, user: responseItems });
+    });
   });
 });
 
@@ -75,9 +89,17 @@ router.post('/login', function(req, res) {
     if (err || !user) {
       return res.status(400).send(err);
     }
-    responseItems = { id: user._id, firstName: user.firstName || null }
-    token = jwt.sign({ id: user._id }, secret);
-    res.json({ token: token, user: responseItems });
+
+    // need to get journal info for token
+    db.Journal.findOne({ user: user._id }, function(err, journal) {
+      if (err) {
+        console.log(err);
+        return res.status(500).send(err);
+      }
+      responseItems = { id: user._id, firstName: user.firstName || null, journal: journal.id }
+      token = jwt.sign({ id: user._id }, secret);
+      res.json({ token: token, user: responseItems });
+    });
   });
 });
 
