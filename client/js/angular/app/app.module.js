@@ -23,12 +23,13 @@
     $httpProvider.interceptors.push('AuthInterceptor');
   }
 
-  runApp.$inject = ['$rootScope', '$location', '$window'];
+  runApp.$inject = ['$rootScope', '$location', '$window', 'UserService'];
 
-  function runApp($rootScope, $location, $window) {
+  // ALL THE REDIRECTS!
+  function runApp($rootScope, $location, $window, UserService) {
     $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
       var loggedIn = $window.localStorage.getItem('token');
-      var user = $window.localStorage.getItem('user');
+      var user = UserService.getCurrentUser();
 
       console.log('=====event', event);
 
@@ -40,7 +41,7 @@
       console.log(loggedIn);
       console.log('restrict', nextRoute.restricted);
       console.log(nextRoute.params.user_id);
-      console.log(user.id);
+      console.log('user: ', user);
 
 
       // REDIRECT TO LOGIN??
@@ -54,11 +55,17 @@
       }
 
       // redirect if not same user
+      // NEED T FIX THIS
       if (nextRoute.restricted && nextRoute.params.user_id !== user.id) {
         // redirect back
         // $location.path('currentRoute.$$route.originalPath').replace();
         //redirect home
         console.log('this isn\'t yours!');
+        return $location.path('/').replace();
+      }
+
+      // redirect if trying to logout and not logged in
+      if (nextRoute.preventIfLoggedOut && !user) {
         $location.path('/').replace();
       }
     });
