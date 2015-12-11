@@ -26,24 +26,37 @@
 
   function runApp($rootScope, $location, $window) {
     $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
-      // console.log('=====event', event);
-
-      // console.log('====next', nextRoute);
-      // console.log('=====current', currentRoute);
-      // console.log('original path', nextRoute.$$route.originalPath);
-      console.log('2', nextRoute.params.user_id);
-
-      // var loggedIn = $window.localStorage.getItem('token'); // boolean
+      var loggedIn = $window.localStorage.getItem('token');
       var user = $window.localStorage.getItem('user');
-      console.log(user);
-      // if logged in, redirect
-      // if (next.preventIfLoggedIn && loggedIn) {
-      //   // redirect and change history (for back button)
-      //   $location.path('/').replace();  // re-route to their dashboard or main login page? (journal?)
-      // }
+
+      console.log('=====event', event);
+
+      console.log('====next', nextRoute);
+      console.log('=====current', currentRoute);
+      // console.log('original path', currentRoute.$$route.originalPath);
+      console.log('2', nextRoute.params.user_id);
+      console.log('prevent', nextRoute.preventIfLoggedIn);
+      console.log(loggedIn);
+      console.log('restrict', nextRoute.restricted);
+      console.log(nextRoute.params.user_id);
+      console.log(user.id);
+
+      // console.log(user);
+      // // if logged in, redirect
+      if (nextRoute.preventIfLoggedIn && loggedIn) {
+        console.log('you\'re logged in');
+        // redirect and change history (for back button)
+        return $location.path('/').replace();  // re-route to their dashboard or main login page? (journal?)
+      }
 
       // redirect if not same user
-
+      if (nextRoute.restricted && nextRoute.params.user_id !== user.id) {
+        // redirect back
+        // $location.path('currentRoute.$$route.originalPath').replace();
+        //redirect home
+        console.log('this isn\'t yours!');
+        $location.path('/').replace();
+      }
     });
   }
 })();

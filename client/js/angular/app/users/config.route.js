@@ -5,9 +5,6 @@
     .module('dearFoodJ.users')
     .config(ConfigUsers);
 
-    // need to add userintercep
-    // console.log(UserInterceptor);
-
   ConfigUsers.$inject = ['$routeProvider', '$httpProvider'];
 
   function ConfigUsers($routeProvider, $httpProvider) {
@@ -27,7 +24,6 @@
         preventIfLoggedIn: true
       })
       .when('/logout', {
-        // remove token, do not need to reach server?
         // need to add specs
         restricted: true
       })
@@ -43,6 +39,5 @@
 
     // you cannot inject services and factories into ng .config function, but you can call like this?
     $httpProvider.interceptors.push('AuthInterceptor');
-
   }
 })();

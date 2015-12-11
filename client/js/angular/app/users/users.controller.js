@@ -13,6 +13,7 @@
     vm.user = {};
     vm.signup = signup;
     vm.login = login;
+    vm.logout = logout;
 
 
     function signup() {
@@ -31,6 +32,12 @@
       }).catch(function(errors) {
         console.log('errors: ', errors);
       });
+    }
+
+    // need to move this elsewhere? navbar directive?
+    function logout() {
+      UserService.logout();
+      // change path
     }
   }
 })();
