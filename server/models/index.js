@@ -8,4 +8,10 @@ db.once('open', function(callback) {
   console.log('connected to dearfoodj db');
 });
 
-module.exports.User = require('./user');
+// module.exports.User = require('./user');
+module.exports = {
+  User: require('./user'),
+  Journal: require('./journal'),
+  Meal: require('./meal'),
+  FoodEntry: require('./foodEntry')
+}

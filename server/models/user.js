@@ -2,6 +2,9 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
 var db = require('./index');
+var Journal = require('./journal');
+
+// TODO: pre/post hooks
 
 var userSchema = mongoose.Schema({
   email: {
@@ -16,7 +19,11 @@ var userSchema = mongoose.Schema({
   },
   firstName: {
     type: String
-  }
+  },
+  journal: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Journal'
+  }]
 });
 
 // pre-save hook checking/encryping pw
@@ -71,6 +78,7 @@ userSchema.methods.checkPassword = function(password, callback) {
 };
 
 // TODO: add post delete hook to remove all their stuff
+// call delete journal separately to delete entries?
 
 var User = mongoose.model('User', userSchema);
 
