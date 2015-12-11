@@ -13,7 +13,7 @@
     vm.user = {};
     vm.signup = signup;
     vm.login = login;
-    vm.logout = logout;
+    vm.logout = logout; // need to move this to separate controller/directive?
 
 
     function signup() {
