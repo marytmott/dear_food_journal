@@ -33,7 +33,7 @@
           }
         }
       })
-      .when('/:user_id', {
+      .when('/users/:user_id', {
         templateUrl: '/partials/users/login.html',
         controller: 'UsersController',
         controllerAs: 'vm',
@@ -44,7 +44,7 @@
           }
         }
       })
-      .when('/:user_id/edit', {
+      .when('/users/:user_id/edit', {
         // need to add specs
         restricted: true
       });
