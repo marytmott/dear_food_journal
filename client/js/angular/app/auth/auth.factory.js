@@ -5,10 +5,17 @@
     .module('dearFoodJ.auth')
     .factory('AuthInterceptor', AuthInterceptor);
 
-  AuthInterceptor.$inject = ['$http'];
+  AuthInterceptor.$inject = ['$window', '$location', '$q'];
 
-  function AuthInterceptor($http) {
-    return {$http};
+  function AuthInterceptor($window, $location, $q) {
+    return {
+      request: function(config) {
+        // add
+        config.headers['X-Requested-With'] = 'XMLHttpRequest';
+        // for error handling, need to return $q.resolve
+        return $q.resolve(config);
+      }
+    };
   }
 })();
 

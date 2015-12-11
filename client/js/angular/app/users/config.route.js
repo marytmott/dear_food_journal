@@ -8,9 +8,9 @@
     // need to add userintercep
     // console.log(UserInterceptor);
 
-  ConfigUsers.$inject = ['$routeProvider', '$httpProvider', 'AuthInterceptor'];
+  ConfigUsers.$inject = ['$routeProvider', '$httpProvider'];
 
-  function ConfigUsers($routeProvider, $httpProvider, AuthInterceptor) {
+  function ConfigUsers($routeProvider, $httpProvider) {
     // restricted - restricted to same user
     // preventIfLoggedIn - do not allow to go here if logged in
     $routeProvider
@@ -41,6 +41,8 @@
         // need to add specs
       });
 
-    // $httpProvider.interceptors.push('AuthInterceptor');
+    // you cannot inject services and factories into ng .config function, but you can call like this?
+    $httpProvider.interceptors.push('AuthInterceptor');
+
   }
 })();
