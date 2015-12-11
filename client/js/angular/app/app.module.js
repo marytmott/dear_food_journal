@@ -11,15 +11,16 @@
     .config(configRoutes)
     .run(runApp);
 
-  configRoutes.$inject = ['$routeProvider', '$locationProvider'];
+  configRoutes.$inject = ['$routeProvider', '$locationProvider', '$httpProvider'];
 
-  function configRoutes($routeProvider, $locationProvider) {
+  function configRoutes($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .otherwise({redirectTo: '/'});
 
     $locationProvider.html5Mode(true);
-      // console.log(AuthInterceptor);
 
+    // you cannot inject services and factories into ng .config function, but you can call like this?
+    $httpProvider.interceptors.push('AuthInterceptor');
   }
 
   runApp.$inject = ['$rootScope', '$location', '$window'];
@@ -40,6 +41,9 @@
       console.log('restrict', nextRoute.restricted);
       console.log(nextRoute.params.user_id);
       console.log(user.id);
+
+
+      // REDIRECT TO LOGIN??
 
       // console.log(user);
       // // if logged in, redirect
