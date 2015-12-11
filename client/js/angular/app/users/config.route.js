@@ -5,11 +5,12 @@
     .module('dearFoodJ.users')
     .config(ConfigUsers);
 
-  ConfigUsers.$inject = ['$routeProvider', '$httpProvider', '$locationProvider'];
+  ConfigUsers.$inject = ['$routeProvider', '$locationProvider'];
 
-  function ConfigUsers($routeProvider, $httpProvider, $locationProvider) {
+  function ConfigUsers($routeProvider, $locationProvider) {
     // restricted - restricted to same user
     // preventIfLoggedIn - do not allow to go here if logged in
+    // preventIfLoggedOut - don't go here if they are already logged out
     $routeProvider
       .when('/signup', {
         templateUrl: '/partials/users/signup.html',
@@ -24,7 +25,7 @@
         preventIfLoggedIn: true
       })
       .when('/logout', {
-        // need to add specs
+        // need to add specs?
         preventIfLoggedOut: true,
         resolve: {
           logout: function(UserService, $location) {
@@ -33,7 +34,7 @@
           }
         }
       })
-      .when('/users/:user_id', {
+      .when('/:user_id', {
         templateUrl: '/partials/users/login.html',
         controller: 'UsersController',
         controllerAs: 'vm',
@@ -44,7 +45,7 @@
           }
         }
       })
-      .when('/users/:user_id/edit', {
+      .when('/:user_id/edit', {
         // need to add specs
         restricted: true
       });
