@@ -25,6 +25,7 @@
       })
       .when('/logout', {
         // need to add specs
+        preventIfLoggedOut: true,
         resolve: {
           logout: function(UserService, $location) {
             UserService.logout();
