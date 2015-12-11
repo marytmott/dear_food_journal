@@ -5,7 +5,44 @@ var jwt = require('jsonwebtoken');
 // bcrypt value of secret?
 var secret = 'secret pw'; // for dev only, production will be process.env + hash it??
 // check for same user
-var tm = require('../middleware/tokenMiddleware');
+function checkTokenUser(req, res, next) {
+  try {
+    var decoded = jwt.verify(req.headers.authorization.split(' ')[1], secret);
+    console.log('======decoded', decoded);
+    if (req.params.user_id === decoded.id) {
+      return next();
+    } else {
+      res.status(401).send('Not authorized');
+    }
+  } catch(err) {
+    console.log(err);
+    res.status(500).send('nope!');
+  }
+}
+
+// do not need this function?
+// check token, will indicate they are logged in
+function checkToken(req, res, next) {
+  try {
+    var decoded = jwt.verify(req.headers.authorization.split(' ')[1], secret);
+    next();
+  } catch(err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
+}
+
+// test token from server:
+// {
+  // "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU2NjhiNzc1ODgxOGU2ZDU1MmIzMzdhMyIsImlhdCI6MTQ0OTcwNDU2M30.eEEASY0inbi5SGCDcwZuSf-8InU__bn6NPS3ZfhRh-Y",
+//   "user": {
+//     "id": "5668b7758818e6d552b337a3",
+//     "firstName": null
+//   }
+// }
+
+// happy user: 5667d008331b9d69471144d0
+
 
 // signup (create user)
 router.post('/signup', function(req, res) {
@@ -45,7 +82,7 @@ router.post('/login', function(req, res) {
 });
 
 // show
-router.get('/:user_id', tm.checkTokenUser, function(req, res) {
+router.get('/:user_id', checkTokenUser, function(req, res) {
   db.User.findById(req.params.user_id, function(err, user) {
     // var userItems = { user}
     if (err) {
@@ -60,14 +97,14 @@ router.get('/:user_id', tm.checkTokenUser, function(req, res) {
 });
 
 // edit
-router.put('/:user_id', tm.checkTokenUser, function(req, res) {
+router.put('/:user_id', checkTokenUser, function(req, res) {
 
   // if user changes password, change token?
   // db.User.findById(req.body.user_id, )
 });
 
 //delete
-router.delete('/:user_id', tm.checkTokenUser, function(req, res) {
+router.delete('/:user_id', checkTokenUser, function(req, res) {
 
 });
 
