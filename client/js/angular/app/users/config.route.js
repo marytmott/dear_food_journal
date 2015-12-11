@@ -39,9 +39,8 @@
         controllerAs: 'vm',
         restricted: true,
         resolve: {
-          user: function(UserService) {
-            console.log($route);
-            // return UserService.$get($route.current.params.user_id);
+          user: function(UserService, $route) {
+            return UserService.userResource.get({ user_id: $route.current.params.user_id });
           }
         }
       })

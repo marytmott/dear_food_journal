@@ -9,7 +9,7 @@ var secret = 'secret pw'; // for dev only, production will be process.env
 function checkTokenUser(req, res, next) {
   try {
     var decoded = jwt.verify(req.headers.authorization.split(' ')[1], secret);
-    console.log(decoded);
+    console.log('======decoded', decoded);
     if (req.params.id === decoded.id) {
       return next();
     } else {
@@ -41,6 +41,8 @@ function checkToken(req, res, next) {
 //     "firstName": null
 //   }
 // }
+
+// happy user: 5667d008331b9d69471144d0
 
 
 // signup (create user)
@@ -89,9 +91,8 @@ router.get('/:id', checkTokenUser, function(req, res) {
       res.send(500).send(err);
     } else if (!user) {
       res.status(401).send(err);
-      res.send(user);
     } else {
-      res.send('ok');
+      res.send('user info to put here');
     }
   });
 });
