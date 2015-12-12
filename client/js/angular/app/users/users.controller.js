@@ -36,7 +36,7 @@
         UserService.setCurrentUser(data);
         // getCurrentUser();
         // console.log('/' + data.data.user.id + '/' + data.data.user.journal);
-        $location.path('/' + data.data.user.id + '/' + data.data.user.journal);
+        $location.path('/users/' + data.data.user.id + '/' + data.data.user.journal);
       }).catch(function(errors) {
         console.log('errors: ', errors);
       });
