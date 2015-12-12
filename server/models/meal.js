@@ -13,6 +13,9 @@ var mealSchema = mongoose.Schema({
     required: true,
     default: Date.now  // need this?
   },
+  time: {
+    type: Date
+  },
   foodEntries: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'FoodEntry'

@@ -6,7 +6,8 @@
       'ngRoute',
       'ngResource',
       'dearFoodJ.users',
-      'dearFoodJ.auth'
+      'dearFoodJ.auth',
+      'dearFoodJ.journals'
     ])
     .config(configRoutes)
     .run(runApp);
@@ -14,13 +15,66 @@
   configRoutes.$inject = ['$routeProvider', '$locationProvider', '$httpProvider'];
 
   function configRoutes($routeProvider, $locationProvider, $httpProvider) {
+    // get currentUser set for all routes
+    // var originalWhen = $routeProvider.when;
+    // $routeProvider
+    //   .when = function(path, route) {
+    //     route.resolve || (route.resolve = {});
+    //     angular.extend(route.resolve, {
+    //       currentUser: function(UserService) {
+    //         return UserService.getCurrentUser();
+    //       }
+    //     });
+    //    return originalWhen.call($routeProvider, path, route);
+    //   }
+      // .otherwise({redirectTo: '/'});
+
+      // var customRouteProvider = angular.extend({}, $routeProvider, {
+      //   when: function(path, route) {
+      //     route.resolve = route.resolve ? route.resolve : {};
+      //     angular.extend(route.resolve, {
+      //       currentUser: function(UserService) {
+      //         return UserService.getCurrentUser();
+      //       }
+      //     });
+      //     $routeProvider.when(path, route);
+      //     return this;
+      //   }
+      // });
+
+    // var originalWhen = $routeProvider.when;
+
+    // $routeProvider.when = function(path, route) {
+    //     route.resolve || (route.resolve = {});
+    //     angular.extend(route.resolve, {
+    //         currentUser : function(UserService) {
+    //             return UserService.getCurrentUser();
+    //         }
+    //     });
+
+    //     return originalWhen.call($routeProvider, path, route);
+    // };
+
+
     $routeProvider
+      // .when('/', {
+      //   templateUrl: '../index.html',
+      //   controller: 'UsersController',
+      //   controllerAs: 'vm',
+      //    resolve: {
+      //     currentUser: function(UserService) {
+      //      return UserService.getCurrentUser();
+      //     }
+      //   }
+      // })
       .otherwise({redirectTo: '/'});
 
     $locationProvider.html5Mode(true);
 
     // you cannot inject services and factories into ng .config function, but you can call like this?
     $httpProvider.interceptors.push('AuthInterceptor');
+
+    // return originalWhen.call($routeProvider, path, route);
   }
 
   runApp.$inject = ['$rootScope', '$location', '$window', 'UserService'];

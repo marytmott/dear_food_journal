@@ -25,7 +25,12 @@ clear blank lines at bottom of files
 
 — add token middleware for check tokens on server side to DRY code up
 
+— directives for ng crud forms/updates?
 
+.remove.exec()
+
+
+need to add resolves to vm.currentuser on loads — page does not load smoothly
 
 
 

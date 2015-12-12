@@ -8,12 +8,20 @@
 </head>
 <body>
   <!-- make header or nav a directive? -->
-  <header>
+  <header ng-controller="AuthController as vm">
+    <!-- account/main nav -->
     <nav>
       <a href="/">Dear Food Journal</a>
-      <a href="/signup">Sign up</a>
-      <a href="/login">Login</a>
-      <a href="/logout">Log out</a>
+      <a href="/signup" ng-if="!vm.currentUser">Sign up</a>
+      <a href="/login" ng-if="!vm.currentUser">Login</a>
+      <a href="" ng-if="vm.currentUser" ng-click="vm.logout()">Log out</a>
+    </nav>
+
+    <!-- menu nav -->
+    <nav ng-if="vm.currentUser">
+      <a ng-href="/{{vm.currentUser.id}}">account</a>
+      <a ng-href="/{{vm.currentUser.id}}/{{vm.currentUser.journal}}">journal</a>
+      add meal
     </nav>
   </header>
 
@@ -41,7 +49,15 @@ TESTING
 
   <!-- auth -->
   <script src="/js/angular/app/auth/auth.module.js"></script>
+  <script src="/js/angular/app/auth/auth.controller.js"></script>
   <script src="/js/angular/app/auth/auth.factory.js"></script>
+
+  <!-- journals -->
+  <script src="/js/angular/app/journals/journals.module.js"></script>
+  <script src="/js/angular/app/journals/config.route.js"></script>
+  <script src="/js/angular/app/journals/journals.controller.js"></script>
+  <script src="/js/angular/app/journals/journals.factory.js"></script>
+
 
 </body>
 </html>

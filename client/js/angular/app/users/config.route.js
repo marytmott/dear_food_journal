@@ -16,13 +16,23 @@
         templateUrl: '/partials/users/signup.html',
         controller: 'UsersController',
         controllerAs: 'vm',
-        preventIfLoggedIn: true
+        preventIfLoggedIn: true,
+        // resolve: {
+        //   currentUser: function(UserService) {
+        //    return UserService.getCurrentUser();
+        //   }
+        // }
       })
       .when('/login', {
         templateUrl: '/partials/users/login.html',
         controller: 'UsersController',
         controllerAs: 'vm',
-        preventIfLoggedIn: true
+        preventIfLoggedIn: true,
+        // resolve: {
+        //   currentUser: function(UserService) {
+        //    return UserService.getCurrentUser();
+        //   }
+        // }
       })
       .when('/logout', {
         // need to add specs?
@@ -31,23 +41,30 @@
           logout: function(UserService, $location) {
             UserService.logout();
             $location.path('/login');
-          }
+          },
+        //   currentUser: function(UserService) {
+        //    return UserService.getCurrentUser;
+        //   }
         }
       })
       .when('/:user_id', {
-        templateUrl: '/partials/users/login.html',
+        templateUrl: '/partials/users/show.html',
         controller: 'UsersController',
         controllerAs: 'vm',
         restricted: true,
         resolve: {
-          user: function(UserService, $route) {
+          user: ['UserService', '$route', function(UserService, $route) {
             return UserService.userResource.get({ user_id: $route.current.params.user_id });
-          }
+          }],
+          // currentUser: function(UserService) {
+          //  return UserService.getCurrentUser;
+          // }
         }
       })
-      .when('/:user_id/edit', {
-        // need to add specs
-        restricted: true
-      });
+      // .when('/:user_id/edit', {
+      //   // need to add specs
+          // will need new token in this route
+      //   restricted: true
+      // });
   }
 })();

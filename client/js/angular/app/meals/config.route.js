@@ -30,9 +30,9 @@
         controller: 'MealsEditController',
         controllerAs: 'vm'
       })
-      // .when('/:user_id/:journal_id/meals/delete', {
-      //   templateUrl:
+      .when('/:user_id/:journal_id/meals/delete', {
+      // resolve
       // no template or controller?
-      // })
+      })
   }
 });

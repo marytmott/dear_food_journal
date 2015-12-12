@@ -120,7 +120,7 @@ router.get('/:user_id', checkTokenUser, function(req, res) {
 
 // edit
 router.put('/:user_id', checkTokenUser, function(req, res) {
-
+//will need new token on this route
   // if user changes password, change token?
   // db.User.findById(req.body.user_id, )
 });
