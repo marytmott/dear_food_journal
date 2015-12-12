@@ -1,10 +1,9 @@
 body {
-  /* need to set this so it doesn't repeat or something? */
   background: linear-gradient(
       rgba(255, 255, 255, 0.55),
       rgba(255, 255, 255, 0.55)
     ),
-    url(/img/desktop1-1600.jpg);
+    url(/img/desktop1-1600.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
