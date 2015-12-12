@@ -13,7 +13,6 @@
           </button> -->
           <a class="navbar-brand" href="/">Dear Food Journal</a>
         </div>
-
         <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
@@ -37,17 +36,19 @@
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
           </form> -->
-          <ul class="nav navbar-nav navbar-right" ng-if="!vm.currentUser">
+          <ul ng-if="!vm.currentUser" class="nav navbar-nav navbar-right">
             <li><a href="/login">Login</a></li>
             <li><a href="/signup">Sign up</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right" ng-if="vm.currentUser">
+          <ul ng-if="vm.currentUser" class="nav navbar-nav navbar-right">
             <li><a ng-href="/users/{{vm.currentUser.id}}">Account</a></li>
             <li><a href="/logout">Log out</a></li>
           </ul>
         </div>
       </div>
     </nav>
+
+    <h4 ng-if="vm.currentUser" class="text-center">Welcome<span ng-if="vm.currentUser.firstName"> {{vm.currentUser.firstName}}</span>!</h4>
 
 <!--     <nav>
       <a href="/">Dear Food Journal</a>
