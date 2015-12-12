@@ -33,7 +33,17 @@ clear blank lines at bottom of files
 need to add resolves to vm.currentuser on loads — page does not load smoothly
 
 
+want to set the current user, BUT also have to resolve it!
 
+
+
+* angular scope in directives: 
+What we want to be able to do is separate the scope inside a directive from the scope outside, and then map the outer scope to a directive's inner scope. We can do this by creating what we call an isolate scope. To do this, we can use a directive's scope option:
+	scope: {
+      		customerInfo: '=info'
+    	},
+
+Note: These =attr attributes in the scope option of directives are normalized just like directive names. To bind to the attribute in <div bind-to-this="thing">, you'd specify a binding of =bindToThis.
 
 
 * only providers can go into ng.config()
