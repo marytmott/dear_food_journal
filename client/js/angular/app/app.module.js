@@ -6,9 +6,10 @@
       'ngRoute',
       'ngResource',
       'dearFoodJ.users',
-      'dearFoodJ.nav',
       'dearFoodJ.auth',
-      'dearFoodJ.journals'
+      'dearFoodJ.nav',
+      'dearFoodJ.journals',
+      'dearFoodJ.meals'
     ])
     .config(configRoutes)
     .run(runApp);

@@ -1,5 +1,5 @@
 (function() {
   'use strict';
 
-  angular.module('dearFoodJ.meals');
+  angular.module('dearFoodJ.meals', []);
 })();

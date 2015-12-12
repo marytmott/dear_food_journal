@@ -13,24 +13,24 @@
   function ConfigMeals($routeProvider) {
     // clean up w/ var for routes?
     $routeProvider
-      .when('/:user_id/:journal_id/meals', {
+      .when('/journals/:journal_id/meals', {
         templateUrl: '/partials/meals/index.html',
         controller: 'MealsController',
         controllerAs: 'vm'
         // add restricted
       })
-      .when('/:user_id/:journal_id/meals/new', {
+      .when('/journals/:journal_id/meals/new', {
         templateUrl: '/partials/meals/new.html',
-        controller: 'MealsCreateController',
+        controller: 'MealsController',
         controllerAs: 'vm'
         // restricted
       })
-      .when('/:user_id/:journal_id/meals/edit', {
+      .when('/journals/:journal_id/meals/edit', {
         templateUrl: '/partials/meals/edit.html',
-        controller: 'MealsEditController',
+        controller: 'MealsController',
         controllerAs: 'vm'
       })
-      .when('/:user_id/:journal_id/meals/delete', {
+      .when('/journals/:journal_id/meals/delete', {
       // resolve
       // no template or controller?
       })
