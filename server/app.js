@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 app.use('/css', express.static(path.join(__dirname, '../client/css')));
 app.use('/js', express.static(path.join(__dirname, '../client/js')));
 app.use('/partials', express.static(path.join(__dirname, '../client/js/angular/app/partials')));
+app.use(express.static(path.join(__dirname, '/public'))); // for images
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
