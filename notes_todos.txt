@@ -33,8 +33,7 @@ clear blank lines at bottom of files
 
 need to add resolves to vm.currentuser on loads — page does not load smoothly
 
-
-want to set the current user, BUT also have to resolve it!
+put $rootscope.$emit (in users factory) in separate service?
 
 
 
