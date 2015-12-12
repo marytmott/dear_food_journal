@@ -5,9 +5,9 @@
     .module('dearFoodJ.users')
     .factory('UserService', UserService);
 
-  UserService.$inject = ['$resource', '$http', '$window'];
+  UserService.$inject = ['$resource', '$http', '$window', '$rootScope'];
 
-  function UserService($resource, $http, $window) {
+  function UserService($resource, $http, $window, $rootScope) {
     return {
       userResource: $resource('/api/users/:user_id', { user_id: '@user_id' },
          { update: { method: 'PUT' } }
@@ -21,10 +21,12 @@
       logout: function() {
         $window.localStorage.removeItem('token');
         $window.localStorage.removeItem('user');
+        $rootScope.$emit('logout');
       },
       setCurrentUser: function(data) {
         $window.localStorage.setItem('token', data.data.token);
         $window.localStorage.setItem('user', JSON.stringify(data.data.user));
+        $rootScope.$emit('login');
       },
       getCurrentUser: function() {
        return JSON.parse($window.localStorage.getItem('user'));
