@@ -7,23 +7,8 @@
   <base href="/">
 </head>
 <body>
-  <!-- make header or nav a directive? -->
-  <header ng-controller="AuthController as vm">
-    <!-- account/main nav -->
-    <nav>
-      <a href="/">Dear Food Journal</a>
-      <a href="/signup" ng-if="!vm.currentUser">Sign up</a>
-      <a href="/login" ng-if="!vm.currentUser">Login</a>
-      <a href="" ng-if="vm.currentUser" ng-click="vm.logout()">Log out</a>
-    </nav>
-
-    <!-- menu nav -->
-    <nav ng-if="vm.currentUser">
-      <a ng-href="/{{vm.currentUser.id}}">account</a>
-      <a ng-href="/{{vm.currentUser.id}}/{{vm.currentUser.journal}}">journal</a>
-      add meal
-    </nav>
-  </header>
+    <!-- make header or nav a directive? -->
+    <df-nav-main></df-nav-main>
 
   <!-- add left sidebar -->
 
@@ -41,6 +26,11 @@ TESTING
   <!-- main app module -->
   <script src="/js/angular/app/app.module.js"></script>
 
+  <!-- nav -->
+  <script src="/js/angular/app/nav/nav.module.js"></script>
+  <script src="/js/angular/app/nav/nav.controller.js"></script>
+  <script src="/js/angular/app/nav/nav.directive.js"></script>
+
   <!-- users -->
   <script src="/js/angular/app/users/users.module.js"></script>
   <script src="/js/angular/app/users/config.route.js"></script>
@@ -49,7 +39,6 @@ TESTING
 
   <!-- auth -->
   <script src="/js/angular/app/auth/auth.module.js"></script>
-  <script src="/js/angular/app/auth/auth.controller.js"></script>
   <script src="/js/angular/app/auth/auth.factory.js"></script>
 
   <!-- journals -->
