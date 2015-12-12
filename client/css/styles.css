@@ -20,3 +20,7 @@ header {
   border-bottom: 1px solid RGBA(221, 221, 221, 1);
   /*background-color: RGBA(119, 190, 142, 1);*/
 }
+
+.list-group-item {
+  border-radius: 20px;
+}
