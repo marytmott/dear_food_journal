@@ -1,0 +1,17 @@
+  <!-- make header or nav a directive? -->
+  <header>
+    <!-- account/main nav -->
+    <nav>
+      <a href="/">Dear Food Journal</a>
+      <a href="/signup" ng-if="!vm.currentUser">Sign up</a>
+      <a href="/login" ng-if="!vm.currentUser">Login</a>
+      <a href="/logout" ng-if="vm.currentUser">Log out</a>
+    </nav>
+
+    <!-- menu nav -->
+    <nav ng-if="vm.currentUser">
+      <a ng-href="/{{vm.currentUser.id}}">account</a>
+      <a ng-href="/{{vm.currentUser.id}}/{{vm.currentUser.journal}}">journal</a>
+      add meal
+    </nav>
+  </header>
