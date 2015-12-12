@@ -14,6 +14,7 @@ clean up index.js routes (from app.js)
 
 set expiration time and renewal on web tokens
 
+— need to test typing in routes in url w/ middleware on angular routes
 
 take out console logs
 
