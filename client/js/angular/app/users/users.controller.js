@@ -16,7 +16,7 @@
     vm.login = login;
     vm.logout = logout;
     // vm.currentUser = currentUser;
-    vm.currentUser = UserService.getCurrentUser();
+    // vm.currentUser = UserService.getCurrentUser();
     // console.log('user?', vm.currentUser);
 
     function signup() {
@@ -33,7 +33,7 @@
         console.log('DATA from LOGIN', data);
         // bad requests are coming here too....add handling
         UserService.setCurrentUser(data);
-        getCurrentUser();
+        // getCurrentUser();
         // console.log('/' + data.data.user.id + '/' + data.data.user.journal);
         $location.path('/' + data.data.user.id + '/' + data.data.user.journal);
       }).catch(function(errors) {
@@ -47,14 +47,14 @@
       $location.path('/login');
     }
 
-    // THIS NEEDS TO BE A RESOLVE ON ALL ROUTES!!!
-    function getCurrentUser() {
-      vm.currentUser = UserService.getCurrentUser();
-      // .then(function(data) {
-      //   console.log(data);
-      //   // vm.currentUser = data;
-      // });
-    }
-    getCurrentUser();
+    // THIS NEEDS TO BE A RESOLVE ON ALL ROUTES!?!?
+    // function getCurrentUser() {
+    //   vm.currentUser = UserService.getCurrentUser();
+    //   // .then(function(data) {
+    //   //   console.log(data);
+    //   //   // vm.currentUser = data;
+    //   // });
+    // }
+    // getCurrentUser();
   }
 })();
