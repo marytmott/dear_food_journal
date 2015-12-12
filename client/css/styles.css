@@ -21,6 +21,7 @@ header {
   /*background-color: RGBA(119, 190, 142, 1);*/
 }
 
-.list-group-item {
-  border-radius: 20px;
+.list-group-item:first-of-type, .list-group-item, .list-group-item:last-of-type {
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
