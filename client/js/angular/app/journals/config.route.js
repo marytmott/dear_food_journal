@@ -15,7 +15,7 @@
 
     // do we need route for journals? -- journa; crud
     $routeProvider
-      .when('/:user_id/:journal_id', { // or put as journals/journal_id
+      .when('/journals/:journal_id', { // or put as journals/journal_id
         templateUrl: '/partials/journals/index.html',
         controller: 'JournalsController',
         controllerAs: 'vm',
@@ -27,7 +27,7 @@
         }
         // add restricted
       })
-      .when('/:user_id/:journal_id/edit', {
+      .when('/journals/:journal_id/edit', {
         templateUrl: '/partials/journals/edit.html',
         controller: 'JournalsController',
         controllerAs: 'vm'
