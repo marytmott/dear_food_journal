@@ -6,6 +6,7 @@
       'ngRoute',
       'ngResource',
       'dearFoodJ.users',
+      'dearFoodJ.nav',
       'dearFoodJ.auth',
       'dearFoodJ.journals'
     ])
@@ -15,58 +16,8 @@
   configRoutes.$inject = ['$routeProvider', '$locationProvider', '$httpProvider'];
 
   function configRoutes($routeProvider, $locationProvider, $httpProvider) {
-    // get currentUser set for all routes
-    // var originalWhen = $routeProvider.when;
-    // $routeProvider
-    //   .when = function(path, route) {
-    //     route.resolve || (route.resolve = {});
-    //     angular.extend(route.resolve, {
-    //       currentUser: function(UserService) {
-    //         return UserService.getCurrentUser();
-    //       }
-    //     });
-    //    return originalWhen.call($routeProvider, path, route);
-    //   }
-      // .otherwise({redirectTo: '/'});
-
-      // var customRouteProvider = angular.extend({}, $routeProvider, {
-      //   when: function(path, route) {
-      //     route.resolve = route.resolve ? route.resolve : {};
-      //     angular.extend(route.resolve, {
-      //       currentUser: function(UserService) {
-      //         return UserService.getCurrentUser();
-      //       }
-      //     });
-      //     $routeProvider.when(path, route);
-      //     return this;
-      //   }
-      // });
-
-    // var originalWhen = $routeProvider.when;
-
-    // $routeProvider.when = function(path, route) {
-    //     route.resolve || (route.resolve = {});
-    //     angular.extend(route.resolve, {
-    //         currentUser : function(UserService) {
-    //             return UserService.getCurrentUser();
-    //         }
-    //     });
-
-    //     return originalWhen.call($routeProvider, path, route);
-    // };
-
 
     $routeProvider
-      // .when('/', {
-      //   templateUrl: '../index.html',
-      //   controller: 'UsersController',
-      //   controllerAs: 'vm',
-      //    resolve: {
-      //     currentUser: function(UserService) {
-      //      return UserService.getCurrentUser();
-      //     }
-      //   }
-      // })
       .otherwise({redirectTo: '/'});
 
     $locationProvider.html5Mode(true);
@@ -85,17 +36,17 @@
       var loggedIn = $window.localStorage.getItem('token');
       var user = UserService.getCurrentUser();
 
-      console.log('=====event', event);
+      // console.log('=====event', event);
 
-      console.log('====next', nextRoute);
-      console.log('=====current', currentRoute);
-      // console.log('original path', currentRoute.$$route.originalPath);
-      console.log('2', nextRoute.params.user_id);
-      console.log('prevent', nextRoute.preventIfLoggedIn);
-      console.log(loggedIn);
-      console.log('restrict', nextRoute.restricted);
-      console.log(nextRoute.params.user_id);
-      console.log('user: ', user);
+      // console.log('====next', nextRoute);
+      // console.log('=====current', currentRoute);
+      // // console.log('original path', currentRoute.$$route.originalPath);
+      // console.log('2', nextRoute.params.user_id);
+      // console.log('prevent', nextRoute.preventIfLoggedIn);
+      // console.log(loggedIn);
+      // console.log('restrict', nextRoute.restricted);
+      // console.log(nextRoute.params.user_id);
+      // console.log('user: ', user);
 
 
       // REDIRECT TO LOGIN??
