@@ -3,20 +3,29 @@
 <head>
   <meta charset="utf-8">
   <title></title>
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"</jquery
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/journal/bootstrap.min.css" />
   <link rel="stylesheet" href="/css/styles.css" />
   <base href="/">
 </head>
 <body>
-    <!-- make header or nav a directive? -->
+  <!-- make header or nav a directive? -->
+  <header>
     <df-nav-main></df-nav-main>
+  </header>
 
-  <!-- add left sidebar -->
-
-  <!-- add right sidebar -->
-
-TESTING
-
-  <div ng-view></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 text-center">
+        <df-menu-left></df-menu-left>
+      </div>
+      <div ng-view></div>
+      <div class="right-menu">
+      </div>
+    </div>
+  </div>
 
   <!-- Third-party JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
@@ -29,7 +38,8 @@ TESTING
   <!-- nav -->
   <script src="/js/angular/app/nav/nav.module.js"></script>
   <script src="/js/angular/app/nav/nav.controller.js"></script>
-  <script src="/js/angular/app/nav/nav.directive.js"></script>
+  <script src="/js/angular/app/nav/directives/nav.navMain.directive.js"></script>
+  <script src="/js/angular/app/nav/directives/nav.menuLeft.directive.js"></script>
 
   <!-- users -->
   <script src="/js/angular/app/users/users.module.js"></script>

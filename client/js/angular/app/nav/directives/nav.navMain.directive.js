@@ -7,7 +7,7 @@
 
   function dfNavMain() {
     return {
-      templateUrl: '../partials/nav/nav-main.html',
+      templateUrl: '../../partials/nav/nav-main.html',
       controller: 'NavController',
       controllerAs: 'vm',
       restrict: 'E'
