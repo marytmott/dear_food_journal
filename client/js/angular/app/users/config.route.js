@@ -17,6 +17,7 @@
         controller: 'UsersController',
         controllerAs: 'vm',
         preventIfLoggedIn: true,
+        // DO NOT NEED TO RESOLVE THIS ANYMORE b/c of NAVBAR + $rootscope broadcast??
         resolve: {
           currentUser: function(UserService) {
            return UserService.getCurrentUser();
@@ -28,7 +29,7 @@
         controller: 'UsersController',
         controllerAs: 'vm',
         preventIfLoggedIn: true,
-        resolve: {
+        resolve: {     // DO NOT NEED TO RESOLVE THIS ANYMORE b/c of NAVBAR + $rootscope broadcast??
           currentUser: function(UserService) {
            return UserService.getCurrentUser();
           }
@@ -43,6 +44,7 @@
             UserService.isLoggedIn = false;
             $location.path('/login');
           },
+          // DO NOT NEED TO RESOLVE THIS ANYMORE b/c of NAVBAR + $rootscope broadcast??
           currentUser: function(UserService) {
            return UserService.getCurrentUser();
           }
