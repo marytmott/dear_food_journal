@@ -18,7 +18,13 @@
       .when('/:user_id/:journal_id', { // or put as journals/journal_id
         templateUrl: '/partials/journals/index.html',
         controller: 'JournalsController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          // resolve b/c of redirect from login
+          currentUser: function(UserService, $location) {  // need to add [] around injection?
+            return UserService.getCurrentUser();
+          }
+        }
         // add restricted
       })
       .when('/:user_id/:journal_id/edit', {

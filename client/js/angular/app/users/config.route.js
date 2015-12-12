@@ -17,22 +17,22 @@
         controller: 'UsersController',
         controllerAs: 'vm',
         preventIfLoggedIn: true,
-        // resolve: {
-        //   currentUser: function(UserService) {
-        //    return UserService.getCurrentUser();
-        //   }
-        // }
+        resolve: {
+          currentUser: function(UserService) {
+           return UserService.getCurrentUser();
+          }
+        }
       })
       .when('/login', {
         templateUrl: '/partials/users/login.html',
         controller: 'UsersController',
         controllerAs: 'vm',
         preventIfLoggedIn: true,
-        // resolve: {
-        //   currentUser: function(UserService) {
-        //    return UserService.getCurrentUser();
-        //   }
-        // }
+        resolve: {
+          currentUser: function(UserService) {
+           return UserService.getCurrentUser();
+          }
+        }
       })
       .when('/logout', {
         // need to add specs?
@@ -40,11 +40,12 @@
         resolve: {
           logout: function(UserService, $location) {
             UserService.logout();
+            UserService.isLoggedIn = false;
             $location.path('/login');
           },
-        //   currentUser: function(UserService) {
-        //    return UserService.getCurrentUser;
-        //   }
+          currentUser: function(UserService) {
+           return UserService.getCurrentUser();
+          }
         }
       })
       .when('/:user_id', {
@@ -53,12 +54,12 @@
         controllerAs: 'vm',
         restricted: true,
         resolve: {
-          user: ['UserService', '$route', function(UserService, $route) {
+          user: function(UserService, $route) {
             return UserService.userResource.get({ user_id: $route.current.params.user_id });
-          }],
-          // currentUser: function(UserService) {
-          //  return UserService.getCurrentUser;
-          // }
+          },
+          currentUser: function(UserService) {
+           return UserService.getCurrentUser();
+          }
         }
       })
       // .when('/:user_id/edit', {
