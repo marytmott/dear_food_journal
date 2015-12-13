@@ -1,5 +1,26 @@
-Add a new entry:
-<form novalidate>
-  <label for="meal-time">Date and Time:</label>
-  <input type="datetime" id="meal-date" placeholder="choose a time and date" ng-model="vm.meal.date"/>
-</form>
+<div class="row">
+  <div class="container-fluid">
+    <div class="col-md-5 panel panel-default">
+      <div class="panel-body">
+        Add a new entry:
+        <form novalidate>
+          <label for="meal-time">Date and Time:</label>
+          <input type="datetime" id="meal-date" placeholder="choose a time and date" ng-model="vm.meal.date"/>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-5 panel panel-default">
+      <div class="panel-body">
+        <form novalidate ng-submit="vm.foodSearch()">
+          <label for="food-search" class="control-label">Search for your foods here:</label>
+          <div class="input-group">
+            <input type="text" id="food-search" class="form-control" placeholder="What did you have?" ng-model="vm.apiSearch" />
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Find</button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

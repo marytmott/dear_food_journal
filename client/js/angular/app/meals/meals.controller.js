@@ -5,9 +5,16 @@
     .module('dearFoodJ.meals')
     .controller('MealsController', MealsController);
 
-  MealsController.$inject = [];
+  MealsController.$inject = ['MealsService'];
 
-  function MealsController() {
+  function MealsController(MealsService) {
+    var vm = this;
 
+    vm.apiSearch = '';
+    vm.foodSearch = foodSearch;
+
+    function foodSearch() {
+      MealsService.foodApiSearch(vm.apiSearch);
+    }
   }
 })();
