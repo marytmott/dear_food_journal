@@ -9,11 +9,16 @@
 
   function MealsController($filter, MealsService) {
     var vm = this;
+    // var now = new Date();
 
     vm.apiSearch = '';
     vm.foodSearch = foodSearch;
     vm.meal = {};
-    vm.meal.date = new Date($filter('date')(Date.now(), 'yyyy-MM-dd'));
+    // vm.meal.date = new Date($filter('date')(Date.now(), 'yyyy-MM-dd'));
+    vm.meal.date = new Date();
+    // vm.meal.time = new Date();
+      // $filter('date')(Date.now(), 'HH:mm:ss'));
+    console.log(vm.meal.date);
     console.log(vm.meal.date);
     vm.addMeal = addMeal;
 
