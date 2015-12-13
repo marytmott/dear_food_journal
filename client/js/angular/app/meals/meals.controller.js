@@ -14,7 +14,9 @@
     vm.foodSearch = foodSearch;
 
     function foodSearch() {
-      MealsService.foodApiSearch(vm.apiSearch);
+      MealsService.foodApiSearch(vm.apiSearch).then(function(data) {
+        console.log(data);
+      });
     }
   }
 })();

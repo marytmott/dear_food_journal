@@ -7,9 +7,11 @@ var request = require('request');
 router.post('/search', function(req, res) {
   var appId = process.env.NIX_API_ID;
   var apiKey = process.env.NIX_API_KEY;
-  var apiSearchLink = 'https://api.nutritionix.com/v1_1/search/mcdonalds?results=0:20&fields=item_name,brand_name,item_id,nf_calories&appId=' + appId + '&appKey=' + apiKey;
+  var userSearch = req.body.search;
+  var apiSearchLink = 'https://api.nutritionix.com/v1_1/search/' + userSearch + '?results=0:20&fields=item_name,brand_name,item_id,nf_calories&appId=' + appId + '&appKey=' + apiKey;
 
-  console.log(req);
+console.log(apiSearchLink);
+  // console.log(req.body.search);
 
 });
 

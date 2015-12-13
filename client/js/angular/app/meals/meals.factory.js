@@ -10,9 +10,10 @@
   function MealsService($http, $resource) {
     return {
       foodApiSearch: function(data) {
+        var searchData = encodeURIComponent(data);
+        console.log(searchData);
 
-        console.log(data);
-        return $http.post('/api/api-foods/search', data);
+        return $http.post('/api/api-foods/search', { search: searchData });
       }
     };
   }
