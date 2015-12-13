@@ -12,6 +12,14 @@
 
     vm.apiSearch = '';
     vm.foodSearch = foodSearch;
+    vm.meal = {
+      // date:
+    };
+    vm.addMeal = addMeal;
+
+    function addMeal(){
+      console.log(vm.meal);
+    }
 
     function foodSearch() {
       console.log('what');

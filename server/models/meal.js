@@ -20,6 +20,7 @@ var mealSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'FoodEntry'
   }],
+  name: String,
   emotionsBefore: String,
   commentsAfter: String,
   notes: String,
