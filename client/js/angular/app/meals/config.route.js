@@ -33,6 +33,6 @@
       .when('/journals/:journal_id/meals/delete', {
       // resolve
       // no template or controller?
-      })
+      });
   }
-});
+})();
