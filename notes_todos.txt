@@ -35,6 +35,13 @@ need to add resolves to vm.currentuser on loads — page does not load smoothly
 
 put $rootscope.$emit (in users factory) in separate service?
 
+nf_serving_size_qty
+nf_serving_size_unit
+nf_calories
+nf_total_fat
+nf_total_carbohydrate
+nf_dietary_fiber
+
 
 
 * angular scope in directives: 

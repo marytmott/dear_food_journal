@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row new-food">
   <div class="container-fluid">
     <div class="col-md-5 panel panel-default">
       <div class="panel-body">
@@ -20,7 +20,15 @@
             </span>
           </div>
         </form>
+        <div ng-if="vm.searchResults" id="search-results">
+          <p ng-repeat="food in vm.searchResults">
+          {{food.fields.brand_name}} {{food.fields.item_name}}
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<!-- fields.
+brand_name
+item_name -->

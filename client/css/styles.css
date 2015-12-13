@@ -34,3 +34,7 @@ a:hover, a:link, a:visited {
 .panel {
   background: rgba(255, 255, 255, 0.65);
 }
+
+.new-food {
+  height: 300px;
+}
