@@ -14,9 +14,11 @@ var journalSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Meal'
   }],
-  weightLossGoal: Number,
+  weightGoal: Number,
+  // add date for when weight is entered to track how much lost in how much time?
   origWeight: Number,
-  toDateWeightLoss: Number
+  toDateWeightChange: Number
+// general notes or put in inspirations?
 });
 
 // add delete hook to delete entries
@@ -24,4 +26,3 @@ var journalSchema = mongoose.Schema({
 var Journal = mongoose.model('Journal', journalSchema);
 
 module.exports = Journal;
-
