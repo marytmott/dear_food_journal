@@ -21,7 +21,8 @@
 
     function signup() {
       // console.log(vm.user);
-      return UserService.signup(vm.user).then(function(data) {
+      // do you need return here?
+      UserService.signup(vm.user).then(function(data) {
         console.log(data);
         UserService.setCurrentUser(data);
         $location.path('/' + data.data.user.id + '/' + data.data.user.journal);
