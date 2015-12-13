@@ -5,16 +5,16 @@
     .module('dearFoodJ.meals')
     .controller('MealsController', MealsController);
 
-  MealsController.$inject = ['MealsService'];
+  MealsController.$inject = ['$filter', 'MealsService'];
 
-  function MealsController(MealsService) {
+  function MealsController($filter, MealsService) {
     var vm = this;
 
     vm.apiSearch = '';
     vm.foodSearch = foodSearch;
-    vm.meal = {
-      // date:
-    };
+    vm.meal = {};
+    vm.meal.date = new Date($filter('date')(Date.now(), 'yyyy-MM-dd'));
+    console.log(vm.meal.date);
     vm.addMeal = addMeal;
 
     function addMeal(){
