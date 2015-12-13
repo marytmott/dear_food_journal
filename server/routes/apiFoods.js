@@ -12,6 +12,15 @@ router.post('/search', function(req, res) {
 
 console.log(apiSearchLink);
   // console.log(req.body.search);
+  request(apiSearchLink, function(error, response, body) {
+    // console.log("error!!!!", error);
+    console.log("response!!!", response.statusCode);
+    if (!error && response.statusCode == 200) {
+      res.send(body);
+      // console.log("body!!!", body);
+    }
+  });
+
 
 });
 

@@ -11,12 +11,12 @@
     </div>
     <div class="col-md-5 panel panel-default">
       <div class="panel-body">
-        <form novalidate ng-submit="vm.foodSearch()">
+        <form ng-submit="vm.foodSearch()" novalidate>
           <label for="food-search" class="control-label">Search for your foods here:</label>
           <div class="input-group">
             <input type="text" id="food-search" class="form-control" placeholder="What did you have?" ng-model="vm.apiSearch" />
             <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Find</button>
+              <button class="btn btn-default" type="submit">Find</button>
             </span>
           </div>
         </form>

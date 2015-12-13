@@ -14,8 +14,10 @@
     vm.foodSearch = foodSearch;
 
     function foodSearch() {
+      console.log('what');
       MealsService.foodApiSearch(vm.apiSearch).then(function(data) {
-        console.log(data);
+        console.log(data.data.hits);
+        vm.searchResults = data.data.hits;
       });
     }
   }
