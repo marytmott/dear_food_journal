@@ -19,7 +19,6 @@
     // vm.meal.time = new Date();
       // $filter('date')(Date.now(), 'HH:mm:ss'));
     console.log(vm.meal.date);
-    console.log(vm.meal.date);
     vm.addMeal = addMeal;
 
     function addMeal(){
