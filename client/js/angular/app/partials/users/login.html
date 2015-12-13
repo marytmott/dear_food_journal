@@ -1,7 +1,7 @@
-<form novalidate>
+<form ng-submit="vm.login()" novalidate>
   <label for="email">email:
   <input type="text" id="email" placeholder="enter your email" ng-model="vm.user.email" />
   <label for="password">password:
   <input type="password" placeholder="enter a password" ng-model="vm.user.password" />
-  <button ng-click="vm.login()">Login</button>
+  <button type="submit">Login</button>
 </form>

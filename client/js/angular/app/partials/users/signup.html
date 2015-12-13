@@ -1,4 +1,4 @@
-<form novalidate>
+<form ng-submit="vm.signup()" novalidate>
   <label for="firstname">first name:
   <input type="text" placeholder="your first name" ng-model="vm.user.firstName" />
   <label for="email">email:
@@ -7,7 +7,7 @@
   <input type="password" placeholder="enter a password" ng-model="vm.user.password" />
   <label for="verifypw">password again:
   <input type="password" placeholder="enter your password again" ng-model="vm.verifypw" />
-  <button ng-click="vm.signup()">Sign up!</button>
+  <button type="submit">Sign up!</button>
 </form>
 
 
