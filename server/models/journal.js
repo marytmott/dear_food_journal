@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var db = require('./index');
 var User = require('./user');
-var Meal = require('./meal');
+var Day = require('./day');
 
 // TODO: pre/post hooks
 
@@ -10,9 +10,9 @@ var journalSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   }],
-  meals: [{
+  days: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Meal'
+    ref: 'Day'
   }],
   weightGoal: Number,
   // add date for when weight is entered to track how much lost in how much time?

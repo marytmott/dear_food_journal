@@ -12,6 +12,8 @@ db.once('open', function(callback) {
 module.exports = {
   User: require('./user'),
   Journal: require('./journal'),
+  Day: require('./day'),
   Meal: require('./meal'),
-  FoodEntry: require('./foodEntry')
+  FoodEntry: require('./foodEntry'),
+  Food:
 }

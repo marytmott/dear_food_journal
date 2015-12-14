@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var db = require('./index');
 var Meal = require('./meal');
+var Food = require('./food');
 
 var foodEntrySchema = mongoose.Schema({
   // ref to apiFood
