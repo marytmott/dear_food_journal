@@ -9,7 +9,7 @@ var foodEntrySchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Meal'
   }],
-  name: String, // for testing only now
+  food: String, // for testing only now -- will be mongo schema id
   serving: Number,
 });
 

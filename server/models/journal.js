@@ -14,6 +14,8 @@ var journalSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Day'
   }],
+  dailyCalorieGoal: Number,
+  //other daily goals?
   weightGoal: Number,
   // add date for when weight is entered to track how much lost in how much time?
   origWeight: Number,
