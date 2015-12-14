@@ -1,0 +1,30 @@
+<p>{{ food.fields.item_name }} from {{ food.fields.brand_name }}</p>
+<ul class="horizontal-list text-left">
+  <li>Calories: {{ food.fields.nf_calories | number: 0 }}</li>
+  <li>Fat: {{ food.fields.nf_total_fat | number: 0 }}</li>
+  <li>Carbs: {{ food.fields.nf_total_carbohydrate | number: 0 }}</li>
+  <li>Fiber: {{ food.fields.nf_dietary_fiber | number: 0 }}</li>
+  <li>Protein: {{ food.fields.nf_protein | number: 0 }}</li>
+<!--   <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li> -->
+</ul>
+
+
+<!-- <h3>{{pokemon.name}}</h3>
+<img ng-src="{{pokemon.image}}" />
+<ul>
+  <li>Types:
+    <ul>
+      <li ng-repeat="type in pokemon.types">{{type.name}}</li>
+    </ul>
+  </li>
+  <li>Moves:
+    <ul>
+      <li ng-if="!pokemon.moves.length">No moves found.</li>
+      <li ng-if="pokemon.moves.length" ng-repeat="move in pokemon.moves | limitTo: limit">{{move.name}}</li>
+    </ul>
+</ul> -->

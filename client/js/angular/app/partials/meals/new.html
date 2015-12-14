@@ -64,9 +64,8 @@
             </div>
           </form>
           <div ng-if="vm.searchResults" id="search-results">
-            <p ng-repeat="food in vm.searchResults">
-            {{food.fields.brand_name}} {{food.fields.item_name}}
-            </p>
+            <h6>Click your food below to add it to your meal.</h6>
+            <div ng-repeat="food in vm.searchResults" df-search-results food-data="food" ng-click="vm.addToMeal()"></div>
           </div>
         </div>
       </div>

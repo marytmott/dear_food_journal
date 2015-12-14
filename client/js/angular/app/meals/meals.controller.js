@@ -20,6 +20,7 @@
       // $filter('date')(Date.now(), 'HH:mm:ss'));
     console.log(vm.meal.date);
     vm.addMeal = addMeal;
+    vm.addToMeal = addToMeal;
 
     function addMeal(){
       console.log(vm.meal);
@@ -31,6 +32,10 @@
         console.log(data.data.hits);
         vm.searchResults = data.data.hits;
       });
+    }
+
+    function addToMeal() {
+
     }
   }
 })();
