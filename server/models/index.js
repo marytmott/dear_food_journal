@@ -15,5 +15,5 @@ module.exports = {
   Day: require('./day'),
   Meal: require('./meal'),
   FoodEntry: require('./foodEntry'),
-  Food:
+  Food: require('./food')
 }
