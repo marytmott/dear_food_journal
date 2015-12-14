@@ -38,8 +38,9 @@
     function addToMeal(food) {
       var id = vm.meal.foods.length;
       console.log('clicked', food);
+      food.id = 'food' + id;
 
-      vm.meal.foods.push({ id: id, food: food });
+      vm.meal.foods.push(food);
         console.log(vm.meal.foods);
     }
   }
