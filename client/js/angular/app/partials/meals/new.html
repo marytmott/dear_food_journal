@@ -41,21 +41,25 @@
                 </div>
               </div>
 
-              <!-- move this out to directive? --><div ng-repeat="food in vm.meal.foods track by $index">
-              <div class="form-group">
-                <label for="{{ food.id }}" class="col-md-3">You had:</label>
-                <div class="col-md-8">
-                  <input type="text" id="{{ food.id }}" class="form-control" value="{{ food.fields.item_name }}" disabled />
-                </div>
-                <!-- <div class="col-md-1"> -->
+              <!-- move this out to directive? -->
+              <div ng-repeat="food in vm.meal.foods track by $index">
+                <div class="form-group">
+                  <label for="{{ food.id }}" class="col-md-3 control-label">You had:</label>
+                  <div class="col-md-8">
+                    <input type="text" id="{{ food.id }}" class="form-control" value="{{ food.fields.item_name }}" disabled />
+                  </div>
+                  <!-- <div class="col-md-1">
+                  </div> -->
                     <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
-<!--                 </div> -->
-                <!-- <div class="form-control"> -->
-                <!-- </div> -->
+                  <!-- <div class="form-control"> -->
+                  <!-- </div> -->
                 </div>
                 <ul class="horizontal-list" df-search-results food-data="food"></ul>
               </div>
               button: add your own button
+
+
+
 
               <button type="submit" class="btn btn-primary">Add Meal</button>
             </fieldset>
@@ -75,11 +79,17 @@
               </span>
             </div>
           </form>
-          <div ng-if="vm.searchResults" id="search-results">
-            <h6>Click your food below to add it to your meal.</h6>
-            <div ng-repeat="food in vm.searchResults">
-              <a href="" ng-click="vm.addToMeal(food)">{{ food.fields.item_name }}</a> from {{ food.fields.brand_name }}
-              <ul class="horizontal-list" df-search-results food-data="food"></ul>
+          <div ng-show="vm.searchResults">
+            <h4>Click your food below to add it to your meal.</h4>
+            <div id="search-results">
+              <div ng-repeat="food in vm.searchResults" class="unselectable panel panel-default" ng-click="vm.addToMeal(food)">
+                <div class="panel-body">
+                  <p>
+                    <span class="glyphicon glyphicon-chevron-left text-primary" aria-hidden="true" ></span> {{ food.fields.item_name }} from {{ food.fields.brand_name }}
+                  </p>
+                  <ul class="horizontal-list" df-search-results food-data="food"></ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -31,21 +31,30 @@ a:hover, a:link, a:visited {
   text-decoration: none;
 }
 
+.horizontal-list li {
+  list-style-type: none;
+  display: inline;
+  margin-right: 5px;
+  margin-left: -5px;
+}
+
 .panel {
   background: rgba(255, 255, 255, 0.65);
 }
 
 .new-food {
-  height: 500px;
+  height: 850px;
 }
 
 #food-search-form {
   margin-bottom: 45px;
 }
 
-.horizontal-list li {
-  list-style-type: none;
-  display: inline;
-  margin-right: 5px;
-  margin-left: -5px;
+#search-results {
+  height: 675px;
+  overflow: scroll;
+}
+
+.unselectable {
+  cursor: pointer;
 }
