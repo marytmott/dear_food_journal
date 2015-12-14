@@ -11,7 +11,7 @@
 
               <div class="form-group">
                 <label for="meal-date" class="col-md-3 control-label">Date:</label>
-                <div class="input-group col-md-6">
+                <div class="input-group col-md-3">
                   <input type="date" id="meal-date" class="form-control" ng-model="vm.meal.date" />
 <!--                   <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
  -->                </div>
@@ -19,7 +19,7 @@
 
               <div class="form-group">
                 <label for="meal-time" class="col-md-3 control-label">Time:</label>
-                <div class="input-group col-md-6">
+                <div class="input-group col-md-3">
                   <input type="time" id="meal-time" class="form-control" ng-model="vm.meal.time" />
 <!--                   <span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
  -->                </div>
@@ -28,7 +28,7 @@
 
               <div class="form-group">
                 <label for="meal-type" class="col-md-3 control-label">Meal type:</label>
-                <div class="col-md-8">
+                <div class="col-md-6">
                   <select id="meal-type" class="form-control" ng-model="vm.meal.name">
                     <option value="" disabled selected>Meal or snack?</option>
                     <option value="Breakfast">Breakfast</option>
@@ -57,11 +57,11 @@
       <div class="col-md-5 panel panel-default new-food">
         <div class="panel-body">
           <form id="food-search-form" ng-submit="vm.foodSearch()" novalidate>
-            <label for="food-search" class="control-label">Search for your foods here:</label>
+            <label for="food-search" class="control-label">Find your food:</label>
             <div class="input-group">
               <input type="text" id="food-search" class="form-control" placeholder="What did you have?" ng-model="vm.apiSearch" />
               <span class="input-group-btn">
-                <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
               </span>
             </div>
           </form>
