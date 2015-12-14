@@ -12,30 +12,30 @@
               <div class="form-group">
                 <label for="meal-date" class="col-md-3 control-label">Date:</label>
                 <div class="input-group col-md-6">
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
                   <input type="date" id="meal-date" class="form-control" ng-model="vm.meal.date" />
-                </div>
+<!--                   <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+ -->                </div>
               </div>
 
               <div class="form-group">
                 <label for="meal-time" class="col-md-3 control-label">Time:</label>
                 <div class="input-group col-md-6">
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
                   <input type="time" id="meal-time" class="form-control" ng-model="vm.meal.time" />
-                </div>
+<!--                   <span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
+ -->                </div>
               </div>
 
 
               <div class="form-group">
                 <label for="meal-type" class="col-md-3 control-label">Meal type:</label>
                 <div class="col-md-8">
-                  <select id="meal-type" class="form-control col-md-8" ng-model="vm.meal.name">
+                  <select id="meal-type" class="form-control" ng-model="vm.meal.name">
                     <option value="" disabled selected>Meal or snack?</option>
                     <option value="Breakfast">Breakfast</option>
                     <option value="Lunch">Lunch</option>
                     <option value="Dinner">Dinner</option>
                     <option value="Snack">Snack</option>
-                    <option value="Beverage snack">Beverage snack</option>
+                    <option value="Beverage snack">Beverage as snack</option>
                     <option value="Dessert">Dessert</option>
                   </select>
                 </div>
@@ -43,6 +43,7 @@
 
               FOOD OPTIONS
               <div class="form-group">
+                <label for="foodEntry">
 
               </div>
 
