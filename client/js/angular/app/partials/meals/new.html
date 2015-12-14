@@ -80,7 +80,14 @@
             </div>
           </form>
           <div ng-show="vm.searchResults">
-            <h4>Click your food below to add it to your meal.</h4>
+            <div class="row">
+              <div class="col-md-9">
+                <h4>Click your food below to add it to your meal.</h4>
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-default btn-xs" ng-click="vm.clearFoodSearch()">Clear Results</button>
+              </div>
+            </div>
             <div id="search-results">
               <div ng-repeat="food in vm.searchResults" class="unselectable panel panel-default" ng-click="vm.addToMeal(food)">
                 <div class="panel-body">

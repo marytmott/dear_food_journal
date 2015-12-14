@@ -21,18 +21,21 @@
     console.log(vm.meal.date);
     vm.meal.foods = [];
 
-    vm.addMeal = addMeal;
     vm.addToMeal = addToMeal;
+    vm.clearFoodSearch = clearFoodSearch;
+    vm.addMeal = addMeal;
 
-    function addMeal(){
-      console.log(vm.meal);
-    }
 
     function foodSearch() {
       MealsService.foodApiSearch(vm.apiSearch).then(function(data) {
         console.log(data.data.hits);
         vm.searchResults = data.data.hits;
       });
+    }
+
+    function clearFoodSearch() {
+      vm.searchResults = null;
+      vm.apiSearch = '';
     }
 
     function addToMeal(food) {
@@ -42,6 +45,10 @@
 
       vm.meal.foods.push(food);
         console.log(vm.meal.foods);
+    }
+
+    function addMeal(){
+      console.log(vm.meal);
     }
   }
 })();
