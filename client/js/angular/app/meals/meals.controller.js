@@ -51,6 +51,8 @@
       var id = vm.meal.foods.length;
       console.log('clicked', food);
       food.id = 'food' + id;
+      food.servingSzId = 'serv-sz-id' + id;
+      food.userServing = 1;
 
       vm.meal.foods.push(food);
         console.log(vm.meal.foods);
