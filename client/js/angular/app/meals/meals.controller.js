@@ -23,6 +23,8 @@
 
     vm.addToMeal = addToMeal;
     vm.clearFoodSearch = clearFoodSearch;
+    vm.removeFood = removeFood;
+
     vm.addMeal = addMeal;
 
 
@@ -47,7 +49,14 @@
         console.log(vm.meal.foods);
     }
 
-    function addMeal(){
+    function removeFood(food) {
+      var foodIdx = vm.meal.foods.indexOf(food);
+      console.log(foodIdx);
+
+      vm.meal.foods.splice(foodIdx, 1);
+    }
+
+    function addMeal() {
       console.log(vm.meal);
     }
   }
