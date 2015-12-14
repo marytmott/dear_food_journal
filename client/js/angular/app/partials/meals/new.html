@@ -42,10 +42,28 @@
               </div>
 
               FOOD OPTIONS
-              <div class="form-group">
-                <label for="foodEntry">
-
+              <!-- move this out to directive? -->
+              <div class="form-group" ng-repeat="food in vm.meal.food" ng-if="vm.meal.food.length > 1">
+                <label for="food.id"></label>
+                <input type="text" id="food.id" value="food.name" ng-model="food.name" disabled />
+                details:
+                <ul class="horizontal-list text-left">
+  <li>Calories: {{ food.fields.nf_calories | number: 0 }}</li>
+  <li>Fat: {{ food.fields.nf_total_fat | number: 0 }}</li>
+  <li>Carbs: {{ food.fields.nf_total_carbohydrate | number: 0 }}</li>
+  <li>Fiber: {{ food.fields.nf_dietary_fiber | number: 0 }}</li>
+  <li>Protein: {{ food.fields.nf_protein | number: 0 }}</li>
+<!--   <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li> -->
+</ul>
               </div>
+              button: need to be able to remove these!
+              tell user to search to add
+              button: add your own button
 
               <button type="submit" class="btn btn-primary">Add Meal</button>
             </fieldset>
@@ -67,7 +85,11 @@
           </form>
           <div ng-if="vm.searchResults" id="search-results">
             <h6>Click your food below to add it to your meal.</h6>
-            <div ng-repeat="food in vm.searchResults" df-search-results food-data="food" ng-click="vm.addToMeal()"></div>
+            <div ng-repeat="food in vm.searchResults">
+              <a href="" ng-click="vm.addToMeal(food)">{{ food.fields.item_name }}</a> from {{ food.fields.brand_name }}
+              <ul class="horizontal-list text-left" df-search-results food-data="food">
+              </ul>
+            </div>
           </div>
         </div>
       </div>

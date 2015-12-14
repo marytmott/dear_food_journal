@@ -19,6 +19,8 @@
     // vm.meal.time = new Date();
       // $filter('date')(Date.now(), 'HH:mm:ss'));
     console.log(vm.meal.date);
+    vm.meal.foods = [];
+
     vm.addMeal = addMeal;
     vm.addToMeal = addToMeal;
 
@@ -27,15 +29,18 @@
     }
 
     function foodSearch() {
-      console.log('what');
       MealsService.foodApiSearch(vm.apiSearch).then(function(data) {
         console.log(data.data.hits);
         vm.searchResults = data.data.hits;
       });
     }
 
-    function addToMeal() {
+    function addToMeal(food) {
+      var id = vm.meal.foods.length;
+      console.log('clicked', food);
 
+      vm.meal.foods.push({ id: id, food: food });
+        console.log(vm.meal.foods);
     }
   }
 })();
