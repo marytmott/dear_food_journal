@@ -38,3 +38,7 @@ a:hover, a:link, a:visited {
 .new-food {
   height: 500px;
 }
+
+#food-search-form {
+  margin-bottom: 40px;
+}

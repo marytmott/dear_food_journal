@@ -54,7 +54,7 @@
       <!-- search div -->
       <div class="col-md-5 panel panel-default new-food">
         <div class="panel-body">
-          <form ng-submit="vm.foodSearch()" novalidate>
+          <form id="food-search-form" ng-submit="vm.foodSearch()" novalidate>
             <label for="food-search" class="control-label">Search for your foods here:</label>
             <div class="input-group">
               <input type="text" id="food-search" class="form-control" placeholder="What did you have?" ng-model="vm.apiSearch" />
