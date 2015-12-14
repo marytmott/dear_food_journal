@@ -21,12 +21,19 @@
     console.log(vm.meal.date);
     vm.meal.foods = [];
 
+    // will nede to do backend/front end checking to single these out as non-api foods and food entries
+    vm.meal.userFoods = [];
+
+
     vm.addToMeal = addToMeal;
     vm.clearFoodSearch = clearFoodSearch;
     vm.removeFood = removeFood;
 
+    vm.addOwnFood = addOwnFood;
+
     vm.addMeal = addMeal;
 
+    // add own food ---> add to last item
 
     function foodSearch() {
       MealsService.foodApiSearch(vm.apiSearch).then(function(data) {
@@ -54,6 +61,12 @@
       console.log(foodIdx);
 
       vm.meal.foods.splice(foodIdx, 1);
+    }
+
+    function addOwnFood() {
+      var newId = 'userFood' + vm.meal.userFoods.length;
+
+      vm.meal.userFoods.push({ id: newId });
     }
 
     function addMeal() {
