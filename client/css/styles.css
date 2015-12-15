@@ -44,11 +44,11 @@ a:hover, a:link, a:visited {
 }
 
 .new-food {
-  height: 950px;
+  height: 1050px;
 }
 
 .meal-form-container {
-  height: 850px;
+  height: 959px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -62,7 +62,7 @@ a:hover, a:link, a:visited {
 }
 
 #search-results {
-  height: 750px;
+  height: 840px;
   overflow: scroll;
 }
 

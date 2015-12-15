@@ -98,7 +98,7 @@
 
       vm.meal.userFoods.push({
         id: newId,
-        userServing: 1,
+        userServings: 1,
         calories: null,
         carbs: null,
         fat: null,
@@ -124,20 +124,20 @@
       };
 
       // calculate apiFoods nutrition if entered
-      if (vm.currentCalcdApiFoods) {
-        for (var i = 0; i < vm.currentCalcdApiFoods; i++) {
-          currentFood = vm.meal.foods[i];
-          servings = currentFood.userServings;
+      // if (vm.currentCalcdApiFoods) {
+      //   for (var i = 0; i < vm.currentCalcdApiFoods; i++) {
+      //     currentFood = vm.meal.foods[i];
+      //     servings = currentFood.userServings;
 
-          // console.log(currentFood.userServings);
-          vm.meal.totalNutrition.calories += (currentFood.fields.nf_calories * servings);
-          vm.meal.totalNutrition.fat += (currentFood.fields.nf_total_fat * servings);
-          vm.meal.totalNutrition.carbs += (currentFood.fields.nf_total_carbohydrate * servings);
-          vm.meal.totalNutrition.fiber += (currentFood.fields.nf_dietary_fiber * servings);
-          vm.meal.totalNutrition.protein += (currentFood.fields.nf_protein * servings);
-          vm.meal.totalNutrition.sugars += (currentFood.fields.nf_sugars * servings);
-        }
-      }
+      //     // console.log(currentFood.userServings);
+      //     vm.meal.totalNutrition.calories += (currentFood.fields.nf_calories * servings);
+      //     vm.meal.totalNutrition.fat += (currentFood.fields.nf_total_fat * servings);
+      //     vm.meal.totalNutrition.carbs += (currentFood.fields.nf_total_carbohydrate * servings);
+      //     vm.meal.totalNutrition.fiber += (currentFood.fields.nf_dietary_fiber * servings);
+      //     vm.meal.totalNutrition.protein += (currentFood.fields.nf_protein * servings);
+      //     vm.meal.totalNutrition.sugars += (currentFood.fields.nf_sugars * servings);
+      //   }
+      // }
 
       // calculate userFoods nutrition if entered
       if (vm.currentCalcdUserFoods) {
@@ -145,6 +145,14 @@
           currentFood = vm.meal.userFoods[i];
           servings = currentFood.userServings;
 
+          // make 0 if anything is blank --- doesn't seem to need this
+          // for (var nutrient in vm.meal.userFoods) {
+          //   console.log(vm.meal.userFoods[nutrient]);
+          //   if (!vm.meal.userFoods[nutrient]) {
+          //     vm.meal.userFoods[nutrient] = 0;
+          //   }
+          // }
+          // console.log(vm.meal.userFoods);
           vm.meal.totalNutrition.calories += (currentFood.calories * servings);
           vm.meal.totalNutrition.fat += (currentFood.fat * servings);
           vm.meal.totalNutrition.carbs += (currentFood.carbs * servings);
@@ -153,7 +161,7 @@
           vm.meal.totalNutrition.sugars += (currentFood.sugars * servings);
         }
       }
-      console.log(vm.meal.totalNutrition);
+      // console.log(vm.meal.totalNutrition);
     }
 
       //     calories: 0,
@@ -167,8 +175,8 @@
 
     function addMeal() {
       // console.log(vm.meal.foods.length);
+      calcNutritionTotal();
       console.log(vm.meal);
-      // calcNutritionTotal();
     }
   }
 })();
