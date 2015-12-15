@@ -5,9 +5,9 @@
     .module('dearFoodJ.meals')
     .controller('MealsController', MealsController);
 
-  MealsController.$inject = ['$filter', 'MealsService'];
+  MealsController.$inject = ['$location', 'UserService', 'MealService'];
 
-  function MealsController($filter, MealsService) {
+  function MealsController($location, UserService, MealService) {
     var vm = this;
     // var now = new Date();
 
@@ -135,8 +135,15 @@
 
     function addMeal() {
       // console.log(vm.meal.foods.length);
+      var user = UserService.getCurrentUser();
+
+      vm.meal.journal_id = user.journal;
+      console.log(user);
       calcNutritionTotal();
       console.log(vm.meal);
+
+      MealService.mealResource.save({ journal_id: user.journal }, vm.meal);
+      console.log('/users/' + user.id + '/' + user.journal);
     }
   }
 })();

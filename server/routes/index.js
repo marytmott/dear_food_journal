@@ -5,6 +5,7 @@ var path = require('path');
 // route files
 var users = require('./users');
 var foods = require('./foods');
+var meals = require('./meals');
 
 // only allow ajax calls
 function checkHeaders(req, res, next) {
@@ -24,5 +25,6 @@ router.use(checkHeaders);
 module.exports = {
   router: router,
   users: users,
+  meals: meals,
   foods: foods
 };
