@@ -25,21 +25,16 @@
     vm.meal.userFoods = [];
 
     // compare to mongoose model to change/develop?
-    vm.meal.totalNutrition = {
-      calories: 0,
-      fat: 0,
-      carbs: 0,
-      fiber: 0,
-      protein: 0,
-      sugars: 0
-    };
+    // vm.meal.totalNutrition = {};
 
+    // vm.meal.totalNutrition = {};
 
     vm.addToMeal = addToMeal;
     vm.clearFoodSearch = clearFoodSearch;
     vm.removeFood = removeFood;
 
     vm.addOwnFood = addOwnFood;
+    vm.calcNutritionTotal = calcNutritionTotal;
 
     vm.addMeal = addMeal;
 
@@ -62,7 +57,7 @@
       console.log('clicked', food);
       food.id = 'food-' + id;
       food.servingSzId = 'serv-sz-id' + id;
-      food.userServing = 1;
+      food.userServings = 1;
 
       vm.meal.foods.push(food);
 
@@ -71,14 +66,14 @@
       // PARSE INT ON THESE
       // NEED TO USE ngblur orSOMETHING
 
-      vm.meal.totalNutrition.calories += food.fields.nf_calories;
-      vm.meal.totalNutrition.fat += food.fields.nf_total_fat;
-      vm.meal.totalNutrition.carbs += food.fields.nf_total_carbohydrate;
-      vm.meal.totalNutrition.fiber += food.fields.nf_dietary_fiber;
-      vm.meal.totalNutrition.protein += food.fields.nf_protein;
-      vm.meal.totalNutrition.sugars += food.fields.nf_sugars;
+      // vm.meal.totalNutrition.calories += food.fields.nf_calories;
+      // vm.meal.totalNutrition.fat += food.fields.nf_total_fat;
+      // vm.meal.totalNutrition.carbs += food.fields.nf_total_carbohydrate;
+      // vm.meal.totalNutrition.fiber += food.fields.nf_dietary_fiber;
+      // vm.meal.totalNutrition.protein += food.fields.nf_protein;
+      // vm.meal.totalNutrition.sugars += food.fields.nf_sugars;
 
-        console.log(vm.meal.totalNutrition);
+        // console.log(vm.meal.totalNutrition);
 
     }
 
@@ -87,12 +82,12 @@
       vm.meal[type].splice(foodIdx, 1);
 
       // update total nutrition
-      vm.meal.totalNutrition.calories -= food.fields.nf_calories;
-      vm.meal.totalNutrition.fat -= food.fields.nf_total_fat;
-      vm.meal.totalNutrition.carbs -= food.fields.nf_total_carbohydrate;
-      vm.meal.totalNutrition.fiber -= food.fields.nf_dietary_fiber;
-      vm.meal.totalNutrition.protein -= food.fields.nf_protein;
-      vm.meal.totalNutrition.sugars -= food.fields.nf_sugars;
+      // vm.meal.totalNutrition.calories -= food.fields.nf_calories;
+      // vm.meal.totalNutrition.fat -= food.fields.nf_total_fat;
+      // vm.meal.totalNutrition.carbs -= food.fields.nf_total_carbohydrate;
+      // vm.meal.totalNutrition.fiber -= food.fields.nf_dietary_fiber;
+      // vm.meal.totalNutrition.protein -= food.fields.nf_protein;
+      // vm.meal.totalNutrition.sugars -= food.fields.nf_sugars;
     }
 
     function addOwnFood() {
@@ -106,22 +101,66 @@
         fat: null,
         fiber: null,
         protein: null,
-        sugar: null
+        sugars: null
       });
     }
 
-    function calculateMealNutrition() {
+    // dry this up!!
+    function calcNutritionTotal() {
       var foodsLength = vm.meal.foods.length;
+      var userFoodsLength = vm.meal.userFoods.length;
+      var currentFood;
+      var servings;
+      vm.meal.totalNutrition = {
+        calories: 0,
+        carbs: 0,
+        fat: 0,
+        fiber: 0,
+        protein: 0,
+        sugars: 0
+      };
+
+      // calculate apiFoods nutrition if entered
       if (foodsLength) {
         for (var i = 0; i < foodsLength; i++) {
-          if
+          currentFood = vm.meal.foods[i];
+          servings = currentFood.userServings;
+
+          // console.log(currentFood.userServings);
+          vm.meal.totalNutrition.calories += (currentFood.fields.nf_calories * servings);
+          vm.meal.totalNutrition.fat += (currentFood.fields.nf_total_fat * servings);
+          vm.meal.totalNutrition.carbs += (currentFood.fields.nf_total_carbohydrate * servings);
+          vm.meal.totalNutrition.fiber += (currentFood.fields.nf_dietary_fiber * servings);
+          vm.meal.totalNutrition.protein += (currentFood.fields.nf_protein * servings);
+          vm.meal.totalNutrition.sugars += (currentFood.fields.nf_sugars * servings);
         }
       }
 
-      if (vm.meal.userFoods.length) {
+      // calculate userFoods nutrition if entered
+      // if (userFoodsLength) {
+      //   for (var i = 0; i < userFoodsLength; i++) {
+      //     currentFood = vm.meal.userFoods[i];
+      //     servings = currentFood[userServings];
 
-      }
+      //     vm.meal.totalNutrition.calories += currentFood[calories] * servings;
+      //     vm.meal.totalNutrition.fat += currentFood[fat] * servings;
+      //     vm.meal.totalNutrition.carbs += currentFood[carbs] * servings;
+      //     vm.meal.totalNutrition.fiber += currentFood[fiber] * servings;
+      //     vm.meal.totalNutrition.protein += currentFood[protein] * servings;
+      //     vm.meal.totalNutrition.sugars += currentFood[sugars] * servings;
+      //   }
+      // }
+      console.log(vm.meal.totalNutrition);
     }
+
+      //     calories: 0,
+      // fat: 0,
+      // carbs: 0,
+      // fiber: 0,
+      // protein: 0,
+      // sugars: 0
+
+    // function calulate
 
     function addMeal() {
       // console.log(vm.meal.foods.length);
