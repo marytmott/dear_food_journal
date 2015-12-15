@@ -38,6 +38,9 @@
 
     vm.addMeal = addMeal;
 
+    vm.currentCalcdApiFoods = 0;
+    vm.currentCalcdUserFoods = 0;
+
     // add own food ---> add to last item
 
     function foodSearch() {
@@ -107,10 +110,10 @@
 
     // dry this up!!
     function calcNutritionTotal() {
-      var foodsLength = vm.meal.foods.length;
-      var userFoodsLength = vm.meal.userFoods.length;
       var currentFood;
       var servings;
+      vm.currentCalcdApiFoods = vm.meal.foods.length;
+      vm.currentCalcdUserFoods = vm.meal.userFoods.length;
       vm.meal.totalNutrition = {
         calories: 0,
         carbs: 0,
@@ -121,8 +124,8 @@
       };
 
       // calculate apiFoods nutrition if entered
-      if (foodsLength) {
-        for (var i = 0; i < foodsLength; i++) {
+      if (vm.currentCalcdApiFoods) {
+        for (var i = 0; i < vm.currentCalcdApiFoods; i++) {
           currentFood = vm.meal.foods[i];
           servings = currentFood.userServings;
 
@@ -137,19 +140,19 @@
       }
 
       // calculate userFoods nutrition if entered
-      // if (userFoodsLength) {
-      //   for (var i = 0; i < userFoodsLength; i++) {
-      //     currentFood = vm.meal.userFoods[i];
-      //     servings = currentFood[userServings];
+      if (vm.currentCalcdUserFoods) {
+        for (var i = 0; i < vm.currentCalcdUserFoods; i++) {
+          currentFood = vm.meal.userFoods[i];
+          servings = currentFood.userServings;
 
-      //     vm.meal.totalNutrition.calories += currentFood[calories] * servings;
-      //     vm.meal.totalNutrition.fat += currentFood[fat] * servings;
-      //     vm.meal.totalNutrition.carbs += currentFood[carbs] * servings;
-      //     vm.meal.totalNutrition.fiber += currentFood[fiber] * servings;
-      //     vm.meal.totalNutrition.protein += currentFood[protein] * servings;
-      //     vm.meal.totalNutrition.sugars += currentFood[sugars] * servings;
-      //   }
-      // }
+          vm.meal.totalNutrition.calories += (currentFood.calories * servings);
+          vm.meal.totalNutrition.fat += (currentFood.fat * servings);
+          vm.meal.totalNutrition.carbs += (currentFood.carbs * servings);
+          vm.meal.totalNutrition.fiber += (currentFood.fiber * servings);
+          vm.meal.totalNutrition.protein += (currentFood.protein * servings);
+          vm.meal.totalNutrition.sugars += (currentFood.sugars * servings);
+        }
+      }
       console.log(vm.meal.totalNutrition);
     }
 
@@ -165,6 +168,7 @@
     function addMeal() {
       // console.log(vm.meal.foods.length);
       console.log(vm.meal);
+      // calcNutritionTotal();
     }
   }
 })();
