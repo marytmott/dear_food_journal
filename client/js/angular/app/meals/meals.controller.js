@@ -16,6 +16,11 @@
     vm.meal = {};
     // vm.meal.date = new Date($filter('date')(Date.now(), 'yyyy-MM-dd'));
     vm.meal.date = new Date();
+
+//    var today = new Date();
+// console.log(today.toISOString().substring(0, 10));
+// console.log(new Date(today.toISOString().substring(0, 10)));
+
     console.log(vm.meal.date);
     // console.log(vm.meal.time);
     vm.meal.foods = [];
@@ -138,6 +143,7 @@
       var user = UserService.getCurrentUser();
 
       vm.meal.journal_id = user.journal;
+      vm.meal.date = vm.meal.date.toISOString().substring(0, 10);
       console.log(user);
       calcNutritionTotal();
       console.log(vm.meal);

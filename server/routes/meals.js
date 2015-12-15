@@ -16,12 +16,21 @@ var jwt = require('jsonwebtoken');
 //console.log/ok for each db entry
 
 router.post('/', function(req, res) {
+  db.Day.findOneAndUpdate({ $and: [{ date: req.body.date },{ journal: req.body.journal_id }] },
+    { date: req.body.date, journal: req.body.journal_id }, { upsert: true, new: true }, function(err, day) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('day', day);
+    }
+  });
   console.log(req.body);
-  // look for + add food
-  // look for + add to day
-  // add meal
+  // // look for + add food
+  // // look for + add to day
+  // // add meal
   // update journal?
   // add foods
+  res.send('got it!');
 });
 
 // router.get('/:meal_id');

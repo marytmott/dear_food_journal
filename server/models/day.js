@@ -5,7 +5,7 @@ var Meal = require('./meal');
 
 var daySchema = mongoose.Schema({
   date: {
-    type: Date,
+    type: String,
     required: true,
   },
   journal: [{
