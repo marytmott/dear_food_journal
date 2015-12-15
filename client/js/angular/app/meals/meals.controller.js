@@ -23,7 +23,7 @@
 
     console.log(vm.meal.date);
     // console.log(vm.meal.time);
-    vm.meal.foods = [];
+    vm.meal.apiFoods = [];
 
     // will nede to do backend/front end checking to single these out as non-api foods and food entries
     vm.meal.userFoods = [];
@@ -43,7 +43,7 @@
     // add own food ---> add to last item
 
     function foodSearch() {
-      MealsService.foodApiSearch(vm.apiSearch).then(function(data) {
+      MealService.foodApiSearch(vm.apiSearch).then(function(data) {
         console.log(data.data.hits);
         vm.searchResults = data.data.hits;
       });
@@ -55,13 +55,14 @@
     }
 
     function addToMeal(food) {
-      var id = vm.meal.foods.length;
+      var id = vm.meal.apiFoods.length;
       console.log('clicked', food);
       food.id = 'food-' + id;
       food.servingSzId = 'serv-sz-id' + id;
       food.userServings = 1;
+      food.type = 'apiFood';
 
-      vm.meal.foods.push(food);
+      vm.meal.apiFoods.push(food);
     }
 
     function removeFood(food, type) {
@@ -80,7 +81,8 @@
         fat: null,
         fiber: null,
         protein: null,
-        sugars: null
+        sugars: null,
+        type: 'userAddedFood'
       });
     }
 
@@ -88,7 +90,7 @@
     function calcNutritionTotal() {
       var currentFood;
       var servings;
-      vm.currentCalcdApiFoods = vm.meal.foods.length;
+      vm.currentCalcdApiFoods = vm.meal.apiFoods.length;
       vm.currentCalcdUserFoods = vm.meal.userFoods.length;
       vm.meal.totalNutrition = {
         calories: 0,
@@ -102,7 +104,7 @@
       // calculate apiFoods nutrition if entered
       if (vm.currentCalcdApiFoods) {
         for (var i = 0; i < vm.currentCalcdApiFoods; i++) {
-          currentFood = vm.meal.foods[i];
+          currentFood = vm.meal.apiFoods[i];
           servings = currentFood.userServings;
 
           vm.meal.totalNutrition.calories += (currentFood.fields.nf_calories * servings);
@@ -139,7 +141,7 @@
     }
 
     function addMeal() {
-      // console.log(vm.meal.foods.length);
+      // console.log(vm.meal.apiFoods.length);
       var user = UserService.getCurrentUser();
 
       vm.meal.journal_id = user.journal;
