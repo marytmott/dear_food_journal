@@ -24,6 +24,16 @@
     // will nede to do backend/front end checking to single these out as non-api foods and food entries
     vm.meal.userFoods = [];
 
+    // compare to mongoose model to change/develop?
+    vm.meal.totalNutrition = {
+      calories: 0,
+      fat: 0,
+      carbs: 0,
+      fiber: 0,
+      protein: 0,
+      sugars: 0
+    };
+
 
     vm.addToMeal = addToMeal;
     vm.clearFoodSearch = clearFoodSearch;
@@ -56,6 +66,7 @@
 
       vm.meal.foods.push(food);
         console.log(vm.meal.foods);
+
     }
 
     function removeFood(food, type) {
