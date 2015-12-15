@@ -19,10 +19,12 @@
     // vm.meal.time = new Date();
       // $filter('date')(Date.now(), 'HH:mm:ss'));
     console.log(vm.meal.date);
+    // console.log(vm.meal.time);
     vm.meal.foods = [];
 
     // will nede to do backend/front end checking to single these out as non-api foods and food entries
     vm.meal.userFoods = [];
+    vm.showMainCalcBtn = false;
 
     // compare to mongoose model to change/develop?
     // vm.meal.totalNutrition = {};
@@ -124,20 +126,20 @@
       };
 
       // calculate apiFoods nutrition if entered
-      // if (vm.currentCalcdApiFoods) {
-      //   for (var i = 0; i < vm.currentCalcdApiFoods; i++) {
-      //     currentFood = vm.meal.foods[i];
-      //     servings = currentFood.userServings;
+      if (vm.currentCalcdApiFoods) {
+        for (var i = 0; i < vm.currentCalcdApiFoods; i++) {
+          currentFood = vm.meal.foods[i];
+          servings = currentFood.userServings;
 
-      //     // console.log(currentFood.userServings);
-      //     vm.meal.totalNutrition.calories += (currentFood.fields.nf_calories * servings);
-      //     vm.meal.totalNutrition.fat += (currentFood.fields.nf_total_fat * servings);
-      //     vm.meal.totalNutrition.carbs += (currentFood.fields.nf_total_carbohydrate * servings);
-      //     vm.meal.totalNutrition.fiber += (currentFood.fields.nf_dietary_fiber * servings);
-      //     vm.meal.totalNutrition.protein += (currentFood.fields.nf_protein * servings);
-      //     vm.meal.totalNutrition.sugars += (currentFood.fields.nf_sugars * servings);
-      //   }
-      // }
+          // console.log(currentFood.userServings);
+          vm.meal.totalNutrition.calories += (currentFood.fields.nf_calories * servings);
+          vm.meal.totalNutrition.fat += (currentFood.fields.nf_total_fat * servings);
+          vm.meal.totalNutrition.carbs += (currentFood.fields.nf_total_carbohydrate * servings);
+          vm.meal.totalNutrition.fiber += (currentFood.fields.nf_dietary_fiber * servings);
+          vm.meal.totalNutrition.protein += (currentFood.fields.nf_protein * servings);
+          vm.meal.totalNutrition.sugars += (currentFood.fields.nf_sugars * servings);
+        }
+      }
 
       // calculate userFoods nutrition if entered
       if (vm.currentCalcdUserFoods) {
