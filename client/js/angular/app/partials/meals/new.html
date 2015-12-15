@@ -49,6 +49,7 @@
               <!-- foods selected from api search results -->
               <!-- move this out to directive or part directive? (to use on form below)-->
               <div ng-repeat="food in vm.meal.foods track by $index">
+                <div class="divider"></div>
                 <div class="form-group">
                   <label for="{{ food.id }}" class="col-md-3 control-label">You had:</label>
                   <div class="col-md-8">
@@ -64,7 +65,6 @@
                     </select>
                   </div>
                 </div>
-                need to add new form group (directive) for serving size!
               </div>
 
 
@@ -72,6 +72,7 @@
               <!-- user's own food input -->
 <!-- ng-if="vm.meal.userFoods.length > 0" -->
               <div ng-repeat="food in vm.meal.userFoods">
+                <div class="divider"></div>
               <!-- this should be a modal? -->
                 <div class="form-group">
                   <label for=" {{ food.id }}" class="col-md-3 control-label">Food name:</label>
@@ -122,8 +123,16 @@
 
               <!-- add own food button -->
               <div class="form-group">
-                <button type="button" class="btn btn-info btn-xs" ng-click="vm.addOwnFood()">Add My Own Food</button>
-              </div>
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <h5 class="text-center">Use the search box on the right to add foods to your meal or click below to add your own food.</h5>
+                  </div>
+                </div>
+                <div class="col-md-3 col-md-offset-4">
+                <button type="button" class="btn btn-info btn-xs" ng-click="vm.addOwnFood()">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add My Own Food
+                </button>
+              </div></div>
 
               <!-- submit new meal -->
               <button type="submit" class="btn btn-primary">Add Meal</button>

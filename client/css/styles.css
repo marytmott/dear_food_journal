@@ -43,7 +43,7 @@ a:hover, a:link, a:visited {
 }
 
 .new-food {
-  height: 850px;
+  height: 950px;
 }
 
 #food-search-form {
@@ -51,10 +51,18 @@ a:hover, a:link, a:visited {
 }
 
 #search-results {
-  height: 650px;
+  height: 750px;
   overflow: scroll;
 }
 
+.divider {
+  height: 1px;
+  width:100%;
+  display:block; /* for use on default inline elements like span */
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: RGBA(153, 153, 153, 1);
+}
 .unselectable {
   cursor: pointer;
 }
