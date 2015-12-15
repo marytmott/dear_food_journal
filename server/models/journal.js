@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var db = require('./index');
 var User = require('./user');
-var Day = require('./day');
+var Meal = require('./meal');
 
 // TODO: pre/post hooks
 
@@ -10,9 +10,13 @@ var journalSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   }],
-  days: [{
+  // days: [{
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'Day'
+  // }],
+  meals: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Day'
+    ref: 'Meal'
   }],
   dailyCalorieGoal: Number,
   //other daily goals?
@@ -28,3 +32,6 @@ var journalSchema = mongoose.Schema({
 var Journal = mongoose.model('Journal', journalSchema);
 
 module.exports = Journal;
+
+// HOOKS TO ADD:
+// 1. remove journal when user is deleted

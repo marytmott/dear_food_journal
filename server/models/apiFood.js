@@ -1,4 +1,14 @@
+var mongoose = require('mongoose');
+var db = require('./index');
+var Meal = require('./meal');
 
+
+// var foodSchema = mongoose.Schema({
+//   type: 'apiFood',
+
+
+
+// });
 
 
 
