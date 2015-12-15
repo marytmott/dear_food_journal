@@ -3,8 +3,11 @@ var router = express.Router();
 var db = require('../models');
 var request = require('request');
 
+// food type = api or user
+
+
 // search the api
-router.post('/search', function(req, res) {
+router.post('/api-search', function(req, res) {
 //   var appId = process.env.NIX_API_ID;
 //   var apiKey = process.env.NIX_API_KEY;
 //   var userSearch = req.body.search;

@@ -19,7 +19,7 @@ app.use(morgan('tiny'));
 
 app.use(routes.router);
 app.use('/api/users', routes.users);
-app.use('/api/api-foods', routes.apiFoods);
+app.use('/api/foods', routes.foods);
 
 // send to angular
 app.get('*', function(req, res) {
