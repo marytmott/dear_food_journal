@@ -58,11 +58,9 @@
         console.log(vm.meal.foods);
     }
 
-    function removeFood(food) {
-      var foodIdx = vm.meal.foods.indexOf(food);
-      console.log(foodIdx);
-
-      vm.meal.foods.splice(foodIdx, 1);
+    function removeFood(food, type) {
+      var foodIdx = vm.meal[type].indexOf(food);
+      vm.meal[type].splice(foodIdx, 1);
     }
 
     function addOwnFood() {
