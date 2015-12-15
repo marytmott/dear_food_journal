@@ -46,6 +46,12 @@ a:hover, a:link, a:visited {
   height: 950px;
 }
 
+.meal-form-container {
+  height: 850px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 #food-search-form {
   margin-bottom: 45px;
 }
