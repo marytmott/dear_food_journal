@@ -13,26 +13,34 @@
 
     vm.apiSearch = '';
     vm.foodSearch = foodSearch;
-    vm.meal = {};
-    // vm.meal.date = new Date($filter('date')(Date.now(), 'yyyy-MM-dd'));
-    vm.meal.date = new Date();
-    // vm.meal.time = new Date();
-      // $filter('date')(Date.now(), 'HH:mm:ss'));
-    console.log(vm.meal.date);
-    vm.meal.foods = [];
+    vm.meal = {
+      date: new Date(),
+      foods: [],
+      userFoods[],
+      totalNutrition: {
 
-    // will nede to do backend/front end checking to single these out as non-api foods and food entries
-    vm.meal.userFoods = [];
+      }
 
-    // compare to mongoose model to change/develop?
-    vm.meal.totalNutrition = {
-      calories: 0,
-      fat: 0,
-      carbs: 0,
-      fiber: 0,
-      protein: 0,
-      sugars: 0
     };
+    // // vm.meal.date = new Date($filter('date')(Date.now(), 'yyyy-MM-dd'));
+    // // vm.meal.date = new Date();
+    // // vm.meal.time = new Date();
+    //   // $filter('date')(Date.now(), 'HH:mm:ss'));
+    // console.log(vm.meal.date);
+    // vm.meal.foods = [];
+
+    // // will nede to do backend/front end checking to single these out as non-api foods and food entries
+    // vm.meal.userFoods = [];
+
+    // // compare to mongoose model to change/develop?
+    // vm.meal.totalNutrition = {
+    //   calories: 0,
+    //   fat: 0,
+    //   carbs: 0,
+    //   fiber: 0,
+    //   protein: 0,
+    //   sugars: 0
+    // };
 
 
     vm.addToMeal = addToMeal;
@@ -60,7 +68,7 @@
     function addToMeal(food) {
       var id = vm.meal.foods.length;
       console.log('clicked', food);
-      food.id = 'food' + id;
+      food.id = 'food-' + id;
       food.servingSzId = 'serv-sz-id' + id;
       food.userServing = 1;
 
@@ -75,9 +83,18 @@
     }
 
     function addOwnFood() {
-      var newId = 'userFood' + vm.meal.userFoods.length;
+      var newId = 'user-food-' + vm.meal.userFoods.length;
 
-      vm.meal.userFoods.push({ id: newId });
+      vm.meal.userFoods.push({
+        id: newId,
+        userServing: 1,
+        calories: null,
+        carbs: null,
+        fat: null,
+        fiber: null,
+        protein: null,
+        sugar: null
+      });
     }
 
     function addMeal() {
