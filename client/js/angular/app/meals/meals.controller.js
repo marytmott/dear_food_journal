@@ -67,6 +67,10 @@
       vm.meal.foods.push(food);
 
       // update meal nutrition total
+
+      // PARSE INT ON THESE
+      // NEED TO USE ngblur orSOMETHING
+
       vm.meal.totalNutrition.calories += food.fields.nf_calories;
       vm.meal.totalNutrition.fat += food.fields.nf_total_fat;
       vm.meal.totalNutrition.carbs += food.fields.nf_total_carbohydrate;
@@ -106,7 +110,21 @@
       });
     }
 
+    function calculateMealNutrition() {
+      var foodsLength = vm.meal.foods.length;
+      if (foodsLength) {
+        for (var i = 0; i < foodsLength; i++) {
+          if
+        }
+      }
+
+      if (vm.meal.userFoods.length) {
+
+      }
+    }
+
     function addMeal() {
+      // console.log(vm.meal.foods.length);
       console.log(vm.meal);
     }
   }

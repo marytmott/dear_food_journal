@@ -48,9 +48,13 @@ a:hover, a:link, a:visited {
 }
 
 .meal-form-container {
-  height: 850px;
+  height: 775px;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+.nutrition-bottom {
+  margin-top: 10px;
 }
 
 #food-search-form {
