@@ -9,6 +9,8 @@
 
   // can just use directives?
   // just use one Controller?
+  // CANNOT INJECT FACTORIES AND SERVICES INTO CONFIG!!!
+
 
   function ConfigMeals($routeProvider) {
     // clean up w/ var for routes?
@@ -16,7 +18,13 @@
       .when('/journals/:journal_id/meals', {
         templateUrl: '/partials/meals/index.html',
         controller: 'MealsController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          meals: function(UserService, MealService) {
+            var user = UserService.getCurrentUser;
+            return MealService.mealResource.query({ journal_id: user.journal });
+          }
+        }
         // add restricted
       })
       .when('/journals/:journal_id/meals/new', {
