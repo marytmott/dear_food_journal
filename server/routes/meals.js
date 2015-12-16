@@ -52,12 +52,13 @@ router.post('/', function(req, res) {
             for (var i = 0; i < reqApiFoods.length; i++) {
               currentApiFood = reqApiFoods[i];
               // see if api food is already in db
-              // console.log(currentApiFood);
+              console.log('apifoodId>>>',currentApiFood._id);
               db.Food.findOne({ nix_id: currentApiFood._id }, function(err, food) {
                 if (err) {
                   console.log(err);
                 } else if (!food) {
-                    console.log('current api food>>>>', currentApiFood);
+                  console.log('food record from mongo>>>>>', food);
+                    // console.log('current api food>>>>', currentApiFood);
                   db.Food.create(
                     {
                       name: currentApiFood.fields.item_name,

@@ -17,7 +17,10 @@ var foodSchema = mongoose.Schema({
   fiber: Number,
   protein: Number,
   sugars: Number,
-  nix_id: String,
+  nix_id: {
+    type: String,
+    unique: true
+  },
   user: [{  // to add to user's own personal food db future feature?
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
