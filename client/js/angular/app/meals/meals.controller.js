@@ -75,6 +75,7 @@
 
       vm.meal.userFoods.push({
         id: newId,
+        name: null,
         userServings: 1,
         calories: null,
         carbs: null,
@@ -82,7 +83,7 @@
         fiber: null,
         protein: null,
         sugars: null,
-        type: 'userAddedFood'
+        type: 'userFood'
       });
     }
 
@@ -115,8 +116,8 @@
       }
 
       // calculate userFoods nutrition
-      for (var i = 0; i < vm.currentCalcdUserFoods; i++) {
-        currentFood = vm.meal.userFoods[i];
+      for (var j = 0; j < vm.currentCalcdUserFoods; j++) {
+        currentFood = vm.meal.userFoods[j];
         servings = currentFood.userServings;
 
         // make 0 if anything is blank --- doesn't seem to need this
@@ -142,6 +143,7 @@
 
       vm.meal.journal = user.journal;
       // vm.meal.date = vm.meal.date.toISOString().substring(0, 10);
+      vm.meal.user = user.id;
       console.log(user);
       calcNutritionTotal();
       console.log(vm.meal);
