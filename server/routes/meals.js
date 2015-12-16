@@ -20,6 +20,7 @@ var jwt = require('jsonwebtoken');
 // new meal
 router.post('/', function(req, res) {
   console.log(req.body);
+  console.log('fields>>>', req.body.apiFoods[0].fields);
   // find journal
   db.Journal.findById(req.body.journal, function(err, journal) {
     if (err) {
@@ -38,7 +39,8 @@ router.post('/', function(req, res) {
           totalNutrition: JSON.stringify(req.body.totalNutrition)
         },
         function(err, meal) {
-          var reqUserFoods = reqUserFoods;
+          var reqApiFoods = req.body.apiFoods;
+          var reqUserFoods = req.body.userFoods;
           var currentFood;
 
           if (err) {
@@ -50,9 +52,62 @@ router.post('/', function(req, res) {
             console.log('new meal!', meal);
             console.log('added meal');
 
-            // add foods to db if not in there and save on meal (to reduce daily api hits)
+            // CHECK FIRST THEN ADD Api foods to db (REFACTOR THIS w/ BELOW!!!)
+//             for (var i = 0; i < reqApiFoods.length; j++) {
+//               currentFood = reqApiFoods[i];
+//               // create new food
+//               db.Food.create(
+//                 {
+//                   name: currentFood.name,
+//                   type: currentFood.type,
+//                   calories: currentFood.calories,
+//                   carbs: currentFood.carbs,
+//                   fat: currentFood.fat,
+//                   fiber: currentFood.fiber,
+//                   protein: currentFood.protein,
+//                   sugars: currentFood.sugars,
+//                   user: req.body.user
+//                 },
+//                 function(err, food) {
+//                   if (err) {
+//                     console.log(err);
+//                   } else {
+//                     // make food entry and push to meal
+//                     db.FoodEntry.create(
+//                     {
+//                       food: food,
+//                       meal: meal,
+//                       servings: currentFood.userServings
+//                     },
+//                     function(err, foodEntry) {
+//                       // save food entry to meal
+//                       meal.foodEntries.push(foodEntry);
+//                       meal.save();
+//                       console.log('api food saved', food);
+//                     // food entries w/ serving sizes
+//                     });
+//                   }
+//               });
+//             }
+
+
+// fields>>> { item_id: '529e801fea63d4933500cdce',
+//   item_name: 'Starbucks Vanilla Frappucino',
+//   brand_name: 'Gandolfo\'s New York Delicatessen',
+//   nf_calories: 200,
+//   nf_total_fat: 3,
+//   nf_total_carbohydrate: 37,
+//   nf_dietary_fiber: 0,
+//   nf_sugars: 31,
+//   nf_protein: 6,
+//   nf_serving_size_qty: 1,
+//   nf_serving_size_unit: 'bottle' }
+
+
+            // add user's foods to db if not in there and save on meal (to reduce daily api hits)
             // OR save already existing foods to db
             // can refactor as promise?
+            // build out as find and update for user's own food db (future feature?)?
             for (var j = 0; j < reqUserFoods.length; j++) {
               currentFood = reqUserFoods[j];
               // create new food
@@ -73,60 +128,29 @@ router.post('/', function(req, res) {
                     console.log(err);
                   } else {
                     // make food entry and push to meal
-
-                    console.log('food saved', food);
+                    db.FoodEntry.create(
+                    {
+                      food: food,
+                      meal: meal,
+                      servings: currentFood.userServings
+                    },
+                    function(err, foodEntry) {
+                      // save food entry to meal
+                      meal.foodEntries.push(foodEntry);
+                      meal.save();
+                      console.log('user food saved', food);
                     // food entries w/ serving sizes
+                    });
                   }
               });
-
-   // [ { id: 'user-food-0',
-   //     name: 'blah',
-   //     userServings: 1,
-   //     calories: 12,
-   //     carbs: 3,
-   //     fat: 3,
-   //     fiber: 4,
-   //     protein: 5,
-   //     sugars: 6,
-   //     type: 'userFood' } ],
-
-            // for (var j = 0; j < req.body.apiFoods.length; j++) {
-
             }
-
-              //req.body.userFoods
           }
       });
     }
   })
-  console.log(req.body);
-  // find journal's day and create new one if not found
-
-  // do foods first, then create??
-
-  // dont need day model??!
-  // db.Day.findOneAndUpdate({ $and: [{ date: req.body.date },{ journal: req.body.journal }] },
-  //   { date: req.body.date, journal: req.body.journal }, { upsert: true, new: true }, function(err, day) {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     console.log('day', day);
-
-  //     // look for records of all foods...create if not found...add to meal
-  //     console.log('user foods', req.body.userFoods.length);
-  //     console.log('api foods', req.body.apiFoods.length);
-  //   }
-  // });
-  // // look for + add food
-  // // look for + add to day
-  // // add meal
-  // update journal?
-  // add foods
   res.send('got it!');
   // need to save meal to day
 
 });
-
-// router.get('/:meal_id');
 
 module.exports = router;
