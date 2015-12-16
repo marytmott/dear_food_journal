@@ -21,7 +21,7 @@
         controllerAs: 'vm',
         resolve: {
           meals: function(UserService, MealService) {
-            var user = UserService.getCurrentUser;
+            var user = UserService.getCurrentUser();
             return MealService.mealResource.query({ journal_id: user.journal });
           }
         }
