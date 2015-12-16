@@ -12,7 +12,7 @@ var foodSchema = mongoose.Schema({
   servingSizeUnit: String,
   type: String, //will be as apiFood or userFood type
   calories: Number,
-  carbs: Number,
+  carbohydrates: Number,
   fat: Number,
   fiber: Number,
   protein: Number,
@@ -20,7 +20,8 @@ var foodSchema = mongoose.Schema({
   user: [{  // to add to user's own personal food db future feature?
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
-  }]
+  }],
+  nix_id: String
 });
 
 var Food = mongoose.model('Food', foodSchema);

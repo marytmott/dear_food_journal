@@ -36,7 +36,8 @@ router.post('/', function(req, res) {
           var reqUserFoods = req.body.userFoods;
           console.log(reqApiFoods);
           console.log(reqUserFoods);
-          var currentFood;
+          var currentApiFood;
+          var currentUserFood;
 
           if (err) {
             console.log(err);
@@ -48,62 +49,86 @@ router.post('/', function(req, res) {
             console.log('added meal');
 
             // CHECK FIRST THEN ADD Api foods to db (REFACTOR THIS w/ BELOW!!!)
-            // for (var i = 0; i < reqApiFoods.length; j++) {
-            //   currentFood = reqApiFoods[i];
-            //   // create new food
-            //   db.Food.create(
-            //     {
-            //       name: currentFood.fields.item_name,
-            //       type: 'apiFood',
-            //       calories: currentFood.fields.nf_calories,
-            //       carbs: currentFood.fields.nf_total_carbohydrate,
-            //       fat: currentFood.fields.nf_total_fat,
-            //       fiber: currentFood.fields.nf_dietary_fiber,
-            //       protein: currentFood.fields.nf_protein,
-            //       sugars: currentFood.fields.nf_sugars,
-            //       servingSizeQty: currentFood.fields.nf_serving_size_qty,
-            //       servingSizeUnit: currentFood.fields.nf_serving_size_unit
-            //     },
-            //     function(err, food) {
-            //       if (err) {
-            //         console.log(err);
-            //       } else {
-            //         // make food entry and push to meal
-            //         db.FoodEntry.create(
-            //         {
-            //           food: food,
-            //           meal: meal,
-            //           servings: currentFood.userServings
-            //         },
-            //         function(err, foodEntry) {
-            //           // save food entry to meal
-            //           meal.foodEntries.push(foodEntry);
-            //           meal.save();
-            //           console.log('api food saved', food);
-            //         // food entries w/ serving sizes
-            //         });
-            //       }
-            //   });
-            // }
+            for (var i = 0; i < reqApiFoods.length; i++) {
+              currentApiFood = reqApiFoods[i];
+              // see if api food is already in db
+              // console.log(currentApiFood);
+              db.Food.findOne({ nix_id: currentApiFood._id }, function(err, food) {
+                if (err) {
+                  console.log(err);
+                } else if (!food) {
+                    console.log('current api food>>>>', currentApiFood);
+                  db.Food.create(
+                    {
+                      name: currentApiFood.fields.item_name,
+                      brand: currentApiFood.brand_name,
+                      calories: currentApiFood.fields.nf_calories,
+                      carbs: currentApiFood.fields.nf_total_carbohydrate,
+                      fat: currentApiFood.fields.nf_total_fat,
+                      fiber: currentApiFood.fields.nf_dietary_fiber,
+                      protein: currentApiFood.fields.nf_protein,
+                      sugars: currentApiFood.fields.nf_sugars,
+                      servingSizeQty: currentApiFood.fields.nf_serving_size_qty,
+                      servingSizeUnit: currentApiFood.fields.nf_serving_size_unit,
+                      nix_id: currentApiFood._id,
+                    },
+                    function(err, food) {
+                      if (err) {
+                        console.log(err);
+                      } else {
+                        // make food entry and push to meal
+                        db.FoodEntry.create(
+                        {
+                          food: food,
+                          meal: meal,
+                          servings: currentApiFood.userServings
+                        },
+                        function(err, foodEntry) {
+                          // save food entry to meal
+                          meal.foodEntries.push(foodEntry);
+                          meal.save();
+                          console.log('api food saved', food);
+                        // food entries w/ serving sizes
+                        });
+                      }
+                  });
+                } else {
+                  // DRY THIS UP -- 3rd use in this controller!!
+                  db.FoodEntry.create(
+                    {
+                      food: food,
+                      meal: meal,
+                      servings: currentApiFood.userServings
+                    },
+                    function(err, foodEntry) {
+                      // save food entry to meal
+                      meal.foodEntries.push(foodEntry);
+                      meal.save();
+                      console.log('api food saved', food);
+                    // food entries w/ serving sizes
+                  });
+                }
+              });
+            }
 
             // add user's foods to db if not in there and save on meal (to reduce daily api hits)
             // OR save already existing foods to db
             // can refactor as promise?
             // build out as find and update for user's own food db (future feature?)?
             for (var j = 0; j < reqUserFoods.length; j++) {
-              currentFood = reqUserFoods[j];
-              console.log(currentFood);
+              currentUserFood = reqUserFoods[j];
+              // console.log(currentUserFood);
               // create new food
               db.Food.create(
                 {
-                  name: currentFood.name,
-                  type: currentFood.type,
-                  calories: currentFood.calories,
-                  carbs: currentFood.carbs,
-                  fat: currentFood.fat,
-                  fiber: currentFood.fiber,
-                  protein: currentFood.protein,
-                  sugars: currentFood.sugars,
+                  name: currentUserFood.name,
+                  type: currentUserFood.type,
+                  calories: currentUserFood.calories,
+                  carbohydrates: currentUserFood.carbs,
+                  fat: currentUserFood.fat,
+                  fiber: currentUserFood.fiber,
+                  protein: currentUserFood.protein,
+                  sugars: currentUserFood.sugars,
                   user: req.body.user
                 },
                 function(err, food) {
@@ -115,7 +140,7 @@ router.post('/', function(req, res) {
                     {
                       food: food,
                       meal: meal,
-                      servings: currentFood.userServings
+                      servings: currentUserFood.userServings
                     },
                     function(err, foodEntry) {
                       // save food entry to meal
