@@ -19,6 +19,7 @@ var jwt = require('jsonwebtoken');
 
 // new meal
 router.post('/', function(req, res) {
+  console.log(req.body);
   // find journal
   db.Journal.findById(req.body.journal, function(err, journal) {
     if (err) {
@@ -34,8 +35,12 @@ router.post('/', function(req, res) {
           name: req.body.name,
           emotions: req.body.emotions,
           notes: req.body.notes,
+          totalNutrition: JSON.stringify(req.body.totalNutrition)
         },
         function(err, meal) {
+          var reqUserFoods = reqUserFoods;
+          var currentFood;
+
           if (err) {
             console.log(err);
           } else {
@@ -47,8 +52,49 @@ router.post('/', function(req, res) {
 
             // add foods to db if not in there and save on meal (to reduce daily api hits)
             // OR save already existing foods to db
-            console.log(req.body.apiFoods.length);
-            console.log(req.body.apiFoods.length);
+            // can refactor as promise?
+            for (var j = 0; j < reqUserFoods.length; j++) {
+              currentFood = reqUserFoods[j];
+              // create new food
+              db.Food.create(
+                {
+                  name: currentFood.name,
+                  type: currentFood.type,
+                  calories: currentFood.calories,
+                  carbs: currentFood.carbs,
+                  fat: currentFood.fat,
+                  fiber: currentFood.fiber,
+                  protein: currentFood.protein,
+                  sugars: currentFood.sugars,
+                  user: req.body.user
+                },
+                function(err, food) {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    // make food entry and push to meal
+
+                    console.log('food saved', food);
+                    // food entries w/ serving sizes
+                  }
+              });
+
+   // [ { id: 'user-food-0',
+   //     name: 'blah',
+   //     userServings: 1,
+   //     calories: 12,
+   //     carbs: 3,
+   //     fat: 3,
+   //     fiber: 4,
+   //     protein: 5,
+   //     sugars: 6,
+   //     type: 'userFood' } ],
+
+            // for (var j = 0; j < req.body.apiFoods.length; j++) {
+
+            // }
+
+              //req.body.userFoods
           }
       });
     }
