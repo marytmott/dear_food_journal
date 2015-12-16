@@ -31,6 +31,11 @@ a:hover, a:link, a:visited {
   text-decoration: none;
 }
 
+.clock {
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
 .horizontal-list li {
   list-style-type: none;
   display: inline;
@@ -70,6 +75,7 @@ a:hover, a:link, a:visited {
   overflow: hidden;
   background-color: RGBA(153, 153, 153, 1);
 }
+
 .unselectable {
   cursor: pointer;
 }

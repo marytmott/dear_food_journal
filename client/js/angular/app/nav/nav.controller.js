@@ -5,9 +5,9 @@
     .module('dearFoodJ.nav')
     .controller('NavController', NavController);
 
-  NavController.$inject = ['$location', '$rootScope', 'UserService'];
+  NavController.$inject = ['$interval', '$location', '$rootScope', 'UserService'];
 
-  function NavController($location, $rootScope, UserService) {
+  function NavController($interval, $location, $rootScope, UserService) {
     var vm = this;
 
 // console.log(currentUser);
@@ -18,6 +18,9 @@
     // console.log('user?', vm.currentUser);
     $rootScope.$on('logout', getCurrentUser);
     $rootScope.$on('login', getCurrentUser);
+
+    tick();
+    $interval(tick, 1000);
 
     function logout() {
       UserService.logout();
@@ -31,6 +34,10 @@
       //   console.log(data);
       //   // vm.currentUser = data;
       // });
+    }
+
+    function tick() {
+      vm.clock = Date.now();
     }
   }
 })();

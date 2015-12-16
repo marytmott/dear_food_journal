@@ -15,8 +15,9 @@
 <!-- </div> -->
 <ul ng-if="vm.currentUser" class="list-group">
   <li class="list-group-item">
-    <h4 class="text-info">{{ vm.today | date: 'EEEE' }}</h4>
-    <h4 class="text-info">{{ vm.today | date: 'MMM d, yyyy' }}</h4>
+    <h4 class="text-info clock">{{ vm.clock | date: 'EEEE' }}</h4>
+    <h3 class="clock">{{ vm.clock | date: 'mediumDate' }}</h3>
+    <h4 class="text-info clock">{{ vm.clock | date: 'shortTime' }}</h4>
   </li>
   <li class="list-group-item">
     <a ng-href="/journals/{{vm.currentUser.journal}}/days/{{ vm.today | date: 'yyyy-MM-dd' }}">today <span class="glyphicon glyphicon-star" aria-hidden="true"></span></a>
