@@ -8,6 +8,8 @@ var foodSchema = mongoose.Schema({
     required: true
   },
   brand: String,
+  servingSizeQty: Number,
+  servingSizeUnit: String,
   type: String, //will be as apiFood or userFood type
   calories: Number,
   carbs: Number,
