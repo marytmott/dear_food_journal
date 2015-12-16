@@ -5,17 +5,10 @@ var jwt = require('jsonwebtoken');
 
 // DO THE TOKEN ON ALLLLLL THISSSS!!
 
-// this is where we are going to post new meal entries
-// update models!!!
-// food
-// food entry
-// journal
-// meal
-
 // 1. journal
 // 2. meal
-
-//console.log/ok for each db entry
+// 3. food
+// 4. food entries (w/ servings)
 
 // new meal
 router.post('/', function(req, res) {
