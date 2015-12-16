@@ -13,7 +13,7 @@ var jwt = require('jsonwebtoken');
 // new meal
 router.post('/', function(req, res) {
   console.log(req.body);
-  console.log('fields>>>', req.body.apiFoods[0].fields);
+  // console.log('fields>>>', req.body.apiFoods[0].fields);
   // find journal
   db.Journal.findById(req.body.journal, function(err, journal) {
     if (err) {
@@ -34,6 +34,8 @@ router.post('/', function(req, res) {
         function(err, meal) {
           var reqApiFoods = req.body.apiFoods;
           var reqUserFoods = req.body.userFoods;
+          console.log(reqApiFoods);
+          console.log(reqUserFoods);
           var currentFood;
 
           if (err) {
@@ -46,56 +48,43 @@ router.post('/', function(req, res) {
             console.log('added meal');
 
             // CHECK FIRST THEN ADD Api foods to db (REFACTOR THIS w/ BELOW!!!)
-//             for (var i = 0; i < reqApiFoods.length; j++) {
-//               currentFood = reqApiFoods[i];
-//               // create new food
-//               db.Food.create(
-//                 {
-//                   name: currentFood.name,
-//                   type: currentFood.type,
-//                   calories: currentFood.calories,
-//                   carbs: currentFood.carbs,
-//                   fat: currentFood.fat,
-//                   fiber: currentFood.fiber,
-//                   protein: currentFood.protein,
-//                   sugars: currentFood.sugars,
-//                   user: req.body.user
-//                 },
-//                 function(err, food) {
-//                   if (err) {
-//                     console.log(err);
-//                   } else {
-//                     // make food entry and push to meal
-//                     db.FoodEntry.create(
-//                     {
-//                       food: food,
-//                       meal: meal,
-//                       servings: currentFood.userServings
-//                     },
-//                     function(err, foodEntry) {
-//                       // save food entry to meal
-//                       meal.foodEntries.push(foodEntry);
-//                       meal.save();
-//                       console.log('api food saved', food);
-//                     // food entries w/ serving sizes
-//                     });
-//                   }
-//               });
-//             }
-
-
-// fields>>> { item_id: '529e801fea63d4933500cdce',
-//   item_name: 'Starbucks Vanilla Frappucino',
-//   brand_name: 'Gandolfo\'s New York Delicatessen',
-//   nf_calories: 200,
-//   nf_total_fat: 3,
-//   nf_total_carbohydrate: 37,
-//   nf_dietary_fiber: 0,
-//   nf_sugars: 31,
-//   nf_protein: 6,
-//   nf_serving_size_qty: 1,
-//   nf_serving_size_unit: 'bottle' }
-
+            // for (var i = 0; i < reqApiFoods.length; j++) {
+            //   currentFood = reqApiFoods[i];
+            //   // create new food
+            //   db.Food.create(
+            //     {
+            //       name: currentFood.fields.item_name,
+            //       type: 'apiFood',
+            //       calories: currentFood.fields.nf_calories,
+            //       carbs: currentFood.fields.nf_total_carbohydrate,
+            //       fat: currentFood.fields.nf_total_fat,
+            //       fiber: currentFood.fields.nf_dietary_fiber,
+            //       protein: currentFood.fields.nf_protein,
+            //       sugars: currentFood.fields.nf_sugars,
+            //       servingSizeQty: currentFood.fields.nf_serving_size_qty,
+            //       servingSizeUnit: currentFood.fields.nf_serving_size_unit
+            //     },
+            //     function(err, food) {
+            //       if (err) {
+            //         console.log(err);
+            //       } else {
+            //         // make food entry and push to meal
+            //         db.FoodEntry.create(
+            //         {
+            //           food: food,
+            //           meal: meal,
+            //           servings: currentFood.userServings
+            //         },
+            //         function(err, foodEntry) {
+            //           // save food entry to meal
+            //           meal.foodEntries.push(foodEntry);
+            //           meal.save();
+            //           console.log('api food saved', food);
+            //         // food entries w/ serving sizes
+            //         });
+            //       }
+            //   });
+            // }
 
             // add user's foods to db if not in there and save on meal (to reduce daily api hits)
             // OR save already existing foods to db
@@ -103,6 +92,7 @@ router.post('/', function(req, res) {
             // build out as find and update for user's own food db (future feature?)?
             for (var j = 0; j < reqUserFoods.length; j++) {
               currentFood = reqUserFoods[j];
+              console.log(currentFood);
               // create new food
               db.Food.create(
                 {
