@@ -1,10 +1,23 @@
-<!--
-<div class="panel panel-default">
-  <div class="panel-body">
-    Basic panel
+
+<!-- <div class="panel panel-default">
+  <div class="panel-body time-panel">
+    <h3>{{ vm.date | date: 'EEEE' }}</h3>
+    <h3>{{ vm.date | date: 'MMM d, yyyy' }}</h3>
   </div>
 </div> -->
+<!--
+  <h4 ng-if="vm.currentUser.firstName" class="text-center">Welcome {{vm.currentUser.firstName}}</span>!</h4> -->
+
+<!-- <div class="row"> -->
+<!--   <h4>Today is</h4> -->
+
+<!--   <h4>{{ vm.date | date: 'h:mm a' }}</h4> -->
+<!-- </div> -->
 <ul ng-if="vm.currentUser" class="list-group">
+  <li class="list-group-item">
+    <h4 class="text-info">{{ vm.date | date: 'EEEE' }}</h4>
+    <h4 class="text-info">{{ vm.date | date: 'MMM d, yyyy' }}</h4>
+  </li>
   <li class="list-group-item">
     <a ng-href="/journals/{{vm.currentUser.journal}}/meals/new">add meal <span class="glyphicon glyphicon-apple" aria-hidden="true"></span></a>
   </li>
@@ -12,8 +25,13 @@
     <a ng-href="/journals/{{vm.currentUser.journal}}">journal <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span></a>
   </li>
   <li class="list-group-item">
-    <span class="badge">1</span>
-    Morbi leo risus
+    <a ng-href="">inspirations <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a>
+  </li>
+  <li class="list-group-item">
+    <a ng-href="">my weight <span class="glyphicon glyphicon-object-align-vertical" aria-hidden="true"></span></a>
+  </li>
+  <li class="list-group-item">
+    <a ng-href="">meals <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span></a>
   </li>
 </ul>
 
@@ -23,4 +41,4 @@
     <li><a ng-href="/{{vm.currentUser.id}}/{{vm.currentUser.journal}}">journal</a></li>
     <li>add meal</li>
   </ul>
-</nav> -->
+</nav>
