@@ -14,6 +14,5 @@ module.exports = {
   Journal: require('./journal'),
   Meal: require('./meal'),
   FoodEntry: require('./foodEntry'),
-  apiFood: require('./apiFood'),
-  userAddedFood: require('./userAddedFood')
-}
+  Food: require('./food')
+};

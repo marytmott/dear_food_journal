@@ -25,7 +25,8 @@ var mealSchema = mongoose.Schema({
     ref: 'FoodEntry'
   }],
   emotions: String,
-  notes: String
+  notes: String,
+  totalNutrition: String // JSON object w/ details
   // ADD?: star rating how well did you enjoy it?
 });
 
