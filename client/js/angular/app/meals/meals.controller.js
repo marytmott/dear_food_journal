@@ -27,6 +27,10 @@
 
     // will nede to do backend/front end checking to single these out as non-api foods and food entries
     vm.meal.userFoods = [];
+    vm.meal.name = '';
+    vm.meal.emotions = '';
+    vm.meal.notes = '';
+
     vm.addToMeal = addToMeal;
     vm.clearFoodSearch = clearFoodSearch;
     vm.removeFood = removeFood;
@@ -75,7 +79,7 @@
 
       vm.meal.userFoods.push({
         id: newId,
-        name: null,
+        name: '',
         userServings: 1,
         calories: null,
         carbs: null,
