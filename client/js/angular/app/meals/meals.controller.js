@@ -3,11 +3,11 @@
 
   angular
     .module('dearFoodJ.meals')
-    .controller('MealsCrudController', MealsCrudController);
+    .controller('MealsController', MealsController);
 
-  MealsCrudController.$inject = ['$location', 'UserService', 'MealService'];
+  MealsController.$inject = ['$location', 'UserService', 'MealService'];
 
-  function MealsCrudController($location, UserService, MealService) {
+  function MealsController($location, UserService, MealService) {
     var vm = this;
     // var now = new Date();
 

@@ -9,7 +9,8 @@
       'dearFoodJ.auth',
       'dearFoodJ.nav',
       'dearFoodJ.journals',
-      'dearFoodJ.meals'
+      'dearFoodJ.meals',
+      'dearFoodJ.days'
     ])
     .config(configRoutes)
     .run(runApp);

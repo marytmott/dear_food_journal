@@ -1,8 +1,9 @@
 (function() {
   'use strict';
 
-  angular.module('dearFoodJ.meals')
-  .directive('dfSearchResults', dfSearchResults);
+  angular
+    .module('dearFoodJ.meals')
+    .directive('dfSearchResults', dfSearchResults);
 
   function dfSearchResults() {
     return {

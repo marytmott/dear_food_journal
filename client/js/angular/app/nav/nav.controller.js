@@ -11,7 +11,7 @@
     var vm = this;
 
 // console.log(currentUser);
-    vm.date = Date.now();
+    vm.today = Date.now();
     vm.logout = logout;
     // vm.currentUser = currentUser;
     vm.currentUser = getCurrentUser();
