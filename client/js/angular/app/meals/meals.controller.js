@@ -21,7 +21,7 @@
 // console.log(today.toISOString().substring(0, 10));
 // console.log(new Date(today.toISOString().substring(0, 10)));
 
-    console.log(vm.meal.date);
+    // console.log(vm.meal.date);
     // console.log(vm.meal.time);
     vm.meal.apiFoods = [];
 
