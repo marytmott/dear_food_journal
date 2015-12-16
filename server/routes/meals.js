@@ -83,68 +83,10 @@ router.post('/', function(req, res) {
                         meal.foodEntries.push(foodEntry);
                         meal.save();
                         console.log('api food saved', food);
-                      // food entries w/ serving sizes
                     });
                   }
                 });
               }
-
-
-
-              //     } else if (!food) {
-              //       console.log('food record from mongo>>>>>', food);
-              //         // console.log('current api food>>>>', currentApiFood);
-              //       db.Food.create(
-              //         {
-              //           name: currentApiFood.fields.item_name,
-              //           brand: currentApiFood.brand_name,
-              //           calories: currentApiFood.fields.nf_calories,
-              //           carbs: currentApiFood.fields.nf_total_carbohydrate,
-              //           fat: currentApiFood.fields.nf_total_fat,
-              //           fiber: currentApiFood.fields.nf_dietary_fiber,
-              //           protein: currentApiFood.fields.nf_protein,
-              //           sugars: currentApiFood.fields.nf_sugars,
-              //           servingSizeQty: currentApiFood.fields.nf_serving_size_qty,
-              //           servingSizeUnit: currentApiFood.fields.nf_serving_size_unit,
-              //           nix_id: currentApiFood._id,
-              //         },
-              //         function(err, food) {
-              //           if (err) {
-              //             console.log(err);
-              //           } else {
-              //             // make food entry and push to meal
-              //             db.FoodEntry.create(
-              //             {
-              //               food: food,
-              //               meal: meal,
-              //               servings: currentApiFood.userServings
-              //             },
-              //             function(err, foodEntry) {
-              //               // save food entry to meal
-              //               meal.foodEntries.push(foodEntry);
-              //               meal.save();
-              //               console.log('api food saved', food);
-              //             // food entries w/ serving sizes
-              //             });
-              //           }
-              //       });
-              //     } else {
-              //       // DRY THIS UP -- 3rd use in this controller!!
-              //       db.FoodEntry.create(
-              //         {
-              //           food: food,
-              //           meal: meal,
-              //           servings: currentApiFood.userServings
-              //         },
-              //         function(err, foodEntry) {
-              //           // save food entry to meal
-              //           meal.foodEntries.push(foodEntry);
-              //           meal.save();
-              //           console.log('api food saved', food);
-              //         // food entries w/ serving sizes
-              //       });
-              //     }
-              //   });
 
             // add user's foods to db if not in there and save on meal (to reduce daily api hits)
             // OR save already existing foods to db
