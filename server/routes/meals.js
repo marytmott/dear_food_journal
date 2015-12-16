@@ -92,7 +92,7 @@ router.post('/', function(req, res) {
 
             // for (var j = 0; j < req.body.apiFoods.length; j++) {
 
-            // }
+            }
 
               //req.body.userFoods
           }
