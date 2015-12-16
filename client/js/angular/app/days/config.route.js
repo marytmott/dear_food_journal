@@ -23,10 +23,19 @@
       .when('/journals/:journal_id/days/:date', {
         templateUrl: '/partials/days/day.html',
         controller: 'DaysController',
-        controllerAs: 'vm'
-        // resolve: {
+        controllerAs: 'vm',
+        resolve: {
+          // need to [''] this!!! VVVV
+          entries: function($route, UserService, DayService) {
+            var user = UserService.getCurrentUser();
+            var date = $route.current.date;
 
-        // }
-      })
+            return DayService.getDay(user.journal, date);
+
+             // console.log(DayService.dayResource.get({ journal_id: user.journal, date: date }));
+              // console.log('/users/' + user.id + '/' + user.journal);
+          }
+        }
+      });
   }
 })();

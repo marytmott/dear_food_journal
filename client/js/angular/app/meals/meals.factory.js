@@ -15,7 +15,8 @@
 
         return $http.post('/api/foods/api-search', { search: searchData });
       },
-      mealResource: $resource('/api/journals/:journal_id/meals/:meal_id', { journal_id: '@journal_id',  meal_id: '@meal_id' },
+      mealResource: $resource('/api/journals/:journal_id/meals/:meal_id',
+        { journal_id: '@journal_id',  meal_id: '@meal_id' },
         {update: { method: 'PUT'} }
       )
         // this should be resource

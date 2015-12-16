@@ -5,9 +5,11 @@
     .module('dearFoodJ.days')
     .controller('DaysController', DaysController);
 
-  DaysController.$inject = [];
+  DaysController.$inject = ['entries'];
 
-  function DaysController() {
+  function DaysController(entries) {
     var vm = this;
+
+    vm.entries = entries;
   }
 })();
