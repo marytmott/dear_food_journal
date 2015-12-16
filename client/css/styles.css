@@ -39,11 +39,6 @@ a:hover, a:link, a:visited {
   margin-left: -5px;
 }
 
-/*.menu-time, .list-group-item:first-of-type {
-  border-bottom-right-radius: 20px;
-  border-top-left-radius: 20px;
-}*/
-
 .panel {
   background: rgba(255, 255, 255, 0.65);
 }
@@ -57,10 +52,6 @@ a:hover, a:link, a:visited {
   overflow-y: scroll;
   overflow-x: hidden;
 }
-
-/*.nutrition-bottom {
-  margin-top: 10px;
-}*/
 
 #food-search-form {
   margin-bottom: 45px;

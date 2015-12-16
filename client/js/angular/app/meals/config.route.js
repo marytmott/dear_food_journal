@@ -21,13 +21,13 @@
       })
       .when('/journals/:journal_id/meals/new', {
         templateUrl: '/partials/meals/new.html',
-        controller: 'MealsController',
+        controller: 'MealsCrudController',
         controllerAs: 'vm'
         // restricted
       })
       .when('/journals/:journal_id/meals/edit', {
         templateUrl: '/partials/meals/edit.html',
-        controller: 'MealsController',
+        controller: 'MealsCrudController',
         controllerAs: 'vm'
       })
       .when('/journals/:journal_id/meals/delete', {
