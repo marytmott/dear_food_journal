@@ -28,8 +28,8 @@
           // need to [''] this!!! VVVV
           entries: function($route, UserService, DayService) {
             var user = UserService.getCurrentUser();
-            var date = $route.current.date;
-
+            var date = $route.current.params.date;
+            // console.log($route);
             return DayService.getDay(user.journal, date);
 
              // console.log(DayService.dayResource.get({ journal_id: user.journal, date: date }));
