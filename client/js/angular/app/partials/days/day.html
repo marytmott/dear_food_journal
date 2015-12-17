@@ -11,20 +11,20 @@
     <div class="col-md-5">
     <form class="form-horizontal">
       <div class="form-group">
-        <label for="sort-category" class="col-md-3 control-label">Sort By:</label>
-        <div class="col-md-4">
+        <label for="sort-category" class="col-md-4 control-label">Sort Meals By:</label>
+        <div class="col-md-5">
         <select id="sort-category" class="form-control input-sm" ng-model="vm.sort">
-          <option value="+meal.time">Time - early to late</option>
-          <option value="+meal.time">Time - late to earlt</option>
-          <option value="+meal.time">Time - early to late</option>
-          <option value="-meal.date">Day</option>
-          <option value="+meal.date">Month</option>
-          <option value="-meal.date">Year</option>
-          <option value="+meal.name">Meal Name</option>
+          <option value="+time">Earliest to Latest</option>
+          <option value="-time">Latest to Earliest</option>
+          <option value="+name">Name</option>
+          <option value="-totalNutrition.calories">Most Calories</option>
+          <option value="+totalNutrition.calories">Least Calories</option>
 <!--           <option value="Beverage snack">Beverage as snack</option>
           <option value="Dessert">Dessert</option> -->
         </select>
-        </div></div>
+        </div>
+        </div>
+        </form>
       search box?
       </div>
     </div>
@@ -37,7 +37,7 @@ edit/delete (also put this on edit page or just put it here? --- option to delet
   <h3> daily goal</h3>
   <h3> total daily nutrition</h3>
   <div class="fluid-container daily-meals-scroll">
-    <div class="col-md-4" ng-repeat="meal in vm.meals | orderBy: +meal.time | orderBy: vm.sort">
+    <div class="col-md-4" ng-repeat="meal in vm.meals | orderBy: vm.sort">
     <ul class="">
       <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">{{ meal.name }}</a></li>
       <li>{{ meal.time | date: 'shortTime' }}</li>

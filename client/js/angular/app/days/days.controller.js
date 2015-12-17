@@ -13,5 +13,6 @@
     vm.date = new Date($routeParams.date);
     // console.log($routeParams);
     vm.meals = entries;
+    vm.sort = '+time'
   }
 })();
