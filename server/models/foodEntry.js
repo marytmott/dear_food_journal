@@ -4,7 +4,7 @@ var Meal = require('./meal');
 var Food = require('./food');
 
 var foodEntrySchema = mongoose.Schema({
-  // ref to apiFood
+  // ref to meal, do we need this?
   meal: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Meal'

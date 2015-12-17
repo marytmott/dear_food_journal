@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var db = require('./index');
 // var DateOnly = require('mongoose-dateonly')(mongoose);
 var Journal = require('./journal');
-var FoodEntry = require('./foodEntry');
+var Food = require('./food');
 
 var mealSchema = mongoose.Schema({
   journal:[{
@@ -21,10 +21,15 @@ var mealSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  foodEntries: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'FoodEntry'
-  }],
+  foodEntries: [
+    {
+      food: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Food'
+        }],
+      servings: Number
+    }
+  ],
   emotions: String,
   notes: String,
   totalNutrition: Object // JSON object w/ details

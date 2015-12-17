@@ -96,20 +96,31 @@ router.post('/', function(req, res) {
                   if (err) {
                     console.log(err);
                   } else {
+
+                        // {
+      // food: [{
+      //   type: mongoose.Schema.Types.ObjectId,
+      //   ref: 'FoodEntry'
+      //   }],
+      // servings: Number
+    // }
+
+                      meal.foodEntries.push({ food: food, servings: currentApiFood.userServings });
+                      meal.save();
+                      console.log('meal >>>>>', meal);
+                      console.log('api food saved', food);
+
+
                     // DRY THIS UP -- 3rd use in this controller!!
-                    db.FoodEntry.create(
-                      {
-                        food: food,
-                        meal: meal,
-                        servings: currentApiFood.userServings
-                      },
-                      function(err, foodEntry) {
-                        // save food entry to meal
-                        meal.foodEntries.push(foodEntry);
-                        meal.save();
-                        console.log('meal >>>>>', meal);
-                        console.log('api food saved', food);
-                    });
+                    // db.FoodEntry.create(
+                    //   {
+                    //     food: food,
+                    //     meal: meal,
+                    //     servings: currentApiFood.userServings
+                    //   },
+                    //   function(err, foodEntry) {
+                    //     // save food entry to meal
+                    // });
                   }
                 });
               }

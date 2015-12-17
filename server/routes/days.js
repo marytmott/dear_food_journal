@@ -26,17 +26,39 @@ router.get('/:date', function(req, res) {
   //   } else {
       // console.log(journal);
       // console.log('date in fn', date);
-      db.Meal.find({ $and: [{ journal: journalId, date: convertedDateParams }] }).populate('foodEntries.food').exec(function(err, meals) {
+      db.Meal.find({ $and: [{ journal: journalId, date: convertedDateParams }] }).populate('foodEntries').exec(function(err, meals) {
         if (err) {
           console.log(err);
         } else {
-          // NEED TO POPULATE FOODS
-          console.log(meals);
-          res.send(meals);
-        }
-      });
-  //   }
+
+        var options = {
+              path: 'foodEntries.food',
+              model: 'Food'
+            };
+
+    // if (err) return res.json(500);
+    db.Meal.populate(meals, options, function (err, meals) {
+              console.log(meals);
+      res.json(meals);
+    });
   // });
+          // for (var i = 0; i < meals.length; i++)
+          //   var currentMeal = meals[0];
+          // have to go throug returned meals to populate foods
+      //     db.FoodEntry.find({ meal: meals[0]._id }).populate('food').exec(function(err, foodEntries) {
+      //       if (err) {
+      //         console.log(err);
+      //       } else {
+      //         console.log(foodEntries);
+      //         // populate foods in the meals
+      //     //   }
+      //     // });
+      //     // NEED TO POPULATE FOODS
+      //   }
+      // });
+              // res.send(meals);
+    }
+  });
 
 });
 
