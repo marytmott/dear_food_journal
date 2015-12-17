@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../models');
+// var mongoose = require('mongoose');
+// var DateOnly = require('mongoose-dateonly')(mongoose);
 var jwt = require('jsonwebtoken');
 
 // DO THE TOKEN ON ALLLLLL THISSSS!!
@@ -52,7 +54,7 @@ router.post('/', function(req, res) {
           name: req.body.name,
           emotions: req.body.emotions,
           notes: req.body.notes,
-          totalNutrition: JSON.stringify(req.body.totalNutrition)
+          totalNutrition: req.body.totalNutrition
         },
         function(err, meal) {
           var reqApiFoods = req.body.apiFoods;
@@ -105,6 +107,7 @@ router.post('/', function(req, res) {
                         // save food entry to meal
                         meal.foodEntries.push(foodEntry);
                         meal.save();
+                        console.log('meal >>>>>', meal);
                         console.log('api food saved', food);
                     });
                   }

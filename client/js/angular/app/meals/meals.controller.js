@@ -146,6 +146,8 @@
       vm.meal.journal = user.journal;
       // vm.meal.date = vm.meal.date.toISOString().substring(0, 10);
       vm.meal.user = user.id;
+      vm.meal.date = vm.meal.date.toLocaleDateString();
+      console.log(vm.meal.date);
       console.log(user);
       calcNutritionTotal();
       console.log(vm.meal);

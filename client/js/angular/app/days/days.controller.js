@@ -9,7 +9,7 @@
 
   function DaysController(entries) {
     var vm = this;
-
-    vm.entries = entries;
+    // only returning meals for now
+    vm.meals = entries;
   }
 })();

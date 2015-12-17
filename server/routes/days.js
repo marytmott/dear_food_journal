@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../models');
+// var mongoose = require('mongoose');
+// var DateOnly = require('mongoose-dateonly')(mongoose);
 var jwt = require('jsonwebtoken');
 
 // router.get('/')
@@ -16,8 +18,9 @@ router.get('/:date', function(req, res) {
   // var date = new Date(req.params.date);
   // date.setDate(date.getDate() + 1);
   // var nextDay = new Date(date.setDate(date.getDate() + 1));
-
-  console.log(req.params.date);
+  var convertDateParams = req.params.date.replace(/\-/g, '/');
+  console.log(convertDateParams);
+  // console.log(new Date(convertedStringToUTC));
   // console.log('original date:::::', date)
   // console.log('nextday:::::::', new Date(date.setDate(date.getDate() + 1)));
   // res.send('stuff');
@@ -29,11 +32,17 @@ router.get('/:date', function(req, res) {
   //   } else {
       // console.log(journal);
       // console.log('date in fn', date);
-      db.Meal.find({ $and: [{ journal: journalId, date: { "$gte": new Date(req.params.date), "$lt": new Date(new Date(req.params.date).setDate(new Date(req.params.date).getDate() + 1)) } }] }, function(err, meals) {
+      db.Meal.find({ $and: [{ journal: journalId, date: convertDateParams /*{ "$gte": new Date(Date.now()), "$lt": new Date(new Date(Date.now()).setDate(new Date(Date.now()).getDate() + 1)) }*/ }] }, function(err, meals) {
         if (err) {
           console.log(err);
         } else {
-          // console.log(meals);
+          // parse total nutrition before sending
+          // meals.forEach(function(meal) {
+          //   var parsedTotNutr = JSON.parse(meal.totalNutrition)
+          //   meal.totalNutrition = parsedTotNutr;
+          //   console.log(typeof meal.totalNutrition);
+          // });
+          console.log(meals);
           res.send(meals);
         }
       });

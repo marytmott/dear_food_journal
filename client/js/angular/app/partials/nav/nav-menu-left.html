@@ -20,7 +20,8 @@
     <h4 class="text-info clock">{{ vm.clock | date: 'shortTime' }}</h4>
   </li>
   <li class="list-group-item">
-    <a ng-href="/journals/{{vm.currentUser.journal}}/days/{{ vm.today | date: 'yyyy-MM-dd' }}">today <span class="glyphicon glyphicon-star" aria-hidden="true"></span></a>
+  <!-- // need to have this update immediately for date now? (in case user sits at this page for a bunch of itme) -->
+    <a ng-href="/journals/{{vm.currentUser.journal}}/days/{{ vm.clock | date: 'MM-dd-yyyy' }}">today <span class="glyphicon glyphicon-star" aria-hidden="true"></span></a>
   </li>
   <li class="list-group-item">
     <a ng-href="/journals/{{vm.currentUser.journal}}/meals/new">add meal <span class="glyphicon glyphicon-apple" aria-hidden="true"></span></a>

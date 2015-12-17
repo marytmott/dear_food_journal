@@ -12,6 +12,13 @@ clean up index.js routes (from app.js)
 
 — finish user crud on front/back ends
 
+*** ProjectTemplate.find().sort('creator').populate('creator', 'firstName lastName fullName').exec(function(err, projectTemplates) {
+    if (err) {
+        return res.status(400).send({
+            message: getErrorMessage(err)
+        })
+    }
+
 set expiration time and renewal on web tokens
 
 — need to test typing in routes in url w/ middleware on angular routes
