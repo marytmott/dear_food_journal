@@ -79,3 +79,7 @@ a:hover, a:link, a:visited {
 .unselectable {
   cursor: pointer;
 }
+
+.daily-meals-scroll {
+  overflow-x: scroll;
+}

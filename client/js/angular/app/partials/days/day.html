@@ -2,11 +2,21 @@
 <div class="col-md-10">
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div class="row">
+  {{ vm.date | date: 'fullDate'}}
+</div>
+
+
+  <div class="panel-body">
+      <div class="row">
+    <div class="col-md-5">
+    <form class="form-horizontal">
       <div class="form-group">
         <label for="sort-category" class="col-md-3 control-label">Sort By:</label>
-        <select id="sort-category" class="form-control" ng-model="vm.sort">
-          <option value="+meal.time">Time</option>
+        <div class="col-md-4">
+        <select id="sort-category" class="form-control input-sm" ng-model="vm.sort">
+          <option value="+meal.time">Time - early to late</option>
+          <option value="+meal.time">Time - late to earlt</option>
+          <option value="+meal.time">Time - early to late</option>
           <option value="-meal.date">Day</option>
           <option value="+meal.date">Month</option>
           <option value="-meal.date">Year</option>
@@ -14,6 +24,8 @@
 <!--           <option value="Beverage snack">Beverage as snack</option>
           <option value="Dessert">Dessert</option> -->
         </select>
+        </div></div>
+      search box?
       </div>
     </div>
 
@@ -21,12 +33,19 @@
 // get all meals
 // sort
 edit/delete (also put this on edit page or just put it here? --- option to delete)
-</div>
-  <div class="panel-body">
   <!-- {{ vm.entries }} -->
-    <ul class="" ng-repeat="meal in vm.meals | orderBy: +meal.time | orderBy: vm.sort">
+  <h3> daily goal</h3>
+  <h3> total daily nutrition</h3>
+  <div class="fluid-container daily-meals-scroll">
+    <div class="col-md-4" ng-repeat="meal in vm.meals | orderBy: +meal.time | orderBy: vm.sort">
+    <ul class="">
       <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">{{ meal.name }}</a></li>
       <li>{{ meal.time | date: 'shortTime' }}</li>
+      <li>
+        <ul>
+          <li ng-repeat="food in meal.foodEntries">{{ food.food[0].name }}, servings: {{ food.servings }}</li>
+        </ul>
+      </li>
       <li>Total Nutrition:
         <!-- another directive to make! -->
         <ul class="horizontal-list">
@@ -34,16 +53,14 @@ edit/delete (also put this on edit page or just put it here? --- option to delet
         </ul>
       </li>
         <!-- <li>{{ meal.notes }}</li> -->
+        <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">View Meal</a> | <a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}/delete">Delete</a></li>
       </ul>
+      </div>
     </div>
-{{ vm.meals }}
+    </form>
+<!-- {{ vm.meals }} -->
+// show daily totals for nutrition
+// if today and haven't added anything show buttons to add stuff?
   </div>
 </div>
 </div>
-
-// show daily totals for nutrition
-
-
-
-
-if today and haven't added anything show buttons to add stuff?
