@@ -2,17 +2,17 @@
 <div class="col-md-10">
 <div class="panel panel-default">
   <div class="panel-heading">
-  {{ vm.date | date: 'fullDate'}}
+  <h4 class="text-warning">{{ vm.date | date: 'fullDate'}}</h4>
 </div>
 
 
   <div class="panel-body">
       <div class="row">
-    <div class="col-md-5">
-    <form class="form-horizontal">
+    <div class="col-md-4">
+    <form class="form-inline">
       <div class="form-group">
-        <label for="sort-category" class="col-md-4 control-label">Sort Meals By:</label>
-        <div class="col-md-5">
+        <label for="sort-category" class="">Sort Meals By:</label>
+        <!-- <div class="col-md-5"> -->
         <select id="sort-category" class="form-control input-sm" ng-model="vm.sort">
           <option value="+time">Earliest to Latest</option>
           <option value="-time">Latest to Earliest</option>
@@ -22,27 +22,18 @@
 <!--           <option value="Beverage snack">Beverage as snack</option>
           <option value="Dessert">Dessert</option> -->
         </select>
-        </div>
+        <!-- </div> -->
         </div>
         </form>
-      search box?
       </div>
       <div class="col-md-5">
-      <form class="form-horizontal">
+      <form class="form-inline">
       <div class="form-group">
-        <label for="sort-category" class="col-md-4 control-label">Sort Meals By:</label>
-        <div class="col-md-5">
-        <select id="sort-category" class="form-control input-sm" ng-model="vm.sort">
-          <option value="+time">Earliest to Latest</option>
-          <option value="-time">Latest to Earliest</option>
-          <option value="+name">Name</option>
-          <option value="-totalNutrition.calories">Most Calories</option>
-          <option value="+totalNutrition.calories">Least Calories</option>
-<!--           <option value="Beverage snack">Beverage as snack</option>
-          <option value="Dessert">Dessert</option> -->
-        </select>
+        <label for="sort-category" class="">See another date?</label>
+        <input type="date" id="pickNewDate" class="form-control input-sm" ng-model="vm.pickNewDate" />
         </div>
-        </div>
+        <button type="submit" class="btn btn-info btn-sm">Show</button>
+        </form>
 
       </div>
     </div>
@@ -51,7 +42,10 @@
 // get all meals
 // sort
 edit/delete (also put this on edit page or just put it here? --- option to delete)
+// show daily totals for nutrition
+// if today and haven't added anything show buttons to add stuff?
   <!-- {{ vm.entries }} -->
+  <h4>show below as table?</h4>
   <h3> daily goal</h3>
   <h3> total daily nutrition</h3>
   <div class="fluid-container daily-meals-scroll">
@@ -77,8 +71,7 @@ edit/delete (also put this on edit page or just put it here? --- option to delet
     </div>
     </form>
 <!-- {{ vm.meals }} -->
-// show daily totals for nutrition
-// if today and haven't added anything show buttons to add stuff?
+
   </div>
 </div>
 </div>
