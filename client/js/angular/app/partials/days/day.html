@@ -27,6 +27,24 @@
         </form>
       search box?
       </div>
+      <div class="col-md-5">
+      <form class="form-horizontal">
+      <div class="form-group">
+        <label for="sort-category" class="col-md-4 control-label">Sort Meals By:</label>
+        <div class="col-md-5">
+        <select id="sort-category" class="form-control input-sm" ng-model="vm.sort">
+          <option value="+time">Earliest to Latest</option>
+          <option value="-time">Latest to Earliest</option>
+          <option value="+name">Name</option>
+          <option value="-totalNutrition.calories">Most Calories</option>
+          <option value="+totalNutrition.calories">Least Calories</option>
+<!--           <option value="Beverage snack">Beverage as snack</option>
+          <option value="Dessert">Dessert</option> -->
+        </select>
+        </div>
+        </div>
+
+      </div>
     </div>
 
   // pagination?
@@ -39,8 +57,8 @@ edit/delete (also put this on edit page or just put it here? --- option to delet
   <div class="fluid-container daily-meals-scroll">
     <div class="col-md-4" ng-repeat="meal in vm.meals | orderBy: vm.sort">
     <ul class="">
-      <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">{{ meal.name }}</a></li>
-      <li>{{ meal.time | date: 'shortTime' }}</li>
+      <!-- <li></a></li> -->
+      <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">{{ meal.name }}</a> - {{ meal.time | date: 'shortTime' }}</li>
       <li>
         <ul>
           <li ng-repeat="food in meal.foodEntries">{{ food.food[0].name }}, servings: {{ food.servings }}</li>
