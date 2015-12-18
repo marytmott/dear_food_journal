@@ -27,10 +27,10 @@
         </form>
       </div>
       <div class="col-md-5">
-      <form class="form-inline">
+      <form class="form-inline" ng-submit="vm.showNewDate()">
       <div class="form-group">
-        <label for="sort-category" class="">See another date?</label>
-        <input type="date" id="pickNewDate" class="form-control input-sm" ng-model="vm.pickNewDate" />
+        <label for="pick-new-date" class="">See another date?</label>
+        <input type="date" id="pick-new-date" class="form-control input-sm" ng-model="vm.pickNewDate" />
         </div>
         <button type="submit" class="btn btn-info btn-sm">Show</button>
         </form>
