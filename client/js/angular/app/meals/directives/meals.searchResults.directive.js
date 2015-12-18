@@ -11,8 +11,8 @@
       controller: 'MealsController',
       scope: {
         food: '=foodData',
-        // restirct?
       }
+        // restirct?
     }
   }
 })();
