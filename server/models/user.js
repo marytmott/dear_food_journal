@@ -10,6 +10,7 @@ var userSchema = mongoose.Schema({
   createdAt: {
     type: Date,
     required: true
+  },
   email: {
     type: String,
     required: true,
