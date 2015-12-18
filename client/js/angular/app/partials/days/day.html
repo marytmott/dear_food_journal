@@ -3,6 +3,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <!-- day pagination -->
+      <!-- these arrows do not need ot be buttons? nice click effect thing tho? -->
       <button class="btn btn-link btn-xs inline" ng-click="vm.routeToDiffDay(vm.previousDay)"><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
       <h4 class="text-warning inline default-cursor">{{ vm.date | date: 'fullDate'}}</h4>
       <button class="btn btn-link btn-xs inline" ng-click="vm.routeToDiffDay(vm.nextDay)"><span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
