@@ -47,7 +47,12 @@ edit/delete (also put this on edit page or just put it here? --- option to delet
   <!-- {{ vm.entries }} -->
   <h4>show below as table?</h4>
   <h3> daily goal</h3>
-  <h3> total daily nutrition</h3>
+  <h3> Today's total Nutrition: </h3>
+  <!-- MAKE THIS A DIRECTIVE!!!!!!**************** -->
+    <ul class="horizontal-list">
+      <li ng-repeat="(nutrient, value) in vm.todaysNutrition">{{ nutrient }}: {{ value }}g</li>
+    </ul>
+  <h5> or YOU HAVE NOT entered any meals!</h5>
   <div class="fluid-container daily-meals-scroll">
     <div class="col-md-4" ng-repeat="meal in vm.meals | orderBy: vm.sort">
     <ul class="">
