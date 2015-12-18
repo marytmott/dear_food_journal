@@ -52,7 +52,7 @@
               <div ng-repeat="food in vm.meal.apiFoods track by $index">
                 <div class="divider"></div>
                 <div class="form-group">
-                  <label for="{{ food.id }}" class="col-md-3 control-label">You had:</label>
+                  <label for="{{ food.id }}" class="col-md-3 control-label">Food name:</label>
                   <div class="col-md-8">
                     <input type="text" id="{{ food.id }}" class="form-control" value="{{ food.fields.item_name }}" disabled />
                   </div>

@@ -29,46 +29,46 @@
         controllerAs: 'vm',
         resolve: {
             // dry this up w/ other controllers!!!
-          mealData: function($route, MealService) {
+          mealData: ['$route', 'MealService', function($route, MealService) {
             var journal = $route.current.params.journal_id;
             var meal = $route.current.params.meal_id;
-            console.log(journal,meal);
+            // console.log(journal,meal);
 
             return MealService.mealResource.get({ journal_id: journal, meal_id: meal }).$promise.then(function(data) {
               // need to set this to new Date() format for proper page rendering!
+              console.log('resolving shit!');
               data.date = new Date(data.date);
               return data;
             });
-          }
+          }]
           // need restriction
         }
       })
-      .when('/journals/:journal_id/meals/:meal_id/edit', {
-        templateUrl: '/partials/meals/edit.html',
-        controller: 'MealsController',
-        controllerAs: 'vm',
-        resolve: {
-            // dry this up w/ other controllers!!!
-          mealData: function($route, MealService) {
-            var journal = $route.current.params.journal_id;
-            var meal = $route.current.params.meal_id;
+      // .when('/journals/:journal_id/meals/:meal_id/edit', {
+      //   templateUrl: '/partials/meals/edit.html',
+      //   controller: 'MealsController',
+      //   controllerAs: 'vm',
+      //   resolve: {
+      //       // dry this up w/ other controllers!!!
+      //     mealData: ['$route', 'MealService', function($route, MealService) {
+      //       var journal = $route.current.params.journal_id;
+      //       var meal = $route.current.params.meal_id;
 
-            return MealService.mealResource.get({ journal_id: journal, meal_id: meal })
-          }
-        }
-      })
+      //       return MealService.mealResource.get({ journal_id: journal, meal_id: meal })
+      //     }]
+      //   }
+      // })
       .when('/journals/:journal_id/meals/:meal_id/delete', {
         resolve: {
-          deleteMeal: function($route, $location, MealService) {
+          deleteMeal: ['$route', '$location', 'MealService', function($route, $location, MealService) {
             var journal = $route.current.params.journal_id;
             var meal = $route.current.params.meal_id;
 
             console.log('***ROUTE:', $route);
             MealService.mealResource.delete({ journal_id: journal, meal_id: meal });
             $location.path('/journals/' + journal);
-          }
+          }]
         }
-
       });
   }
 })();

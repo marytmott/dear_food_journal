@@ -5,18 +5,12 @@
     .module('dearFoodJ.meals')
     .controller('MealsController', MealsController);
 
-  MealsController.$inject = ['MealService', 'mealData'];
+  MealsController.$inject = ['mealData'];
 
-  function MealsController(MealService, mealData) {
-    var vm = this;
-    // console.log(mealData.date);
+  function MealsController(mealData) {
+    var m = this;
 
-    // vm.meal = {};
-    // vm.meal.date = new Date(mealData.date);
-    vm.meal = mealData;
-    // console.log(vm.meal.date);
-    // console.log(new Date(vm.meal.date));
-    // vm.mealDate = '';
-    // vm.mealDate = mealDate;
+    m.meal = mealData;
+
   }
 })();

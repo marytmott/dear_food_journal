@@ -8,7 +8,7 @@
   function dfSearchResults() {
     return {
       templateUrl: '../../partials/meals/search-results.html',
-      controller: 'MealsController',
+      controller: 'NewMealsController',
       scope: {
         food: '=foodData',
       }

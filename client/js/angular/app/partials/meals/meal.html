@@ -18,9 +18,24 @@
           <h3 class="meal-title">{{ vm.meal.name }}</h3>
             </div>
             <div class="col-md-6 text-right">
-              Edit Meal | Delete Meal
+              <a ng-href="">Edit Meal</a> | <a ng-href="">Delete Meal</a>
             </div>
           </div>
+          <!--- directive this!!! -->
+          <ul>Total Nutrition:
+            <li>
+              <ul class="horizontal-list">
+                <li ng-repeat="(nutrient, amount) in vm.meal.totalNutrition">{{ nutrient }}: {{ amount }}</li>
+              </ul>
+          </ul>
+          <ul>I ate:
+            <li>
+              <ul>
+              </ul>
+            </li>
+          </ul>
+
+
           <!-- </div> -->
           {{ vm.meal }}
         </div>

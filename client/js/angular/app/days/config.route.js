@@ -26,7 +26,7 @@
         controllerAs: 'vm',
         resolve: {
           // need to [''] this!!! VVVV
-          entries: function($route, UserService, DayService) {
+          entries: ['$route', 'UserService', 'DayService', function($route, UserService, DayService) {
             var user = UserService.getCurrentUser();
             var date = $route.current.params.date;
             // console.log($route);
@@ -42,7 +42,7 @@
 
              // console.log(DayService.dayResource.get({ journal_id: user.journal, date: date }));
               // console.log('/users/' + user.id + '/' + user.journal);
-          }
+          }]
         }
       });
   }

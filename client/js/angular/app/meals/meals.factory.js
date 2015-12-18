@@ -19,13 +19,9 @@
         { journal_id: '@journal_id',  meal_id: '@meal_id' },
         {update: { method: 'PUT'} }
       )
-        // this should be resource
-
-        // check + add food
         // add meal
         // update daily total? (skip for now maybe can run script)
-        // add user foods
-        // food serving
+
     };
   }
 })();
