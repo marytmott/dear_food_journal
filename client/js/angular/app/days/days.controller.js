@@ -7,6 +7,7 @@
 
   DaysController.$inject = ['$routeParams', '$location', 'entries'];
 
+// NEED TO DO HANDLING FOR NULL FIELDS
   function DaysController($routeParams, $location, entries) {
     var vm = this;
     // only returning meals for now
