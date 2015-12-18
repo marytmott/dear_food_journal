@@ -1,45 +1,44 @@
 
 <div class="col-md-10">
-<div class="panel panel-default">
-  <div class="panel-heading">
-  <button class="btn btn-link btn-xs inline" ng-click="vm.goToYesterday()"><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
-  <h4 class="text-warning inline default-cursor">{{ vm.date | date: 'fullDate'}}</h4>
-  <button class="btn btn-link btn-xs inline" ng-click="vm.goToTomorrow()"><span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
-</div>
-
-
-  <div class="panel-body">
-      <div class="row">
-    <div class="col-md-4">
-    <form class="form-inline">
-      <div class="form-group">
-        <label for="sort-category" class="">Sort Meals By:</label>
-        <!-- <div class="col-md-5"> -->
-        <select id="sort-category" class="form-control input-sm" ng-model="vm.sort">
-          <option value="+time">Earliest to Latest</option>
-          <option value="-time">Latest to Earliest</option>
-          <option value="+name">Name</option>
-          <option value="-totalNutrition.calories">Most Calories</option>
-          <option value="+totalNutrition.calories">Least Calories</option>
-<!--           <option value="Beverage snack">Beverage as snack</option>
-          <option value="Dessert">Dessert</option> -->
-        </select>
-        <!-- </div> -->
-        </div>
-        </form>
-      </div>
-      <div class="col-md-5">
-      <form class="form-inline" ng-submit="vm.showNewDate()">
-      <div class="form-group">
-        <label for="pick-new-date" class="">See another date?</label>
-        <input type="date" id="pick-new-date" class="form-control input-sm" ng-model="vm.pickNewDate" />
-        </div>
-        <button type="submit" class="btn btn-info btn-sm">Show</button>
-        </form>
-
-      </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <!-- day pagination -->
+      <button class="btn btn-link btn-xs inline" ng-click="vm.routeToDiffDay(vm.previousDay)"><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+      <h4 class="text-warning inline default-cursor">{{ vm.date | date: 'fullDate'}}</h4>
+      <button class="btn btn-link btn-xs inline" ng-click="vm.routeToDiffDay(vm.nextDay)"><span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
     </div>
 
+
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-4">
+          <!-- sorting -->
+          <form class="form-inline">
+            <div class="form-group">
+              <label for="sort-category" class="">Sort Meals By:</label>
+              <select id="sort-category" class="form-control input-sm" ng-model="vm.sort">
+                <option value="+time">Earliest to Latest</option>
+                <option value="-time">Latest to Earliest</option>
+                <option value="+name">Name</option>
+                <option value="-totalNutrition.calories">Most Calories</option>
+                <option value="+totalNutrition.calories">Least Calories</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <!-- pick new date -->
+        <div class="col-md-5">
+          <form class="form-inline" ng-submit="vm.routeToDiffDay(vm.pickNewDate)">
+            <div class="form-group">
+              <label for="pick-new-date" class="">See another date?</label>
+              <input type="date" id="pick-new-date" class="form-control input-sm" ng-model="vm.pickNewDate" />
+            </div>
+            <button type="submit" class="btn btn-info btn-sm">Show</button>
+          </form>
+        </div>
+      </div>
+
+<!-- TODOnotes for now -->
   // pagination?
 // get all meals
 // sort
@@ -49,36 +48,36 @@ edit/delete (also put this on edit page or just put it here? --- option to delet
   <!-- {{ vm.entries }} -->
   <h4>show below as table?</h4>
   <h3> daily goal</h3>
-  <h3> Today's total Nutrition: </h3>
-  <!-- MAKE THIS A DIRECTIVE!!!!!!**************** -->
-    <ul class="horizontal-list">
-      <li ng-repeat="(nutrient, value) in vm.todaysNutrition">{{ nutrient }}: {{ value }}g</li>
-    </ul>
   <h5> or YOU HAVE NOT entered any meals!</h5>
-  <div class="fluid-container daily-meals-scroll">
-    <div class="col-md-4" ng-repeat="meal in vm.meals | orderBy: vm.sort">
-    <ul class="">
-      <!-- <li></a></li> -->
-      <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">{{ meal.name }}</a> - {{ meal.time | date: 'shortTime' }}</li>
-      <li>
-        <ul>
-          <li ng-repeat="food in meal.foodEntries">{{ food.food[0].name }}, servings: {{ food.servings }}</li>
-        </ul>
-      </li>
-      <li>Total Nutrition:
-        <!-- another directive to make! -->
-        <ul class="horizontal-list">
-          <li ng-repeat="(nutrient, value) in meal.totalNutrition">{{ nutrient }}: {{ value }}g</li>
-        </ul>
-      </li>
-        <!-- <li>{{ meal.notes }}</li> -->
-        <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">View Meal</a> | <a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}/delete">Delete</a></li>
+
+      <!-- today's nutrition total -->
+      <h3> Today's total Nutrition: </h3>
+      <!-- MAKE THIS A DIRECTIVE!!!!!!**************** -->
+      <ul class="horizontal-list">
+        <li ng-repeat="(nutrient, value) in vm.todaysNutrition">{{ nutrient }}: {{ value }}g</li>
       </ul>
+
+      <!-- meals -->
+      <div class="fluid-container daily-meals-scroll">
+        <div class="col-md-4" ng-repeat="meal in vm.meals | orderBy: vm.sort">
+          <ul class="">
+            <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">{{ meal.name }}</a> - {{ meal.time | date: 'shortTime' }}</li>
+            <li>
+              <ul>
+                <li ng-repeat="food in meal.foodEntries">{{ food.food[0].name }}, servings: {{ food.servings }}</li>
+              </ul>
+            </li>
+            <li>Total Nutrition:
+              <!-- another directive to make! -->
+              <ul class="horizontal-list">
+                <li ng-repeat="(nutrient, value) in meal.totalNutrition">{{ nutrient }}: {{ value }}g</li>
+              </ul>
+            </li>
+              <!-- <li>{{ meal.notes }}</li> -->
+            <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">View Meal</a> | <a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}/delete">Delete</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-    </form>
-<!-- {{ vm.meals }} -->
-
   </div>
-</div>
 </div>
