@@ -92,6 +92,10 @@ a:hover, a:link, a:visited {
   display: inline-block;
 }
 
-.daily-meals-scroll {
+/*.daily-meals-scroll {
   overflow-x: scroll;
+}*/
+
+.meal-title {
+  margin-top: 0;
 }

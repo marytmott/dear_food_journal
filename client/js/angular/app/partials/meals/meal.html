@@ -1,5 +1,34 @@
 <div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    {{ vm.meal }}
+  <div class="container-fluid">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-3">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+            </div>
+            <div class="col-md-9 text-right">
+              <span class="glyphicon glyphicon glyphicon-adjust" aria-hidden="true"></span> {{ vm.meal.date | date: 'mediumDate' }}, {{ vm.meal.time | date: 'shortTime' }}
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-6">
+          <h3 class="meal-title">{{ vm.meal.name }}</h3>
+            </div>
+            <div class="col-md-6 text-right">
+              Edit Meal | Delete Meal
+            </div>
+          </div>
+          <!-- </div> -->
+          {{ vm.meal }}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+    </div>
   </div>
 </div>
+
+{"_id":"567453323d7e87eb51e8d0e9","date":"12/18/2015","time":"1970-01-01T19:15:00.000Z","name":"Dinner","emotions":"","notes":"","totalNutrition":{"calories":200,"carbs":37,"fat":3,"fiber":0,"protein":6,"sugars":31},"__v":1,"foodEntries":[{"servings":1,"_id":"567453323d7e87eb51e8d0ea","food":["567196cd37e5d942eaea92e8"]}],"journal":["567109f0508fddb92a75d21d"]}

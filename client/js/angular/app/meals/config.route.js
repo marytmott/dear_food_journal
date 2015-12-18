@@ -34,7 +34,11 @@
             var meal = $route.current.params.meal_id;
             console.log(journal,meal);
 
-            return MealService.mealResource.get({ journal_id: journal, meal_id: meal });
+            return MealService.mealResource.get({ journal_id: journal, meal_id: meal }).$promise.then(function(data) {
+              // need to set this to new Date() format for proper page rendering!
+              data.date = new Date(data.date);
+              return data;
+            });
           }
           // need restriction
         }

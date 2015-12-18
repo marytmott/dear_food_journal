@@ -115,7 +115,7 @@ router.post('/', function(req, res) {
 });
 
 router.delete('/:meal_id', function(req, res) {
-  db.Meal.findById(req.params.meal_id).remove(function(err, meal) {
+  db.Meal.findByIdAndRemove(req.params.meal_id, function(err, meal) {
     if (err) {
       console.log(err);
     } else {
