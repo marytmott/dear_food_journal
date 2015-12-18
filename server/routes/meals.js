@@ -135,7 +135,7 @@ router.post('/', function(req, res) {
               // create new food
               db.Food.create(
                 {
-                  name: currentUserFood.name,
+                  name: currentUserFood.name.trim(),
                   type: currentUserFood.type,
                   calories: currentUserFood.calories,
                   carbohydrates: currentUserFood.carbs,
