@@ -33,9 +33,8 @@
             <li ng-repeat="entry in vm.meal.foodEntries">
               <ul>
                 <li>{{ entry.food[0].name }}</li>
-                <li>1 serving size is {{ entry.servingSizeQty }} {{ entry.servingSizeUnit }}</li>
-                <li>servings: {{ entry.servings }}</li>
-                <li>Your serving had:</li>
+                <li>serving size is {{ entry.food[0].servingSizeQty }} {{ entry.food[0].servingSizeUnit }}</li>
+                <li>you had {{ entry.servings }} servings:</li>
                 <li>
                   <ul class="horizontal-list">
                     <!-- need to add ng-ifs! -->
