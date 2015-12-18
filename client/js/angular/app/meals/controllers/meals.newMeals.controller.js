@@ -3,11 +3,11 @@
 
   angular
     .module('dearFoodJ.meals')
-    .controller('MealsController', MealsController);
+    .controller('NewMealsController', NewMealsController);
 
-  MealsController.$inject = ['$location', 'UserService', 'MealService'];
+  NewMealsController.$inject = ['$location', 'UserService', 'MealService'];
 
-  function MealsController($location, UserService, MealService) {
+  function NewMealsController($location, UserService, MealService) {
     var vm = this;
     // var now = new Date();
 
@@ -157,7 +157,7 @@
 
       dayRoute = vm.meal.date.replace(/\//g, '-')
       // redirect to day page for that day
-      $location.path('/journals/' + user.journal + '/days/' + dayRoute);
+      $location.path('/journals/' + user.journal + '/days/' + vm.meal.date);
     }
   }
 })();

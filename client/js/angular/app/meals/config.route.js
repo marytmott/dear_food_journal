@@ -17,29 +17,10 @@
   function ConfigMeals($routeProvider) {
     // clean up w/ var for routes?
     $routeProvider
-      // .when('/journals/:journal_id/meals', {
-      //   templateUrl: '/partials/meals/index.html',
-      //   controller: 'MealsController',
-      //   controllerAs: 'vm',
-      //   resolve: {
-      //     meals: function(UserService, MealService) {
-      //       var user = UserService.getCurrentUser();
-      //       return MealService.mealResource.query({ journal_id: user.journal });
-      //     }
-      //   }
-      //   // add restricted
-      // })
-      // .when('/journals/:journal_id/meals/:meal_id')
       .when('/journals/:journal_id/meals/new', {
         templateUrl: '/partials/meals/new.html',
-        controller: 'MealsController',
-        controllerAs: 'vm',
-        resolve: {
-          mealData: function() {
-            // returning null b/c you have to have same injected value in controller on each instantiation in ng
-            return null;
-          }
-        }
+        controller: 'NewMealsController',
+        controllerAs: 'vm'
         // restricted
       })
       .when('/journals/:journal_id/meals/:meal_id', {

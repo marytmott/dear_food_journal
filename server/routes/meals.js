@@ -12,28 +12,29 @@ var jwt = require('jsonwebtoken');
 // 3. food
 // 4. food entries (w/ servings)
 
-// router.get('/', function(req, res) {
-//   console.log('qhat');
-//   console.log(req.baseUrl.split('/')[3]);
-//   // res.send('what');
-//   // find all meals
-//   // req.params.journal_id <-- should this be token when routes are locked down?
-//   db.Journal.findById(req.baseUrl.split('/')[3], function(err, journal) {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       // console.log(journal);
-//       db.Meal.find({ journal: journal._id }, function(err, meals) {
-//         if (err) {
-//           console.log(err);
-//         } else {
-//           // console.log(meals);
-//           res.send(meals);
-//         }
-//       });
-//     }
-//   });
-// });
+router.get('/', function(req, res) {
+  console.log('qhat');
+  console.log(req.baseUrl.split('/')[3]);
+  // res.send('what');
+  // find all meals
+  // req.params.journal_id <-- should this be token when routes are locked down?
+  // db.Journal.findById(req.baseUrl.split('/')[3], function(err, journal) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+      // console.log(journal);
+      // db.Meal.findById({ journal: journal._id }, function(err, meals) {
+      //   if (err) {
+      //     console.log(err);
+      //   } else {
+      //     // console.log(meals);
+      //     res.send(meals);
+      //   }
+      // });
+res.send('ok');
+  //   }
+  // });
+});
 
 // new meal
 router.post('/', function(req, res) {
