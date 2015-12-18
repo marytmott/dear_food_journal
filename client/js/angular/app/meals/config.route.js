@@ -32,6 +32,7 @@
           mealData: function($route, MealService) {
             var journal = $route.current.params.journal_id;
             var meal = $route.current.params.meal_id;
+            console.log(journal,meal);
 
             return MealService.mealResource.get({ journal_id: journal, meal_id: meal });
           }

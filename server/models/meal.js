@@ -1,9 +1,6 @@
 var mongoose = require('mongoose');
 var db = require('./index');
-// var DateOnly = require('mongoose-dateonly')(mongoose);
-var Journal = require('./journal');
 var Food = require('./food');
-var db = require('./index');
 
 var mealSchema = mongoose.Schema({
   journal:[{
@@ -37,29 +34,8 @@ var mealSchema = mongoose.Schema({
   // ADD?: star rating how well did you enjoy it?
 });
 
-// remove meal from journal reference
-
-// why does this not fire?
-mealSchema.pre('remove', function(next) {
-  var meal = this;
-  console.log('========= THIS IS THE PREREMOVE HOOK FOR MEAL!!');
-
-  // delete this meal's reference from journal
-  db.Journal.findByIdAndUpdate(meal.journal, { $pull: { meals: meal._id } }, function(err, journal) {
-    if (err) {
-      console.log('ERROR', err);
-    } else {
-      console.log('DELETED MEAL REFERENCE FROM ' + journal);
-    };
-
-  });
-  // remove users foods?
-  next();
-});
-
 var Meal = mongoose.model('Meal', mealSchema);
 
 module.exports = Meal;
 
 // HOOKS TO ADD:
-// 1. remove journal entry when meal is deleted

@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var db = require('./index');
 var User = require('./user');
-var Meal = require('./meal');
 
 // TODO: pre/post hooks
 
@@ -10,14 +9,6 @@ var journalSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   }],
-  // days: [{
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'Day'
-  // }],
-  // meals: [{
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'Meal'
-  // }],
   dailyCalorieGoal: Number,
   //other daily goals?
   weightGoal: Number,

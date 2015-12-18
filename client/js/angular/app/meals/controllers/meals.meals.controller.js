@@ -5,11 +5,11 @@
     .module('dearFoodJ.meals')
     .controller('MealsController', MealsController);
 
-  MealsController.$inject = ['MealService'];
+  MealsController.$inject = ['MealService', 'mealData'];
 
-  function MealsController(MealService) {
+  function MealsController(MealService, mealData) {
     var vm = this;
 
-    // vm.meal = mealData;
+    vm.meal = mealData;
   }
 })();
