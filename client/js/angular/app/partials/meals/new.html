@@ -217,7 +217,7 @@
               </div>
             </div>
             <div id="search-results">
-              <div ng-repeat="food in vm.searchResults" class="unselectable panel panel-default" ng-click="vm.addToMeal(food)">
+              <div ng-repeat="food in vm.searchResults" class="pointer-cursor panel panel-default" ng-click="vm.addToMeal(food)">
                 <div class="panel-body">
                   <p>
                     <span class="glyphicon glyphicon-chevron-left text-primary" aria-hidden="true" ></span> {{ food.fields.item_name }} from {{ food.fields.brand_name }}

@@ -76,8 +76,20 @@ a:hover, a:link, a:visited {
   background-color: RGBA(153, 153, 153, 1);
 }
 
-.unselectable {
+.pointer-cursor {
   cursor: pointer;
+}
+
+.default-cursor {
+  cursor: default;
+}
+
+.btn-link, .btn-link:hover, .btn-link:link, .btn-link:visited {
+  color: RGBA(193, 153, 77, 1);
+}
+
+.inline {
+  display: inline-block;
 }
 
 .daily-meals-scroll {

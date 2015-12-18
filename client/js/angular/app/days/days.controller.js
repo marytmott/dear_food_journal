@@ -11,13 +11,28 @@
   function DaysController($routeParams, $location, entries) {
     var vm = this;
     // only returning meals for now
+    // WOW -- dry this up!!? (possible w/ dates? = prob not)
+    vm.previousDay = new Date(new Date($routeParams.date).setDate(new Date($routeParams.date).getDate() - 1)).toLocaleDateString().replace(/\//g, '-');
     vm.date = new Date($routeParams.date);
+    vm.nextDay = new Date(new Date($routeParams.date).setDate(new Date($routeParams.date).getDate() + 1)).toLocaleDateString().replace(/\//g, '-');
+    console.log(vm.previousDay, vm.date, vm.nextDay);
+
+    vm.goToYesterday = goToYesterday;
+    vm.goToTomorrow = goToTomorrow;
     // console.log($routeParams);
     vm.meals = entries;
     vm.sort = '+time';
     vm.showNewDate = showNewDate;
     vm.pickNewDate = null;
 
+    // make one functino for routing
+    function goToYesterday() {
+      $location.path('/journals/' + $routeParams.journal_id + '/days/' + vm.previousDay);
+    }
+
+    function goToTomorrow() {
+      $location.path('/journals/' + $routeParams.journal_id + '/days/' + vm.nextDay);
+    }
 
     function todaysTotalNutrition() {
       var todaysNutrition = {

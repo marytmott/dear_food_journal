@@ -2,7 +2,9 @@
 <div class="col-md-10">
 <div class="panel panel-default">
   <div class="panel-heading">
-  <h4 class="text-warning">{{ vm.date | date: 'fullDate'}}</h4>
+  <button class="btn btn-link btn-xs inline" ng-click="vm.goToYesterday()"><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+  <h4 class="text-warning inline default-cursor">{{ vm.date | date: 'fullDate'}}</h4>
+  <button class="btn btn-link btn-xs inline" ng-click="vm.goToTomorrow()"><span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
 </div>
 
 

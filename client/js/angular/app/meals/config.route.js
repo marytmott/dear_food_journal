@@ -35,7 +35,10 @@
         controller: 'MealsController',
         controllerAs: 'vm',
         resolve: {
-          mealData: null
+          mealData: function() {
+            // returning null b/c you have to have same injected value in controller on each instantiation in ng
+            return null;
+          }
         }
         // restricted
       })
