@@ -20,6 +20,7 @@
     // console.log('user?', vm.currentUser);
 
     function signup() {
+      vm.user.createdAt = Date.now();
       // console.log(vm.user);
       // do you need return here?
       UserService.signup(vm.user).then(function(data) {

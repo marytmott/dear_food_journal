@@ -7,6 +7,9 @@ var Journal = require('./journal');
 // TODO: pre/post hooks
 
 var userSchema = mongoose.Schema({
+  createdAt: {
+    type: Date,
+    required: true
   email: {
     type: String,
     required: true,

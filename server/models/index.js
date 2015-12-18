@@ -13,6 +13,5 @@ module.exports = {
   User: require('./user'),
   Journal: require('./journal'),
   Meal: require('./meal'),
-  FoodEntry: require('./foodEntry'),
   Food: require('./food')
 };
