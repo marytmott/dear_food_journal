@@ -3,6 +3,7 @@ var db = require('./index');
 // var DateOnly = require('mongoose-dateonly')(mongoose);
 var Journal = require('./journal');
 var Food = require('./food');
+var db = require('./index');
 
 var mealSchema = mongoose.Schema({
   journal:[{
@@ -36,7 +37,24 @@ var mealSchema = mongoose.Schema({
   // ADD?: star rating how well did you enjoy it?
 });
 
-// remove foods
+// remove meal from journal reference
+
+mealSchema.pre('remove', function(next) {
+  var meal = this;
+  console.log('THIS IS THE PREREMOVE HOOK FOR MEAL!!');
+
+  // delete this meal's reference from journal
+  Journal.findOne({ _id: meal.journal }, { $pull: { meals: meal._id } }).exec(function(err, journal) {
+    if (err) {
+      console.log('ERROR', err);
+    } else {
+      console.log('DELETED MEAL REFERENCE FROM ' + journal._id);
+    };
+
+  });
+  // remove users foods?
+  next();
+});
 
 var Meal = mongoose.model('Meal', mealSchema);
 

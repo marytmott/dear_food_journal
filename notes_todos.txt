@@ -71,3 +71,18 @@ http://onehungrymind.com/winning-http-interceptors-angularjs/
 
 Hi Lukas Ruebbelke, great write up and intro to Interceptors. It was a clear way for me to learn something new. However, I would advise that you update the article to explicitly point out the problem when you don’t manually reject the promise in the responseError or requestError handlers for the interceptor (e.g. $q.reject(response)) . Basically causing failed requests (eg. 40x response codes) being handled by the successHandler.
 
+
+***   db.Post.findByIdAndUpdate(comment.post, {$pull: {comments: comment._id}}, function(err, post) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(post);
+      console.log('DELETED COMMENT REFERENCE FROM ' + post.title);
+    }
+  });
+  next();
+
+
+***  Animal.remove({zoo: this._id}).exec();
+  callback();
+});

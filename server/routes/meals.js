@@ -175,4 +175,15 @@ router.post('/', function(req, res) {
 
 });
 
+router.delete('/:meal_id', function(req, res) {
+  db.Meal.findOne({ _id: req.params.meal_id }).remove(function(err, meal) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(meal);
+      res.json({ success: true });
+    }
+  });
+});
+
 module.exports = router;
