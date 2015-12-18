@@ -142,6 +142,7 @@
     function addMeal() {
       // console.log(vm.meal.apiFoods.length);
       var user = UserService.getCurrentUser();
+      var dayRoute;
 
       vm.meal.journal = user.journal;
       // vm.meal.date = vm.meal.date.toISOString().substring(0, 10);
@@ -153,7 +154,10 @@
       console.log(vm.meal);
 
       MealService.mealResource.save({ journal_id: user.journal }, vm.meal);
-      console.log('/users/' + user.id + '/' + user.journal);
+
+      dayRoute = vm.meal.date.replace(/\//g, '-')
+      // redirect to day page for that day
+      $location.path('/journals/' + user.journal + '/days/' + dayRoute);
     }
   }
 })();
