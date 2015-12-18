@@ -29,9 +29,15 @@
               </ul>
           </ul>
           <ul>I ate:
-            <li>
-              <ul>
-              </ul>
+            <li ng-repeat="entry in vm.meal.foodEntries">
+              <div>
+              {{ entry.servings }}
+              {{ entry.food }}
+              </div>
+              <!-- <ul>
+                <li>{{ food.name }}</li>
+                <li>
+              </ul> -->
             </li>
           </ul>
 

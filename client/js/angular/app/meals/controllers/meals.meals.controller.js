@@ -8,9 +8,10 @@
   MealsController.$inject = ['mealData'];
 
   function MealsController(mealData) {
-    var m = this;
+    var vm = this;
+    console.log(mealData);
 
-    m.meal = mealData;
+    vm.meal = mealData;
 
   }
 })();

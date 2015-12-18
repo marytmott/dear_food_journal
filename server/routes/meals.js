@@ -7,7 +7,7 @@ var jwt = require('jsonwebtoken');
 
 // get 1 meal
 router.get('/:meal_id', function(req, res) {
-  db.Meal.findById(req.params.meal_id, function(err, meal) {
+  db.Meal.findById(req.params.meal_id).populate('foodEntries.food').exec(function(err, meal) {
     if (err) {
       console.log(err);
     } else {
