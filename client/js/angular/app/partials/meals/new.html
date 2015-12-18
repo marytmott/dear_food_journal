@@ -163,7 +163,7 @@
                 <p>Total Nutrition:</p>
                 <div class="row">
                   <ul class="horizontal-list">
-                    <li ng-repeat="(nutrient, total) in vm.meal.totalNutrition">{{ nutrient }}: {{ total }}</li>
+                    <li ng-repeat="(nutrient, total) in vm.meal.totalNutrition">{{ nutrient }}: {{ total | number:0 }}g</li>
                   </ul>
                 </div>
                 </div>

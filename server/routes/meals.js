@@ -51,7 +51,7 @@ router.post('/', function(req, res) {
               name: currentApiFood.fields.item_name,
               brand: currentApiFood.brand_name,
               calories: currentApiFood.fields.nf_calories,
-              carbs: currentApiFood.fields.nf_total_carbohydrate,
+              carbohydrates: currentApiFood.fields.nf_total_carbohydrate,
               fat: currentApiFood.fields.nf_total_fat,
               fiber: currentApiFood.fields.nf_dietary_fiber,
               protein: currentApiFood.fields.nf_protein,

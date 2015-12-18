@@ -5,17 +5,17 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col-md-3">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+              <h5><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back</h5>
             </div>
             <div class="col-md-9 text-right">
-              <span class="glyphicon glyphicon glyphicon-adjust" aria-hidden="true"></span> {{ vm.meal.date | date: 'mediumDate' }}, {{ vm.meal.time | date: 'shortTime' }}
+              <h5><span class="glyphicon glyphicon glyphicon-adjust" aria-hidden="true"></span> {{ vm.meal.date | date: 'mediumDate' }}, {{ vm.meal.time | date: 'shortTime' }}</h5>
             </div>
           </div>
         </div>
         <div class="panel-body">
           <div class="row">
             <div class="col-md-6">
-          <h3 class="meal-title">{{ vm.meal.name }}</h3>
+              <h3 class="meal-title">{{ vm.meal.name }}</h3>
             </div>
             <div class="col-md-6 text-right">
               <a ng-href="">Edit Meal</a> | <a ng-href="">Delete Meal</a>
@@ -25,25 +25,51 @@
           <ul>Total Nutrition:
             <li>
               <ul class="horizontal-list">
-                <li ng-repeat="(nutrient, amount) in vm.meal.totalNutrition">{{ nutrient }}: {{ amount }}</li>
+                <li ng-repeat="(nutrient, amount) in vm.meal.totalNutrition">{{ nutrient }}: {{ amount | number:0 }}</li>
               </ul>
+            </li>
           </ul>
           <ul>I ate:
             <li ng-repeat="entry in vm.meal.foodEntries">
-              <div>
-              {{ entry.servings }}
-              {{ entry.food }}
-              </div>
-              <!-- <ul>
-                <li>{{ food.name }}</li>
+              <ul>
+                <li>{{ entry.food[0].name }}</li>
+                <li>1 serving size is {{ entry.servingSizeQty }} {{ entry.servingSizeUnit }}</li>
+                <li>servings: {{ entry.servings }}</li>
+                <li>Your serving had:</li>
                 <li>
-              </ul> -->
+                  <ul class="horizontal-list">
+                    <!-- need to add ng-ifs! -->
+                    <li>calories: {{ entry.food[0].calories * entry.servings | number:0 }}g</li>
+                    <li>fat: {{ entry.food[0].fat * entry.servings | number:0 }}g</li>
+                    <li>carbs: {{ entry.food[0].carbohydrates * entry.servings | number:0 }}g</li>
+                    <li>fiber: {{ entry.food[0].fiber * entry.servings | number:0 }}g</li>
+                    <li>protein: {{ entry.food[0].protein * entry.servings | number:0 }}g</li>
+                    <li>sugars: {{ entry.food[0].sugars * entry.servings | number:0 }}g</li>
+                  </ul>
+                </li>
+              </ul>
             </li>
           </ul>
+          <div class="row">
+            <div class="col-md-2">
+              Emotions:
+            </div>
+            <div class="col-md-10">
+              {{ vm.meal.emotions }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              Notes:
+            </div>
+            <div class="col-md-10">
+              {{ vm.meal.notes }}
+            </div>
+          </div>
 
 
           <!-- </div> -->
-          {{ vm.meal }}
+          <!-- {{ vm.meal }} -->
         </div>
       </div>
     </div>
@@ -52,4 +78,4 @@
   </div>
 </div>
 
-{"_id":"567453323d7e87eb51e8d0e9","date":"12/18/2015","time":"1970-01-01T19:15:00.000Z","name":"Dinner","emotions":"","notes":"","totalNutrition":{"calories":200,"carbs":37,"fat":3,"fiber":0,"protein":6,"sugars":31},"__v":1,"foodEntries":[{"servings":1,"_id":"567453323d7e87eb51e8d0ea","food":["567196cd37e5d942eaea92e8"]}],"journal":["567109f0508fddb92a75d21d"]}
+<!-- {"_id":"567453323d7e87eb51e8d0e9","date":"12/18/2015","time":"1970-01-01T19:15:00.000Z","name":"Dinner","emotions":"","notes":"","totalNutrition":{"calories":200,"carbs":37,"fat":3,"fiber":0,"protein":6,"sugars":31},"__v":1,"foodEntries":[{"servings":1,"_id":"567453323d7e87eb51e8d0ea","food":["567196cd37e5d942eaea92e8"]}],"journal":["567109f0508fddb92a75d21d"]} -->
