@@ -41,15 +41,15 @@ router.post('/', function(req, res) {
   console.log(req.body);
   // console.log('fields>>>', req.body.apiFoods[0].fields);
   // find journal
-  db.Journal.findById(req.body.journal, function(err, journal) {
-    if (err) {
-      console.log(error);
-    } else {
-      // save meal to journal
-      // create meal
+  // db.Journal.findById(req.body.journal, function(err, journal) {
+  //   if (err) {
+  //     console.log(error);
+  //   } else {
+  //     // save meal to journal
+  //     // create meal
       db.Meal.create(
         {
-          journal: journal,
+          journal: req.body.journal,
           date: req.body.date,
           time: req.body.time,
           name: req.body.name,
@@ -69,8 +69,8 @@ router.post('/', function(req, res) {
             console.log(err);
           } else {
             // save meal to journal
-            journal.meals.push(meal);
-            journal.save();
+            // journal.meals.push(meal);
+            // journal.save();
             console.log('new meal!', meal);
             console.log('added meal');
 
@@ -167,8 +167,8 @@ router.post('/', function(req, res) {
                   }
               });
             }
-          }
-      });
+      //     }
+      // });
     }
   })
   res.send('got it!');

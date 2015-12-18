@@ -14,10 +14,10 @@ var journalSchema = mongoose.Schema({
   //   type: mongoose.Schema.Types.ObjectId,
   //   ref: 'Day'
   // }],
-  meals: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Meal'
-  }],
+  // meals: [{
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'Meal'
+  // }],
   dailyCalorieGoal: Number,
   //other daily goals?
   weightGoal: Number,
