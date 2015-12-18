@@ -39,16 +39,17 @@ var mealSchema = mongoose.Schema({
 
 // remove meal from journal reference
 
+// why does this not fire?
 mealSchema.pre('remove', function(next) {
   var meal = this;
-  console.log('THIS IS THE PREREMOVE HOOK FOR MEAL!!');
+  console.log('========= THIS IS THE PREREMOVE HOOK FOR MEAL!!');
 
   // delete this meal's reference from journal
-  Journal.findOne({ _id: meal.journal }, { $pull: { meals: meal._id } }).exec(function(err, journal) {
+  db.Journal.findByIdAndUpdate(meal.journal, { $pull: { meals: meal._id } }, function(err, journal) {
     if (err) {
       console.log('ERROR', err);
     } else {
-      console.log('DELETED MEAL REFERENCE FROM ' + journal._id);
+      console.log('DELETED MEAL REFERENCE FROM ' + journal);
     };
 
   });

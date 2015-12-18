@@ -176,12 +176,21 @@ router.post('/', function(req, res) {
 });
 
 router.delete('/:meal_id', function(req, res) {
-  db.Meal.findOne({ _id: req.params.meal_id }).remove(function(err, meal) {
+  db.Meal.findById(req.params.meal_id).remove(function(err, meal) {
     if (err) {
       console.log(err);
     } else {
-      console.log(meal);
-      res.json({ success: true });
+      // remove reference from journal since dum pre-remove hook is not firing, wtf!
+      // db.Journal.findByIdAndUpdate(meal.journal, { $pull: { meals: meal._id } }).exec(function(err, journal) {
+      //   if (err) {
+      //     console.log('ERROR', err);
+      //   } else {
+      //     console.log('DELETED MEAL REFERENCE FROM ' + journal._id);
+          console.log('MEAL DELETED: ', meal);
+          res.json({ success: true });
+      //   };
+
+      // });
     }
   });
 });
