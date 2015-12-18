@@ -58,12 +58,12 @@
             var journal = $route.current.params.journal_id;
             var meal = $route.current.params.meal_id;
 
+            console.log('***ROUTE:', $route);
             MealService.mealResource.delete({ journal_id: journal, meal_id: meal });
             $location.path('/journals/' + journal);
           }
         }
-      // resolve
-      // no template or controller?
+
       });
   }
 })();

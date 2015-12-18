@@ -155,9 +155,9 @@
 
       MealService.mealResource.save({ journal_id: user.journal }, vm.meal);
 
-      dayRoute = vm.meal.date.replace(/\//g, '-')
+      dayRoute = vm.meal.date.replace(/\//g, '-');
       // redirect to day page for that day
-      $location.path('/journals/' + user.journal + '/days/' + vm.meal.date);
+      $location.path('/journals/' + user.journal + '/days/' + dayRoute);
     }
   }
 })();
