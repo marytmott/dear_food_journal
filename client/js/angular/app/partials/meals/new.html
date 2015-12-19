@@ -220,10 +220,16 @@
             <div id="search-results">
               <div ng-repeat="food in vm.searchResults" class="pointer-cursor panel panel-default" ng-click="vm.addToMeal(food)">
                 <div class="panel-body">
-                  <p>
-                    <span class="glyphicon glyphicon-chevron-left text-primary" aria-hidden="true" ></span> {{ food.fields.item_name }} from {{ food.fields.brand_name }}
-                  </p>
-                  <ul class="horizontal-list" df-search-results food-data="food"></ul>
+                  <p><span class="glyphicon glyphicon-chevron-left text-primary" aria-hidden="true" ></span> {{ food.fields.item_name }} from {{ food.fields.brand_name }}</p>
+                  <!-- needs to be directive!!! -->
+                  <ul class="horizontal-list">
+                    <li>Calories: {{ food.fields.nf_calories | number: 0 }}</li>
+                    <li>Fat: {{ food.fields.nf_total_fat | number: 0 }}g</li>
+                    <li>Carbs: {{ food.fields.nf_total_carbohydrate | number: 0 }}g</li>
+                    <li>Fiber: {{ food.fields.nf_dietary_fiber | number: 0 }}g</li>
+                    <li>Protein: {{ food.fields.nf_protein | number: 0 }}g</li>
+                    <li>Sugars: {{ food.fields.nf_sugars | number: 0 }}g</li>
+                  </ul>
                 </div>
               </div>
             </div>
