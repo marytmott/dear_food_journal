@@ -64,7 +64,7 @@
       food.id = 'food-' + id;
       food.servingSzId = 'serv-sz-id' + id;
       food.userServings = 1;
-      food.type = 'apiFood';
+      // food.type = 'apiFood';
 
       vm.meal.apiFoods.push(food);
     }
@@ -79,7 +79,7 @@
 
       vm.meal.userFoods.push({
         id: newId,
-        name: '',
+        name: null,
         userServings: 1,
         calories: null,
         carbohydrates: null,
@@ -87,7 +87,7 @@
         fiber: null,
         protein: null,
         sugars: null,
-        type: 'userFood'
+        // type: 'userFood'
       });
     }
 

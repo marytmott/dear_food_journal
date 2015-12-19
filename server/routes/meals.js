@@ -46,7 +46,7 @@ router.post('/', function(req, res) {
       sugars: currentApiFood.fields.nf_sugars,
       servingSizeQty: currentApiFood.fields.nf_serving_size_qty,
       servingSizeUnit: currentApiFood.fields.nf_serving_size_unit,
-      nix_id: currentApiFood._id,
+      nixId: currentApiFood._id,
     };
     foodEntries.push({ food: foodEntry, servings: currentApiFood.userServings });
   }
@@ -62,7 +62,7 @@ router.post('/', function(req, res) {
       fiber: currentUserFood.fiber,
       protein: currentUserFood.protein,
       sugars: currentUserFood.sugars,
-      user: req.body.user
+      user: req.body.user,
     };
     foodEntries.push({ food: foodEntry, servings: currentUserFood.userServings });
   }
@@ -89,7 +89,7 @@ router.post('/', function(req, res) {
         // for (var k = 0; k < foodEntries.length; k++) {
         //   foodToAdd = foodEntries[k];
         //   console.log('foodADD>>>',foodToAdd);
-          // var nix_id ? foodToAdd._id || null;
+          // var nixId ? foodToAdd._id || null;
           // have to do this b/c of async multiple entry errors? hack fix-around for mongo??
           var total = foodEntries.length;
           var result = [];
@@ -97,19 +97,22 @@ router.post('/', function(req, res) {
           // refacrot this like nuts...go back to previous version? (see below route exports)
           function addFoods() {
             var foodEntry = foodEntries.pop();
-
-              if (foodEntry.food.nix_id) {
-                db.Food.findOneAndUpdate({ nix_id: foodEntry.food.nix_id }, foodToAdd, { upsert: true, new: true }, function(err, food) {
+            total--;
+            console.log('TOTAL!!!!!', total);
+            console.log('FOODENTRHY NOW: ', foodEntry.food);
+            console.log('nixid???', foodEntry.food.nixId);
+              if (foodEntry.food.nixId) {
+                db.Food.findOneAndUpdate({ nixId: foodEntry.food.nixId }, foodEntry.food, { upsert: true, new: true }, function(err, food) {
                     if (err) {
                       console.log(err);
                     } else {
                       result.push(food);
                       meal.foodEntries.push({ food: food, servings: foodEntry.servings });
-                      meal.save();
-                      console.log('food saved', food);
-                      if (!foodEntries.length) {
+                      console.log('nix food saved', food);
+                      if (total) {
                         addFoods();
                       } else {
+                        meal.save();
                         console.log(result);
                       }
 
@@ -123,11 +126,11 @@ router.post('/', function(req, res) {
                   } else {
                     result.push(food);
                       meal.foodEntries.push({ food: food, servings: foodEntry.servings });
-                      meal.save();
-                      console.log('food saved', food);
-                      if (!foodEntries.length) {
+                      console.log('user food saved', food);
+                      if (total) {
                         addFoods();
                       } else {
+                        meal.save();
                         console.log(result);
                       }
                   }
@@ -214,7 +217,7 @@ module.exports = router;
 //           currentApiFood = reqApiFoods[i];
 //           console.log('apifoodId>>>',currentApiFood._id);
 //           // have to do this b/c of async multiple entry errors? hack fix-around for mongo??
-//           db.Food.findOneAndUpdate({ nix_id: currentApiFood._id },
+//           db.Food.findOneAndUpdate({ nixId: currentApiFood._id },
 //             {
 //               name: currentApiFood.fields.item_name,
 //               brand: currentApiFood.brand_name,
@@ -226,7 +229,7 @@ module.exports = router;
 //               sugars: currentApiFood.fields.nf_sugars,
 //               servingSizeQty: currentApiFood.fields.nf_serving_size_qty,
 //               servingSizeUnit: currentApiFood.fields.nf_serving_size_unit,
-//               nix_id: currentApiFood._id,
+//               nixId: currentApiFood._id,
 //             }, { upsert: true, new: true }, function(err, food) {
 //               if (err) {
 //                 console.log(err);
