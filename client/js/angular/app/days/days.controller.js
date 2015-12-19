@@ -16,13 +16,13 @@
     vm.date = new Date($routeParams.date);
     vm.nextDay = new Date(new Date($routeParams.date).setDate(new Date($routeParams.date).getDate() + 1));
     console.log(vm.previousDay, vm.date, vm.nextDay);
-
     vm.routeToDiffDay = routeToDiffDay;
 
     // vm.goToYesterday = goToYesterday;
     // vm.goToTomorrow = goToTomorrow;
     // console.log($routeParams);
     vm.meals = entries;
+// console.log(vm.meals[0].foodEntries);
     vm.sort = '+time';
     // vm.showNewDate = showNewDate;
     vm.pickNewDate = null;

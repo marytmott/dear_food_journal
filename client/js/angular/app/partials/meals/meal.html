@@ -5,7 +5,7 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col-md-3">
-              <h5><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back</h5>
+              <h5><a ng-href="{{ vm.backLink }}"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back</a></h5>
             </div>
             <div class="col-md-9 text-right">
               <h5><span class="glyphicon glyphicon glyphicon-adjust" aria-hidden="true"></span> {{ vm.meal.date | date: 'mediumDate' }}, {{ vm.meal.time | date: 'shortTime' }}</h5>
@@ -17,8 +17,12 @@
             <div class="col-md-6">
               <h3 class="meal-title">{{ vm.meal.name }}</h3>
             </div>
-            <div class="col-md-6 text-right">
-              <a ng-href="">Edit Meal</a> | <a ng-href="">Delete Meal</a>
+            <div class="col-md-6">
+<!--               <ul class="pager">
+                <li><a href="#">Edit Meal</a></li>
+                <li><a href="#">Delete Meal</a></li>
+              </ul> -->
+              <!-- <a ng-href="">Edit Meal</a> | <a ng-href="">Delete Meal</a> -->
             </div>
           </div>
           <!--- directive this!!! -->
@@ -65,7 +69,10 @@
               {{ vm.meal.notes }}
             </div>
           </div>
-
+            <ul class="pager">
+              <li><a ng-href="{{ vm.mealsPath }}/edit"></span>Edit Meal <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></a></li>
+              <li><a ng-href="{{ vm.mealsPath }}/delete">Delete Meal <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></a></li>
+            </ul>
 
           <!-- </div> -->
           <!-- {{ vm.meal }} -->

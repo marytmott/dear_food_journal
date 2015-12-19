@@ -16,7 +16,7 @@ var jwt = require('jsonwebtoken');
 router.get('/:date', function(req, res) {
   var journalId = req.baseUrl.split('/')[3];
   var convertedDateParams = req.params.date.replace(/\-/g, '/');
-  console.log(convertedDateParams);
+  // console.log(convertedDateParams);
 
   // find all meals
   // req.params.journal_id <-- should this be token when routes are locked down?
@@ -38,7 +38,7 @@ router.get('/:date', function(req, res) {
 
     // if (err) return res.json(500);
     db.Meal.populate(meals, options, function (err, meals) {
-              console.log(meals);
+              // console.log(meals);
       res.json(meals);
     });
   // });
