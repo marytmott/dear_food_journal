@@ -59,7 +59,7 @@ router.post('/', function(req, res) {
               servingSizeQty: currentApiFood.fields.nf_serving_size_qty,
               servingSizeUnit: currentApiFood.fields.nf_serving_size_unit,
               nix_id: currentApiFood._id,
-            }, {upsert: true, new: true}, function(err, food) {
+            }, { upsert: true, new: true }, function(err, food) {
               if (err) {
                 console.log(err);
               } else {
@@ -93,19 +93,9 @@ router.post('/', function(req, res) {
               if (err) {
                 console.log(err);
               } else {
-                // make food entry and push to meal
-                db.FoodEntry.create(
-                {
-                  food: food,
-                  meal: meal,
-                  servings: currentUserFood.userServings
-                },
-                function(err, foodEntry) {
-                  // save food entry to meal
-                  meal.foodEntries.push(foodEntry);
-                  meal.save();
-                  console.log('user food saved', food);
-                });
+                meal.foodEntries.push({ food: food, servings: currentUserFood.userServings });
+                meal.save();
+                console.log('user food saved', food);
               }
             });
           }
