@@ -55,7 +55,7 @@ edit/delete (also put this on edit page or just put it here? --- option to delet
       <h3> Today's total Nutrition: </h3>
       <!-- MAKE THIS A DIRECTIVE!!!!!!**************** -->
       <ul class="horizontal-list">
-        <li ng-repeat="(nutrient, amount) in vm.todaysNutrition">{{ nutrient }}: {{ value }}g</li>
+        <li ng-repeat="(nutrient, amount) in vm.todaysNutrition">{{ nutrient }}: {{ amount | number:0 }}g</li>
       </ul>
 
       <!-- meals -->
@@ -71,7 +71,7 @@ edit/delete (also put this on edit page or just put it here? --- option to delet
             <li>Total Nutrition:
               <!-- another directive to make! -->
               <ul class="horizontal-list">
-                <li ng-repeat="(nutrient, amount) in meal.totalNutrition">{{ nutrient }}: {{ value }}g</li>
+                <li ng-repeat="(nutrient, amount) in meal.totalNutrition">{{ nutrient }}: {{ amount | number:0 }}g</li>
               </ul>
             </li>
               <!-- <li>{{ meal.notes }}</li> -->
