@@ -112,6 +112,7 @@ router.post('/', function(req, res) {
                       if (total) {
                         addFoods();
                       } else {
+                        // need to save meal last or it saves last food twice bug??
                         meal.save();
                         console.log(result);
                       }
@@ -130,6 +131,7 @@ router.post('/', function(req, res) {
                       if (total) {
                         addFoods();
                       } else {
+                        // need to save meal last or it saves last food twice bug??
                         meal.save();
                         console.log(result);
                       }
