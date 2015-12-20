@@ -21,16 +21,16 @@
   </li>
   <li class="list-group-item">
   <!-- // need to have this update immediately for date now? (in case user sits at this page for a bunch of itme) -->
-    <a ng-href="/journals/{{vm.currentUser.journal}}/days/{{ vm.clock | date: 'MM-dd-yyyy' }}">today <span class="glyphicon glyphicon-star" aria-hidden="true"></span></a>
+    <a ng-href="/journals/{{ vm.currentUser.journal }}/days/{{ vm.clock | date: 'MM-dd-yyyy' }}">today <span class="glyphicon glyphicon-star" aria-hidden="true"></span></a>
   </li>
   <li class="list-group-item">
     <a ng-href="/journals/{{vm.currentUser.journal}}/meals/new">add meal <span class="glyphicon glyphicon-apple" aria-hidden="true"></span></a>
   </li>
   <li class="list-group-item">
-    <a ng-href="/journals/{{vm.currentUser.journal}}">journal <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span></a>
+    <a ng-href="/journals/{{ vm.currentUser.journal }}">journal <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span></a>
   </li>
   <li class="list-group-item">
-    <a ng-href="/journals/{{vm.currentUser.journal}}/inspirations">inspirations <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a>
+    <a ng-href="/journals/{{ vm.currentUser.journal }}/inspirations">inspirations <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a>
   </li>
   <li class="list-group-item">
     <a ng-href="">my weight <span class="glyphicon glyphicon-object-align-vertical" aria-hidden="true"></span></a>
@@ -40,7 +40,7 @@
 <!--
 <nav ng-if="vm.currentUser">
   <ul>
-    <li><a ng-href="/{{vm.currentUser.id}}/{{vm.currentUser.journal}}">journal</a></li>
+    <li><a ng-href="/{{vm.currentUser.id}}/{{ vm.currentUser.journal }}">journal</a></li>
     <li>add meal</li>
   </ul>
 </nav>
