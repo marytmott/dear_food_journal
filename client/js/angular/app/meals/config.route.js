@@ -66,36 +66,40 @@
               // have to make foodApi array and userFoods arrays
               for (var i = 0; i < data.foodEntries.length; i++) {
                 currentFoodEntry = data.foodEntries[i];
-                console.log(currentFood = currentFoodEntry.food[0]);
                 // console.log(currentFood.servings);
-              //   currentFood.userServings = currentFoodEntry.servings;
+                currentFood = currentFoodEntry.food[0];
+                currentFood.userServings = currentFoodEntry.servings;
+                console.log('why not showing??', currentFood);
+                // console.log('servings', currentFoodEntry.servings);
 
-              //   // make 2 diff models on backend (will need to rewrite lots of code...TODO for later so less code on front end?)
-              //   // if apiFood push to array
-              //   if (currentFood.nix_id) {
+                // make 2 diff models on backend (will need to rewrite lots of code...TODO for later so less code on front end?)
+                // if apiFood push to array
+                if (currentFood.nixId) {
 
-              //     // reconstruct as api food
-              //     currentFood._id = currentFood.food[0].nix_id;
-              //     currentFood.fields = {
-              //       item_name: currentFood.name,
-              //       brand_name: currentFood.brand,
-              //       nf_calories: currentFood.calories,
-              //       nf_total_fat: currentFood.fat,
-              //       nf_total_carbohydrate: currentFood.carbohydrates,
-              //       nf_dietary_fiber: currentFood.fiber,
-              //       nf_sugars: currentFood.sugars,
-              //       nf_protein: currentFood.protein,
-              //       nf_serving_size_qty: currentFood.servingSizeQty,
-              //       nf_serving_size_unit: currentFood.servingSizeUnit
-              //     };
+                  // reconstruct as api food
+                  currentFood._id = currentFood.nixId;
+                  currentFood.fields = {
+                    item_name: currentFood.name,
+                    brand_name: currentFood.brand,
+                    nf_calories: currentFood.calories,
+                    nf_total_fat: currentFood.fat,
+                    nf_total_carbohydrate: currentFood.carbohydrates,
+                    nf_dietary_fiber: currentFood.fiber,
+                    nf_sugars: currentFood.sugars,
+                    nf_protein: currentFood.protein,
+                    nf_serving_size_qty: currentFood.servingSizeQty,
+                    nf_serving_size_unit: currentFood.servingSizeUnit
+                  };
 
-              //     apiFoods.push(currentFood.food[0]);
-              //   } else {  // if user food
-              //     userFoods.push(currentFood.food[0]);
-              //   }
+                  currentFood.userServings = currentFoodEntry.servings;
+                  apiFoods.push(currentFood);
+                } else {  // if user food
+                  currentFood.userServings = currentFoodEntry.servings;
+                  userFoods.push(currentFood);
+                }
               }
-              // data.apiFoods = apiFoods;
-              // data.userFoods = userFoods;
+              data.apiFoods = apiFoods;
+              data.userFoods = userFoods;
 
 
 //               _index: "f762ef22-e660-434f-9071-a10ea6691c27",

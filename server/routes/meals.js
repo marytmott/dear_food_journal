@@ -89,6 +89,7 @@ router.post('/', function(req, res) {
         // CHECK FIRST THEN ADD Api foods to db (REFACTOR THIS w/ BELOW!!!)
 
         // have to do this b/c of async multiple entry errors? hack fix-around for mongo??
+        // promise this?
         // refacrot this like nuts...go back to previous version? (see below route exports)
         function addFoods() {
           var foodEntry = foodEntries.pop();
