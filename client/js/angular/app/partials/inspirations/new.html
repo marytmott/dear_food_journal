@@ -1,32 +1,23 @@
 <!-- new insp form -->
 <div class="col-md-6 panel panel-default">
-  <!-- <div class="panel panel-default"> -->
-    <!-- <div class="panel-heading"> -->
-
-
-    <div class="panel-body new-insp">
-      <form class="form-horizontal" ng-submit="vm.addInspiration()">
+  <div class="panel-body new-insp">
+    <form class="form-horizontal" ng-submit="vm.addInspiration()">
       <fieldset>
-      <legend>Something new to inspire me!</legend>
+        <legend>Something new to inspire me!</legend>
     <!-- select type of inspiration -->
-        <!-- <div class="row"> -->
-      <!-- <form class=""> -->
         <div class="form-group">
           <label for="inspiration-type" class="control-label"></label>
-        <div class="col-md-6 col-md-offset-3">
-          <!-- <div class="col-md-6"> -->
-          <select id="inspiration-type" class="form-control" ng-model="vm.inspiration.type">
-            <option value="" disabled selected>What kind of inspiration to add?</option>
-            <option value="quote">Quote</option>
-            <option value="image">Image</option>
-            <option value="tip">Tip</option>
-          </select>
+          <div class="col-md-6 col-md-offset-3">
+            <!-- <div class="col-md-6"> -->
+            <select id="inspiration-type" class="form-control" ng-model="vm.inspiration.type">
+              <option value="" disabled selected>What kind of inspiration to add?</option>
+              <option value="quote">Quote</option>
+              <option value="image">Image</option>
+              <option value="tip">Tip</option>
+            </select>
+          </div>
         </div>
 
-      <!-- </div> -->
-      <!-- </form> -->
-        </div>
-    <!-- </div> -->
         <!-- show quote input -->
         <section ng-if="vm.inspiration.type ==='quote'">
           <div class="form-group">
@@ -60,19 +51,19 @@
         </section>
 
         <button type="submit" class="btn btn-primary" ng-if="vm.inspiration.type">Add My Inspiration</button>
-        </fieldset>
-      </form>
-    </div>
+      </fieldset>
+    </form>
   </div>
+</div>
 <!-- </div> -->
 
 <!-- new insp preview -->
 <div class="col-md-4 panel panel-default">
     <!-- <div class="panel-heading"> -->
     <!-- </div> -->
-    <h3>Preview</h3>
+  <h3>Preview</h3>
 
-    <div class="panel-body insp-preview">
-    </div>
+  <div class="panel-body insp-preview">
   </div>
+</div>
 <!-- </div>
