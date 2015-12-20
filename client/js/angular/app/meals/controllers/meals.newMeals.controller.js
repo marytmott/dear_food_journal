@@ -155,11 +155,14 @@
       calcNutritionTotal();
       console.log(vm.meal);
 
-      MealService.mealResource.save({ journal_id: user.journal }, vm.meal);
+      MealService.mealResource.save({ journal_id: user.journal }, vm.meal).$promise.then(function(data) {
+        if (data.meal) {
+          dayRoute = vm.meal.date.replace(/\//g, '-');
+          // redirect to day page for that day
+          $location.path('/journals/' + user.journal + '/days/' + dayRoute);
+        }
+      });
 
-      dayRoute = vm.meal.date.replace(/\//g, '-');
-      // redirect to day page for that day
-      $location.path('/journals/' + user.journal + '/days/' + dayRoute);
     }
   }
 })();

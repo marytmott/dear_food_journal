@@ -111,8 +111,14 @@ router.post('/', function(req, res) {
                       addFoods();
                     } else {
                       // need to save meal last or it saves last food twice bug??
-                      meal.save();
                       console.log(result);
+                      meal.save(function(err, meal) {
+                        if (err) {
+                          console.log(err);
+                        } else {
+                          res.json({ message: 'meal created', meal: meal});
+                        }
+                      });
                     }
 
                   }
@@ -130,8 +136,14 @@ router.post('/', function(req, res) {
                       addFoods();
                     } else {
                       // need to save meal last or it saves last food twice bug??
-                      meal.save();
                       console.log(result);
+                      meal.save(function(err, meal) {
+                        if (err) {
+                          console.log(err);
+                        } else {
+                          res.json({ message: 'meal created', meal: meal});
+                        }
+                      });
                     }
                 }
               });
@@ -237,9 +249,14 @@ router.put('/:meal_id', function(req, res) {
                       addFoods();
                     } else {
                       // need to save meal last or it saves last food twice bug??
-                      meal.save();
                       console.log(result);
-                      res.json({ message: 'meal updated'});
+                      meal.save(function(err, meal) {
+                        if (err) {
+                          console.log(err);
+                        } else {
+                          res.json({ message: 'meal updated', meal: meal});
+                        }
+                      });
                     }
 
                   }
@@ -257,9 +274,14 @@ router.put('/:meal_id', function(req, res) {
                       addFoods();
                     } else {
                       // need to save meal last or it saves last food twice bug??
-                      meal.save();
                       console.log(result);
-                      res.json({ message: 'meal updated'});
+                      meal.save(function(err, meal) {
+                        if (err) {
+                          console.log(err);
+                        } else {
+                          res.json({ message: 'meal updated', meal: meal});
+                        }
+                      });
                     }
                 }
               });

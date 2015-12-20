@@ -3,6 +3,15 @@ var router = express.Router();
 var jwt = require('jsonwebtoken');
 var db = require('../models');
 
+// JSON WT on all!!!
+
+// get all inspirations
+router.get('/', function(req, res) {
+  // db.Inspiration.find({ })
+});
+
+
+// new inspiration
 router.post('/', function(req, res) {
   console.log(req.body);
   db.Inspiration.create(req.body, function(err, inspiration) {
