@@ -9,7 +9,7 @@
 
   function ConfigInspirations($routeProvider) {
     $routeProvider
-      .when('/journal/:journal_id/inspirations', {
+      .when('/journals/:journal_id/inspirations', {
         templateUrl: '/partials/inspirations/index.html',
         controller: 'InspirationsController',
         controllerAs: 'vm'
