@@ -25,7 +25,7 @@
           <!-- sorting -->
           <form class="form-inline">
             <div class="form-group">
-              <label for="sort-category" class="">Sort Meals By:</label>
+              <label for="sort-category" class="">Sort By:</label>
               <select id="sort-category" class="form-control input-sm" ng-model="vm.sort">
                 <option value="+time">Earliest to Latest</option>
                 <option value="-time">Latest to Earliest</option>
@@ -35,6 +35,20 @@
               </select>
             </div>
           </form>
+          <div class="form-group">
+          <form class="form-inline">
+            <div class="form-group">
+              <label for="sort-category" class="">Show (checkboxes)?:</label>
+              <select id="sort-category" class="form-control input-sm" ng-model="vm.sort">
+                <option value="+time">Earliest to Latest</option>
+                <option value="-time">Latest to Earliest</option>
+                <option value="+name">Name</option>
+                <option value="-totalNutrition.calories">Most Calories</option>
+                <option value="+totalNutrition.calories">Least Calories</option>
+              </select>
+            </div>
+          </form>
+          </div>
         </div>
         <!-- pick new date -->
         <div class="col-md-5">

@@ -8,7 +8,10 @@ var inspirationSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Journal'
   }],
-  type: String,
+  type: {
+    type: String,
+    required: true
+  },
   imageLink: String,
   author: String,
   comment: String,

@@ -7,7 +7,15 @@ var db = require('../models');
 
 // get all inspirations
 router.get('/', function(req, res) {
-  // db.Inspiration.find({ })
+  var journalId = req.baseUrl.split('/')[3];
+
+  db.Inspiration.find({ journal: journalId }, function(err, inspirations) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(inspirations);
+    }
+  })
 });
 
 
