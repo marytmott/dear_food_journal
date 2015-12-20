@@ -150,14 +150,16 @@
       // console.log(vm.meal.apiFoods.length);
       // var user = UserService.getCurrentUser();
       // var dayRoute;
+      // console.log();
 
       vm.meal.date = vm.meal.date.toLocaleDateString();
       console.log(vm.meal.date);
       calcNutritionTotal();
       console.log(vm.meal);
 
-      MealService.mealResource.update({ journal_id: vm.meal.journal[0], meal: meal._id }, vm.meal).$promise.then(function(data) {
+      MealService.mealResource.update({ journal_id: vm.meal.journal[0], meal_id: vm.meal._id }, vm.meal).$promise.then(function(data) {
         // redirect after update --- also do on new meal page?
+        console.log(data);
         if (data.message) {
           getDatePath();
           // dayRoute = vm.meal.date.replace(/\//g, '-');
