@@ -45,9 +45,14 @@
 
     // add own food ---> add to last item
 
-    function getDatePath() {
-      var datePath = vm.meal.date.toLocaleDateString().replace(/\//g, '-');
-      vm.backLink = vm.journalPath + '/days/' + datePath;
+    function getDatePath(updatingMeal) {
+      var datePath;
+      if (updatingMeal){
+        datePath = vm.meal.date.replace(/\//g, '-');
+      } else {
+        datePath = vm.meal.date.toLocaleDateString().replace(/\//g, '-');
+        vm.backLink = vm.journalPath + '/days/' + datePath;
+      }
     }
 
     function foodSearch() {
@@ -161,7 +166,7 @@
         // redirect after update --- also do on new meal page?
         console.log(data);
         if (data.message === 'meal updated') {
-          getDatePath();
+          getDatePath(true);
           // dayRoute = vm.meal.date.replace(/\//g, '-');
           // redirect to day page for that day
           $location.path(vm.backLink);
@@ -173,6 +178,6 @@
     if ($location.$$path.indexOf('edit') !== -1) {
       calcNutritionTotal();
     }
-    getDatePath();
+    getDatePath(false);
   }
 })();
