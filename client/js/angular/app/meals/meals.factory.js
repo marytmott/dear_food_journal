@@ -17,7 +17,8 @@
       },
       mealResource: $resource('/api/journals/:journal_id/meals/:meal_id',
         { journal_id: '@journal_id',  meal_id: '@meal_id' },
-        { update: { method: 'PUT'} }
+          { update: { method: 'PUT'}
+        }
       )
         // add meal
         // update daily total? (skip for now maybe can run script)
