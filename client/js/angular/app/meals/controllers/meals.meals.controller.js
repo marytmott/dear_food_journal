@@ -160,7 +160,7 @@
       MealService.mealResource.update({ journal_id: vm.meal.journal[0], meal_id: vm.meal._id }, vm.meal).$promise.then(function(data) {
         // redirect after update --- also do on new meal page?
         console.log(data);
-        if (data.message) {
+        if (data.message === 'meal updated') {
           getDatePath();
           // dayRoute = vm.meal.date.replace(/\//g, '-');
           // redirect to day page for that day

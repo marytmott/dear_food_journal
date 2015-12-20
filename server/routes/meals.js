@@ -6,6 +6,7 @@ var jwt = require('jsonwebtoken');
 
 // DO THE TOKEN ON ALLLLLL THISSSS!!
 
+
 // get 1 meal
 router.get('/:meal_id', function(req, res) {
   db.Meal.findById(req.params.meal_id).populate('foodEntries.food').exec(function(err, meal) {
@@ -17,6 +18,7 @@ router.get('/:meal_id', function(req, res) {
     }
   });
 });
+
 
 // new meal
 router.post('/', function(req, res) {
@@ -143,6 +145,7 @@ router.post('/', function(req, res) {
   res.json({ message: 'got it!' });
 });
 
+
 // update meal
 // WOW DRY THIS UP WTIH ABOVE?
 router.put('/:meal_id', function(req, res) {
@@ -193,9 +196,8 @@ router.put('/:meal_id', function(req, res) {
   }
 
   console.log('FOODS!!', foodEntries);
-  db.Meal.findByIdAndUpdate(
+  db.Meal.findByIdAndUpdate(req.body._id,
     {
-      journal: req.body.journal,
       date: req.body.date,
       time: req.body.time,
       name: req.body.name,
@@ -211,7 +213,7 @@ router.put('/:meal_id', function(req, res) {
       if (err) {
         console.log(err);
       } else {
-        console.log('new meal!', meal);
+        console.log('meal found to update!', meal);
         // CHECK FIRST THEN ADD Api foods to db (REFACTOR THIS w/ BELOW!!!)
 
         // have to do this b/c of async multiple entry errors? hack fix-around for mongo??
@@ -270,6 +272,8 @@ router.put('/:meal_id', function(req, res) {
   });
 });
 
+
+// delete meal
 router.delete('/:meal_id', function(req, res) {
   db.Meal.findByIdAndRemove(req.params.meal_id, function(err, meal) {
     if (err) {
