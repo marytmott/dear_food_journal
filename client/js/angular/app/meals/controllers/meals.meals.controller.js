@@ -143,12 +143,8 @@
       var user = UserService.getCurrentUser();
       var dayRoute;
 
-      vm.meal.journal = user.journal;
-      // vm.meal.date = vm.meal.date.toISOString().substring(0, 10);
-      vm.meal.user = user.id;
       vm.meal.date = vm.meal.date.toLocaleDateString();
       console.log(vm.meal.date);
-      console.log(user);
       calcNutritionTotal();
       console.log(vm.meal);
 
@@ -158,5 +154,7 @@
       // redirect to day page for that day
       $location.path(vm.backLink);
     }
+
+    calcNutritionTotal();
   }
 })();

@@ -27,7 +27,7 @@
                 <label for="meal-time" class=""></label>
                 <div class="input-group">
                   <span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
-                  <input type="time" id="meal-time" class="form-control" ng-value="{{ vm.meal.time | date: 'shortTime'}}" ng-model="vm.meal.time" />
+                  <input type="time" id="meal-time" class="form-control" ng-model="vm.meal.time" />
                 </div></div>
               </div>
 
@@ -56,7 +56,7 @@
                   <div class="col-md-8">
                     <input type="text" id="{{ food.id }}" class="form-control" value="{{ food.fields.item_name }}" disabled />
                   </div>
-                  <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true" ng-click="vm.removeFood(food, 'foods')"></span>
+                  <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true" ng-click="vm.removeFood(food, 'apiFoods')"></span>
                 </div>
                 <p>{{ food.fields.nf_serving_size_qty }} {{ food.fields.nf_serving_size_unit }} has:</p>
                 <ul class="horizontal-list text-center" df-search-results food-data="food"></ul>
@@ -171,12 +171,8 @@
               </div>
 
               <!-- calculate meal nutrition button -->
-              <div class="form-group" ng-if="!vm.meal.totalNutrition">
-                <div class="col-md-4">
-                  <button type="button" class="btn btn-success btn-xs" ng-click="vm.calcNutritionTotal()">Calculate Total Nutrition</button>
-                </div>
-              </div>
-              <div class="form-group" ng-if="(vm.meal.totalNutrition && vm.meal.apiFoods.length !== vm.currentCalcdApiFoods) || (vm.meal.totalNutrition && vm.meal.userFoods.length !== vm.currentCalcdUserFoods)">
+              <!-- difff from new meal ################# (no total button + logic change-->
+              <div class="form-group" ng-if="vm.meal.apiFoods.length !== vm.currentCalcdApiFoods || vm.meal.userFoods.length !== vm.currentCalcdUserFoods">
                 <div class="col-md-4 col-md-offset-4">
                   <button type="button" class="btn btn-success btn-xs" ng-click="vm.calcNutritionTotal()"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Update Total Nutrition</button>
                 </div>
@@ -184,7 +180,7 @@
 
 
               <!-- submit new meal -->
-              <button type="submit" class="btn btn-primary">Update Meal</button>
+              <button type="submit" class="btn btn-primary">Save Changes</button>
               </div>
             </fieldset>
           </form>

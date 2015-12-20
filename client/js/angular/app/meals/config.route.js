@@ -62,6 +62,7 @@
 
               // need to set this to new Date() format for proper page rendering!
               data.date = new Date(data.date);
+              data.time = new Date(data.time);
               console.log(data);
               // have to make foodApi array and userFoods arrays
               for (var i = 0; i < data.foodEntries.length; i++) {
@@ -100,6 +101,7 @@
               }
               data.apiFoods = apiFoods;
               data.userFoods = userFoods;
+              data.foodEntrues = null;
 
 
 //               _index: "f762ef22-e660-434f-9071-a10ea6691c27",
