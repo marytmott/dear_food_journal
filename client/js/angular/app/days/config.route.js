@@ -9,17 +9,18 @@
 
   function ConfigDays($routeProvider) {
     $routeProvider
-      .when('/journals/:journal_id/days', {
-        templateUrl: '/partials/days/index.html',
-        controller: 'DaysController',
-        controllerAs: 'vm'
-        // resolve: {
-        //   // entries: function(UserService, MealService) {
-        //   //   var user = UserService.getCurrentUser();
-        //   //   return MealService.mealResource.query({ journal_id: user.journal });
-        //   }
-        // }
-      })
+      // i do'nt even think i use this route???
+      // .when('/journals/:journal_id/days', {
+      //   templateUrl: '/partials/days/index.html',
+      //   controller: 'DaysController',
+      //   controllerAs: 'vm'
+      //   // resolve: {
+      //   //   // entries: function(UserService, MealService) {
+      //   //   //   var user = UserService.getCurrentUser();
+      //   //   //   return MealService.mealResource.query({ journal_id: user.journal });
+      //   //   }
+      //   // }
+      // })
       .when('/journals/:journal_id/days/:date', {
         templateUrl: '/partials/days/day.html',
         controller: 'DaysController',

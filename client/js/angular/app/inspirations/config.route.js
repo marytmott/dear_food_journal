@@ -13,6 +13,11 @@
         templateUrl: '/partials/inspirations/index.html',
         controller: 'InspirationsController',
         controllerAs: 'vm'
+      })
+      .when('/journals/:journal_id/inspirations/new', {
+        templateUrl: '/partials/inspirations/new.html',
+        controller: 'NewInspirationsController',
+        controllerAs: 'vm'
       });
   }
 

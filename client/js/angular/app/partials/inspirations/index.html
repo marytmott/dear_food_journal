@@ -1,1 +1,78 @@
-inspirations!!
+
+<div class="col-md-10">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <!-- day pagination -->
+      <!-- these arrows do not need ot be buttons? nice click effect thing tho? -->
+<!--       <button class="btn btn-link btn-xs inline" ng-click="vm.routeToDiffDay(vm.previousDay)"><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+      <h4 class="text-warning inline default-cursor">{{ vm.date | date: 'fullDate'}}</h4>
+      <button class="btn btn-link btn-xs inline" ng-click="vm.routeToDiffDay(vm.nextDay)"><span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button> -->
+      <div class="row">
+        <div class="col-md-3">
+          <a ng-href="/journals/{{ vm.journal }}/inspirations/new">New Inspiration</a>
+        </div>
+        <div class="col-md-9">
+          <!-- <div class="" -->
+      // add new search box
+        </div>
+      </div>
+    </div>
+
+
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-4">
+          <!-- sorting -->
+          <form class="form-inline">
+            <div class="form-group">
+              <label for="sort-category" class="">Sort Meals By:</label>
+              <select id="sort-category" class="form-control input-sm" ng-model="vm.sort">
+                <option value="+time">Earliest to Latest</option>
+                <option value="-time">Latest to Earliest</option>
+                <option value="+name">Name</option>
+                <option value="-totalNutrition.calories">Most Calories</option>
+                <option value="+totalNutrition.calories">Least Calories</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <!-- pick new date -->
+        <div class="col-md-5">
+          // get random  inspiraiton
+        </div>
+      </div>
+
+
+      // one div for quotes, one for graphics
+      // random at top! or scroll ...that would be  fancy
+
+      <div id="inspirations-main">
+// looks like you need to add some inspirations to help you focus on what helps you!
+
+
+
+      <!-- meals -->
+<!--       <div class="fluid-container daily-meals-scroll">
+        <div class="col-md-4" ng-repeat="meal in vm.meals | orderBy: vm.sort">
+          <ul class="">
+            <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">{{ meal.name }}</a> - {{ meal.time | date: 'shortTime' }}</li>
+            <li>
+              <ul>
+                <li ng-repeat="food in meal.foodEntries">{{ food.food[0].name }}, servings: {{ food.servings }}</li>
+              </ul>
+            </li>
+            <li>Total Nutrition: -->
+              <!-- another directive to make! -->
+<!--               <ul class="horizontal-list">
+                <li ng-repeat="(nutrient, amount) in meal.totalNutrition">{{ nutrient }}: {{ amount | number:0 }}g</li>
+              </ul>
+            </li> -->
+              <!-- <li>{{ meal.notes }}</li> -->
+<!--             <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">View Meal</a> | <a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}/delete">Delete</a></li>
+          </ul>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+</div>
