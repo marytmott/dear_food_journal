@@ -33,6 +33,10 @@
         <!-- show image input -->
         <section ng-if="vm.inspiration.type === 'image'">
           <div class="form-group">
+            <label for="insp-img-title">Title:</label>
+            <input type="text" id="insp-img-title" class="form-control" placeholder="Title for this image inspiration?" ng-model="vm.inspiration.title" />
+          </div>
+          <div class="form-group">
             <label for="insp-img" class="">Image Link:</label>
             <input type="text" id="insp-img" class="form-control" placeholder="Please enter a valid url." ng-model="vm.inspiration.imageLink" />
           </div>
