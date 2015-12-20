@@ -1,17 +1,8 @@
-
 <div class="col-md-10">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <!-- <div class="row"> -->
-        <!-- <div class="col-md-3"> -->
-          <a ng-href="/journals/{{ vm.journal }}/inspirations/new">Add New Inspiration</a>
-        <!-- </div> -->
-<!--         <div class="col-md-9">
-
-        </div> -->
-      <!-- </div> -->
+      <a ng-href="/journals/{{ vm.journal }}/inspirations/new">Add New Inspiration</a>
     </div>
-
 
     <div class="panel-body">
       <div class="row insp-menu-row">
@@ -21,13 +12,13 @@
         <div class="col-md-3">
           <div class="form-inline">
             <div class="form-group">
-              <input type="checkbox" id="quotes-cxb" value="true" ng-model="vm.show.quotes" ng-click="vm.reloadMasonry()"><label for="quotes-cxb"> Quotes</label>
+              <input type="checkbox" id="quotes-cxb" value="true" ng-model="vm.show.quotes" ng-click="vm.reloadMasonry()"> <label for="quotes-cxb">Quotes</label>
             </div>
             <div class="form-group">
-              <input type="checkbox" id="img-cxb" value="true" ng-model="vm.show.images" ng-click="vm.reloadMasonry()"><label for="img-cxb"> Images</label>
+              <input type="checkbox" id="img-cxb" value="true" ng-model="vm.show.images" ng-click="vm.reloadMasonry()"> <label for="img-cxb">Images</label>
             </div>
             <div class="form-group">
-              <input type="checkbox" id="tips-cxb" value="true" ng-model="vm.show.tips" ng-click="vm.reloadMasonry()"><label for="tips-cxb"> Tips</label>
+              <input type="checkbox" id="tips-cxb" value="true" ng-model="vm.show.tips" ng-click="vm.reloadMasonry()"> <label for="tips-cxb">Tips</label>
             </div>
           </div>
         </div>
@@ -46,22 +37,22 @@
         </div>
       </div>
 
+      <!-- notes TODO -->
+      <p>// looks like you need to add some inspirations to help you focus on what helps you!</p>
 
-      <!-- <div class="row"> -->
-// looks like you need to add some inspirations to help you focus on what helps you!
-  <div id="insp-all">
-      <div masonry reload-on-show>
-        <div class="masonry-brick insp-mdiv" ng-repeat="inspiration in vm.inspirations | filter: search">
-          <div class="insp-mele-quote" ng-if="inspiration.type === 'quote'" ng-show="vm.show.quotes">
-            <p>{{ inspiration.quote }}</p>
-            <p ng-if="inspiration.author">- {{ inspiration.author }}</p>
+      <div id="insp-all">
+        <div masonry reload-on-show>
+          <div class="masonry-brick insp-mdiv" ng-repeat="inspiration in vm.inspirations | filter: search">
+            <div class="insp-mele-quote" ng-if="inspiration.type === 'quote'" ng-show="vm.show.quotes">
+              <p>{{ inspiration.quote }}</p>
+              <p ng-if="inspiration.author">- {{ inspiration.author }}</p>
+            </div>
+            <div ng-model="inspiration.title" ng-if="inspiration.type === 'image'" ng-show="vm.show.images">
+              <img ng-src="{{ inspiration.imageLink }}" class="insp-img-m" />
+            </div>
+            <p class="insp-mele-tip" ng-if="inspiration.type === 'tip'" ng-show="vm.show.tips">{{ inspiration.tip }}</p>
           </div>
-          <div ng-model="inspiration.title" ng-if="inspiration.type === 'image'" ng-show="vm.show.images">
-            <img ng-src="{{ inspiration.imageLink }}" class="insp-img-m" />
-          </div>
-          <p class="insp-mele-tip" ng-if="inspiration.type === 'tip'" ng-show="vm.show.tips">{{ inspiration.tip }}</p>
         </div>
-      </div>
       </div>
     </div>
   </div>
