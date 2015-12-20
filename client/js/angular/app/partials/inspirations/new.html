@@ -1,6 +1,73 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-    <form>
-    </form>
+<!-- new insp form -->
+<div class="col-md-6 panel panel-default">
+  <!-- <div class="panel panel-default"> -->
+    <!-- <div class="panel-heading"> -->
+
+    <!-- select type of inspiration -->
+        <div class="row">
+      <!-- <form class=""> -->
+        <div class="col-md-6 col-md-offset-3">
+        <div class="form-group">
+          <label for="inspiration-type" class=""></label>
+          <!-- <div class="col-md-6"> -->
+          <select id="inspiration-type" class="form-control" ng-model="vm.inspiration.type">
+            <option value="" disabled selected>What kind of inspiration to add?</option>
+            <option value="quote">Quote</option>
+            <option value="image">Image</option>
+            <option value="tip">Tip</option>
+          </select>
+        </div></div>
+      <!-- </form> -->
+        </div>
+    <!-- </div> -->
+
+    <div class="panel-body new-insp">
+      <form class="" ng-submit="vm.addInspiration()">
+        <!-- show quote input -->
+        <section ng-if="vm.inspiration.type ==='quote'">
+          <div class="form-group">
+            <label for="insp-quote" class="">Quote:</label>
+            <textarea id="insp-quote" class="form-control" placeholder="What lovely quote do you have to add?" ng-model="vm.inspiration.quote"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="insp-author" class="">Author:</label>
+            <input type="text" id="insp-author" class="form-control" placeholder="Does the quote have an author?" ng-model="vm.inspiration.author" />
+          </div>
+        </section>
+
+        <!-- show image input -->
+        <section ng-if="vm.inspiration.type === 'image'">
+          <div class="form-group">
+            <label for="insp-img" class="">Image Link:</label>
+            <input type="text" id="insp-img" class="form-control" placeholder="Please enter a valid url." ng-model="vm.inspiration.imageLink" />
+          </div>
+          <div class="form-group">
+            <label for="insp-img-comments">Comments:</label>
+            <textarea id="insp-img-comments" class="form-control" rows="4" placeholder="Anything to say about this image?" ng-model="vm.inspiration.quote"></textarea>
+          </div>
+        </section>
+
+        <!-- show tip input -->
+        <section ng-if="vm.inspiration.type === 'tip'">
+          <div class="form-group">
+            <label for="insp-tip" class="">Tip:</label>
+            <textarea id="insp-tip" class="form-control" placeholder="Want to jot down a tip for yourself?" ng-model="vm.inspiration.tip"></textarea>
+          </div>
+        </section>
+
+        <button type="submit" class="btn btn-primary" ng-if="vm.inspiration.type">Add My Inspiration</button>
+      </form>
+    </div>
   </div>
-</div>
+<!-- </div> -->
+
+<!-- new insp preview -->
+<div class="col-md-4 panel panel-default">
+    <!-- <div class="panel-heading"> -->
+    <!-- </div> -->
+    <h3>Preview</h3>
+
+    <div class="panel-body insp-preview">
+    </div>
+  </div>
+<!-- </div>
