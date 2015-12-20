@@ -63,7 +63,7 @@
                 <div class="form-group">
                   <label for="{{ food.servingSzId }}" class="col-md-3 control-label">Servings?</label>
                   <div class="col-md-3"> <!-- do this as ng-repeat?/directive/array? -->
-                    <select id="{{ food.servingSzId }}" ng-options="size as size for size in [.25, .3, .5, .67, .75, 1, 1.25, 1.3, 1.5, 1.67, 1.75, 2, 2.25, 2.3, 2.5, 2.67, 2.75, 3]" class="form-control" ng-model="food.userServings">
+                    <select id="{{ food.servingSzId }}" ng-options="size as size for size in [.25, .3, .5, .67, .75, 1, 1.25, 1.3, 1.5, 1.67, 1.75, 2, 2.25, 2.3, 2.5, 2.67, 2.75, 3]" class="form-control" ng-model="food.userServings" ng-change="vm.calcNutritionTotal()">
                     </select>
                   </div>
                 </div>
@@ -86,38 +86,38 @@
                 <div class="form-group">
                   <label class="col-md-3 control-label">Calories(g):</label>
                   <div class="col-md-3">
-                    <input type="number" class="form-control" ng-model="food.calories">
+                    <input type="number" class="form-control" ng-model="food.calories" ng-change="vm.calcNutritionTotal()">
                   </div>
                   <label class="col-md-3 control-label">Fat(g):</label>
                   <div class="col-md-3">
-                    <input type="number" class="form-control" ng-model="food.fat">
+                    <input type="number" class="form-control" ng-model="food.fat" ng-change="vm.calcNutritionTotal()">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-3 control-label">Carbs(g):</label>
                   <div class="col-md-3">
-                    <input type="number" class="form-control" ng-model="food.carbs">
+                    <input type="number" class="form-control" ng-model="food.carbs" ng-change="vm.calcNutritionTotal()">
                   </div>
                   <label class="col-md-3 control-label">Fiber(g):</label>
                   <div class="col-md-3">
-                    <input type="number" class="form-control" ng-model="food.fiber">
+                    <input type="number" class="form-control" ng-model="food.fiber" ng-change="vm.calcNutritionTotal()">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-3 control-label">Protein(g):</label>
                   <div class="col-md-3">
-                    <input type="number" class="form-control" ng-model="food.protein">
+                    <input type="number" class="form-control" ng-model="food.protein" ng-change="vm.calcNutritionTotal()">
                   </div>
                   <label class="col-md-3 control-label">Sugars(g):</label>
                   <div class="col-md-3">
-                    <input type="number" class="form-control" ng-model="food.sugars">
+                    <input type="number" class="form-control" ng-model="food.sugars" ng-change="vm.calcNutritionTotal()">
                   </div>
                 </div>
                   <!-- make this a directive! second use!! -->
                 <div class="form-group">
                   <label for="{{ food.servingSzId }}" class="col-md-3 control-label">Servings?</label>
                   <div class="col-md-3"> <!-- do this as ng-repeat?/directive/array? -->
-                    <select id="{{ food.servingSzId }}" ng-options="size as size for size in [.25, .3, .5, .67, .75, 1, 1.25, 1.3, 1.5, 1.67, 1.75, 2, 2.25, 2.3, 2.5, 2.67, 2.75, 3]" class="form-control" ng-model="food.userServings">
+                    <select id="{{ food.servingSzId }}" ng-options="size as size for size in [.25, .3, .5, .67, .75, 1, 1.25, 1.3, 1.5, 1.67, 1.75, 2, 2.25, 2.3, 2.5, 2.67, 2.75, 3]" class="form-control" ng-model="food.userServings" ng-change="vm.calcNutritionTotal()">
                     </select>
                   </div>
                 </div>
@@ -171,7 +171,7 @@
               </div>
 
               <!-- calculate meal nutrition button -->
-              <div class="form-group" ng-if="!vm.meal.totalNutrition">
+<!--               <div class="form-group" ng-if="!vm.meal.totalNutrition">
                 <div class="col-md-4">
                   <button type="button" class="btn btn-success btn-xs" ng-click="vm.calcNutritionTotal()">Calculate Total Nutrition</button>
                 </div>
@@ -181,7 +181,7 @@
                   <button type="button" class="btn btn-success btn-xs" ng-click="vm.calcNutritionTotal()"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Update Total Nutrition</button>
                 </div>
               </div>
-
+ -->
 
               <!-- submit new meal -->
               <button type="submit" class="btn btn-primary">Add Meal</button>

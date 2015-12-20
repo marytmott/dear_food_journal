@@ -134,7 +134,7 @@
         // console.log(vm.meal.userFoods);
         vm.meal.totalNutrition.calories += (currentFood.calories * servings);
         vm.meal.totalNutrition.fat += (currentFood.fat * servings);
-        vm.meal.totalNutrition.carbs += (currentFood.carbs * servings);
+        vm.meal.totalNutrition.carbs += (currentFood.carbohydrates * servings);
         vm.meal.totalNutrition.fiber += (currentFood.fiber * servings);
         vm.meal.totalNutrition.protein += (currentFood.protein * servings);
         vm.meal.totalNutrition.sugars += (currentFood.sugars * servings);

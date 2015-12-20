@@ -143,6 +143,133 @@ router.post('/', function(req, res) {
   res.json({ message: 'got it!' });
 });
 
+// update meal
+// WOW DRY THIS UP WTIH ABOVE?
+router.put('/:meal_id', function(req, res) {
+  var reqApiFoods = req.body.apiFoods;
+  var reqUserFoods = req.body.userFoods;
+  var currentApiFood;
+  var currentUserFood;
+  // console.log(req.body);
+  var foodEntries = [];
+  var foodEntry;
+
+
+  // have to do like this b/c of async mongo issues
+  for (var i = 0; i < reqApiFoods.length; i++) {
+    currentApiFood = reqApiFoods[i];
+    console.log('apifoodId>>>',currentApiFood._id);
+    // have to do this b/c of async multiple entry errors? hack fix-around for mongo??
+    foodEntry = {
+      name: currentApiFood.fields.item_name,
+      brand: currentApiFood.brand_name,
+      calories: currentApiFood.fields.nf_calories,
+      carbohydrates: currentApiFood.fields.nf_total_carbohydrate,
+      fat: currentApiFood.fields.nf_total_fat,
+      fiber: currentApiFood.fields.nf_dietary_fiber,
+      protein: currentApiFood.fields.nf_protein,
+      sugars: currentApiFood.fields.nf_sugars,
+      servingSizeQty: currentApiFood.fields.nf_serving_size_qty,
+      servingSizeUnit: currentApiFood.fields.nf_serving_size_unit,
+      nixId: currentApiFood._id,
+    };
+    foodEntries.push({ food: foodEntry, servings: currentApiFood.userServings });
+  }
+
+  for (var j = 0; j < reqUserFoods.length; j++) {
+    currentUserFood = reqUserFoods[j];
+    // create new food
+    var foodEntry = {
+      name: currentUserFood.name.trim(),
+      calories: currentUserFood.calories,
+      carbohydrates: currentUserFood.carbs,
+      fat: currentUserFood.fat,
+      fiber: currentUserFood.fiber,
+      protein: currentUserFood.protein,
+      sugars: currentUserFood.sugars,
+      user: req.body.user,
+    };
+    foodEntries.push({ food: foodEntry, servings: currentUserFood.userServings });
+  }
+
+  console.log('FOODS!!', foodEntries);
+  db.Meal.findByIdAndUpdate(
+    {
+      journal: req.body.journal,
+      date: req.body.date,
+      time: req.body.time,
+      name: req.body.name,
+      emotions: req.body.emotions,
+      notes: req.body.notes,
+      totalNutrition: req.body.totalNutrition,
+      foodEntries: []
+    },
+    function(err, meal) {
+      var total = foodEntries.length;
+      var result = [];
+
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('new meal!', meal);
+        // CHECK FIRST THEN ADD Api foods to db (REFACTOR THIS w/ BELOW!!!)
+
+        // have to do this b/c of async multiple entry errors? hack fix-around for mongo??
+        // promise this?
+        // refacrot this like nuts...go back to previous version? (see below route exports)
+        function addFoods() {
+          var foodEntry = foodEntries.pop();
+          total--;
+          console.log('TOTAL!!!!!', total);
+          console.log('FOODENTRHY NOW: ', foodEntry.food);
+          console.log('nixid???', foodEntry.food.nixId);
+            if (foodEntry.food.nixId) {
+              db.Food.findOneAndUpdate({ nixId: foodEntry.food.nixId }, foodEntry.food, { upsert: true, new: true }, function(err, food) {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    result.push(food);
+                    meal.foodEntries.push({ food: food, servings: foodEntry.servings });
+                    console.log('nix food saved', food);
+                    if (total) {
+                      addFoods();
+                    } else {
+                      // need to save meal last or it saves last food twice bug??
+                      meal.save();
+                      console.log(result);
+                      res.json({ message: 'meal updated'});
+                    }
+
+                  }
+              });
+
+            } else {
+              db.Food.create(foodEntry.food, function(err, food) {
+                if (err) {
+                  console.log(err);
+                } else {
+                  result.push(food);
+                    meal.foodEntries.push({ food: food, servings: foodEntry.servings });
+                    console.log('user food saved', food);
+                    if (total) {
+                      addFoods();
+                    } else {
+                      // need to save meal last or it saves last food twice bug??
+                      meal.save();
+                      console.log(result);
+                      res.json({ message: 'meal updated'});
+                    }
+                }
+              });
+            }
+
+          }
+
+      addFoods();
+    }
+  });
+});
+
 router.delete('/:meal_id', function(req, res) {
   db.Meal.findByIdAndRemove(req.params.meal_id, function(err, meal) {
     if (err) {

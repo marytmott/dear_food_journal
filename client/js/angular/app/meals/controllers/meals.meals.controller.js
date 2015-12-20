@@ -5,21 +5,21 @@
     .module('dearFoodJ.meals')
     .controller('MealsController', MealsController);
 
-  MealsController.$inject = ['$routeParams', 'MealService', 'mealData'];
+  MealsController.$inject = ['$routeParams', '$location', 'MealService', 'mealData'];
 
   // THIS NEEDS HORRIBLY TO BE REFACTORED W/ NEW MEALS CONTROLLER!! MOVE FUNCTIONS TO SERVICE??
 
-  function MealsController($routeParams, MealService, mealData) {
+  function MealsController($routeParams, $location, MealService, mealData) {
     var vm = this;
     vm.meal = mealData;
     // console.log(mealData);
     // vm.meal.date = $filter('date')(vm.meal.date, 'yyyy-MM-dd');
     vm.journalPath = '/journals/' + $routeParams.journal_id;
     vm.mealsPath = vm.journalPath + '/meals/' + $routeParams.meal_id;
-    var datePath = vm.meal.date.toLocaleDateString().replace(/\//g, '-');
+    // var datePath = vm.meal.date.toLocaleDateString().replace(/\//g, '-');
 
     console.log(mealData);
-    vm.backLink = vm.journalPath + '/days/' + datePath;
+    // vm.backLink = vm.journalPath + '/days/' + datePath;
 
     // taken from new meals controller
     vm.apiSearch = '';
@@ -45,6 +45,11 @@
 
     // add own food ---> add to last item
 
+    function getDatePath() {
+      var datePath = vm.meal.date.toLocaleDateString().replace(/\//g, '-');
+      vm.backLink = vm.journalPath + '/days/' + datePath;
+    }
+
     function foodSearch() {
       MealService.foodApiSearch(vm.apiSearch).then(function(data) {
         console.log(data.data.hits);
@@ -65,11 +70,13 @@
       food.userServings = 1;
 
       vm.meal.apiFoods.push(food);
+      calcNutritionTotal();
     }
 
     function removeFood(food, type) {
       var foodIdx = vm.meal[type].indexOf(food);
       vm.meal[type].splice(foodIdx, 1);
+      calcNutritionTotal();
     }
 
     function addOwnFood() {
@@ -86,6 +93,7 @@
         protein: null,
         sugars: null,
       });
+      calcNutritionTotal();
     }
 
     // dry this up!!
@@ -131,7 +139,7 @@
         // console.log(vm.meal.userFoods);
         vm.meal.totalNutrition.calories += (currentFood.calories * servings);
         vm.meal.totalNutrition.fat += (currentFood.fat * servings);
-        vm.meal.totalNutrition.carbs += (currentFood.carbs * servings);
+        vm.meal.totalNutrition.carbs += (currentFood.carbohydrates * servings);
         vm.meal.totalNutrition.fiber += (currentFood.fiber * servings);
         vm.meal.totalNutrition.protein += (currentFood.protein * servings);
         vm.meal.totalNutrition.sugars += (currentFood.sugars * servings);
@@ -140,21 +148,29 @@
 
     function updateMeal() {
       // console.log(vm.meal.apiFoods.length);
-      var user = UserService.getCurrentUser();
-      var dayRoute;
+      // var user = UserService.getCurrentUser();
+      // var dayRoute;
 
       vm.meal.date = vm.meal.date.toLocaleDateString();
       console.log(vm.meal.date);
       calcNutritionTotal();
       console.log(vm.meal);
 
-      MealService.mealResource.save({ journal_id: user.journal }, vm.meal);
-
-      dayRoute = vm.meal.date.replace(/\//g, '-');
-      // redirect to day page for that day
-      $location.path(vm.backLink);
+      MealService.mealResource.update({ journal_id: vm.meal.journal[0], meal: meal._id }, vm.meal).$promise.then(function(data) {
+        // redirect after update --- also do on new meal page?
+        if (data.message) {
+          getDatePath();
+          // dayRoute = vm.meal.date.replace(/\//g, '-');
+          // redirect to day page for that day
+          $location.path(vm.backLink);
+        }
+      });
     }
-
-    calcNutritionTotal();
+// console.log('LOCATION!', $location.$$path.indexOf('edit'));
+    // only run function if on edit page
+    if ($location.$$path.indexOf('edit') !== -1) {
+      calcNutritionTotal();
+    }
+    getDatePath();
   }
 })();
