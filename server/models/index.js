@@ -14,5 +14,6 @@ module.exports = {
   Journal: require('./journal'),
   Meal: require('./meal'),
   // ApiFood: require('./apiFood'),
-  Food: require('./food')
+  Food: require('./food'),
+  Inspiration: require('./inspiration')
 };
