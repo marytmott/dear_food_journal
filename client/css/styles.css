@@ -54,8 +54,8 @@ a:hover, a:link, a:visited {
 
 .meal-form-container {
   height: 959px;
-  overflow-y: scroll;
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 #food-search-form {
@@ -97,7 +97,57 @@ a:hover, a:link, a:visited {
 }*/
 
 .meal-title {
-  margin-top: 0;
+  /*margin-top: 0;*/
+}
+
+/*#insp-container {
+  width: 100%;
+
+
+}*/
+
+.insp-menu-row {
+  /*margin-bottom: 30px;*/
+}
+
+#insp-all {
+  height: 900px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+
+.insp-mdiv {
+  margin-left: 10px;
+  margin-right: 10px;
+  /*margin-bottom: 20px;*/
+  text-align: center;
+  width: 250px;
+}
+
+.center-div {
+  /*width: ;*/
+}
+
+.insp-mele-quote {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 10px 0 10px;
+  margin-bottom: 20px;
+}
+
+.insp-mele-tip {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.insp-img-m {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 250px;
+  margin-bottom: 20px;
 }
 
 .new-insp {

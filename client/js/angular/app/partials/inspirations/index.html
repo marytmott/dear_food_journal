@@ -2,14 +2,9 @@
 <div class="col-md-10">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <!-- day pagination -->
-      <!-- these arrows do not need ot be buttons? nice click effect thing tho? -->
-<!--       <button class="btn btn-link btn-xs inline" ng-click="vm.routeToDiffDay(vm.previousDay)"><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
-      <h4 class="text-warning inline default-cursor">{{ vm.date | date: 'fullDate'}}</h4>
-      <button class="btn btn-link btn-xs inline" ng-click="vm.routeToDiffDay(vm.nextDay)"><span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button> -->
       <div class="row">
         <div class="col-md-3">
-          <a ng-href="/journals/{{ vm.journal }}/inspirations/new">New Inspiration</a>
+          <a ng-href="/journals/{{ vm.journal }}/inspirations/new">Add New Inspiration</a>
         </div>
         <div class="col-md-9">
           <!-- <div class="" -->
@@ -20,21 +15,24 @@
 
 
     <div class="panel-body">
-      <div class="row">
-        <div class="col-md-4">
-          <!-- sorting -->
-          <form class="form-inline">
+      <div class="row insp-menu-row">
+        <div class="col-md-1 text-right">
+          Show:
+        </div>
+        <div class="col-md-3">
+          <div class="form-inline">
             <div class="form-group">
-              <label for="sort-category" class="">Sort By:</label>
-              <select id="sort-category" class="form-control input-sm" ng-model="vm.sort">
-                <option value="+time">Earliest to Latest</option>
-                <option value="-time">Latest to Earliest</option>
-                <option value="+name">Name</option>
-                <option value="-totalNutrition.calories">Most Calories</option>
-                <option value="+totalNutrition.calories">Least Calories</option>
-              </select>
+              <input type="checkbox" id="quotes-cxb" value="true" ng-model="vm.show.quotes" ng-click="vm.reloadMasonry()"><label for="quotes-cxb"> Quotes</label>
             </div>
-          </form>
+            <div class="form-group">
+              <input type="checkbox" id="img-cxb" value="true" ng-model="vm.show.images" ng-click="vm.reloadMasonry()"><label for="img-cxb"> Images</label>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" id="tips-cxb" value="true" ng-model="vm.show.tips" ng-click="vm.reloadMasonry()"><label for="tips-cxb"> Tips</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8"
           <div class="form-group">
           <form class="form-inline">
             <div class="form-group">
@@ -57,36 +55,20 @@
       </div>
 
 
-      // one div for quotes, one for graphics
-      // random at top! or scroll ...that would be  fancy
-
-      <div id="inspirations-main">
+      <!-- <div class="row"> -->
 // looks like you need to add some inspirations to help you focus on what helps you!
-
-
-
-      <!-- meals -->
-<!--       <div class="fluid-container daily-meals-scroll">
-        <div class="col-md-4" ng-repeat="meal in vm.meals | orderBy: vm.sort">
-          <ul class="">
-            <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">{{ meal.name }}</a> - {{ meal.time | date: 'shortTime' }}</li>
-            <li>
-              <ul>
-                <li ng-repeat="food in meal.foodEntries">{{ food.food[0].name }}, servings: {{ food.servings }}</li>
-              </ul>
-            </li>
-            <li>Total Nutrition: -->
-              <!-- another directive to make! -->
-<!--               <ul class="horizontal-list">
-                <li ng-repeat="(nutrient, amount) in meal.totalNutrition">{{ nutrient }}: {{ amount | number:0 }}g</li>
-              </ul>
-            </li> -->
-              <!-- <li>{{ meal.notes }}</li> -->
-<!--             <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">View Meal</a> | <a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}/delete">Delete</a></li>
-          </ul>
-        </div> -->
+  <div id="insp-all">
+      <div masonry reload-on-show>
+        <div class="masonry-brick insp-mdiv" ng-repeat="inspiration in vm.inspirations">
+          <div class="insp-mele-quote" ng-if="inspiration.type === 'quote'" ng-show="vm.show.quotes">
+            <p>{{ inspiration.quote }}</p>
+            <p ng-if="inspiration.author">- {{ inspiration.author }}</p>
+          </div>
+          <img ng-src="{{ inspiration.imageLink }}" class="insp-img-m" ng-if="inspiration.type === 'image'" ng-show="vm.show.images" />
+          <p class="insp-mele-tip" ng-if="inspiration.type === 'tip'" ng-show="vm.show.tips">{{ inspiration.tip }}</p>
+        </div>
+      </div>
       </div>
     </div>
   </div>
-</div>
 </div>

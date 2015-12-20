@@ -5,19 +5,31 @@
     .module('dearFoodJ.inspirations')
     .controller('InspirationsController', InspirationsController);
 
-  InspirationsController.$inject = ['$routeParams', '$location', 'inspirationData'];
+  InspirationsController.$inject = ['$rootScope', '$routeParams', '$location', 'inspirationData'];
 
-  function InspirationsController($routeParams, $location, inspirationData) {
+  function InspirationsController($rootScope, $routeParams, $location, inspirationData) {
     var vm = this;
 
     console.log(inspirationData);
-    vm.quotes = inspirationData.quotes;
-    vm.images = inspirationData.images;
-    vm.tips = inspirationData.tips;
+    // vm.quotes = inspirationData.quotes;
+    // vm.images = inspirationData.images;
+    // vm.tips = inspirationData.tips;
+    vm.inspirations = inspirationData;
+    vm.reloadMasonry = reloadMasonry;
+
+    vm.show = {
+      quotes: true,
+      images: true,
+      tips: true
+    };
 
     console.log($location);
     console.log($routeParams);
     vm.journal = $routeParams.journal_id;
+
+    function reloadMasonry() {
+      $rootScope.$broadcast('masonry.reload');
+    }
   }
 
 })();

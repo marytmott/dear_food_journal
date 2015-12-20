@@ -17,25 +17,26 @@
           inspirationData: ['UserService', 'InspirationService', function(UserService, InspirationService) {
             var user = UserService.getCurrentUser();
 
-            return InspirationService.inspirationResource.query({ journal_id: user.journal }).$promise.then(function(data) {
-              var quoteInsps = [];
-              var imgInsps = [];
-              var tipInsps = [];
-              var currentInsp;
+            return InspirationService.inspirationResource.query({ journal_id: user.journal });
+            // .$promise.then(function(data) {
+            //   var quoteInsps = [];
+            //   var imgInsps = [];
+            //   var tipInsps = [];
+            //   var currentInsp;
 
-              for (var i = 0; i < data.length; i++) {
-                currentInsp = data[i];
+            //   for (var i = 0; i < data.length; i++) {
+            //     currentInsp = data[i];
 
-                if (currentInsp.type === 'quote') {
-                  quoteInsps.push(currentInsp);
-                } else if (currentInsp.type === 'image') {
-                  imgInsps.push(currentInsp);
-                } else {
-                  tipInsps.push(currentInsp);
-                }
-              }
-              return { quotes: quoteInsps, images: imgInsps, tips: tipInsps };
-            });
+            //     if (currentInsp.type === 'quote') {
+            //       quoteInsps.push(currentInsp);
+            //     } else if (currentInsp.type === 'image') {
+            //       imgInsps.push(currentInsp);
+            //     } else {
+            //       tipInsps.push(currentInsp);
+            //     }
+            //   }
+            //   return { quotes: quoteInsps, images: imgInsps, tips: tipInsps };
+            // });
           }]
         }
       })

@@ -11,6 +11,7 @@ app.use('/css', express.static(path.join(__dirname, '../client/css')));
 app.use('/js', express.static(path.join(__dirname, '../client/js')));
 app.use('/partials', express.static(path.join(__dirname, '../client/js/angular/app/partials')));
 app.use(express.static(path.join(__dirname, '/public'))); // for images
+app.use('/node_modules', express.static(path.join(__dirname, '../node_modules')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
