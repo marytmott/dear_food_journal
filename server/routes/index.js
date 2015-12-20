@@ -7,6 +7,7 @@ var users = require('./users');
 var foods = require('./foods');
 var meals = require('./meals');
 var days = require('./days');
+var inspirations = require('./inspirations');
 
 // only allow ajax calls
 function checkHeaders(req, res, next) {
@@ -28,5 +29,6 @@ module.exports = {
   users: users,
   meals: meals,
   days: days,
-  foods: foods
+  foods: foods,
+  inspirations: inspirations
 };

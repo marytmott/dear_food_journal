@@ -22,6 +22,7 @@ app.use('/api/users', routes.users);
 app.use('/api/foods', routes.foods);
 app.use('/api/journals/:journal_id/meals', routes.meals);
 app.use('/api/journals/:journal_id/days', routes.days);
+app.use('/api/journals/:journal_id/inspirations', routes.inspirations);
 
 // send to angular
 app.get('*', function(req, res) {

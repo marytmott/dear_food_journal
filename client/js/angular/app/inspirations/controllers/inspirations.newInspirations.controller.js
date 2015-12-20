@@ -5,9 +5,9 @@
     .module('dearFoodJ.inspirations')
     .controller('NewInspirationsController', NewInspirationsController);
 
-  NewInspirationsController.$inject = [];
+  NewInspirationsController.$inject = ['$location', 'UserService', 'InspirationService'];
 
-  function NewInspirationsController() {
+  function NewInspirationsController($location, UserService, InspirationService) {
     var vm = this;
 
     vm.inspiration = {};
@@ -15,6 +15,14 @@
 
     function addInspiration() {
       console.log(vm.inspiration);
+      var user = UserService.getCurrentUser();
+      console.log(user);
+      var journal = user.journal;
+
+      vm.inspiration.journal = journal;
+
+      InspirationService.inspirationResource.save({ journal_id: journal }, vm.inspiration);
+      $location.path('/journals/' + journal + '/inspirations');
     }
 
   }
