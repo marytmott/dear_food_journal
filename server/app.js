@@ -21,6 +21,7 @@ app.use(morgan('tiny'));
 app.use(routes.router);
 app.use('/api/users', routes.users);
 app.use('/api/foods', routes.foods);
+app.use('/api/journals', routes.journals);
 app.use('/api/journals/:journal_id/meals', routes.meals);
 app.use('/api/journals/:journal_id/days', routes.days);
 app.use('/api/journals/:journal_id/inspirations', routes.inspirations);

@@ -4,6 +4,7 @@ var path = require('path');
 
 // route files
 var users = require('./users');
+var journals = require('./journals');
 var foods = require('./foods');
 var meals = require('./meals');
 var days = require('./days');
@@ -27,6 +28,7 @@ router.use(checkHeaders);
 module.exports = {
   router: router,
   users: users,
+  journals: journals,
   meals: meals,
   days: days,
   foods: foods,
