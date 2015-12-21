@@ -9,17 +9,17 @@ var journalSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   }],
-  dailyCalorieGoal: Number,
   //other daily goals?
   weightChangeType: {  // this will indicate whether they want to gain or lose weight
     type: String,
     default: 'lose' //set this on user creation?
   },
+  weightChangeReason: String,
+  dailyCalorieGoal: Number,
   weightGoal: Number,
   // add date for when weight is entered to track how much lost in how much time?
   originalWeight: Number,
   toDateWeightChange: Number,
-  weightChangeReason: String
 // general notes or put in inspirations?
 });
 
