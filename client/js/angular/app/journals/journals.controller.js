@@ -19,6 +19,7 @@
     // if they clicked to change something
     vm.change = {
       weightChangeReason: false,
+      weightChangeType: false,
       dailyCalGoal: false,
       wtGoal: false,
       addWtChange: false
