@@ -20,18 +20,23 @@
         controller: 'JournalsController',
         controllerAs: 'vm',
         resolve: {
-          // resolve b/c of redirect from login
-          currentUser: function(UserService, $location) {  // need to add [] around injection?
+          // dry this up!
+          journal: ['UserService', 'JournalService', function(UserService, JournalService) {  // need to add [] around injection?
+            var user = UserService.getCurrentUser();
+
+            return JournalService.journalResource.get({ journal_id: user.journal });
+          }],
+          user: ['UserService', function(UserService) {
             return UserService.getCurrentUser();
-          }
+          }]
         }
         // add restricted
-      })
-      .when('/journals/:journal_id/edit', {
-        templateUrl: '/partials/journals/edit.html',
-        controller: 'JournalsController',
-        controllerAs: 'vm'
       });
+      // .when('/journals/:journal_id/edit', {
+      //   templateUrl: '/partials/journals/edit.html',
+      //   controller: 'JournalsController',
+      //   controllerAs: 'vm'
+      // });
       // delete journal if they delete account and that is it
       // ;
       // new?

@@ -1,1 +1,63 @@
-JOURNAL INDEX!
+<div class="col-md-10">
+<div class="panel panel-default">
+  <div class="panel-heading">
+  <p> need to fix pluralization of 's'</p>
+    <h3>{{ vm.user.firstName }}'s Journal</h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-6">
+    <form class="form-horizontal">
+
+      <div class="form-group">
+        <label for="wt-chng-rsn">I want to lose weight because: </label>
+        <input type="text" id="wt-chng-rsn" class="form-control" ng-model="vm.journal.weightChangeReason" />
+      </div>
+      <div class="form-group">
+        <label for="cal-goal" class="control-label">daily calorie goal</label>
+        <input type="number" id="cal-goal" class="form-control" ng-model="vm.journal.dailyCalorieGoal" />
+      </div>
+      <div class="form-group">
+        <label for="weight-goal" class="control-label">Weight Goal:</label>
+        <input type="number" id="weight-goal" class="form-control" ng-model="vm.journal.weightGoal" />
+      </div>
+       <!-- PUT THIS ON USER SIGN UP PAGE!! -->
+      <div class="form-group">
+        <label for="orig-weight">Original Weight:</label>
+        <input type="number" id="orig-weight" class="form-control" ng-model="vm.journal.originalWeight" />
+      </div>
+      <div class="form-group">
+        <p>to date weight change</p>
+        <p>update weight</p>
+        <p>modify total weight change</p>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--
+  <p> dailty calorie goal</p>
+  <p>weight goal</p>
+  <p> original weight</p>
+  <p> to date weigth chante</p>
+  <p> weight change reason</p>
+  <p>daily total nutrition so far</p>
+  </div>
+</div>
+
+
+var journalSchema = mongoose.Schema({
+  user: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }],
+  dailyCalorieGoal: Number,
+  //other daily goals?
+  weightGoal: Number,
+  // add date for when weight is entered to track how much lost in how much time?
+  origWeight: Number,
+  toDateWeightChange: Number,
+  weightChangeReason: String
+// general notes or put in inspirations?
+}); -->
