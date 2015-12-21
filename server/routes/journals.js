@@ -17,15 +17,16 @@ router.get('/:journal_id', function(req, res) {
 });
 
 router.put('/:journal_id', function(req, res) {
-  console.log(req.body);
-  res.send('ok');
-  // db.Journal.findByIdAndUpdate(req.params.journal_id, req.body, function(err, journal) {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     res.send(journal);
-  //   }
-  // });
+  // console.log(req.body);
+  // res.send('ok');
+  db.Journal.findByIdAndUpdate(req.body._id, req.body, { new: true }, function(err, journal) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(journal);
+      res.json({ success: true, journal: journal });
+    }
+  });
 });
 
 

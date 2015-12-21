@@ -48,6 +48,16 @@ a:hover, a:link, a:visited {
   background: rgba(255, 255, 255, 0.65);
 }
 
+/* for forms, currently unused */
+.underline {
+  display: block;
+  width: 100%;
+  background-color: RGBA(0, 0, 0, 0);
+  border: 0;
+  border-bottom: 2px solid RGBA(54, 134, 175, 1);
+  outline:none; /* prevents textbox highlight in chrome */
+}
+
 .new-food {
   height: 1050px;
 }

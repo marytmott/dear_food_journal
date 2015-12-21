@@ -11,6 +11,10 @@ var journalSchema = mongoose.Schema({
   }],
   dailyCalorieGoal: Number,
   //other daily goals?
+  weightChangeType: {  // this will indicate whether they want to gain or lose weight
+    type: String,
+    default: 'lose' //set this on user creation?
+  },
   weightGoal: Number,
   // add date for when weight is entered to track how much lost in how much time?
   originalWeight: Number,

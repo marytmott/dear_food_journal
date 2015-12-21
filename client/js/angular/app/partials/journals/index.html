@@ -6,12 +6,28 @@
   </div>
   <div class="panel-body">
     <div class="col-md-6">
+    <p> click on any item below to update it</p>
     <form class="form-horizontal">
 
-      <div class="form-group">
-        <label for="wt-chng-rsn">I want to lose weight because: </label>
+      <!-- weight change reason -->
+      <h5 class="pointer-cursor" ng-if="vm.journal.weightChangeReason && !vm.change.weightChangeReason" ng-click="vm.change.weightChangeReason = !vm.change.weightChangeReason">I want to {{ vm.journal.weightChangeType }} weight because {{ vm.journal.weightChangeReason }}.</h5>
+      <h5 class="pointer-cursor" ng-if="!vm.journal.weightChangeReason" ng-hide="vm.change.weightChangeReason" ng-click="vm.change.weightChangeReason = !vm.change.weightChangeReason"><button type="button" ><span class="glyphicon glyphicon-object-align-vertical" aria-hidden="true"></span></button> Looks like you need to add a reason for your goal to {{ vm.journal.weightChangeType }} weight!</h5>
+
+      <div class="form-group" ng-show="vm.change.weightChangeReason">
+        <label for="wt-chng-rsn">I want to {{ vm.journal.weightChangeType }} weight because: </label>
         <input type="text" id="wt-chng-rsn" class="form-control" ng-model="vm.journal.weightChangeReason" />
+        <p class="text-right"><a href="" ng-click="vm.journal.weightChangeReason = ''">clear</a> | <a href="" ng-click="vm.updateJournal('weightChangeReason')">save</a> | <a href="" ng-click="vm.change.weightChangeReason = false">cancel</a></p>
       </div>
+      <div class="form-group" ng-show="vm.change.weightChangeReason">
+        <p>I want to:
+          <input type="checkbox" id="wt-change-lose" ng-true-value="'lose'" ng-model="vm.journal.weightChangeType" /> <label for="wt-change-lose">lose</label>
+          <input type="checkbox" id="wt-change-gain" ng-true-value="'gain'" ng-model="vm.journal.weightChangeType" /> <label for="wt-change-gain">gain</label>
+          weight.
+        </p>
+      </div>
+
+
+
       <div class="form-group">
         <label for="cal-goal" class="control-label">daily calorie goal</label>
         <input type="number" id="cal-goal" class="form-control" ng-model="vm.journal.dailyCalorieGoal" />
@@ -29,6 +45,7 @@
         <p>to date weight change</p>
         <p>update weight</p>
         <p>modify total weight change</p>
+        <p>save all changes</p>
       </div>
     </form>
     </div>
@@ -54,9 +71,13 @@ var journalSchema = mongoose.Schema({
   }],
   dailyCalorieGoal: Number,
   //other daily goals?
+  weightChangeType: {  // this will indicate whether they want to gain or lose weight
+    type: String,
+    default: 'lose' //set this on user creation?
+  },
   weightGoal: Number,
   // add date for when weight is entered to track how much lost in how much time?
-  origWeight: Number,
+  originalWeight: Number,
   toDateWeightChange: Number,
   weightChangeReason: String
 // general notes or put in inspirations?
