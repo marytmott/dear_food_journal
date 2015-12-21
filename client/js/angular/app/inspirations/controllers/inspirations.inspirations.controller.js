@@ -29,7 +29,7 @@
 
     // for edit view
     vm.inspiration = inspirationData;
-    console.log(vm.inspiration);
+    // console.log(vm.inspiration);
     vm.updateInspiration = updateInspiration;
     vm.deleteInspiration = deleteInspiration;
 
@@ -45,7 +45,8 @@
     }
 
     function updateInspiration() {
-      InspirationService.inspirationResource.update({ journal_id: vm.journal, inspiration_id: vm.inspiration_id }, vm.inspiration);
+      // console.log('id', vm.inspiration._id);
+      InspirationService.inspirationResource.update({ journal_id: vm.journal, inspiration_id: vm.inspiration._id }, vm.inspiration);
       $location.path(path);
     }
 

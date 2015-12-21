@@ -49,6 +49,19 @@ router.get('/:inspiration_id', function(req, res) {
 });
 
 
+// update inspiration
+router.put('/:inspiration_id', function(req, res) {
+  db.Inspiration.findByIdAndUpdate(req.body._id, req.body, function(err, inspiration) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(inspiration);
+      res.send({ message: 'update successful' });
+    }
+  })
+});
+
+
 // delete inspiration
 router.delete('/:inspiration_id', function(req, res) {
   db.Inspiration.findByIdAndRemove(req.params.inspiration_id, function(err, inspiration) {

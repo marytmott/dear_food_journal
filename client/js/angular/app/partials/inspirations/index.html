@@ -50,7 +50,7 @@
             <div ng-model="inspiration.title" ng-if="inspiration.type === 'image'" ng-show="vm.show.images">
               <a ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit"><img ng-src="{{ inspiration.imageLink }}" class="insp-img-m" /><a ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit"></a>
             </div>
-            <h5 ng-if="inspiration.type === 'tip'" ng-show="vm.show.tips"><a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit"><p class="insp-mele-tip">{{ inspiration.tip }}</p></a></h5>
+            <h5 ng-if="inspiration.type === 'tip'" ng-show="vm.show.tips"><a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit"><p class="insp-mele-tip"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {{ inspiration.tip }}</p></a></h5>
           </div>
         </div>
       </div>

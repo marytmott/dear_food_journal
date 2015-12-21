@@ -26,6 +26,19 @@
         controller: 'NewInspirationsController',
         controllerAs: 'vm'
       })
+      .when('/journals/:journal_id/inspirations/:inspiration_id', {
+        templateUrl: '/partials/inspirations/show-insp-image.html',
+        contorller: 'InspirationsController',
+        controllerAs: 'vm',
+        resolve: {
+          inspirationData: ['$route', 'InspirationService', function($route, InspirationService) {
+            var journal = $route.current.params.journal_id;
+            var inspiration = $route.current.params.inspiration_id;
+
+            return InspirationService.inspirationResource.get({ journal_id: journal, inspiration_id: inspiration });
+          }]
+        }
+      })
       .when('/journals/:journal_id/inspirations/:inspiration_id/edit', {
         templateUrl: '/partials/inspirations/edit.html',
         controller: 'InspirationsController',
