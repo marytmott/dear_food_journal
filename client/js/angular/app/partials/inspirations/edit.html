@@ -1,0 +1,69 @@
+<!-- insp form -->
+<div class="col-md-6 panel panel-default insp-form">
+    <div class="row">
+    <!-- <div class="col-md-6"> -->
+    <p><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>back</p>
+    </div>
+
+  <div class="panel-body">
+<!--     <div class="col-md-6 text-right">
+    delete inspiration
+    </div>
+    </div> -->
+    <form class="form-horizontal" ng-submit="vm.updateInspiration()">
+      <fieldset>
+<!--         <legend>Something new to inspire me!</legend>
+ -->
+        <!-- show quote input -->
+        <section ng-if="vm.inspiration.type ==='quote'">
+          <div class="form-group">
+            <label for="insp-quote" class="">Quote:</label>
+            <textarea id="insp-quote" class="form-control" placeholder="What lovely quote do you have to add?" ng-model="vm.inspiration.quote"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="insp-author" class="">Author:</label>
+            <input type="text" id="insp-author" class="form-control" placeholder="Does the quote have an author?" ng-model="vm.inspiration.author" />
+          </div>
+        </section>
+
+        <!-- show image input -->
+        <section ng-if="vm.inspiration.type === 'image'">
+          <div class="form-group">
+            <label for="insp-img-title">Title:</label>
+            <input type="text" id="insp-img-title" class="form-control" placeholder="Title for this image inspiration?" ng-model="vm.inspiration.title" />
+          </div>
+          <div class="form-group">
+            <label for="insp-img" class="">Image Link:</label>
+            <input type="text" id="insp-img" class="form-control" placeholder="Please enter a valid url." ng-model="vm.inspiration.imageLink" />
+          </div>
+          <div class="form-group">
+            <label for="insp-img-comments">Comments:</label>
+            <textarea id="insp-img-comments" class="form-control" rows="4" placeholder="Anything to say about this image?" ng-model="vm.inspiration.quote"></textarea>
+          </div>
+        </section>
+
+        <!-- show tip input -->
+        <section ng-if="vm.inspiration.type === 'tip'">
+          <div class="form-group">
+            <label for="insp-tip" class="">Tip:</label>
+            <textarea id="insp-tip" class="form-control" placeholder="Want to jot down a tip for yourself?" ng-model="vm.inspiration.tip"></textarea>
+          </div>
+        </section>
+
+        <button type="submit" class="btn btn-primary">Update</button> <button type="button" class="btn btn-default" ng-click="vm.deleteInspiration()">Delete</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<!-- </div> -->
+
+<!-- new insp preview -->
+<div class="col-md-4 panel panel-default  insp-form">
+    <!-- <div class="panel-heading"> -->
+    <!-- </div> -->
+
+  <div class="panel-body">
+  <h3>Preview</h3>
+  </div>
+</div>
+<!-- </div>

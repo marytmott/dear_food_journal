@@ -34,4 +34,32 @@ router.post('/', function(req, res) {
   // res.json({ message: 'received' });
 });
 
+
+// get 1 inspiration
+router.get('/:inspiration_id', function(req, res) {
+  console.log(req.params.inspiration_id);
+  db.Inspiration.findById(req.params.inspiration_id, function(err, inspiration) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(inspiration);
+      res.send(inspiration);
+    }
+  });
+});
+
+
+// delete inspiration
+router.delete('/:inspiration_id', function(req, res) {
+  db.Inspiration.findByIdAndRemove(req.params.inspiration_id, function(err, inspiration) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('INSPIRATION DELETED: ', inspiration);
+      res.json({ success: true });
+    }
+  });
+});
+
+
 module.exports = router;

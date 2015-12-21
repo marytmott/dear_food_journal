@@ -18,25 +18,6 @@
             var user = UserService.getCurrentUser();
 
             return InspirationService.inspirationResource.query({ journal_id: user.journal });
-            // .$promise.then(function(data) {
-            //   var quoteInsps = [];
-            //   var imgInsps = [];
-            //   var tipInsps = [];
-            //   var currentInsp;
-
-            //   for (var i = 0; i < data.length; i++) {
-            //     currentInsp = data[i];
-
-            //     if (currentInsp.type === 'quote') {
-            //       quoteInsps.push(currentInsp);
-            //     } else if (currentInsp.type === 'image') {
-            //       imgInsps.push(currentInsp);
-            //     } else {
-            //       tipInsps.push(currentInsp);
-            //     }
-            //   }
-            //   return { quotes: quoteInsps, images: imgInsps, tips: tipInsps };
-            // });
           }]
         }
       })
@@ -44,7 +25,34 @@
         templateUrl: '/partials/inspirations/new.html',
         controller: 'NewInspirationsController',
         controllerAs: 'vm'
-      });
+      })
+      .when('/journals/:journal_id/inspirations/:inspiration_id/edit', {
+        templateUrl: '/partials/inspirations/edit.html',
+        controller: 'InspirationsController',
+        controllerAs: 'vm',
+        resolve: {
+          inspirationData: ['$route', 'InspirationService', function($route, InspirationService) {
+            var journal = $route.current.params.journal_id;
+            var inspiration = $route.current.params.inspiration_id;
+
+            return InspirationService.inspirationResource.get({ journal_id: journal, inspiration_id: inspiration });
+          }]
+        }
+      })
+      .when('/journals/:journal_id/inspirations/:inspiration_id/delete', {
+        resolve: {
+          deleteInspiration: ['$route', '$location', 'InspirationService', function($route, $location, InspirationService) {
+            var journal = $route.current.params.journal_id;
+            var inspiration = $route.current.params.inspiration_id;
+
+            InspirationService.inspirationResource.delete({ journal_id: journal, inspiration_id: inspiration }).$promise.then(function(data) {
+              if (data.success) {
+                $location.path('/journals/' + journal + '/inspirations');
+              }
+            });
+          }]
+        }
+      })
   }
 
 })();

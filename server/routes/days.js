@@ -39,7 +39,7 @@ router.get('/:date', function(req, res) {
     // if (err) return res.json(500);
     db.Meal.populate(meals, options, function (err, meals) {
               // console.log(meals);
-      res.json(meals);
+      res.send(meals);
     });
   // });
           // for (var i = 0; i < meals.length; i++)
