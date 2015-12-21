@@ -13,6 +13,7 @@
     vm.user = user;
     vm.journal = journal;
 
+    vm.temp = {};
     // temp -- in case they change it and go back
 
     // if they clicked to change something
@@ -23,7 +24,22 @@
       addWtChange: false
     };
     console.log(vm.journal);
+
+    vm.changeMode = changeMode;
     vm.updateJournal = updateJournal;
+
+    function changeMode(property, cancel) {
+      vm.change[property] = !vm.change[property];
+      // if true, put in temp value for cancelling
+      if (vm.change[property]) {
+        vm.temp[property] = vm.journal[property];
+      }
+
+      // reset
+      if (cancel) {
+        vm.journal[property] = vm.temp[property];
+      }
+    }
 
     function updateJournal(property) {
       var user = UserService.getCurrentUser();

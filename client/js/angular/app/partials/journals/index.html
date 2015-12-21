@@ -10,13 +10,13 @@
     <form class="form-horizontal">
 
       <!-- weight change reason -->
-      <h5 class="pointer-cursor" ng-if="vm.journal.weightChangeReason && !vm.change.weightChangeReason" ng-click="vm.change.weightChangeReason = !vm.change.weightChangeReason">I want to {{ vm.journal.weightChangeType }} weight because {{ vm.journal.weightChangeReason }}.</h5>
-      <h5 class="pointer-cursor" ng-if="!vm.journal.weightChangeReason" ng-hide="vm.change.weightChangeReason" ng-click="vm.change.weightChangeReason = !vm.change.weightChangeReason"><button type="button" ><span class="glyphicon glyphicon-object-align-vertical" aria-hidden="true"></span></button> Looks like you need to add a reason for your goal to {{ vm.journal.weightChangeType }} weight!</h5>
+      <h5 class="pointer-cursor" ng-if="vm.journal.weightChangeReason && !vm.change.weightChangeReason" ng-click="vm.changeMode('weightChangeReason')">I want to {{ vm.journal.weightChangeType }} weight because {{ vm.journal.weightChangeReason }}</h5>
+      <h5 class="pointer-cursor" ng-if="!vm.journal.weightChangeReason" ng-hide="vm.change.weightChangeReason" ng-click="vm.changeMode('weightChangeReason')"><button type="button" ><span class="glyphicon glyphicon-object-align-vertical" aria-hidden="true"></span></button> Looks like you need to add a reason for your goal to {{ vm.journal.weightChangeType }} weight!</h5>
 
       <div class="form-group" ng-show="vm.change.weightChangeReason">
-        <label for="wt-chng-rsn">I want to {{ vm.journal.weightChangeType }} weight because: </label>
+        <label for="wt-chng-rsn">I want to {{ vm.journal.weightChangeType }} weight because...</label>
         <input type="text" id="wt-chng-rsn" class="form-control" ng-model="vm.journal.weightChangeReason" />
-        <p class="text-right"><a href="" ng-click="vm.journal.weightChangeReason = ''">clear</a> | <a href="" ng-click="vm.updateJournal('weightChangeReason')">save</a> | <a href="" ng-click="vm.change.weightChangeReason = false">cancel</a></p>
+        <p class="text-right"><a href="" ng-click="vm.journal.weightChangeReason = ''">clear</a> | <a href="" ng-click="vm.updateJournal('weightChangeReason')">save</a> | <a href="" ng-click="vm.changeMode('weightChangeReason', true)">cancel</a></p>
       </div>
       <div class="form-group" ng-show="vm.change.weightChangeReason">
         <p>I want to:
