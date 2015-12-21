@@ -12,13 +12,30 @@
 
     vm.inspiration = {};
     vm.addInspiration = addInspiration;
+    vm.clearFields = clearFields;
+
+    // if user changes type, need to clear out the other fields
+    function clearFields() {
+
+      // can this be DRYed up?
+      if (vm.inspiration.type === 'quote') {
+        vm.inspiration = {};
+        vm.inspiration.type = 'quote';
+      } else if (vm.inspiration.type === 'image') {
+        vm.inspiration = {};
+        vm.inspiration.type = 'image';
+      } else {
+        vm.inspiration = {};
+        vm.inspiration.type = 'tip';
+      }
+    }
 
     function addInspiration() {
       console.log(vm.inspiration);
       var user = UserService.getCurrentUser();
       console.log(user);
       var journal = user.journal;
-      vm.inspiration.createdAt = Date.now().toLocaleDateString();
+      vm.inspiration.createdAt = new Date().toLocaleDateString();
 
       vm.inspiration.journal = journal;
 

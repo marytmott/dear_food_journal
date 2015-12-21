@@ -1,6 +1,6 @@
 <!-- new insp form -->
 <div class="col-md-6 panel panel-default">
-  <div class="panel-body new-insp">
+  <div class="panel-body insp-form">
     <form class="form-horizontal" ng-submit="vm.addInspiration()">
       <fieldset>
         <legend>Something new to inspire me!</legend>
@@ -9,7 +9,7 @@
           <label for="inspiration-type" class="control-label"></label>
           <div class="col-md-6 col-md-offset-3">
             <!-- <div class="col-md-6"> -->
-            <select id="inspiration-type" class="form-control" ng-model="vm.inspiration.type">
+            <select id="inspiration-type" class="form-control" ng-model="vm.inspiration.type" ng-change="vm.clearFields()">
               <option value="" disabled selected>What kind of inspiration to add?</option>
               <option value="quote">Quote</option>
               <option value="image">Image</option>
@@ -65,9 +65,9 @@
 <div class="col-md-4 panel panel-default">
     <!-- <div class="panel-heading"> -->
     <!-- </div> -->
-  <h3>Preview</h3>
 
-  <div class="panel-body insp-preview">
+  <div class="panel-body insp-form">
+  <h3>Preview</h3>
   </div>
 </div>
 <!-- </div>
