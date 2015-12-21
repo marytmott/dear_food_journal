@@ -150,6 +150,10 @@ a:hover, a:link, a:visited {
   margin-bottom: 20px;
 }
 
+.insp-links, .insp-links:hover, .insp-links:visited, .insp-links:link {
+  color: black;
+}
+
 .new-insp {
   height: 500px;
 }

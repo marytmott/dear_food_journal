@@ -43,14 +43,14 @@
       <div id="insp-all">
         <div masonry reload-on-show>
           <div class="masonry-brick insp-mdiv" ng-repeat="inspiration in vm.inspirations | filter: search">
-            <div class="insp-mele-quote" ng-if="inspiration.type === 'quote'" ng-show="vm.show.quotes">
+            <h5 ng-if="inspiration.type === 'quote'" ng-show="vm.show.quotes"><a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit"><div class="insp-mele-quote">
               <p>{{ inspiration.quote }}</p>
               <p ng-if="inspiration.author">- {{ inspiration.author }}</p>
-            </div>
+            </div></a></h5>
             <div ng-model="inspiration.title" ng-if="inspiration.type === 'image'" ng-show="vm.show.images">
-              <img ng-src="{{ inspiration.imageLink }}" class="insp-img-m" />
+              <a ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit"><img ng-src="{{ inspiration.imageLink }}" class="insp-img-m" /><a ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit"></a>
             </div>
-            <p class="insp-mele-tip" ng-if="inspiration.type === 'tip'" ng-show="vm.show.tips">{{ inspiration.tip }}</p>
+            <h5 ng-if="inspiration.type === 'tip'" ng-show="vm.show.tips"><a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit"><p class="insp-mele-tip">{{ inspiration.tip }}</p></a></h5>
           </div>
         </div>
       </div>

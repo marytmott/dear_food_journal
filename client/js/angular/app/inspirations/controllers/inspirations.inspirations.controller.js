@@ -10,14 +10,15 @@
   function InspirationsController($rootScope, $routeParams, $location, inspirationData) {
     var vm = this;
 
-    // setTimeout(function(){ $rootScope.$broadcast('masonry.reload'); }, 1000);
+    setTimeout(function(){ $rootScope.$broadcast('masonry.reload'); }, 500);
 
-    console.log(inspirationData);
+    console.log($routeParams);
     // vm.quotes = inspirationData.quotes;
     // vm.images = inspirationData.images;
     // vm.tips = inspirationData.tips;
     vm.inspirations = inspirationData;
     vm.reloadMasonry = reloadMasonry;
+    vm.journal = $routeParams.journal_id;
 
 
     vm.show = {

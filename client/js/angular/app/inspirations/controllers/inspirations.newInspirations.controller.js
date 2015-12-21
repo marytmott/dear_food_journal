@@ -18,6 +18,7 @@
       var user = UserService.getCurrentUser();
       console.log(user);
       var journal = user.journal;
+      vm.inspiration.createdAt = Date.now().toLocaleDateString();
 
       vm.inspiration.journal = journal;
 
