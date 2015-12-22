@@ -8,6 +8,7 @@
   <div class="panel-body">
     <div class="col-md-6">
     <p> click on any item below to update it</p>
+    <p>// change all | save all </p>
     <form class="form-horizontal">
 
       <!-- weight change reason -->
@@ -45,23 +46,34 @@
 
       <!-- daily weight goal -->
       <div class="row">
-        <h5 class="pointer-cursor" ng-if="vm.journal.weightGoal && !vm.change.weightGoal" ng-click="vm.changeMode('weightGoal')">I want to weigh {{ vm.journal.weightGoal }} pounds!</h5>
-        <h5 class="pointer-cursor" ng-if="!vm.journal.weightGoal" ng-hide="vm.change.weightGoal" ng-click="vm.changeMode('weightGoal')"><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Do you want to set a weight goal?</h5>
+        <h5 class="pointer-cursor" ng-if="vm.journal.weightGoal && !vm.change.weightGoal" ng-click="vm.changeMode('weightGoal'); vm.changeMode('startWeight')">I want to weigh {{ vm.journal.weightGoal }} pounds!</h5>
+        <h5 class="pointer-cursor" ng-if="!vm.journal.weightGoal" ng-hide="vm.change.weightGoal" ng-click="vm.changeMode('weightGoal'); vm.changeMode('startWeight');"><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Do you want to set a weight goal?</h5>
       </div>
       <div class="form-group" ng-show="vm.change.weightGoal">
         <label for="weight-goal" class="col-md-6 control-label">I want to weigh: </label>
         <div class="col-md-6">
           <input type="number" id="weight-goal" class="form-control" ng-model="vm.journal.weightGoal" />
         </div>
-        <div class="col-md-11">
+<!--         <div class="col-md-11">
           <p class="text-right"><a href="" ng-click="vm.journal.weightGoal = null">clear</a> | <a href="" ng-click="vm.updateJournal('weightGoal')">save</a> | <a href="" ng-click="vm.changeMode('weightGoal', true)">cancel</a></p>
-        </div>
+        </div> -->
       </div>
 
-      <div class="form-group">
-        <label for="orig-weight">Original Weight:</label>
-        <input type="number" id="orig-weight" class="form-control" ng-model="vm.journal.originalWeight" />
+      <!-- start weight -->
+      <div class="row">
+        <h5 class="pointer-cursor" ng-if="vm.journal.startWeight && !vm.change.startWeight" ng-click="vm.changeMode('startWeight')">My start weight was {{ vm.journal.startWeight }} pounds.</h5>
+<!--         <h5 class="pointer-cursor" ng-if="!vm.journal.startWeight" ng-hide="vm.change.startWeight" ng-click="vm.changeMode('startWeight')"><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Do you want to enter your starting weight to track weight change?</h5> -->
       </div>
+      <div class="form-group" ng-show="vm.change.startWeight">
+        <label for="orig-weight" class="col-md-6 control-label">Start weight:</label>
+        <div class="col-md-6">
+          <input type="number" id="orig-weight" class="form-control" ng-model="vm.journal.startWeight" />
+        </div>
+        <div class="col-md-11" ng-show="vm.change.startWeight && !vm.change.weightGoal">
+          <p class="text-right"><a href="" ng-click="vm.journal.startWeight = null">clear</a> | <a href="" ng-click="vm.updateJournal('startWeight')">save</a> | <a href="" ng-click="vm.changeMode('startWeight', true)">cancel</a></p>
+        </div>
+      </div>
+      <p ng-show="vm.change.weightGoal && vm.change.startWeight" class="text-center"><a href="" ng-click="vm.journal.weightGoal = null; vm.journal.startWeight = null;">clear</a> | <a href="" ng-click="vm.updateJournal('weightGoal'); vm.updateJournal('startWeight');">save</a> | <a href="" ng-click="vm.changeMode('startWeight', true); vm.changeMode('weightGoal', true);">cancel</a></p>
       <div class="form-group">
         <p>to date weight change</p>
         <p>update weight</p>
@@ -77,7 +89,7 @@
 <!--
   <p> dailty calorie goal</p>
   <p>weight goal</p>
-  <p> original weight</p>
+  <p> start weight</p>
   <p> to date weigth chante</p>
   <p> weight change reason</p>
   <p>daily total nutrition so far</p>
@@ -98,7 +110,7 @@ var journalSchema = mongoose.Schema({
   },
   weightGoal: Number,
   // add date for when weight is entered to track how much lost in how much time?
-  originalWeight: Number,
+  startWeight: Number,
   toDateWeightChange: Number,
   weightChangeReason: String
 // general notes or put in inspirations?

@@ -23,7 +23,7 @@ router.put('/:journal_id', function(req, res) {
     if (err) {
       console.log(err);
     } else {
-      console.log(journal);
+      // console.log(journal);
       res.json({ success: true, journal: journal });
     }
   });
