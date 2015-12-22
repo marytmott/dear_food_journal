@@ -30,7 +30,7 @@
 
       <!-- daily calorie goal -->
       <div class="row">
-        <h5 class="pointer-cursor" ng-if="vm.journal.dailyCalorieGoal && !vm.change.dailyCalorieGoal" ng-click="vm.changeMode('dailyCalorieGoal')">My daily calorie goal: {{ vm.journal.dailyCalorieGoal }}g</h5>
+        <h5 class="pointer-cursor" ng-if="vm.journal.dailyCalorieGoal && !vm.change.dailyCalorieGoal" ng-click="vm.changeMode('dailyCalorieGoal')">My daily calorie goal is {{ vm.journal.dailyCalorieGoal }}g.</h5>
         <h5 class="pointer-cursor" ng-if="!vm.journal.dailyCalorieGoal" ng-hide="vm.change.dailyCalorieGoal" ng-click="vm.changeMode('dailyCalorieGoal')"><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Do you want to add a daily calorie goal?</h5>
       </div>
       <div class="form-group" ng-show="vm.change.dailyCalorieGoal">
@@ -45,7 +45,7 @@
 
       <!-- daily weight goal -->
       <div class="row">
-        <h5 class="pointer-cursor" ng-if="vm.journal.weightGoal && !vm.change.weightGoal" ng-click="vm.changeMode('weightGoal')">I am going to weigh: {{ vm.journal.weightGoal }} pounds.</h5>
+        <h5 class="pointer-cursor" ng-if="vm.journal.weightGoal && !vm.change.weightGoal" ng-click="vm.changeMode('weightGoal')">I want to weigh {{ vm.journal.weightGoal }} pounds!</h5>
         <h5 class="pointer-cursor" ng-if="!vm.journal.weightGoal" ng-hide="vm.change.weightGoal" ng-click="vm.changeMode('weightGoal')"><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Do you want to set a weight goal?</h5>
       </div>
       <div class="form-group" ng-show="vm.change.weightGoal">
