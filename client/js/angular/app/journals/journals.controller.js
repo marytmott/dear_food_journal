@@ -20,7 +20,7 @@
     vm.change = {
       weightChangeReason: false,
       weightChangeType: false,
-      dailyCalGoal: false,
+      dailyCalorieGoal: false,
       wtGoal: false,
       addWtChange: false
     };
@@ -44,6 +44,8 @@
 
     function updateJournal(property) {
       var user = UserService.getCurrentUser();
+      console.log(property);
+      changeMode(property);
       // console.log(property);
 
       // update property in case they change something and cancel, don't want to send the whole modified object!
