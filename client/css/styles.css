@@ -9,7 +9,6 @@ body {
   -o-background-size: cover;
   background-size: cover;
   /*font-family: "Lobster", cursive;*/
-  /*font-family: 'Cookie', cursive;*/
   font-family: 'Istok Web', sans-serif;
   font-size: 1.6em;
   /*font-weight: bold;*/
@@ -70,13 +69,14 @@ header {
   text-decoration: none;
 }*/
 
-.text-primary {
+.text-message {
   /*color: RGBA(255, 101, 89, 1);*/
   /*color: RGBA(116, 71, 84, 1);*/
-  color: RGBA(99, 93, 97, 1);
-  /*font-family: 'Shadows Into Light Two', cursive;*/
+  color: RGBA(81, 54, 111, 1);
+/*  font-family: 'Shadows Into Light Two', cursive;
+  font-weight: bold;*/
   /*font-family: "Courgette", cursive;*/
-  font-size: .9em;
+  /*font-size: .9em;*/
 }
 
 legend {
@@ -156,7 +156,7 @@ input {
   display:block; /* for use on default inline elements like span */
   margin: 9px 0;
   overflow: hidden;
-  background-color: RGBA(204, 204, 204, 1);
+  background-color: RGBA(229, 229, 229, 1);
 }
 
 .pointer-cursor {

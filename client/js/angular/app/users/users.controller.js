@@ -18,6 +18,8 @@
     // vm.currentUser = currentUser;
     // vm.currentUser = UserService.getCurrentUser();
     // console.log('user?', vm.currentUser);
+    vm.journal = {};
+    vm.journal.weightChangeType = 'lose';
 
     function signup() {
       vm.user.createdAt = Date.now();
