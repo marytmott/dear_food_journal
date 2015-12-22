@@ -1,14 +1,43 @@
-<form ng-submit="vm.signup()" novalidate>
-  <label for="firstname">first name:
-  <input type="text" placeholder="your first name" ng-model="vm.user.firstName" />
-  <label for="email">email:
-  <input type="text" id="email" placeholder="enter your email" ng-model="vm.user.email" />
-  <label for="password">password:
-  <input type="password" placeholder="enter a password" ng-model="vm.user.password" />
-  <label for="verifypw">password again:
-  <input type="password" placeholder="enter your password again" ng-model="vm.verifypw" />
-  <button type="submit">Sign up!</button>
-</form>
+<div class="col-md-8">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <form class="form-horizontal" ng-submit="vm.signup()" novalidate>
+        <legend class="text-center">Welcome new user!</legend>
+        <p>We sincerely hope this website is a wonderful resource for you to help and encourage you along your life changing journey!</p>
+        <p>All the best with achieving your goals!</p>
+        <div class="col-md-9 col-md-offset-1">
+        <div class="form-group">
+          <label for="first-name" class="col-md-4 control-label">first name:</label>
+          <div class="col-md-8">
+            <input type="text" id="first-name" class="form-control" placeholder="your first name" ng-model="vm.user.firstName" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" class="col-md-4 control-label"><df-required-asterisk></df-required-asterisk>email:</label>
+          <div class="col-md-8">
+            <input type="text" id="email" class="form-control" placeholder="enter your email" ng-model="vm.user.email" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="col-md-4 control-label"><df-required-asterisk></df-required-asterisk>password:</label>
+          <div class="col-md-8">
+            <input type="password" class="form-control" placeholder="enter a password" ng-model="vm.user.password" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="verifypw" class="col-md-4 control-label"><df-required-asterisk></df-required-asterisk>password again:</label>
+          <div class="col-md-8">
+            <input type="password" class="form-control" placeholder="enter your password again" ng-model="vm.verifypw" />
+          </div>
+        </div>
+        <!-- <div class="col-md-3 col-md-offset-4"> -->
+          <button type="submit" class="btn btn-primary text-center">Sign up!</button>
+        <!-- </div> -->
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 
   <!-- email: {
