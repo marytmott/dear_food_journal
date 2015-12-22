@@ -8,18 +8,47 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  /*font-family: "Lobster", cursive;*/
+  /*font-family: 'Cookie', cursive;*/
+  font-family: 'Istok Web', sans-serif;
+  font-size: 1.6em;
+  /*font-weight: bold;*/
+  color: RGBA(99, 93, 97, 1);
 }
 
 header {
   margin-bottom: 65px;
 }
 
+/******* modifying bootstrap **********/
 .navbar {
   border-radius: 0;
-  border-bottom: 1px solid RGBA(221, 221, 221, 1);
+  border-bottom: 1px solid RGBA(99, 93, 97, 1);
+;
+/*  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;*/
+  /*border-bottom: 1px solid RGBA(221, 221, 221, 1);*/
     /*background: rgba(255, 255, 255, 0.90);*/
 
   /*background-color: RGBA(119, 190, 142, 1);*/
+}
+
+.btn {
+  font-size: 1em;
+}
+
+.btn-primary {
+  background-color: RGBA(0, 191, 192, 1);
+  border: RGBA(0, 191, 192, 1);
+  /* pretty red-orange color */
+/*  background-color: RGBA(246, 72, 79, 1);
+  border: RGBA(246, 72, 79, 1);*/
+}
+
+.btn-primary:hover {
+  background-color: RGBA(116, 218, 223, 1);
 }
 
 .list-group-item:first-of-type, .list-group-item, .list-group-item:last-of-type {
@@ -27,8 +56,31 @@ header {
   border-bottom-left-radius: 20px;
 }
 
-a:hover, a:link, a:visited {
+/*a:hover, a:link, a:visited {
   text-decoration: none;
+}*/
+
+.text-primary {
+  /*color: RGBA(255, 101, 89, 1);*/
+  /*color: RGBA(116, 71, 84, 1);*/
+  color: RGBA(99, 93, 97, 1);
+  /*font-family: 'Shadows Into Light Two', cursive;*/
+  /*font-family: "Courgette", cursive;*/
+  font-size: .9em;
+}
+
+legend {
+  color: RGBA(99, 93, 97, 1);
+}
+
+/*label {
+  color: RGBA(99, 93, 97, 1);
+}*/
+
+input {
+  color: RGBA(99, 93, 97, 1);
+  /*font-family: 'Shadows Into Light Two', cursive;*/
+  /*font-family: "Courgette", cursive;*/
 }
 
 .clock {
@@ -45,7 +97,9 @@ a:hover, a:link, a:visited {
 }
 
 .panel {
-  background: rgba(255, 255, 255, 0.65);
+  background: RGBA(255, 255, 255, 0.65);
+  border: 1px solid RGBA(99, 93, 97, 1);
+  border-radius: 15px;
 }
 
 /* for forms, currently unused */
@@ -84,6 +138,15 @@ a:hover, a:link, a:visited {
   margin: 9px 0;
   overflow: hidden;
   background-color: RGBA(153, 153, 153, 1);
+}
+
+.divider-light {
+  height: 1px;
+  width:100%;
+  display:block; /* for use on default inline elements like span */
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: RGBA(204, 204, 204, 1);
 }
 
 .pointer-cursor {
