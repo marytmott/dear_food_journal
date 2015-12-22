@@ -19,7 +19,7 @@ var journalSchema = mongoose.Schema({
   weightGoal: Number,
   // add date for when weight is entered to track how much lost in how much time?
   startWeight: Number,
-  toDateWeightChange: Number,
+  trackedWeightChange: Number,
 // general notes or put in inspirations?
 });
 

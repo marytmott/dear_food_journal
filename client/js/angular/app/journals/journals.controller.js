@@ -22,23 +22,36 @@
       weightChangeType: false,
       dailyCalorieGoal: false,
       weightGoal: false,
-      startWeight: false
+      startWeight: false,
+      weightChange: false
     };
     console.log(vm.journal);
 
+    vm.weightChange = {
+      type: 'lost'
+    };
+
+    vm.changeAllActive = false;
     vm.changeMode = changeMode;
+    vm.changeAll = changeAll;
     vm.updateJournal = updateJournal;
 
     function changeMode(property, cancel) {
       vm.change[property] = !vm.change[property];
       // if true, put in temp value for cancelling
-      if (vm.change[property]) {
+      if (vm.change[property] && property !== 'weightChange') {
         vm.temp[property] = vm.journal[property];
       }
-
       // reset
       if (cancel) {
         vm.journal[property] = vm.temp[property];
+      }
+    }
+
+    function changeAll() {
+      vm.changeAllActive = !vm.changeAllActive;
+      for (var property in vm.change) {
+        vm.change[property] = !vm.change[property];
       }
     }
 
@@ -46,6 +59,11 @@
       var user = UserService.getCurrentUser();
       console.log(property);
       changeMode(property);
+
+      if (property === 'weightChange') {
+        // update journal object w/ total weight change, then save
+        getChangedWeight();
+      }
       // console.log(property);
 
       // update property in case they change something and cancel, don't want to send the whole modified object!
@@ -61,7 +79,12 @@
             vm.journal = data.journal;
           }
         });
-
     }
+
+    // function getChangedWeight() {
+    //   if (vm.weightChange.type === 'lost') {
+    //     return vm.journal.updateWeightChange = -
+    //   }
+    // }
   }
 })();
