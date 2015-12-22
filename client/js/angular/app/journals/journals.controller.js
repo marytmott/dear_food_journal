@@ -21,7 +21,7 @@
       weightChangeReason: false,
       weightChangeType: false,
       dailyCalorieGoal: false,
-      wtGoal: false,
+      weightGoal: false,
       addWtChange: false
     };
     console.log(vm.journal);
