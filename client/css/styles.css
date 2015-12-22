@@ -65,6 +65,10 @@ header {
   border-bottom-left-radius: 20px;
 }
 
+.has-error {
+  font-size: .7em;
+}
+
 /*a:hover, a:link, a:visited {
   text-decoration: none;
 }*/

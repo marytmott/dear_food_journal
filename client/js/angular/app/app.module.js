@@ -5,6 +5,7 @@
     .module('dearFoodJ', [
       'ngRoute',
       'ngResource',
+      'ngMessages',
       'wu.masonry',
       'dearFoodJ.users',
       'dearFoodJ.auth',

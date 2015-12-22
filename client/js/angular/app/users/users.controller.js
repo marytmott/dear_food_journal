@@ -24,7 +24,10 @@
     function signup() {
       vm.user.createdAt = Date.now();
       // clean up use input
-      vm.user.firstName = vm.user.firstName.trim();
+      if (vm.user.firstName) {
+        vm.user.firstName = vm.user.firstName.trim();
+      }
+
       vm.user.email = vm.user.email.trim();
 
       UserService.signup(vm.user).then(function(data) {

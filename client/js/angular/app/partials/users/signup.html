@@ -2,30 +2,41 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="col-md-10 col-md-offset-1">
-        <form class="form-horizontal" ng-submit="vm.signup()" novalidate>
+        <form class="form-horizontal" name="signupForm" ng-submit="vm.signup()" novalidate>
           <legend class="text-center">Get your Journal</legend>
           <div class="form-group">
             <label for="first-name" class="col-md-5 control-label">first name:</label>
             <div class="col-md-7">
-              <input type="text" id="first-name" class="form-control" placeholder="your first name" ng-model="vm.user.firstName" />
+              <input type="text" id="first-name" class="form-control" name="firstName" placeholder="your first name" ng-model="vm.user.firstName" />
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-class="{ 'has-error': signupForm.email.$touched && signupForm.email.$invalid }">
             <label for="email" class="col-md-5 control-label"><df-required-asterisk></df-required-asterisk>email:</label>
             <div class="col-md-7">
-              <input type="text" id="email" class="form-control" placeholder="enter your email" ng-model="vm.user.email" />
+              <input type="text" id="email" class="form-control" name="email" placeholder="enter your email" ng-model="vm.user.email" required />
+              <div class="row" ng-messages="signupForm.email.$error" ng-show="signupForm.email.$touched">
+                <p class="text-danger text-center" ng-message="required">Please enter your email.</p>
+              </div>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-class="{ 'has-error': signupForm.password.$touched && signupForm.password.$invalid }">
             <label for="password" class="col-md-5 control-label"><df-required-asterisk></df-required-asterisk>password:</label>
             <div class="col-md-7">
-              <input type="password" class="form-control" placeholder="enter a password" ng-model="vm.user.password" />
+              <input type="password" class="form-control" name="password" placeholder="enter a password" ng-model="vm.user.password" ng-minlength="6" required/>
+              <div class="row" ng-messages="signupForm.password.$error" ng-show="signupForm.password.$touched">
+                <p class="text-danger text-center" ng-message="required">Please enter a password.</p>
+                <p class="text-danger text-center" ng-message="minlength">Password must be at least 6 characters long.</p>
+              </div>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-class="{ 'has-error': signupForm.verifyPw.$touched && signupForm.verifyPw.$invalid }">
             <label for="verifypw" class="col-md-5 control-label"><df-required-asterisk></df-required-asterisk>re-enter password:</label>
             <div class="col-md-7">
-              <input type="password" class="form-control" placeholder="enter your password again" ng-model="vm.verifypw" />
+              <input type="password" class="form-control" name="verifyPw" placeholder="enter your password again" ng-model="vm.verifyPw" required />
+              <div class="row" ng-messages="signupForm.verifyPw.$error" ng-show="signupForm.verifyPw.$touched">
+                <p class="text-danger text-center" ng-message="required">Please re-enter your password.</p>
+                <p class="text-danger text-center" ng-message="required">Passwords do not match.</p>
+              </div>
             </div>
           </div>
 
