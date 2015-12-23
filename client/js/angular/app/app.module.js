@@ -7,6 +7,7 @@
       'ngResource',
       'ngMessages',
       'wu.masonry',
+      'ui.bootstrap',
       'dearFoodJ.users',
       'dearFoodJ.auth',
       'dearFoodJ.nav',

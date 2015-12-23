@@ -9,7 +9,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
   /*font-family: "Lobster", cursive;*/
-  font-family: 'Istok Web', sans-serif;
+  /*font-family: 'Istok Web', sans-serif;*/
   font-size: 1.6em;
   /*font-weight: bold;*/
   color: RGBA(99, 93, 97, 1);
@@ -41,7 +41,7 @@ header {
   font-size: 1em;
 }
 
-.btn-primary {
+.btn-info {
   background-color: RGBA(81, 54, 111, 1);
   border: 0;
    /*teal color */
@@ -53,7 +53,7 @@ header {
   /*border: RGBA(81, 54, 111, 1);*/
 }
 
-.btn-primary:hover {
+.btn-info:hover {
   /*background-color: RGBA(116, 218, 223, 1); teal*/
   background-color: RGBA(101, 82, 123, 1);
   border: 1 px solid RGBA(81, 54, 111, 1);
@@ -65,13 +65,13 @@ header {
   border-bottom-left-radius: 20px;
 }
 
-.has-error {
-  font-size: .7em;
+.has-error p {
+  font-size: .8em;
 }
 
-/*a:hover, a:link, a:visited {
+a:hover, a:link, a:visited, a:active {
   text-decoration: none;
-}*/
+}
 
 .text-message {
   /*color: RGBA(255, 101, 89, 1);*/
@@ -113,7 +113,7 @@ input {
 .panel {
   background: RGBA(255, 255, 255, 0.65);
   border: 1px solid RGBA(99, 93, 97, 1);
-  border-radius: 15px;
+  /*border-radius: 15px;*/
 }
 
 /* for forms, currently unused */
