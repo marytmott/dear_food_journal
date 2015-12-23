@@ -9,7 +9,8 @@
     return {
       templateUrl: '../../partials/nav/nav-menu-left.html',
       controller: 'NavController',
-      controllerAs: 'vm',
+      controllerAs: 'nv',
+      bindToController: true,
       restrict: 'E'
     };
   }

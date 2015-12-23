@@ -8,14 +8,14 @@
   NavController.$inject = ['$interval', '$location', '$rootScope', 'UserService'];
 
   function NavController($interval, $location, $rootScope, UserService) {
-    var vm = this;
+    var nv = this;
 
 // console.log(currentUser);
-    vm.today = Date.now();
-    vm.logout = logout;
-    // vm.currentUser = currentUser;
-    vm.currentUser = getCurrentUser();
-    // console.log('user?', vm.currentUser);
+    nv.today = Date.now();
+    nv.logout = logout;
+    // nv.currentUser = currentUser;
+    nv.currentUser = getCurrentUser();
+    // console.log('user?', nv.currentUser);
     $rootScope.$on('logout', getCurrentUser);
     $rootScope.$on('login', getCurrentUser);
 
@@ -29,15 +29,15 @@
     }
 
     function getCurrentUser() {
-      return vm.currentUser = UserService.getCurrentUser();
+      return nv.currentUser = UserService.getCurrentUser();
       // .then(function(data) {
       //   console.log(data);
-      //   // vm.currentUser = data;
+      //   // nv.currentUser = data;
       // });
     }
 
     function tick() {
-      vm.clock = Date.now();
+      nv.clock = Date.now();
     }
   }
 })();

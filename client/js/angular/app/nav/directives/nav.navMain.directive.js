@@ -9,7 +9,7 @@
     return {
       templateUrl: '../../partials/nav/nav-main.html',
       controller: 'NavController',
-      controllerAs: 'vm',
+      controllerAs: 'nv',
       restrict: 'E'
     };
   }

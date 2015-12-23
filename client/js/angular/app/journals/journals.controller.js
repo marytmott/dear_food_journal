@@ -12,6 +12,7 @@
 
     vm.user = user;
     vm.journal = journal;
+    console.log('journal', vm.journal);
 
     vm.temp = {};
     // temp -- in case they change it and go back
