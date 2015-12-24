@@ -22,7 +22,8 @@ header {
 /******* modifying bootstrap **********/
 .navbar {
   border-radius: 0;
-  border-bottom: 1px solid RGBA(99, 93, 97, 1);
+  /*border-bottom: 1px solid RGBA(99, 93, 97, 1);*/
+  /*height: 20px;*/
 /*  border-top-right-radius: 0;
   border-top-left-radius: 0;
   border-bottom-right-radius: 20px;
@@ -32,6 +33,10 @@ header {
 
   /*background-color: RGBA(119, 190, 142, 1);*/
 }
+
+/*.nav {
+
+}*/
 
 .navbar a:hover {
   color: RGBA(101, 82, 123, 1);
@@ -68,20 +73,15 @@ header {
 .has-error p {
   font-size: .8em;
 }
+/*
+a {
+  color: RGBA(101, 82, 123, 1);
+}*/
 
 /*a:hover, a:link, a:visited, a:active {
   text-decoration: none;
 }*/
 
-.text-message {
-  /*color: RGBA(255, 101, 89, 1);*/
-  /*color: RGBA(116, 71, 84, 1);*/
-  color: RGBA(81, 54, 111, 1);
-/*  font-family: 'Shadows Into Light Two', cursive;
-  font-weight: bold;*/
-  /*font-family: "Courgette", cursive;*/
-  /*font-size: .9em;*/
-}
 
 legend {
   color: RGBA(99, 93, 97, 1);
@@ -95,6 +95,16 @@ input {
   color: RGBA(99, 93, 97, 1);
   /*font-family: 'Shadows Into Light Two', cursive;*/
   /*font-family: "Courgette", cursive;*/
+}
+
+.text-message {
+  /*color: RGBA(255, 101, 89, 1);*/
+  /*color: RGBA(116, 71, 84, 1);*/
+  color: RGBA(81, 54, 111, 1);
+/*  font-family: 'Shadows Into Light Two', cursive;
+  font-weight: bold;*/
+  /*font-family: "Courgette", cursive;*/
+  /*font-size: .9em;*/
 }
 
 .clock {
@@ -111,19 +121,9 @@ input {
 }
 
 .panel {
-  background: RGBA(255, 255, 255, 0.65);
-  border: 1px solid RGBA(99, 93, 97, 1);
+  background: RGBA(255, 255, 255, 0.85);
+  /*border: 1px solid RGBA(99, 93, 97, 1);*/
   /*border-radius: 15px;*/
-}
-
-/* for forms, currently unused */
-.underline {
-  display: block;
-  width: 100%;
-  background-color: RGBA(0, 0, 0, 0);
-  border: 0;
-  border-bottom: 2px solid RGBA(54, 134, 175, 1);
-  outline:none; /* prevents textbox highlight in chrome */
 }
 
 .new-food {
@@ -248,3 +248,19 @@ input {
 .insp-preview {
   height: 500px;
 }
+
+/* modal service animate */
+/*.modal.ng-enter {
+  transition: opacity .5s ease-out;
+  opacity: 0;
+}
+.modal.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+.modal.ng-leave {
+  transition: opacity .5s ease-out;
+  opacity: 1;
+}
+.modal.ng-leave.ng-leave-active {
+  opacity: 0;
+}*/
