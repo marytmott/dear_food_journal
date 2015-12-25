@@ -154,7 +154,6 @@ router.post('/', function(req, res) {
           addFoods();
     }
   });
-  res.json({ message: 'got it!' });
 });
 
 
