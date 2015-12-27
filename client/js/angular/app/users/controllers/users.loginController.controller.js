@@ -31,6 +31,10 @@
         // $location.path('/journals/' + data.data.user.journal);
       }).catch(function(errors) {
         console.log('errors: ', errors);
+        if (errors) {
+          lc.loginError = 'Invalid login.'
+          lc.user = {};
+        }
       });
     }
 

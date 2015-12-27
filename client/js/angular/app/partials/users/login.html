@@ -1,33 +1,35 @@
-<div class="modal fade">
+<div class="modal fade" id="login-modal">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-            <div class="modal-header">
+      <div class="modal-header">
         <button type="button" class="close" ng-click="lc.cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Login</h4>
-        </div>
+        <h4 class="modal-title text-center">Login</h4>
+      </div>
       <div class="modal-body">
-        <!-- <div class="col-md-8"> -->
-      <div class="container-fluid">
-      <!-- <div class="row"> -->
-<form class="form-horizontal" ng-submit="lc.login()" novalidate>
+        <div class="container-fluid">
+          <div class="row" ng-show="lc.loginError">
+          <p class="text-danger text-center">{{ lc.loginError }}</p>
+        </div>
 
-  <div class="form-group">
-  <label for="email" class=" col-md-4 control-label">email:</label>
-  <div class="col-md-8">
-  <input type="text" id="email" class="form-control" placeholder="enter your email" ng-model="lc.user.email" />
+        <!-- login form -->
+        <form class="form-horizontal" ng-submit="lc.login()" novalidate>
+          <div class="form-group">
+            <label for="email" class=" col-md-4 control-label">email:</label>
+            <div class="col-md-8">
+              <input type="text" id="email" class="form-control" placeholder="enter your email" ng-model="lc.user.email" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="col-md-4 control-label">password:</label>
+            <div class="col-md-8">
+              <input type="password" class="form-control" placeholder="enter a password" ng-model="lc.user.password" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-info">Login</button> <button type="button" class="btn btn-default" ng-click="lc.cancel()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-  </div>
-  <div class="form-group">
-  <label for="password" class="col-md-4 control-label">password:</label>
-  <div class="col-md-8">
-  <input type="password" class="form-control" placeholder="enter a password" ng-model="lc.user.password" />
-  </div>
-  </div>
-   <div class="modal-footer">
-  <button type="submit" class="btn btn-info">Login</button> <button type="button" class="btn btn-default" ng-click="lc.cancel()">Cancel</button>
-  </div>
-</form>
-</div>
-</div>
-</div>
 </div>

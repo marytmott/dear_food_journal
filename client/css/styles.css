@@ -264,3 +264,14 @@ input {
 .modal.ng-leave.ng-leave-active {
   opacity: 0;
 }*/
+
+#login-modal {
+  top: 15%;
+  /*right:50%;*/
+  /*outline: none;*/
+}
+
+#login-modal .modal-dialog  {
+  width: 400px;
+  height: 400px;
+}
