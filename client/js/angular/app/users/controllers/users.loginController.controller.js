@@ -34,6 +34,8 @@
         if (errors) {
           lc.loginError = 'Invalid login.'
           lc.user = {};
+          // refocus email field
+          document.getElementById('email').focus();
         }
       });
     }
