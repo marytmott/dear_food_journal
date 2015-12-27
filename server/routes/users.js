@@ -51,8 +51,10 @@ router.post('/signup', function(req, res) {
     var token;
 
     if (err) {
-      console.log(err);
-      return res.status(400).send(err);
+      console.log('ERROR', err.message);
+      return res.status(400).send(err.message);
+      // error E11000 = dubplicate key
+      // error
       // send back errors?
     }
     // create new journal for user

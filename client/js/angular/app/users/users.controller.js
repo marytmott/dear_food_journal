@@ -20,6 +20,7 @@
     // console.log('user?', vm.currentUser);
     vm.journal = {};
     vm.journal.weightChangeType = 'lose';
+    vm.emailError = '';
 
     function signup() {
       vm.user.createdAt = Date.now();
@@ -31,11 +32,18 @@
       vm.user.email = vm.user.email.trim();
 
       UserService.signup(vm.user).then(function(data) {
-        console.log(data);
         UserService.setCurrentUser(data);
         $location.path('/journals/' + data.data.user.journal);
         // token data?
+      }).catch(function(data) {
+        console.log(data.data);
+        if (data.data.indexOf('E11000') !== -1) {
+          vm.emailError = "That email address already has an account."
+        }
       });
+        // console.log();
+      // $scope.errors = data.data;
+    // });;
     }
 
     function login() {
