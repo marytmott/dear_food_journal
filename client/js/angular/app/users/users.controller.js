@@ -38,7 +38,7 @@
       }).catch(function(data) {
         console.log(data.data);
         if (data.data.indexOf('E11000') !== -1) {
-          vm.emailError = "That email address already has an account."
+          vm.emailError = "This email address already has an account."
         }
       });
         // console.log();
