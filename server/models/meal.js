@@ -5,7 +5,8 @@ var Food = require('./food');
 var mealSchema = mongoose.Schema({
   journal:[{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Journal'
+    ref: 'Journal',
+    required: true
   }],
   date: {
     type: String,
@@ -23,9 +24,13 @@ var mealSchema = mongoose.Schema({
     {
       food: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Food'
+        ref: 'Food',
+        required: true
         }],
-      servings: Number
+      servings:  {
+        type: Number,
+        required: true
+      }
     }
   ],
   emotions: String,
