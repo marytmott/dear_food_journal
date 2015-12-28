@@ -1,35 +1,6 @@
-
-  <li>Calories: {{ food.fields.nf_calories | number: 0 }}</li>
-  <li>Fat: {{ food.fields.nf_total_fat | number: 0 }}g</li>
-  <li>Carbs: {{ food.fields.nf_total_carbohydrate | number: 0 }}g</li>
-  <li>Fiber: {{ food.fields.nf_dietary_fiber | number: 0 }}g</li>
-  <li>Protein: {{ food.fields.nf_protein | number: 0 }}g</li>
-  <li>Sugars: {{ food.fields.nf_sugars | number: 0 }}g</li>
-<!--   <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li> -->
-
-
-<!-- <h3>{{pokemon.name}}</h3>
-<img ng-src="{{pokemon.image}}" />
-<ul>
-  <li>Types:
-    <ul>
-      <li ng-repeat="type in pokemon.types">{{type.name}}</li>
-    </ul>
-  </li>
-  <li>Moves:
-    <ul>
-      <li ng-if="!pokemon.moves.length">No moves found.</li>
-      <li ng-if="pokemon.moves.length" ng-repeat="move in pokemon.moves | limitTo: limit">{{move.name}}</li>
-    </ul>
-</ul> -->
-
-<!--   <li>Calories: {{ food.fields.nf_calories * food.userServings | number: 0 }}</li>
-  <li>Fat: {{ food.fields.nf_total_fat * food.userServings | number: 0 }}g</li>
-  <li>Carbs: {{ food.fields.nf_total_carbohydrate * food.userServings | number: 0 }}g</li>
-  <li>Fiber: {{ food.fields.nf_dietary_fiber * food.userServings | number: 0 }}g</li>
-  <li>Protein: {{ food.fields.nf_protein * food.userServings | number: 0 }}g</li>
-  <li>Sugars: {{ food.fields.nf_sugars * food.userServings | number: 0 }}g</li> -->
+<li ng-if="food.fields.nf_calories"><small>Calories: {{ food.fields.nf_calories | number: 0 }}g</small></li>
+<li ng-if="food.fields.nf_total_fat"><small>Fat: {{ food.fields.nf_total_fat | number: 0 }}g</small></li>
+<li ng-if="food.fields.nf_total_carbohydrate"><small>Carbs: {{ food.fields.nf_total_carbohydrate | number: 0 }}g</small></li>
+<li ng-if="food.fields.nf_dietary_fiber"><small>Fiber: {{ food.fields.nf_dietary_fiber | number: 0 }}g</small></li>
+<li ng-if="food.fields.nf_protein"><small>Protein: {{ food.fields.nf_protein | number: 0 }}g</small></li>
+<li ng-if="food.fields.nf_sugars"><small>Sugars: {{ food.fields.nf_sugars | number: 0 }}g</small></li>

@@ -67,6 +67,7 @@
       // food.type = 'apiFood';
 
       vm.meal.apiFoods.push(food);
+      calcNutritionTotal();
     }
 
     function removeFood(food, type) {
