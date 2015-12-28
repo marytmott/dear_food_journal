@@ -5,11 +5,11 @@
     .module('dearFoodJ.meals')
     .directive('dfTotalNutrition', dfTotalNutrition);
 
-  function dfSearchResults() {
+  function dfTotalNutrition() {
     return {
       templateUrl: '../../partials/meals/total-nutrition.html',
       scope: {
-        food: '=foodData',
+        nutrition: '=nutritionData',
       }
         // restirct?
     }
