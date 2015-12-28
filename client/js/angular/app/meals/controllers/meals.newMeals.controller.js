@@ -73,6 +73,7 @@
     function removeFood(food, type) {
       var foodIdx = vm.meal[type].indexOf(food);
       vm.meal[type].splice(foodIdx, 1);
+      calcNutritionTotal();
     }
 
     function addOwnFood() {
@@ -106,6 +107,7 @@
         protein: 0,
         sugars: 0
       };
+      var mealNutrients = 0;
 
       // calculate apiFoods nutrition
       for (var i = 0; i < vm.currentCalcdApiFoods; i++) {
@@ -139,6 +141,16 @@
         vm.meal.totalNutrition.fiber += (currentFood.fiber * servings);
         vm.meal.totalNutrition.protein += (currentFood.protein * servings);
         vm.meal.totalNutrition.sugars += (currentFood.sugars * servings);
+      }
+
+      // check if all foods have been remove
+      for (var nutrient in vm.meal.totalNutrition) {
+        mealNutrients += vm.meal.totalNutrition[nutrient];
+      }
+
+      if (!mealNutrients) {
+        console.log('empty');
+        vm.meal.totalNutrition = null;
       }
     }
 

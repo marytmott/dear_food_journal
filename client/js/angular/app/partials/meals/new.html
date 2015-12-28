@@ -5,7 +5,7 @@
 <!-- </div> -->
 
 <!-- <div class="row"> -->
-  <div id="new-food">
+  <!-- <div id="new-food"> -->
     <!-- <div class="container-fluid"> -->
 
       <!-- new meal div -->
@@ -18,11 +18,11 @@
               <!-- date of meal -->
               <div class="meal-form-container">
                 <div class="form-group">
-                  <div class="col-md-7">
-                    <label for="meal-date" class="col-md-3 control-label">Date:</label>
-                  <!-- <div class="input-group"> -->
-  <!--                   <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-   -->              <div class="col-md-9">
+                  <div class="col-md-6">
+                  <div class="input-group">
+                    <label for="meal-date" class=""></label>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+                <!-- <div class="col-md-9"> -->
                     <input type="date" id="meal-date" class="form-control" ng-model="vm.meal.date" />
                     </div>
                   </div>
@@ -32,10 +32,10 @@
               <!-- time of meal -->
               <!-- <div class="form-group"> -->
               <div class="col-md-5">
-                <label for="meal-time" class="col-md-3 control-label">Time:</label>
-<!--                 <div class="input-group">
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span> -->
-                  <div class="col-md-9">
+                <div class="input-group">
+                <label for="meal-time" class=""></label>
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
+                  <!-- <div class="col-md-9"> -->
                   <input type="time" id="meal-time" class="form-control" ng-model="vm.meal.time" />
                   </div>
                 </div>
@@ -63,17 +63,17 @@
                 <div class="divider"></div>
                 <div class="form-group">
                   <label for="{{ food.id }}" class="col-md-3 control-label">Food name:</label>
-                  <div class="col-md-8">
+                  <div class="col-md-7">
                     <input type="text" id="{{ food.id }}" class="form-control" value="{{ food.fields.item_name }}" disabled />
                   </div>
-                  <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true" ng-click="vm.removeFood(food, 'apiFoods')"></span>
+                    <button class="btn btn-link btn-sm" ng-click="vm.removeFood(food, 'apiFoods')"><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></button>
                 </div>
                 <div class="row">
                   <div class="col-md-3 text-right">
-                    <small>{{ food.fields.nf_serving_size_qty }} {{ food.fields.nf_serving_size_unit }} has:</small>
+                    <p><small>{{ food.fields.nf_serving_size_qty }} {{ food.fields.nf_serving_size_unit }} has:</small></p>
                   </div>
                   <div class="col-md-9">
-                <ul class="horizontal-list" df-search-results food-data="food"></ul>
+                <small><ul class="horizontal-list" df-search-results food-data="food"></ul></small>
                   </div>
 
                 </div>
@@ -95,10 +95,10 @@
               <!-- this should be a modal? -->
                 <div class="form-group">
                   <label for=" {{ food.id }}" class="col-md-3 control-label">Food name:</label>
-                  <div class="col-md-8">
+                  <div class="col-md-7">
                     <input type="text" id="{{ food.id }}" class="form-control" value="{{ food.name }}" ng-model="food.name" />
                   </div>
-                  <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true" ng-click="vm.removeFood(food, 'userFoods')"></span>
+                  <button class="btn btn-link btn-sm" ng-click="vm.removeFood(food, 'userFoods')"><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></button>
                 </div>
                 <p class="text-center text-info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Enter nutrition for 1 serving of your food.</p>
                 <div class="form-group">
@@ -142,18 +142,23 @@
               </div>
 
               <!-- add own food button -->
-              <div class="form-group">
+                            <div class="form-group meal-panel">
+                                                <div class="panel panel-default">
+                      <div class="panel-body">
                 <div class="row">
-                  <div class="col-md-8 col-md-offset-2">
-                    <p class="text-center text-warning">Use the search box on the right to add foods to your meal or click below to add your own food.</p>
+                  <div class="col-md-10 col-md-offset-1">
+                    <p class="text-center text-primary">Use the search box on the right to add foods to your meal or click below to add your own food.</p>
                   </div>
                 </div>
-                <div class="col-md-3 col-md-offset-4">
-                  <button type="button" class="btn btn-info btn-sm" ng-click="vm.addOwnFood()">
+                <div class="col-md-5 col-md-offset-3">
+                  <button type="button" class="btn btn-info" ng-click="vm.addOwnFood()">
                   <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add My Own Food
                   </button>
                 </div>
               </div>
+              </div>
+              </div>
+
 
               <div class="divider"></div>
 
@@ -170,25 +175,27 @@
               <div class="form-group">
                 <label for="meal-notes" class="col-md-3 control-label">Notes:</label>
                 <div class="col-md-9">
-                  <textarea class="form-control" rows="3" id="meal-botes" placeholder="Comments and notes go here!" ng-model="vm.meal.notes"></textarea>
+                  <textarea class="form-control" rows="3" id="meal-botes" placeholder="Any comments or notes to jot down about your meal?" ng-model="vm.meal.notes"></textarea>
                 </div>
               </div>
 
 
+              <!-- display meal total nutrition -->
+              <!-- make as directive?!! -->
+              <div class="form-group meal-panel" ng-show="vm.meal.totalNutrition">
+
+                    <div class="panel panel-default">
+                      <div class="panel-body text-center">
+                        <p class="total-nutrition-title">Meal Total Nutrition:</p>
+                        <ul class="horizontal-list" df-total-nutrition></ul>
+                      </div>
+                    </div>
+
+             </div>
 
               <!-- submit new meal -->
               <button type="submit" class="btn btn-primary">Add Meal</button>
 
-              <!-- display meal total nutrition -->
-              <!-- make as directive?!! -->
-              <div class="form-group" ng-show="vm.meal.totalNutrition">
-                <div class="col-md-12 text-center">
-                  <div class="row">
-                  <p>Meal Total Nutrition:</p>
-                    <ul class="horizontal-list" df-total-nutrition nutrition-data="vm.meal.totalNutrition"></ul>
-                  </div>
-                </div>
-              </div>
               </div>
             </fieldset>
           </form>
@@ -222,7 +229,7 @@
               </div>
             </div>
             <div id="search-results">
-              <div ng-repeat="food in vm.searchResults" class="pointer-cursor panel panel-default result" ng-click="vm.addToMeal(food)">
+              <div ng-repeat="food in vm.searchResults" class="pointer-cursor panel panel-default" ng-click="vm.addToMeal(food)">
                 <div class="panel-body">
                   <p class="result-title">
                     <span class="glyphicon glyphicon-chevron-left text-info" aria-hidden="true" ></span><strong> {{ food.fields.item_name }} from {{ food.fields.brand_name }}</strong>
@@ -232,7 +239,7 @@
               </div>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
       </div>
     </div>
   </div>

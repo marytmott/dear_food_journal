@@ -1,6 +1,6 @@
 <li ng-if="vm.meal.totalNutrition.calories">Calories: {{ vm.meal.totalNutrition.calories | number: 0 }}g</li>
-<li ng-if="fat">Fat: {{ fat | number: 0 }}g</li>
-<li ng-if="carbs">Carbs: {{ carbohydrates | number: 0 }}g</li>
-<li ng-if="fiber">Fiber: {{ fiber | number: 0 }}g</li>
-<li ng-if="protein">Protein: {{ protein | number: 0 }}g</li>
-<li ng-if="sugars">Sugars: {{ sugars | number: 0 }}g</li>
+<li ng-if="vm.meal.totalNutrition.fat">Fat: {{ vm.meal.totalNutrition.fat | number: 0 }}g</li>
+<li ng-if="vm.meal.totalNutrition.carbs">Carbs: {{ vm.meal.totalNutrition.carbs | number: 0 }}g</li>
+<li ng-if="vm.meal.totalNutrition.fiber">Fiber: {{ vm.meal.totalNutrition.fiber | number: 0 }}g</li>
+<li ng-if="vm.meal.totalNutrition.protein">Protein: {{ vm.meal.totalNutrition.protein | number: 0 }}g</li>
+<li ng-if="vm.meal.totalNutrition.sugars">Sugars: {{ vm.meal.totalNutrition.sugars | number: 0 }}g</li>

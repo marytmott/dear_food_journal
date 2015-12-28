@@ -162,6 +162,13 @@ input {
   padding-top: 5px;
 }
 
+.meal-panel {
+  padding-top: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin: 0;
+}
+
 .divider {
   height: 1px;
   width:100%;
@@ -196,22 +203,8 @@ input {
   display: inline-block;
 }
 
-/*.daily-meals-scroll {
-  overflow-x: scroll;
-}*/
-
-.meal-title {
-  /*margin-top: 0;*/
-}
-
-/*#insp-container {
-  width: 100%;
-
-
-}*/
-
-.insp-menu-row {
-  /*margin-bottom: 30px;*/
+.total-nutrition-title {
+  margin-bottom: 0;
 }
 
 #insp-all {
