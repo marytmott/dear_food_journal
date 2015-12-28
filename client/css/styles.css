@@ -159,12 +159,8 @@ input {
   overflow: scroll;
   padding-left: 5px;
   padding-right: 15px;
+  padding-top: 5px;
 }
-
-/*.result {
-  width: 90%;
-
-}*/
 
 .divider {
   height: 1px;

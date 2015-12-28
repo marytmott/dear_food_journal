@@ -68,8 +68,15 @@
                   </div>
                   <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true" ng-click="vm.removeFood(food, 'apiFoods')"></span>
                 </div>
-                <p>{{ food.fields.nf_serving_size_qty }} {{ food.fields.nf_serving_size_unit }} has:</p>
-                <ul class="horizontal-list text-center" df-search-results food-data="food"></ul>
+                <div class="row">
+                  <div class="col-md-3 text-right">
+                    <small>{{ food.fields.nf_serving_size_qty }} {{ food.fields.nf_serving_size_unit }} has:</small>
+                  </div>
+                  <div class="col-md-9">
+                <ul class="horizontal-list" df-search-results food-data="food"></ul>
+                  </div>
+
+                </div>
                 <div class="form-group">
                   <label for="{{ food.servingSzId }}" class="col-md-3 control-label">Servings?</label>
                   <div class="col-md-3"> <!-- do this as ng-repeat?/directive/array? -->
@@ -167,29 +174,17 @@
                 </div>
               </div>
 
-              <!-- display meal total nutrition -->
-              <!-- make as directive?!! -->
 
-
-              <!-- calculate meal nutrition button -->
-<!--               <div class="form-group" ng-if="!vm.meal.totalNutrition">
-                <div class="col-md-4">
-                  <button type="button" class="btn btn-success btn-xs" ng-click="vm.calcNutritionTotal()">Calculate Total Nutrition</button>
-                </div>
-              </div>
-              <div class="form-group" ng-if="(vm.meal.totalNutrition && vm.meal.apiFoods.length !== vm.currentCalcdApiFoods) || (vm.meal.totalNutrition && vm.meal.userFoods.length !== vm.currentCalcdUserFoods)">
-                <div class="col-md-4 col-md-offset-4">
-                  <button type="button" class="btn btn-success btn-xs" ng-click="vm.calcNutritionTotal()"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Update Total Nutrition</button>
-                </div>
-              </div>
- -->
 
               <!-- submit new meal -->
               <button type="submit" class="btn btn-primary">Add Meal</button>
-                            <div class="form-group" ng-show="vm.meal.totalNutrition">
+
+              <!-- display meal total nutrition -->
+              <!-- make as directive?!! -->
+              <div class="form-group" ng-show="vm.meal.totalNutrition">
                 <div class="col-md-12 text-center">
-                  <p>MEal Total Nutrition:</p>
                   <div class="row">
+                  <p>Meal Total Nutrition:</p>
                     <ul class="horizontal-list">
                       <li ng-repeat="(nutrient, total) in vm.meal.totalNutrition">{{ nutrient }}: {{ total | number:0 }}g</li>
                     </ul>
