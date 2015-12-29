@@ -11,7 +11,7 @@
       <!-- new meal div -->
       <div class="col-md-5 panel panel-default new-food">
         <div class="panel-body">
-          <form class="form-horizontal" ng-submit="vm.addMeal()" novalidate>
+          <form class="form-horizontal" name="newMeal" ng-submit="vm.addMeal()" novalidate>
             <fieldset>
               <legend>New Meal</legend>
 
@@ -19,11 +19,14 @@
               <div class="meal-form-container">
                 <div class="form-group">
                   <div class="col-md-6">
-                  <div class="input-group">
+                  <div class="input-group" ng-class="{ 'has-error': newMeal.date.$touched && newMeal.date.$invalid }">
                     <label for="meal-date" class=""></label>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
                 <!-- <div class="col-md-9"> -->
-                    <input type="date" id="meal-date" class="form-control" ng-model="vm.meal.date" />
+                    <input type="date" id="meal-date" class="form-control" name="date" ng-model="vm.meal.date" required />
+                    <div class="row" ng-messages="newMeal.date.$error" ng-show="newMeal.date.$touched">
+                      <p class="text-danger text-center" ng-message="required">Date is required.</p>
+                    </div>
                     </div>
                   </div>
                 <!-- </div> -->
@@ -175,7 +178,7 @@
               <div class="form-group">
                 <label for="meal-notes" class="col-md-3 control-label">Notes:</label>
                 <div class="col-md-9">
-                  <textarea class="form-control" rows="3" id="meal-botes" placeholder="Any comments or notes to jot down about your meal?" ng-model="vm.meal.notes"></textarea>
+                  <textarea class="form-control" rows="3" id="meal-botes" placeholder="Any comments or notes to jot down?" ng-model="vm.meal.notes"></textarea>
                 </div>
               </div>
 
