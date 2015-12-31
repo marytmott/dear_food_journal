@@ -46,6 +46,10 @@ header {
   /*font-size: 1em;*/
 }
 
+.text-green {
+  color: RGBA(0, 167, 151, 1);
+}
+
 .btn-dp-purp {
   background-color: RGBA(81, 54, 111, 1);
   border: 0;
@@ -79,9 +83,9 @@ a {
 }*/
 
 
-/*a:link, a:visited {
-  color: RGBA(232, 74, 100, 1);
-}*/
+a:link, a:visited {
+  color: RGBA(0, 167, 151, 1);
+}
 
 /*a:hover {
   color: RGBA(2, 169, 203, 1);
