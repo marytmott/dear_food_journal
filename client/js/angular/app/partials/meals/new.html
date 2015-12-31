@@ -19,14 +19,14 @@
               <div class="meal-form-container">
                 <div class="form-group">
                   <div class="col-md-6">
-                  <div class="input-group" ng-class="{ 'has-error': newMeal.date.$touched && newMeal.date.$invalid }">
-                    <label for="meal-date" class=""></label>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-                <!-- <div class="col-md-9"> -->
-                    <input type="date" id="meal-date" class="form-control" name="date" ng-model="vm.meal.date" required />
-                    <div class="row" ng-messages="newMeal.date.$error" ng-show="newMeal.date.$touched">
-                      <p class="text-danger text-center" ng-message="required">Date is required.</p>
-                    </div>
+                    <div class="input-group" ng-class="{ 'has-error': newMeal.date.$touched && newMeal.date.$invalid }">
+                      <label for="meal-date" class=""></label>
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+                  <!-- <div class="col-md-9"> -->
+                      <input type="date" id="meal-date" class="form-control" name="date" ng-model="vm.meal.date" required />
+                      <div class="row" ng-messages="newMeal.date.$error" ng-show="newMeal.date.$touched">
+                        <p class="text-danger text-center">Date is required.</p>
+                      </div>
                     </div>
                   </div>
                 <!-- </div> -->
@@ -34,21 +34,24 @@
 
               <!-- time of meal -->
               <!-- <div class="form-group"> -->
-              <div class="col-md-5">
-                <div class="input-group">
-                <label for="meal-time" class=""></label>
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
-                  <!-- <div class="col-md-9"> -->
-                  <input type="time" id="meal-time" class="form-control" ng-model="vm.meal.time" />
+                  <div class="col-md-5">
+                    <div class="input-group" ng-class="{ 'has-error': newMeal.time.$touched && newMeal.time.$invalid }">
+                      <label for="meal-time" class=""></label>
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
+                      <!-- <div class="col-md-9"> -->
+                      <input type="time" id="meal-time" class="form-control" name="time" ng-model="vm.meal.time" required />
+                      <div class="row" ng-messages="newMeal.time.$error" ng-show="newMeal.time.$touched">
+                        <p class="text-danger text-center" ng-message="required">Time is required.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
 
               <!-- meal type -->
-              <div class="form-group">
+              <div class="form-group" ng-class="{ 'has-error': newMeal.mealName.$touched && newMeal.mealName.$invalid }">
                 <label for="meal-type" class="col-md-4 control-label">Meal type:</label>
                 <div class="col-md-6">
-                  <select id="meal-type" class="form-control" ng-model="vm.meal.name">
+                  <select id="meal-type" class="form-control" name="mealName" ng-model="vm.meal.name">
                     <option value="" disabled selected>Meal or snack?</option>
                     <option value="Breakfast">Breakfast</option>
                     <option value="Lunch">Lunch</option>
@@ -57,6 +60,9 @@
                     <option value="Beverage snack">Beverage as snack</option>
                     <option value="Dessert">Dessert</option>
                   </select>
+                </div>
+                <div class="row" ng-messages="newMeal.mealName.$error" ng-show="newMeal.mealName.$touched">
+                  <p class="text-danger text-center" ng-message="required">Please select a name for your meal.</p>
                 </div>
               </div>
 
@@ -215,7 +221,7 @@
             <div class="input-group">
               <input type="text" id="food-search" class="form-control" placeholder="What did you have?" ng-model="vm.apiSearch" />
               <span class="input-group-btn">
-                <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
               </span>
             </div>
             <p class="text-center text-muted"><small>Powered by <a href="http://www.nutritionix.com/api" target="_blank">Nutritionix API</a></small></p>

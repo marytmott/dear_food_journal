@@ -46,7 +46,7 @@ header {
   /*font-size: 1em;*/
 }
 
-.btn-info {
+.btn-dp-purp {
   background-color: RGBA(81, 54, 111, 1);
   border: 0;
    /*teal color */
@@ -58,7 +58,7 @@ header {
   /*border: RGBA(81, 54, 111, 1);*/
 }
 
-.btn-info:hover {
+.btn-dp-purp:hover {
   /*background-color: RGBA(116, 218, 223, 1); teal*/
   background-color: RGBA(101, 82, 123, 1);
   border: 1 px solid RGBA(81, 54, 111, 1);
