@@ -9,18 +9,6 @@
 
   function ConfigDays($routeProvider) {
     $routeProvider
-      // i do'nt even think i use this route???
-      // .when('/journals/:journal_id/days', {
-      //   templateUrl: '/partials/days/index.html',
-      //   controller: 'DaysController',
-      //   controllerAs: 'vm'
-      //   // resolve: {
-      //   //   // entries: function(UserService, MealService) {
-      //   //   //   var user = UserService.getCurrentUser();
-      //   //   //   return MealService.mealResource.query({ journal_id: user.journal });
-      //   //   }
-      //   // }
-      // })
       .when('/journals/:journal_id/days/:date', {
         templateUrl: '/partials/days/day.html',
         controller: 'DaysController',
@@ -34,16 +22,17 @@
             return DayService.getDay(user.journal, date).then(function(data) {
               console.log(data);
               return data;
-              // return data.map(function(meal) {
-              //   meal.totalNutrition = JSON.parse(meal.totalNutrition);
-              //   console.log(meal.totalNutrition);
-              //   return meal.totalNutrition;
-              // });
             });
+          }],
+          dailyCalGoal: ['UserService', 'JournalService', function(UserService, JournalService) {
+            var user = UserService.getCurrentUser();
 
-             // console.log(DayService.dayResource.get({ journal_id: user.journal, date: date }));
-              // console.log('/users/' + user.id + '/' + user.journal);
+            return JournalService.journalResource.get({ journal_id: user.journal }).$promise.then(function(data) {
+              console.log(data.dailyCalorieGoal);
+              return data.dailyCalorieGoal;
+            });
           }]
+          // put daily meal total in resolve as well???
         }
       });
   }

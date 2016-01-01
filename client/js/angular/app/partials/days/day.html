@@ -13,13 +13,13 @@
     </div>
 
     <!-- if no meals -->
-<!--     <div class="panel-body text-center" ng-if="!vm.meals.length">
+    <div class="panel-body text-center" ng-if="!vm.meals.length">
       <h4>You haven't entered any of your meals yet today!</h4>
       <button class="btn btn-info btn-lg" ng-click="vm.goToNewMeal()">Add a Meal <span class="glyphicon glyphicon-apple" aria-hidden="true"></span></button>
-    </div> -->
+    </div>
 
     <!-- if meal -->
-    <div class="panel-body" >
+    <div class="panel-body" ng-if="vm.meals.length">
       <div class="row">
         <div class="col-md-5">
 
@@ -56,24 +56,48 @@
         </div>
       </div>
 
-<!-- TODOnotes for now -->
-  // pagination?
-// get all meals
-// sort
-edit/delete (also put this on edit page or just put it here? --- option to delete)
-// show daily totals for nutrition
-// if today and haven't added anything show buttons to add stuff?
-  <!-- {{ vm.entries }} -->
-  <h4>show below as table?</h4>
+      <div class="row">
+        <!-- day's total nutrition -->
+        <div class="col-md-8 resized-panel">
+          <div class="panel panel-default day-summary">
+            <div class="panel-body text-center">
+              <!-- <div class="col-md-4"> -->
+                <h5 class="text-info">Current Daily Nutrition:</h5>
+              <!-- </div> -->
+              <!-- <div class="col-md-8"> -->
+                <h5><ul class="horizontal-list">
+                  <li ng-repeat="(nutrient, amount) in vm.todaysNutrition">{{ nutrient }}: <strong>{{ amount | number:0 }}g</strong></li>
+                </ul></h5>
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- current cal count -->
+        <div class="col-md-4 resized-panel">
+          <div class="panel panel-default day-summary">
+            <div class="panel-body text-center" ng-if="vm.dailyCalGoal">
+              <h6 class="text-info align-v-center"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> You currently have eaten <strong>{{ vm.calGoalComparison | number:0 }} calories</strong> of your <strong>{{ vm.dailyCalGoal }} daily calorie goal.</strong></h6>
+            </div>
+            <div class="panel-body text-center" ng-if="!vm.dailyCalGoal">
+              <h6 class="text-info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Do you know you can add a <strong>daily calorie goal</strong> to your journal to track your daily calorie progress? <a ng-href="/journals/{{ vm.journalId }}">Click here!</a></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="row resized-panel">
+
+      </div>
+
   <h3> daily goal</h3>
-  <h5> or YOU HAVE NOT entered any meals!</h5>
 
       <!-- today's nutrition total -->
       <h3> Today's total Nutrition: </h3>
       <!-- MAKE THIS A DIRECTIVE!!!!!!**************** -->
-      <ul class="horizontal-list">
-        <li ng-repeat="(nutrient, amount) in vm.todaysNutrition">{{ nutrient }}: {{ amount | number:0 }}g</li>
-      </ul>
 
       <!-- meals -->
       <div class="fluid-container daily-meals-scroll">

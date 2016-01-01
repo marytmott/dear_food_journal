@@ -5,11 +5,12 @@
     .module('dearFoodJ.days')
     .controller('DaysController', DaysController);
 
-  DaysController.$inject = ['$routeParams', '$location', 'UserService', 'entries'];
+  DaysController.$inject = ['$routeParams', '$location', 'UserService', 'entries', 'dailyCalGoal'];
 
 // NEED TO DO HANDLING FOR NULL FIELDS
-  function DaysController($routeParams, $location, UserService, entries) {
+  function DaysController($routeParams, $location, UserService, entries, dailyCalGoal) {
     var vm = this;
+    // console.log(dailyCalGoal.dailyCalorieGoal);
     // only returning meals for now
     // WOW -- dry this up!!? (possible w/ dates? = prob not)
     vm.previousDay = new Date(new Date($routeParams.date).setDate(new Date($routeParams.date).getDate() - 1));
@@ -23,11 +24,13 @@
     // vm.goToTomorrow = goToTomorrow;
     // console.log($routeParams);
     vm.meals = entries;
+    vm.dailyCalGoal = dailyCalGoal;
     // console.log(vm.meals);
 // console.log(vm.meals[0].foodEntries);
     vm.sort = '+time';
     // vm.showNewDate = showNewDate;
     vm.pickNewDate = null;
+    vm.journalId = $routeParams.journal_id;
 
     // make one functino for routing
     function routeToDiffDay(day) {
@@ -47,12 +50,12 @@
 
     function todaysTotalNutrition() {
       var todaysNutrition = {
-        calories: 0,
-        carbs: 0,
-        fat: 0,
-        fiber: 0,
-        protein: 0,
-        sugars: 0
+        Calories: 0,
+        Carbs: 0,
+        Fat: 0,
+        Fiber: 0,
+        Protein: 0,
+        Sugars: 0
       };
       var currentMeal;
 
@@ -60,16 +63,20 @@
       for (var i = 0; i < vm.meals.length; i++) {
         currentMeal = vm.meals[i];
 
-        todaysNutrition.calories += currentMeal.totalNutrition.calories;
-        todaysNutrition.fat += currentMeal.totalNutrition.fat;
-        todaysNutrition.carbs += currentMeal.totalNutrition.carbs;
-        todaysNutrition.fiber += currentMeal.totalNutrition.fiber;
-        todaysNutrition.protein += currentMeal.totalNutrition.protein;
-        todaysNutrition.sugars += currentMeal.totalNutrition.sugars;
+        todaysNutrition.Calories += currentMeal.totalNutrition.calories;
+        todaysNutrition.Fat += currentMeal.totalNutrition.fat;
+        todaysNutrition.Carbs += currentMeal.totalNutrition.carbs;
+        todaysNutrition.Fiber += currentMeal.totalNutrition.fiber;
+        todaysNutrition.Protein += currentMeal.totalNutrition.protein;
+        todaysNutrition.Sugars += currentMeal.totalNutrition.sugars;
       }
-      return vm.todaysNutrition = todaysNutrition;
+
+      vm.todaysNutrition = todaysNutrition;
+      vm.calGoalComparison = dailyCalGoal - vm.todaysNutrition.Calories;
     }
 
+    // function dailyCalGoalComparison() {
+    // }
     // function showNewDate() {
     //   // NEED TO MAKE SURE NEW DATE IS PICKED!
     //   var newDate = vm.pickNewDate.toLocaleDateString();
@@ -79,5 +86,7 @@
     // }
 
     todaysTotalNutrition();
+    // dailyCalGoalComparison();
+
   }
 })();

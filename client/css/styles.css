@@ -171,11 +171,19 @@ input {
   padding-top: 5px;
 }
 
-.meal-panel {
+.resized-panel {
   padding-top: 10px;
   padding-left: 25px;
   padding-right: 25px;
   margin: 0;
+}
+
+.day-summary {
+  height: 110px;
+}
+
+.align-v-center {
+  padding-top: 12px;
 }
 
 .divider {

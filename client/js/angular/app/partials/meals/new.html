@@ -151,21 +151,21 @@
               </div>
 
               <!-- add own food button -->
-                            <div class="form-group meal-panel">
-                                                <div class="panel panel-default">
-                      <div class="panel-body">
-                <div class="row">
-                  <div class="col-md-10 col-md-offset-1">
-                    <p class="text-center text-primary">Use the search box on the right to add foods to your meal or click below to add your own food.</p>
+              <div class="form-group resized-panel">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-md-10 col-md-offset-1">
+                        <p class="text-center text-primary">Use the search box on the right to add foods to your meal or click below to add your own food.</p>
+                      </div>
+                    </div>
+                    <div class="col-md-5 col-md-offset-3">
+                      <button type="button" class="btn btn-info" ng-click="vm.addOwnFood()">
+                      <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add My Own Food
+                      </button>
+                    </div>
                   </div>
                 </div>
-                <div class="col-md-5 col-md-offset-3">
-                  <button type="button" class="btn btn-info" ng-click="vm.addOwnFood()">
-                  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add My Own Food
-                  </button>
-                </div>
-              </div>
-              </div>
               </div>
 
 
@@ -191,7 +191,7 @@
 
               <!-- display meal total nutrition -->
               <!-- make as directive?!! -->
-              <div class="form-group meal-panel" ng-show="vm.meal.totalNutrition">
+              <div class="form-group resized-panel" ng-show="vm.meal.totalNutrition">
 
                     <div class="panel panel-default">
                       <div class="panel-body text-center">
