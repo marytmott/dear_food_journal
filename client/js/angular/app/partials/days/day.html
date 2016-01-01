@@ -7,15 +7,21 @@
     <div class="panel-heading">
       <!-- day pagination -->
       <!-- these arrows do not need ot be buttons? nice click effect thing tho? -->
-      <button class="btn btn-link btn-xs inline" ng-click="vm.routeToDiffDay(vm.previousDay)"><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
-      <h4 class="text-warning inline default-cursor">{{ vm.date | date: 'fullDate'}}</h4>
-      <button class="btn btn-link btn-xs inline" ng-click="vm.routeToDiffDay(vm.nextDay)"><span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+      <button class="btn btn-link btn-xs inline" ng-click="vm.routeToDiffDay(vm.previousDay)"><span class="text-primary glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+      <h5 class="text-primary inline default-cursor">{{ vm.date | date: 'fullDate'}}</h5>
+      <button class="btn btn-link btn-xs inline" ng-click="vm.routeToDiffDay(vm.nextDay)"><span class="text-primary glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
     </div>
 
+    <!-- if no meals -->
+    <div class="panel-body text-center" ng-if="!vm.meals.length">
+      <h4>You haven't entered any of your meals yet today!</h4>
+      <button class="btn btn-info btn-lg" ng-click="vm.goToNewMeal()">Add a Meal <span class="glyphicon glyphicon-apple" aria-hidden="true"></span></button>
+    </div>
 
-    <div class="panel-body">
+    <div class="panel-body" ng-if="vm.meals.length">
       <div class="row">
         <div class="col-md-4">
+
           <!-- sorting -->
           <form class="form-inline">
             <div class="form-group">
@@ -37,7 +43,7 @@
               <label for="pick-new-date" class="">See another date?</label>
               <input type="date" id="pick-new-date" class="form-control input-sm" ng-model="vm.pickNewDate" />
             </div>
-            <button type="submit" class="btn btn-info btn-sm">Show</button>
+            <button type="submit" class="btn btn-primary btn-sm">Show</button>
           </form>
         </div>
       </div>

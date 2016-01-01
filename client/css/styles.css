@@ -50,9 +50,14 @@ header {
   color: RGBA(0, 167, 151, 1);
 }
 
+.text-dp-purp {
+  color: RGBA(81, 54, 111, 1);
+}
+
 .btn-dp-purp {
   background-color: RGBA(81, 54, 111, 1);
   border: 0;
+  color: white;
    /*teal color */
   /*background-color: RGBA(0, 191, 192, 1);*/
 
