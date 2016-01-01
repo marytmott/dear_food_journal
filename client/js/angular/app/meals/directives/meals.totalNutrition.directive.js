@@ -8,9 +8,9 @@
   function dfTotalNutrition() {
     return {
       templateUrl: '../../partials/meals/total-nutrition.html',
-      // scope: {
-      //   nutrition: '@nutritionData',
-      // }
+      scope: {
+        totalNutrition: '=nutritionData',
+      }
         // restirct?
     }
   }
