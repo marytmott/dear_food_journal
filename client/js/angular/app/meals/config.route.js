@@ -112,8 +112,13 @@
             var meal = $route.current.params.meal_id;
 
             console.log('***ROUTE:', $route);
-            MealService.mealResource.delete({ journal_id: journal, meal_id: meal });
-            $location.path('/journals/' + journal);
+            MealService.mealResource.delete({ journal_id: journal, meal_id: meal }).$promise.then(function(data) {
+              // console.log(data.date.replace(/\//g, '-'));
+              var date = data.date.replace(/\//g, '-');
+              // console.log(date);
+              // console.log(journal);
+              $location.path('/journals/' + journal + '/days/' + date);
+            });
           }]
         }
       });

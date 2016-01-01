@@ -301,7 +301,7 @@ router.delete('/:meal_id', function(req, res) {
       console.log(err);
     } else {
       console.log('MEAL DELETED: ', meal);
-      res.json({ success: true });
+      res.send(meal);
     }
   });
 });
