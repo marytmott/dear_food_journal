@@ -143,6 +143,18 @@ input {
   font-size: .8em;
 }
 
+.no-bullet {
+  list-style-type: none;
+  margin-left: -40px;
+  font-size: .9em;
+}
+
+.dec-bullet li {
+  list-style-type: decimal;
+  margin-left: -20px;
+  font-size: .9em;
+}
+
 .panel {
   background: RGBA(255, 255, 255, 0.85);
   /*border: 1px solid RGBA(99, 93, 97, 1);*/

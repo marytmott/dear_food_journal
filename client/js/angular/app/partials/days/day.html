@@ -30,7 +30,12 @@
               <!-- </div> -->
               <!-- <div class="col-md-8"> -->
                 <h5><ul class="horizontal-list">
-                  <li ng-repeat="(nutrient, amount) in vm.todaysNutrition">{{ nutrient }}: <strong>{{ amount | number:0 }}g</strong></li>
+                  <li>Calories: <strong>{{ vm.todaysNutrition.calories | number:0 }}g</strong></li>
+                  <li>Fat: <strong>{{ vm.todaysNutrition.fat | number:0 }}g</strong></li>
+                  <li>Carbs: <strong>{{ vm.todaysNutrition.carbs | number:0 }}g</strong></li>
+                  <li>Fiber: <strong>{{ vm.todaysNutrition.fiber | number:0 }}g</strong></li>
+                  <li>Protein: <strong>{{ vm.todaysNutrition.protein | number:0 }}g</strong></li>
+                  <li>Sugars: <strong>{{ vm.todaysNutrition.sugars | number:0 }}g</strong></li>
                 </ul></h5>
               <!-- </div> -->
             </div>
@@ -49,6 +54,9 @@
           </div>
         </div>
       </div>
+
+      <div class="divider-light"></div>
+
       <div class="row">
         <div class="col-md-5">
 
@@ -85,26 +93,50 @@
         </div>
       </div>
 
-
       <!-- meals -->
-      <div class="fluid-container daily-meals-scroll">
-        <div class="col-md-4" ng-repeat="meal in vm.meals | orderBy: vm.sort">
-          <ul class="">
+        <div class="row">
+
+          <div class="col-md-4 resized-panel" ng-repeat="meal in vm.meals | orderBy: vm.sort">
+            <div class="panel panel-default">
+              <div class="panel-heading text-center">
+                <h5><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">{{ meal.name }}</a> - {{ meal.time | date: 'shortTime' }}</h5>
+              </div>
+              <div class="panel-body resized-panel">
+                <strong>You ate:</strong>
+                <ul class="dec-bullet">
+                  <li ng-repeat="food in meal.foodEntries">{{ food.food[0].name }}, servings: {{ food.servings }}</li>
+                </ul>
+                <p class="total-nutrition-title text-center"><strong>Meal Total Nutrition:</strong></p>
+                  <ul class="horizontal-list text-center">
+                    <li ng-if="meal.totalNutrition.calories">Calories: <strong>{{ meal.totalNutrition.calories | number: 0 }}g</strong></li>
+                    <li ng-if="meal.totalNutrition.fat">Fat: <strong>{{ meal.totalNutrition.fat | number: 0 }}g</strong></li>
+                    <li ng-if="meal.totalNutrition.carbs">Carbs: <strong>{{ meal.totalNutrition.carbs | number: 0 }}g</strong></li>
+                    <br />
+                    <li ng-if="meal.totalNutrition.fiber">Fiber: <strong>{{ meal.totalNutrition.fiber | number: 0 }}g</strong></li>
+                    <li ng-if="meal.totalNutrition.protein">Protein: <strong>{{ meal.totalNutrition.protein | number: 0 }}g</strong></li>
+                    <li ng-if="meal.totalNutrition.sugars">Sugars: <strong>{{ meal.totalNutrition.sugars | number: 0 }}g</strong></li>
+                  </ul>
+
+<!--                   <li ng-repeat="(nutrient, amount) in meal.totalNutrition">{{ nutrient }}: {{ amount | number:0 }}g</li>
+ -->                <h6 class="text-right"><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">View Meal</a> | <a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}/delete">Delete</a></h6>
+              </div>
+            </div>
+
+
+<!--           <ul >
             <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">{{ meal.name }}</a> - {{ meal.time | date: 'shortTime' }}</li>
-            <li>
-              <ul>
-                <li ng-repeat="food in meal.foodEntries">{{ food.food[0].name }}, servings: {{ food.servings }}</li>
-              </ul>
-            </li>
-            <li>Total Nutrition:
+            <li> -->
+
+            <!-- </li> -->
+            <!-- <li>Total Nutrition: -->
               <!-- another directive to make! -->
-              <ul class="horizontal-list">
+<!--               <ul class="horizontal-list">
                 <li ng-repeat="(nutrient, amount) in meal.totalNutrition">{{ nutrient }}: {{ amount | number:0 }}g</li>
               </ul>
-            </li>
+            </li> -->
               <!-- <li>{{ meal.notes }}</li> -->
-            <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">View Meal</a> | <a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}/delete">Delete</a></li>
-          </ul>
+<!--             <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">View Meal</a> | <a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}/delete">Delete</a></li>
+          </ul> -->
         </div>
       </div>
     </div>

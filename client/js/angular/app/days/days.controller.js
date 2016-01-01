@@ -50,12 +50,12 @@
 
     function todaysTotalNutrition() {
       var todaysNutrition = {
-        Calories: 0,
-        Carbs: 0,
-        Fat: 0,
-        Fiber: 0,
-        Protein: 0,
-        Sugars: 0
+        calories: 0,
+        carbs: 0,
+        fat: 0,
+        fiber: 0,
+        protein: 0,
+        sugars: 0
       };
       var currentMeal;
 
@@ -63,16 +63,16 @@
       for (var i = 0; i < vm.meals.length; i++) {
         currentMeal = vm.meals[i];
 
-        todaysNutrition.Calories += currentMeal.totalNutrition.calories;
-        todaysNutrition.Fat += currentMeal.totalNutrition.fat;
-        todaysNutrition.Carbs += currentMeal.totalNutrition.carbs;
-        todaysNutrition.Fiber += currentMeal.totalNutrition.fiber;
-        todaysNutrition.Protein += currentMeal.totalNutrition.protein;
-        todaysNutrition.Sugars += currentMeal.totalNutrition.sugars;
+        todaysNutrition.calories += currentMeal.totalNutrition.calories;
+        todaysNutrition.fat += currentMeal.totalNutrition.fat;
+        todaysNutrition.carbs += currentMeal.totalNutrition.carbs;
+        todaysNutrition.fiber += currentMeal.totalNutrition.fiber;
+        todaysNutrition.protein += currentMeal.totalNutrition.protein;
+        todaysNutrition.sugars += currentMeal.totalNutrition.sugars;
       }
 
       vm.todaysNutrition = todaysNutrition;
-      vm.calGoalComparison = dailyCalGoal - vm.todaysNutrition.Calories;
+      vm.calGoalComparison = dailyCalGoal - vm.todaysNutrition.calories;
     }
 
     // function dailyCalGoalComparison() {

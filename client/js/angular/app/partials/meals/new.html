@@ -23,10 +23,10 @@
                       <label for="meal-date" class=""></label>
                       <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
                   <!-- <div class="col-md-9"> -->
-                      <input type="date" id="meal-date" class="form-control" name="date" ng-model="vm.meal.date" required />
-                      <div class="row" ng-messages="newMeal.date.$error" ng-show="newMeal.date.$touched">
+                      <input type="date" id="meal-date" class="form-control" name="date" ng-model="vm.meal.date"/>
+<!--                       <div class="row" ng-messages="newMeal.date.$error" ng-show="newMeal.date.$touched">
                         <p class="text-danger text-center">Date is required.</p>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 <!-- </div> -->
@@ -196,7 +196,7 @@
                     <div class="panel panel-default">
                       <div class="panel-body text-center">
                         <p class="total-nutrition-title">Meal Total Nutrition:</p>
-                        <ul class="horizontal-list" df-total-nutrition></ul>
+                        <ul class="horizontal-list" df-total-nutrition nutrition-data="vm.meal.totalNutrition"></ul>
                       </div>
                     </div>
 
