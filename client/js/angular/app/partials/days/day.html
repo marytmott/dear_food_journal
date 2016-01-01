@@ -13,37 +13,45 @@
     </div>
 
     <!-- if no meals -->
-    <div class="panel-body text-center" ng-if="!vm.meals.length">
+<!--     <div class="panel-body text-center" ng-if="!vm.meals.length">
       <h4>You haven't entered any of your meals yet today!</h4>
       <button class="btn btn-info btn-lg" ng-click="vm.goToNewMeal()">Add a Meal <span class="glyphicon glyphicon-apple" aria-hidden="true"></span></button>
-    </div>
+    </div> -->
 
-    <div class="panel-body" ng-if="vm.meals.length">
+    <!-- if meal -->
+    <div class="panel-body" >
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-5">
 
           <!-- sorting -->
-          <form class="form-inline">
+          <form class="form-horizontal">
             <div class="form-group">
-              <label for="sort-category" class="">Sort Meals By:</label>
-              <select id="sort-category" class="form-control input-sm" ng-model="vm.sort">
-                <option value="+time">Earliest to Latest</option>
-                <option value="-time">Latest to Earliest</option>
-                <option value="+name">Name</option>
-                <option value="-totalNutrition.calories">Most Calories</option>
-                <option value="+totalNutrition.calories">Least Calories</option>
-              </select>
+              <label for="sort-category" class="col-md-5 control-label">Sort meals by:</label>
+              <div class="col-md-6">
+                <select id="sort-category" class="form-control" ng-model="vm.sort">
+                  <option value="+time">Earliest to Latest</option>
+                  <option value="-time">Latest to Earliest</option>
+                  <option value="+name">Name</option>
+                  <option value="-totalNutrition.calories">Most Calories</option>
+                  <option value="+totalNutrition.calories">Least Calories</option>
+                </select>
+              </div>
             </div>
           </form>
         </div>
+
         <!-- pick new date -->
-        <div class="col-md-5">
-          <form class="form-inline" ng-submit="vm.routeToDiffDay(vm.pickNewDate)">
+        <div class="col-md-7">
+          <form class="form-horizontal" ng-submit="vm.routeToDiffDay(vm.pickNewDate)">
             <div class="form-group">
-              <label for="pick-new-date" class="">See another date?</label>
-              <input type="date" id="pick-new-date" class="form-control input-sm" ng-model="vm.pickNewDate" />
+              <label for="pick-new-date" class="col-md-4 control-label">See another date?</label>
+              <div class="col-md-4">
+                <input type="date" id="pick-new-date" class="form-control" ng-model="vm.pickNewDate" />
+              </div>
+              <div class="col-md-2">
+                <button type="submit" class="btn btn-primary btn-sm">Show</button>
+              </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-sm">Show</button>
           </form>
         </div>
       </div>
