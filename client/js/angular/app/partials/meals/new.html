@@ -77,15 +77,26 @@
                   </div>
                     <button class="btn btn-link btn-sm" ng-click="vm.removeFood(food, 'apiFoods')"><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></button>
                 </div>
-                <div class="row">
-                  <div class="col-md-3 text-right">
-                    <p><small>{{ food.fields.nf_serving_size_qty }} {{ food.fields.nf_serving_size_unit }} has:</small></p>
-                  </div>
-                  <div class="col-md-9">
-                <small><ul class="horizontal-list" df-search-results food-data="food"></ul></small>
+                  <!-- <div class="row"> -->
+                  <!-- <div class="row no-b-margin text-center"> -->
+                  <!-- <div class="col-md-3 text-right"> -->
+                    <p class="no-b-margin text-center"><small><em>{{ food.fields.nf_serving_size_qty }} {{ food.fields.nf_serving_size_unit }} has:</small></em></p>
+                  <!-- </div> -->
+                  <!-- <div class="col-md-9"> -->
+<!--                   <ul class="horizontal-list text-center">
+                    <li ng-if="food.fields.nf_calories">Calories: {{ food.fields.nf_calories | number: 0 }}g</li>
+                    <li ng-if="food.fields.nf_total_fat">Fat: {{ food.fields.nf_total_fat | number: 0 }}g</li>
+                    <li ng-if="food.fields.nf_total_carbohydrate">Carbs: {{ food.fields.nf_total_carbohydrate | number: 0 }}g</li>
+                    <li ng-if="food.fields.nf_dietary_fiber">Fiber: {{ food.fields.nf_dietary_fiber | number: 0 }}g</li>
+                    <br />
+                    <li ng-if="food.fields.nf_protein">Protein: {{ food.fields.nf_protein | number: 0 }}g</li>
+                    <li ng-if="food.fields.nf_sugars">Sugars: {{ food.fields.nf_sugars | number: 0 }}g</li>
+                  </ul> -->
+                  <div class="row text-center">
+                    <small><ul class="horizontal-list" df-search-results food-data="food"></ul></small>
                   </div>
 
-                </div>
+                <!-- </div> -->
                 <div class="form-group">
                   <label for="{{ food.servingSzId }}" class="col-md-3 control-label">Servings?</label>
                   <div class="col-md-3"> <!-- do this as ng-repeat?/directive/array? -->
@@ -195,7 +206,7 @@
 
                     <div class="panel panel-default">
                       <div class="panel-body text-center">
-                        <p class="total-nutrition-title">Meal Total Nutrition:</p>
+                        <p class="no-b-margin">Meal Total Nutrition:</p>
                         <ul class="horizontal-list" df-total-nutrition nutrition-data="vm.meal.totalNutrition"></ul>
                       </div>
                     </div>

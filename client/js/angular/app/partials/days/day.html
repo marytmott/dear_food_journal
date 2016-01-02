@@ -106,7 +106,7 @@
                 <ul class="dash-bullet">
                   <li ng-repeat="food in meal.foodEntries">{{ food.food[0].name }} (servings: {{ food.servings }})</li>
                 </ul>
-                <p class="total-nutrition-title text-center"><strong>Meal Total Nutrition:</strong></p>
+                <p class="no-b-margin text-center"><strong>Meal Total Nutrition:</strong></p>
                   <ul class="horizontal-list text-center">
                     <li ng-if="meal.totalNutrition.calories">Calories: <strong>{{ meal.totalNutrition.calories | number: 0 }}g</strong></li>
                     <li ng-if="meal.totalNutrition.fat">Fat: <strong>{{ meal.totalNutrition.fat | number: 0 }}g</strong></li>
