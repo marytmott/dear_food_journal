@@ -170,7 +170,7 @@ input {
 }
 
 .meal-form-container {
-  height: 953px;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -180,7 +180,7 @@ input {
 }
 
 #search-results {
-  height: 830px;
+  height: 835px;
   overflow: scroll;
   padding-left: 5px;
   padding-right: 15px;
