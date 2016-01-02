@@ -101,8 +101,7 @@
 
       <!-- meals -->
         <div class="row">
-
-          <div class="col-md-4 resized-panel" ng-repeat="meal in vm.meals | orderBy: vm.sort">
+          <div class="col-md-4 resized-panel meal-summary" ng-repeat="meal in vm.meals | orderBy: vm.sort">
             <div class="panel panel-default">
               <div class="panel-heading text-center">
                 <h5><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">{{ meal.name }}</a> - {{ meal.time | date: 'shortTime' }}</h5>

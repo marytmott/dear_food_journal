@@ -202,6 +202,11 @@ input {
   padding-top: 12px;
 }
 
+.meal-summary {
+ height: 375px;
+ overflow-y: scroll;
+}
+
 .divider {
   height: 1px;
   width:100%;
