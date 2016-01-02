@@ -83,7 +83,7 @@
       // } else {
         // vm.calGoalOver
 
-      }
+      // }
     }
     // function showNewDate() {
     //   // NEED TO MAKE SURE NEW DATE IS PICKED!

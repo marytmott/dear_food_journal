@@ -149,10 +149,14 @@ input {
   font-size: .9em;
 }
 
-.dec-bullet li {
-  list-style-type: decimal;
-  margin-left: -20px;
+.dash-bullet li {
+  list-style-type: none;
+  margin-left: -30px;
   font-size: .9em;
+}
+
+.dash-bullet li:before {
+  content: " — ";
 }
 
 .panel {
@@ -242,13 +246,15 @@ input {
   overflow-y: scroll;
 }
 
-
 .insp-mdiv {
+  padding-top: 0;
+  margin-top: 0;
   margin-left: 10px;
   margin-right: 10px;
   /*margin-bottom: 20px;*/
   text-align: center;
   width: 250px;
+
 }
 
 .center-div {
@@ -257,22 +263,24 @@ input {
 
 .insp-mele-quote {
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 3px;
   padding: 10px 10px 0 10px;
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
 .insp-mele-tip {
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 2px;
   padding: 10px;
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
 .insp-img-m {
   width: 250px;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 3px;
   margin-bottom: 20px;
 }
 
