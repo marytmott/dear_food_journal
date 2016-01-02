@@ -47,6 +47,10 @@
     // add own food ---> add to last item
 
     function foodSearch() {
+      // clear out search for more results
+      vm.searchResults = null;
+
+      // get results
       MealService.foodApiSearch(vm.apiSearch).then(function(data) {
         console.log(data.data.hits);
         vm.searchResults = data.data.hits;

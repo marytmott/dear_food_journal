@@ -232,6 +232,10 @@ input {
   color: RGBA(193, 153, 77, 1);
 }
 
+.small {
+  font-size: .8em;
+}
+
 .inline {
   display: inline-block;
 }
