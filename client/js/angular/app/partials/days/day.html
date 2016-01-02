@@ -46,8 +46,14 @@
         <div class="col-md-4 resized-panel">
           <div class="panel panel-default day-summary">
             <div class="panel-body text-center" ng-if="vm.dailyCalGoal">
-              <h6 class="text-info align-v-center"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> You currently have eaten <strong>{{ vm.calGoalComparison | number:0 }} calories</strong> of your <strong>{{ vm.dailyCalGoal }} daily calorie goal.</strong></h6>
+              <!-- if under daily cal goal message -->
+              <h6 class="text-info align-v-center" ng-hide="vm.overCalGoal"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> You currently have eaten <strong>{{ vm.calGoalComparison | number:0 }} calories</strong> of your <strong>{{ vm.dailyCalGoal }} daily calorie goal.</strong></h6>
+
+              <!-- if over daily cal goal message -->
+              <h6 class="text-info align-v-center text-danger" ng-show="vm.overCalGoal"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> You currently have eaten <strong>{{ vm.calGoalComparison | number:0 }} calories OVER</strong> your <strong>{{ vm.dailyCalGoal }} daily calorie goal.</strong></h6>
             </div>
+
+            <!-- if no daily cal goal message -->
             <div class="panel-body text-center" ng-if="!vm.dailyCalGoal">
               <h6 class="text-info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Do you know you can add a <strong>daily calorie goal</strong> to your journal to track your daily calorie progress? <a ng-href="/journals/{{ vm.journalId }}">Click here!</a></h6>
             </div>

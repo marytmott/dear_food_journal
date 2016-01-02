@@ -25,6 +25,7 @@
     // console.log($routeParams);
     vm.meals = entries;
     vm.dailyCalGoal = dailyCalGoal;
+    vm.overCalGoal = false;
     // console.log(vm.meals);
 // console.log(vm.meals[0].foodEntries);
     vm.sort = '+time';
@@ -78,12 +79,13 @@
     function dailyCalGoalComparison() {
       var dailyCalComparison = dailyCalGoal - vm.todaysNutrition.calories;
 
-      // if (dailyCalComparison >= 0) {
+      if (dailyCalComparison >= 0) {
         vm.calGoalComparison = dailyCalComparison;
-      // } else {
-        // vm.calGoalOver
+      } else {
+        vm.overCalGoal = true;
+        vm.calGoalComparison = Math.abs(dailyCalComparison);
 
-      // }
+      }
     }
     // function showNewDate() {
     //   // NEED TO MAKE SURE NEW DATE IS PICKED!
