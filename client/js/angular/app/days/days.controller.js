@@ -13,6 +13,9 @@
     // console.log(dailyCalGoal.dailyCalorieGoal);
     // only returning meals for now
     // WOW -- dry this up!!? (possible w/ dates? = prob not)
+    console.log(entries);
+    vm.meals = entries;
+    console.log(vm.meals.length);
     vm.previousDay = new Date(new Date($routeParams.date).setDate(new Date($routeParams.date).getDate() - 1));
     vm.date = new Date($routeParams.date);
     vm.nextDay = new Date(new Date($routeParams.date).setDate(new Date($routeParams.date).getDate() + 1));
@@ -23,7 +26,6 @@
     // vm.goToYesterday = goToYesterday;
     // vm.goToTomorrow = goToTomorrow;
     // console.log($routeParams);
-    vm.meals = entries;
     vm.dailyCalGoal = dailyCalGoal;
     vm.overCalGoal = false;
     // console.log(vm.meals);
@@ -87,13 +89,6 @@
 
       }
     }
-    // function showNewDate() {
-    //   // NEED TO MAKE SURE NEW DATE IS PICKED!
-    //   var newDate = vm.pickNewDate.toLocaleDateString();
-    //   newDate = newDate.replace(/\//g, '-');
-    //   $location.path('/journals/' + $routeParams.journal_id + '/days/' + newDate);
-    //   // $location.path('/journals')
-    // }
 
     todaysTotalNutrition();
     // dailyCalGoalComparison();
