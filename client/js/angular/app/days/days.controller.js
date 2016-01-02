@@ -72,11 +72,19 @@
       }
 
       vm.todaysNutrition = todaysNutrition;
-      vm.calGoalComparison = dailyCalGoal - vm.todaysNutrition.calories;
+      dailyCalGoalComparison();
     }
 
-    // function dailyCalGoalComparison() {
-    // }
+    function dailyCalGoalComparison() {
+      var dailyCalComparison = dailyCalGoal - vm.todaysNutrition.calories;
+
+      // if (dailyCalComparison >= 0) {
+        vm.calGoalComparison = dailyCalComparison;
+      // } else {
+        // vm.calGoalOver
+
+      }
+    }
     // function showNewDate() {
     //   // NEED TO MAKE SURE NEW DATE IS PICKED!
     //   var newDate = vm.pickNewDate.toLocaleDateString();
