@@ -281,7 +281,7 @@ input {
   border: 1px solid black;
   border-radius: 3px;
   padding: 10px 10px 0 10px;
-  margin-top: 0;
+  margin-top: -12px;
   margin-bottom: 20px;
 }
 
@@ -289,7 +289,7 @@ input {
   border: 1px solid black;
   border-radius: 2px;
   padding: 10px;
-  margin-top: 0;
+  margin-top: -12px;
   margin-bottom: 20px;
 }
 
