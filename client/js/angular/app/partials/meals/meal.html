@@ -72,14 +72,15 @@
                 <div class="panel-body text-center">
                   <h5>Meal Total Nutrition:</h5>
                   <!-- TODO - make this directive with day show total nutrition!! -->
-                  <ul class="horizontal-list-n">
-                    <li ng-if="vm.meal.totalNutrition.calories">Calories: <strong>{{ vm.meal.totalNutrition.calories | number: 0 }}g</strong></li>
+                  <ul class="horizontal-list-n" df-total-nutrition nutrition-data="vm.meal.totalNutrition"></ul>
+                  <!-- <ul class="horizontal-list-n"> -->
+<!--                     <li ng-if="vm.meal.totalNutrition.calories">Calories: <strong>{{ vm.meal.totalNutrition.calories | number: 0 }}g</strong></li>
                     <li ng-if="vm.meal.totalNutrition.fat">Fat: <strong>{{ vm.meal.totalNutrition.fat | number: 0 }}g</strong></li>
                     <li ng-if="vm.meal.totalNutrition.carbs">Carbs: <strong>{{ vm.meal.totalNutrition.carbs | number: 0 }}g</strong></li>
                     <li ng-if="vm.meal.totalNutrition.fiber">Fiber: <strong>{{ vm.meal.totalNutrition.fiber | number: 0 }}g</strong></li>
                     <li ng-if="vm.meal.totalNutrition.protein">Protein: <strong>{{ vm.meal.totalNutrition.protein | number: 0 }}g</strong></li>
-                    <li ng-if="vm.meal.totalNutrition.sugars">Sugars: <strong>{{ vm.meal.totalNutrition.sugars | number: 0 }}g</strong></li>
-                  </ul>
+                    <li ng-if="vm.meal.totalNutrition.sugars">Sugars: <strong>{{ vm.meal.totalNutrition.sugars | number: 0 }}g</strong></li> -->
+                  <!-- </ul> -->
                   <!-- <ul class="horizontal-list" df-total-nutrition nutrition-data="vm.meal.totalNutrition"></ul> -->
                 </div>
               </div>

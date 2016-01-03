@@ -29,14 +29,15 @@
                 <h5 class="text-info">Current Daily Nutrition:</h5>
               <!-- </div> -->
               <!-- <div class="col-md-8"> -->
-                <ul class="horizontal-list-n">
+              <ul class="horizontal-list-n" df-total-nutrition nutrition-data="vm.todaysNutrition"></ul>
+                <!-- <ul class="horizontal-list-n">
                   <li>Calories: <strong>{{ vm.todaysNutrition.calories | number:0 }}g</strong></li>
                   <li>Fat: <strong>{{ vm.todaysNutrition.fat | number:0 }}g</strong></li>
                   <li>Carbs: <strong>{{ vm.todaysNutrition.carbs | number:0 }}g</strong></li>
                   <li>Fiber: <strong>{{ vm.todaysNutrition.fiber | number:0 }}g</strong></li>
                   <li>Protein: <strong>{{ vm.todaysNutrition.protein | number:0 }}g</strong></li>
                   <li>Sugars: <strong>{{ vm.todaysNutrition.sugars | number:0 }}g</strong></li>
-                </ul>
+                </ul> -->
               <!-- </div> -->
             </div>
           </div>
@@ -109,7 +110,9 @@
               <div class="panel-body padded-div">
                 <strong>You ate:</strong>
                 <ul class="dash-bullet">
-                  <li ng-repeat="food in meal.foodEntries">{{ food.food[0].name }} (servings: {{ food.servings }})</li>
+                  <li ng-repeat="food in meal.foodEntries">{{ food.food[0].name }}
+                    <br />
+                    <small><em>(servings: {{ food.servings }})</em></small></li>
                 </ul>
                 <p class="no-b-margin text-center"><strong>Meal Total Nutrition:</strong></p>
                   <ul class="horizontal-list text-center">
