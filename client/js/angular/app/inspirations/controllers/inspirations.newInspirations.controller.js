@@ -13,6 +13,8 @@
     vm.inspiration = {};
     vm.addInspiration = addInspiration;
     vm.clearFields = clearFields;
+    vm.showPreview = false;
+    vm.clearInspiration = clearInspiration;
 
     // if user changes type, need to clear out the other fields
     function clearFields() {
@@ -27,6 +29,16 @@
       } else {
         vm.inspiration = {};
         vm.inspiration.type = 'tip';
+      }
+
+      vm.showPreview = false;
+    }
+
+    function clearInspiration() {
+      for (var data in vm.inspiration) {
+        if (data !== 'type') {
+          vm.inspiration[data] = '';
+        }
       }
     }
 

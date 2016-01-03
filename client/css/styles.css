@@ -316,7 +316,8 @@ input {
 }
 
 .insp-form {
-  height: 500px;
+  height: 450px;
+  overflow-y: scroll;
 }
 
 .insp-preview {
@@ -327,6 +328,9 @@ input {
   height: 250px;
 }
 
+#inspiration-type {
+  margin-bottom: 20px;
+}
 /* modal service animate */
 /*.modal.ng-enter {
   transition: opacity .5s ease-out;
