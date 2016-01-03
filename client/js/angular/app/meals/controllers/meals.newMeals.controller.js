@@ -95,6 +95,7 @@
         sugars: null,
         // type: 'userFood'
       });
+      calcNutritionTotal();
     }
 
     // dry this up!!

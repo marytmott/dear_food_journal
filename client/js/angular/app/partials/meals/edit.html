@@ -11,7 +11,7 @@
       <!-- new meal div -->
       <div class="col-md-5 panel panel-default new-food">
         <div class="panel-body meal-form-container">
-          <form class="form-horizontal" name="newMeal" ng-submit="vm.addMeal()" novalidate>
+          <form class="form-horizontal" name="newMeal" ng-submit="vm.updateMeal()" novalidate>
             <fieldset>
               <legend>Edit Meal</legend>
 
@@ -85,7 +85,7 @@
                     <p><small>{{ food.fields.nf_serving_size_qty }} {{ food.fields.nf_serving_size_unit }} has:</small></p>
                   </div>
                   <div class="col-md-9">
-                    <small><ul class="horizontal-list">
+                    <ul class="horizontal-list">
                       <li ng-if="food.fields.nf_calories">Calories: {{ food.fields.nf_calories | number: 0 }}g</li>
                       <li ng-if="food.fields.nf_total_fat">Fat: {{ food.fields.nf_total_fat | number: 0 }}g</li>
                       <li ng-if="food.fields.nf_total_carbohydrate">Carbs: {{ food.fields.nf_total_carbohydrate | number: 0 }}g</li>
@@ -93,7 +93,7 @@
                       <br />
                       <li ng-if="food.fields.nf_protein">Protein: {{ food.fields.nf_protein | number: 0 }}g</li>
                       <li ng-if="food.fields.nf_sugars">Sugars: {{ food.fields.nf_sugars | number: 0 }}g</li>
-                    </ul></small>
+                    </ul>
                   </div>
                 </div>
 
