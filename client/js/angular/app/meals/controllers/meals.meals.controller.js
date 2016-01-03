@@ -47,7 +47,7 @@
 
     function getDatePath(updatingMeal) {
       var datePath;
-      if (updatingMeal){
+      if (updatingMeal) {
         datePath = vm.meal.date.replace(/\//g, '-');
       } else {
         datePath = vm.meal.date.toLocaleDateString().replace(/\//g, '-');

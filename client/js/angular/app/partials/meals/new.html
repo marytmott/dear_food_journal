@@ -168,7 +168,7 @@
               </div>
 
               <!-- add own food button -->
-              <div class="form-group resized-panel">
+              <div class="form-group padded-div">
                 <div class="panel panel-default">
                   <div class="panel-body">
                     <div class="row">
@@ -208,15 +208,13 @@
 
               <!-- display meal total nutrition -->
               <!-- make as directive?!! -->
-              <div class="form-group resized-panel" ng-show="vm.meal.totalNutrition">
-
-                    <div class="panel panel-default">
-                      <div class="panel-body text-center">
-                        <p class="no-b-margin">Meal Total Nutrition:</p>
-                        <ul class="horizontal-list" df-total-nutrition nutrition-data="vm.meal.totalNutrition"></ul>
-                      </div>
-                    </div>
-
+              <div class="form-group padded-div" ng-show="vm.meal.totalNutrition">
+                <div class="panel panel-default">
+                  <div class="panel-body text-center">
+                    <p class="no-b-margin">Meal Total Nutrition:</p>
+                    <ul class="horizontal-list" df-total-nutrition nutrition-data="vm.meal.totalNutrition"></ul>
+                  </div>
+                </div>
              </div>
 
               <!-- submit new meal -->

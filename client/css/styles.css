@@ -129,17 +129,20 @@ input {
   margin-bottom: 0;
 }
 
-.horizontal-list {
+.horizontal-list, .horizontal-list-n {
   padding: 0;
   margin: 0 auto;
 }
 
-.horizontal-list li {
+.horizontal-list li, .horizontal-list-n li {
   list-style-type: none;
   display: inline;
   padding: 5px;
   margin-right: 5px;
   margin-left: -5px;
+}
+
+.horizontal-list li {
   font-size: .8em;
 }
 
@@ -187,7 +190,7 @@ input {
   padding-top: 5px;
 }
 
-.resized-panel {
+.padded-div {
   padding-top: 10px;
   padding-left: 25px;
   padding-right: 25px;
@@ -205,6 +208,10 @@ input {
 .meal-summary {
  height: 375px;
  overflow-y: scroll;
+}
+
+.meal-entry {
+  padding: 0 30px;
 }
 
 .divider {
