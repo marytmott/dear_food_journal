@@ -258,7 +258,7 @@ input {
 
 #insp-all {
   width: 840px;
-  height: 900px;
+  height: 800px;
   overflow-x: hidden;
   overflow-y: scroll;
   margin: 0 auto;
@@ -277,7 +277,7 @@ input {
   /*width: ;*/
 }
 
-.insp-mele-quote {
+.insp-mele-text {
   border: 1px solid black;
   border-radius: 3px;
   padding: 10px 10px 0 10px;
@@ -320,7 +320,7 @@ input {
 }
 
 .insp-preview {
-  height: 500px;
+  margin: 0 auto;
 }
 
 .no-insp {

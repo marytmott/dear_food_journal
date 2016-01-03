@@ -60,14 +60,20 @@
       <div id="insp-all">
         <div masonry reload-on-show>
           <div class="masonry-brick insp-mdiv" ng-repeat="inspiration in vm.inspirations | filter: search">
-            <a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit" ng-if="inspiration.type === 'quote'" ng-show="vm.show.quotes"><div class="insp-mele-quote">
-              <p>{{ inspiration.quote }}</p>
-              <p ng-if="inspiration.author">- {{ inspiration.author }}</p>
-            </div></a>
+            <a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit" ng-if="inspiration.type === 'quote'" ng-show="vm.show.quotes">
+              <div class="insp-mele-text">
+                <p>{{ inspiration.quote }}</p>
+                <p ng-if="inspiration.author">- {{ inspiration.author }}</p>
+              </div>
+            </a>
             <div ng-model="inspiration.title" ng-if="inspiration.type === 'image'" ng-show="vm.show.images">
               <a ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit"><img ng-src="{{ inspiration.imageLink }}" class="insp-img-m" /></a>
             </div>
-            <a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit" ng-if="inspiration.type === 'tip'" ng-show="vm.show.tips"><p class="insp-mele-tip"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {{ inspiration.tip }}</p></a>
+            <a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit" ng-if="inspiration.type === 'tip'" ng-show="vm.show.tips">
+              <div class="insp-mele-text">
+                <p class=""><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {{ inspiration.tip }}</p>
+              </div>
+            </a>
           </div>
         </div>
       </div>
