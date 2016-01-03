@@ -13,6 +13,7 @@
     vm.inspiration = {};
     vm.addInspiration = addInspiration;
     vm.clearFields = clearFields;
+    vm.goToNewInsp = goToNewInsp;
 
     // if user changes type, need to clear out the other fields
     function clearFields() {

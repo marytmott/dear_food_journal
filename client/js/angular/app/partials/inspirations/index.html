@@ -2,18 +2,32 @@
   <div class="col-md-2 text-center">
     <df-menu-left></df-menu-left>
   </div>
-<div class="col-md-10">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <a ng-href="/journals/{{ vm.journal }}/inspirations/new">Add New Inspiration</a>
-    </div>
 
-    <div class="panel-body">
-      <div class="row insp-menu-row">
-        <div class="col-md-1 text-right">
-          Show:
+  <div class="col-md-8">
+    <div class="panel panel-default no-insp" ng-if="!vm.inspirations">
+      <div class="panel-body text-center">
+        <h4><strong>You don't have any <span class="text-primary">inspiration</span> in your journal!</strong></h4>
+        <br />
+        <h5>Why don't you add some inspirations to your journal to</h5>
+        <h5>help keep you focused on your weight goal?</h5>
+        <button type="button" class="btn btn-info" ng-click="vm.goToNewInsp()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> Add Inspiration</button>
+      </div>
+    </div>
+  </div>
+
+<div class="col-md-10">
+  <div class="panel panel-default" ng-if="vm.inspirations">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-3 text-center">
+          <!-- <div class="col-md-10 col-md-offset-1"> -->
+            <button type="button" class="btn btn-info" ng-click="vm.goToNewInsp()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> Add Inspiration</button>
+          <!-- </div> -->
         </div>
-        <div class="col-md-3">
+        <div class="col-md-1 text-right">
+          <strong>Show:</strong>
+        </div>
+        <div class="col-md-3  ">
           <div class="form-inline">
             <div class="form-group">
               <input type="checkbox" id="quotes-cxb" value="true" ng-model="vm.show.quotes" ng-click="vm.reloadMasonry()"><label for="quotes-cxb">Quotes</label>
@@ -29,32 +43,31 @@
         <div class="col-md-5">
           <div class="form-horizontal">
             <div class="form-group">
-              <label for="insp-search" class="col-md-2 control-label">Search:</label>
-              <div class="col-md-10">
-                <input type="text" id="insp-search" class="form-control" ng-model="search">
+              <div class="col-md-2">
+              <strong>Search:</strong>
+              </div>
+              <label for="insp-search" class="control-label"></label>
+              <div class="col-md-9">
+                <input type="text" id="insp-search" class="form-control input-sm" ng-model="search">
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-          // get random  inspiraiton
-        </div>
       </div>
+    </div>
 
-      <!-- notes TODO -->
-      <p>// looks like you need to add some inspirations to help you focus on what helps you!</p>
-
+    <div class="panel-body">
       <div id="insp-all">
         <div masonry reload-on-show>
           <div class="masonry-brick insp-mdiv" ng-repeat="inspiration in vm.inspirations | filter: search">
-            <h5 ng-if="inspiration.type === 'quote'" ng-show="vm.show.quotes"><a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit"><div class="insp-mele-quote">
+            <a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit" ng-if="inspiration.type === 'quote'" ng-show="vm.show.quotes"><div class="insp-mele-quote">
               <p>{{ inspiration.quote }}</p>
               <p ng-if="inspiration.author">- {{ inspiration.author }}</p>
-            </div></a></h5>
+            </div></a>
             <div ng-model="inspiration.title" ng-if="inspiration.type === 'image'" ng-show="vm.show.images">
               <a ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit"><img ng-src="{{ inspiration.imageLink }}" class="insp-img-m" /></a>
             </div>
-            <h5 ng-if="inspiration.type === 'tip'" ng-show="vm.show.tips"><a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit"><p class="insp-mele-tip"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {{ inspiration.tip }}</p></a></h5>
+            <a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit" ng-if="inspiration.type === 'tip'" ng-show="vm.show.tips"><p class="insp-mele-tip"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {{ inspiration.tip }}</p></a>
           </div>
         </div>
       </div>

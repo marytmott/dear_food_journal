@@ -257,16 +257,16 @@ input {
 }
 
 #insp-all {
+  width: 840px;
   height: 900px;
   overflow-x: hidden;
   overflow-y: scroll;
+  margin: 0 auto;
 }
 
 .insp-mdiv {
-  padding-top: 0;
-  margin-top: 0;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
   /*margin-bottom: 20px;*/
   text-align: center;
   width: 250px;
@@ -281,27 +281,38 @@ input {
   border: 1px solid black;
   border-radius: 3px;
   padding: 10px 10px 0 10px;
-  margin-top: -12px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+/*  -moz-box-shadow:    0 0 10px 3px RGBA(204, 204, 204, 1);
+  -webkit-box-shadow: 0 0 10px 3px RGBA(204, 204, 204, 1);
+  box-shadow:         0 0 10px 3px RGBA(204, 204, 204, 1);*/
 }
 
 .insp-mele-tip {
   border: 1px solid black;
   border-radius: 2px;
   padding: 10px;
-  margin-top: -12px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+/*  -moz-box-shadow:    0 0 10px 3px RGBA(204, 204, 204, 1);
+  -webkit-box-shadow: 0 0 10px 3px RGBA(204, 204, 204, 1);
+  box-shadow:         0 0 10px 3px RGBA(204, 204, 204, 1);*/
 }
 
 .insp-img-m {
   width: 250px;
   border: 1px solid black;
   border-radius: 3px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+/*  -moz-box-shadow:    0 0 10px 3px RGBA(204, 204, 204, 1);
+  -webkit-box-shadow: 0 0 10px 3px RGBA(204, 204, 204, 1);
+  box-shadow:         0 0 10px 3px RGBA(204, 204, 204, 1);*/
 }
 
 .insp-links, .insp-links:hover, .insp-links:visited, .insp-links:link {
   color: black;
+  text-decoration: none;
 }
 
 .insp-form {
@@ -310,6 +321,10 @@ input {
 
 .insp-preview {
   height: 500px;
+}
+
+.no-insp {
+  height: 250px;
 }
 
 /* modal service animate */

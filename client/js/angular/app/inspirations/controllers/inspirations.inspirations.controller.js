@@ -32,6 +32,7 @@
     // console.log(vm.inspiration);
     vm.updateInspiration = updateInspiration;
     vm.deleteInspiration = deleteInspiration;
+    vm.goToNewInsp = goToNewInsp;
 
 
     // console.log(vm.inspiration._id)
@@ -42,6 +43,10 @@
 
     function reloadMasonry() {
       $rootScope.$broadcast('masonry.reload');
+    }
+
+    function goToNewInsp() {
+      $location.path(path + '/new');
     }
 
     function updateInspiration() {
