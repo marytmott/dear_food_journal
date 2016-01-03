@@ -39,7 +39,7 @@
               <div class="divider-light"></div>
               </div>
           </div>
-          <div class="row padded-div">
+          <div class="row padded-div" ng-if="vm.meal.emotions">
             <div class="col-md-2">
               <strong>Emotions:</strong>
             </div>
@@ -51,7 +51,7 @@
               </div>
             </div>
           </div>
-          <div class="row padded-div">
+          <div class="row padded-div" ng-if="vm.meal.notes">
             <div class="col-md-2">
               <strong>Notes:</strong>
             </div>
