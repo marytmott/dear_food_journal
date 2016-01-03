@@ -257,7 +257,7 @@ input {
 }
 
 #insp-all {
-  width: 840px;
+  width: 915px;
   height: 800px;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -269,7 +269,7 @@ input {
   margin-right: 15px;
   /*margin-bottom: 20px;*/
   text-align: center;
-  width: 250px;
+  width: 275px;
 
 }
 
@@ -300,7 +300,7 @@ input {
 }
 
 .insp-img-m {
-  width: 250px;
+  width: 275px;
   border: 1px solid black;
   border-radius: 3px;
   margin-bottom: 10px;
