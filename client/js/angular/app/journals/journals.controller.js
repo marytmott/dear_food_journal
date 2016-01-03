@@ -37,6 +37,17 @@
     vm.changeAll = changeAll;
     vm.updateJournal = updateJournal;
 
+    function checkUserNamePluralGrammar() {
+      var userNameLastChar = user.firstName[user.firstName.length - 1];
+      if (userNameLastChar === 's' || userNameLastChar === 'z') {
+        console.log('yes');
+        vm.userNameLastCharCheck = true;
+      } else {
+        console.log('no');
+        vm.userNameLastCharCheck = false;
+      }
+    }
+
     function changeMode(property, cancel) {
       vm.change[property] = !vm.change[property];
       // if true, put in temp value for cancelling
@@ -87,5 +98,6 @@
     //     return vm.journal.updateWeightChange = -
     //   }
     // }
+    checkUserNamePluralGrammar();
   }
 })();

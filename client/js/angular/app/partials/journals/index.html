@@ -5,8 +5,8 @@
 <div class="col-md-10">
 <div class="panel panel-default">
   <div class="panel-heading">
-  <p> need to fix pluralization of 's'</p>
-    <h3>{{ vm.user.firstName }}'s Journal</h3>
+    <h4 class="text-primary" ng-if="vm.userNameLastCharCheck">{{ vm.user.firstName }}' Journal</h4>
+    <h4 class="text-primary" ng-if="!vm.userNameLastCharCheck">{{ vm.user.firstName }}'s Journal</h4>
   </div>
   <div class="panel-body">
     <div class="col-md-6">
@@ -17,8 +17,8 @@
 
       <!-- weight change reason -->
       <div class="row">
-        <h5 class="pointer-cursor" ng-if="vm.journal.weightChangeReason && !vm.change.weightChangeReason" ng-click="vm.changeMode('weightChangeReason'); vm.changeMode('weightChangeType');">I want to {{ vm.journal.weightChangeType }} weight because {{ vm.journal.weightChangeReason }}</h5>
-        <h5 class="pointer-cursor" ng-if="!vm.journal.weightChangeReason" ng-hide="vm.change.weightChangeReason" ng-click="vm.changeMode('weightChangeReason'); vm.changeMode('weightChangeType');"><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Looks like you need to add a reason for your goal to {{ vm.journal.weightChangeType }} weight.</h5>
+        <p class="pointer-cursor" ng-if="vm.journal.weightChangeReason && !vm.change.weightChangeReason" ng-click="vm.changeMode('weightChangeReason'); vm.changeMode('weightChangeType');">I want to {{ vm.journal.weightChangeType }} weight because {{ vm.journal.weightChangeReason }}</p>
+        <p class="pointer-cursor" ng-if="!vm.journal.weightChangeReason" ng-hide="vm.change.weightChangeReason" ng-click="vm.changeMode('weightChangeReason'); vm.changeMode('weightChangeType');"><button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Looks like you need to add a reason for your goal to {{ vm.journal.weightChangeType }} weight.</p>
       </div>
       <div class="form-group" ng-show="vm.change.weightChangeType">
         <p>I want to
@@ -35,8 +35,8 @@
 
       <!-- daily calorie goal -->
       <div class="row">
-        <h5 class="pointer-cursor" ng-if="vm.journal.dailyCalorieGoal && !vm.change.dailyCalorieGoal" ng-click="vm.changeMode('dailyCalorieGoal')">My daily calorie goal is {{ vm.journal.dailyCalorieGoal }} calories.</h5>
-        <h5 class="pointer-cursor" ng-if="!vm.journal.dailyCalorieGoal" ng-hide="vm.change.dailyCalorieGoal" ng-click="vm.changeMode('dailyCalorieGoal')"><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Do you want to add a daily calorie goal?</h5>
+        <p class="pointer-cursor" ng-if="vm.journal.dailyCalorieGoal && !vm.change.dailyCalorieGoal" ng-click="vm.changeMode('dailyCalorieGoal')">My daily calorie goal is {{ vm.journal.dailyCalorieGoal }} calories.</p>
+        <p class="pointer-cursor" ng-if="!vm.journal.dailyCalorieGoal" ng-hide="vm.change.dailyCalorieGoal" ng-click="vm.changeMode('dailyCalorieGoal')"><button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Do you want to add a daily calorie goal?</p>
       </div>
       <div class="form-group" ng-show="vm.change.dailyCalorieGoal">
         <label for="cal-goal" class="col-md-6 control-label">my daily calorie goal:</label>
@@ -50,8 +50,8 @@
 
       <!-- daily weight goal -->
       <div class="row">
-        <h5 class="pointer-cursor" ng-if="vm.journal.weightGoal && !vm.change.weightGoal" ng-click="vm.changeMode('weightGoal'); vm.changeMode('startWeight')">I want to weigh {{ vm.journal.weightGoal }} pounds!</h5>
-        <h5 class="pointer-cursor" ng-if="!vm.journal.weightGoal" ng-hide="vm.change.weightGoal" ng-click="vm.changeMode('weightGoal'); vm.changeMode('startWeight');"><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Do you want to set a weight goal?</h5>
+        <p class="pointer-cursor" ng-if="vm.journal.weightGoal && !vm.change.weightGoal" ng-click="vm.changeMode('weightGoal'); vm.changeMode('startWeight')">I want to weigh {{ vm.journal.weightGoal }} pounds.</p>
+        <p class="pointer-cursor" ng-if="!vm.journal.weightGoal" ng-hide="vm.change.weightGoal" ng-click="vm.changeMode('weightGoal'); vm.changeMode('startWeight');"><button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Do you want to set a weight goal?</p>
       </div>
       <div class="form-group" ng-show="vm.change.weightGoal">
         <label for="weight-goal" class="col-md-6 control-label">I want to weigh: </label>
@@ -65,8 +65,8 @@
 
       <!-- start weight -->
       <div class="row">
-        <h5 class="pointer-cursor" ng-if="vm.journal.startWeight && !vm.change.startWeight" ng-click="vm.changeMode('startWeight')">My start weight was {{ vm.journal.startWeight }} pounds.</h5>
-<!--         <h5 class="pointer-cursor" ng-if="!vm.journal.startWeight" ng-hide="vm.change.startWeight" ng-click="vm.changeMode('startWeight')"><button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Do you want to enter your starting weight to track weight change?</h5> -->
+        <p class="pointer-cursor" ng-if="vm.journal.startWeight && !vm.change.startWeight" ng-click="vm.changeMode('startWeight')">My start weight was {{ vm.journal.startWeight }} pounds.</p>
+<!--         <p class="pointer-cursor" ng-if="!vm.journal.startWeight" ng-hide="vm.change.startWeight" ng-click="vm.changeMode('startWeight')"><button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Do you want to enter your starting weight to track weight change?</p> -->
       </div>
       <div class="form-group" ng-show="vm.change.startWeight">
         <label for="orig-weight" class="col-md-6 control-label">Start weight:</label>
