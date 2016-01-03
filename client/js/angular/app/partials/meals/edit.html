@@ -2,23 +2,26 @@
   <div class="col-md-2 text-center">
     <df-menu-left></df-menu-left>
   </div>
-  <div id="new-food">
+<!-- </div> -->
+
+<!-- <div class="row"> -->
+  <!-- <div id="new-food"> -->
     <!-- <div class="container-fluid"> -->
 
       <!-- new meal div -->
       <div class="col-md-5 panel panel-default new-food">
-        <div class="panel-body">
-          <form class="form-horizontal" ng-submit="vm.updateMeal()" novalidate>
+        <div class="panel-body meal-form-container">
+          <form class="form-horizontal" name="newMeal" ng-submit="vm.addMeal()" novalidate>
             <fieldset>
               <legend>Edit Meal</legend>
 
               <!-- date of meal -->
-              <div class="meal-form-container">
-              <div class="form-group">
-                <div class="col-md-6">
-                <label for="meal-date" class=""></label>
-                <div class="input-group">
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+              <!-- <div class="meal-form-container"> -->
+                <div class="form-group">
+                  <div class="col-md-6">
+                    <div class="input-group" ng-class="{ 'has-error': newMeal.date.$touched && newMeal.date.$invalid }">
+                      <label for="meal-date" class=""></label>
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
                   <input type="date" id="meal-date" class="form-control" ng-value="{{ vm.meal.date | date: 'MM/dd/yyyy' }}" ng-model="vm.meal.date" />
                 </div>
                 </div>
@@ -26,19 +29,31 @@
 
               <!-- time of meal -->
               <!-- <div class="form-group"> -->
-              <div class="col-md-5">
+                  <div class="col-md-5">
+                    <div class="input-group" ng-class="{ 'has-error': newMeal.time.$touched && newMeal.time.$invalid }">
+                      <label for="meal-time" class=""></label>
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
+                      <!-- <div class="col-md-9"> -->
+                      <input type="time" id="meal-time" class="form-control" name="time" ng-model="vm.meal.time" required />
+                      <div class="row" ng-messages="newMeal.time.$error" ng-show="newMeal.time.$touched">
+                        <p class="text-danger text-center" ng-message="required">Time is required.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<!--               <div class="col-md-5">
                 <label for="meal-time" class=""></label>
                 <div class="input-group">
                   <span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
                   <input type="time" id="meal-time" class="form-control" ng-model="vm.meal.time" />
                 </div></div>
-              </div>
+              </div> -->
 
               <!-- meal type -->
-              <div class="form-group">
-                <label for="meal-type" class="col-md-3 control-label">Meal type:</label>
+              <div class="form-group" ng-class="{ 'has-error': newMeal.mealName.$touched && newMeal.mealName.$invalid }">
+                <label for="meal-type" class="col-md-4 control-label">Meal type:</label>
                 <div class="col-md-6">
-                  <select id="meal-type" class="form-control" ng-model="vm.meal.name">
+                  <select id="meal-type" class="form-control" name="mealName" ng-model="vm.meal.name">
                     <option value="" disabled selected>Meal or snack?</option>
                     <option value="Breakfast">Breakfast</option>
                     <option value="Lunch">Lunch</option>
@@ -48,6 +63,9 @@
                     <option value="Dessert">Dessert</option>
                   </select>
                 </div>
+                <div class="row" ng-messages="newMeal.mealName.$error" ng-show="newMeal.mealName.$touched">
+                  <p class="text-danger text-center" ng-message="required">Please select a name for your meal.</p>
+                </div>
               </div>
 
               <!-- foods selected from api search results -->
@@ -56,13 +74,37 @@
                 <div class="divider"></div>
                 <div class="form-group">
                   <label for="{{ food.id }}" class="col-md-3 control-label">Food name:</label>
-                  <div class="col-md-8">
+                  <div class="col-md-7">
                     <input type="text" id="{{ food.id }}" class="form-control" value="{{ food.fields.item_name }}" disabled />
                   </div>
-                  <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true" ng-click="vm.removeFood(food, 'apiFoods')"></span>
+                    <button class="btn btn-link btn-sm" ng-click="vm.removeFood(food, 'apiFoods')"><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></button>
                 </div>
-                <p>{{ food.fields.nf_serving_size_qty }} {{ food.fields.nf_serving_size_unit }} has:</p>
-                <ul class="horizontal-list text-center" df-search-results food-data="food"></ul>
+
+                <div class="row" ng-if="food.fields.nf_serving_size_unit.length < 7">
+                  <div class="col-md-3 text-right">
+                    <p><small>{{ food.fields.nf_serving_size_qty }} {{ food.fields.nf_serving_size_unit }} has:</small></p>
+                  </div>
+                  <div class="col-md-9">
+                    <small><ul class="horizontal-list">
+                      <li ng-if="food.fields.nf_calories">Calories: {{ food.fields.nf_calories | number: 0 }}g</li>
+                      <li ng-if="food.fields.nf_total_fat">Fat: {{ food.fields.nf_total_fat | number: 0 }}g</li>
+                      <li ng-if="food.fields.nf_total_carbohydrate">Carbs: {{ food.fields.nf_total_carbohydrate | number: 0 }}g</li>
+                      <li ng-if="food.fields.nf_dietary_fiber">Fiber: {{ food.fields.nf_dietary_fiber | number: 0 }}g</li>
+                      <br />
+                      <li ng-if="food.fields.nf_protein">Protein: {{ food.fields.nf_protein | number: 0 }}g</li>
+                      <li ng-if="food.fields.nf_sugars">Sugars: {{ food.fields.nf_sugars | number: 0 }}g</li>
+                    </ul></small>
+                  </div>
+                </div>
+
+                  <div class="row" ng-if="food.fields.nf_serving_size_unit.length >= 7">
+                    <p class="no-b-margin text-center small"><em>{{ food.fields.nf_serving_size_qty }} {{ food.fields.nf_serving_size_unit }} has:</em></p>
+                    <div class="row text-center">
+                      <small><ul class="horizontal-list" df-search-results food-data="food"></ul></small>
+                    </div>
+                  </div>
+
+                <!-- </div> -->
                 <div class="form-group">
                   <label for="{{ food.servingSzId }}" class="col-md-3 control-label">Servings?</label>
                   <div class="col-md-3"> <!-- do this as ng-repeat?/directive/array? -->
@@ -73,20 +115,19 @@
               </div>
 
 
-
               <!-- user's own food input -->
-<!-- ng-if="vm.meal.userFoods.length" -->
+              <!-- ng-if="vm.meal.userFoods.length" -->
               <div ng-repeat="food in vm.meal.userFoods">
                 <div class="divider"></div>
               <!-- this should be a modal? -->
                 <div class="form-group">
                   <label for=" {{ food.id }}" class="col-md-3 control-label">Food name:</label>
-                  <div class="col-md-8">
+                  <div class="col-md-7">
                     <input type="text" id="{{ food.id }}" class="form-control" value="{{ food.name }}" ng-model="food.name" />
                   </div>
-                  <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true" ng-click="vm.removeFood(food, 'userFoods')"></span>
+                  <button class="btn btn-link btn-sm" ng-click="vm.removeFood(food, 'userFoods')"><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></button>
                 </div>
-                <h5 class="text-center text-info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Enter nutrition for 1 serving of your food.</h5>
+                <p class="text-center text-info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Enter nutrition for 1 serving of your food.</p>
                 <div class="form-group">
                   <label class="col-md-3 control-label">Calories(g):</label>
                   <div class="col-md-3">
@@ -128,16 +169,20 @@
               </div>
 
               <!-- add own food button -->
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-8 col-md-offset-2">
-                    <h5 class="text-center">Use the search box on the right to add foods to your meal or click below to add your own food.</h5>
+              <div class="form-group padded-div">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-md-10 col-md-offset-1">
+                        <p class="text-center text-primary">Use the search box on the right to add foods to your meal or click below to add your own food.</p>
+                      </div>
+                    </div>
+                    <div class="col-md-5 col-md-offset-3">
+                      <button type="button" class="btn btn-info" ng-click="vm.addOwnFood()">
+                      <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add My Own Food
+                      </button>
+                    </div>
                   </div>
-                </div>
-                <div class="col-md-3 col-md-offset-4">
-                  <button type="button" class="btn btn-info btn-xs" ng-click="vm.addOwnFood()">
-                  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add My Own Food
-                  </button>
                 </div>
               </div>
 
@@ -148,7 +193,7 @@
               <div class="form-group">
                 <label for="meal-emotions" class="col-md-3 control-label">Emotions:</label>
                 <div class="col-md-9">
-                  <textarea class="form-control" rows="5" id="meal-emotions" placeholder="Any emotions you want to write about that you were experiencing before you ate?" ng-model="vm.meal.emotions"></textarea>
+                  <textarea class="form-control" rows="3" id="meal-emotions" placeholder="Any emotions you want to write about that you were experiencing before you ate?" ng-model="vm.meal.emotions"></textarea>
                 </div>
               </div>
 
@@ -156,36 +201,26 @@
               <div class="form-group">
                 <label for="meal-notes" class="col-md-3 control-label">Notes:</label>
                 <div class="col-md-9">
-                  <textarea class="form-control" rows="5" id="meal-botes" placeholder="Comments and notes go here!" ng-model="vm.meal.notes"></textarea>
+                  <textarea class="form-control" rows="3" id="meal-botes" placeholder="Any comments or notes to jot down?" ng-model="vm.meal.notes"></textarea>
                 </div>
               </div>
+
 
               <!-- display meal total nutrition -->
               <!-- make as directive?!! -->
-              <div class="form-group" ng-if="vm.meal.totalNutrition">
-                <div class="col-md-12 text-center">
-
-                <p>Total Nutrition:</p>
-                <div class="row">
-                  <ul class="horizontal-list">
-                    <li ng-repeat="(nutrient, total) in vm.meal.totalNutrition">{{ nutrient }}: {{ total | number:0 }}g</li>
-                  </ul>
+              <div class="form-group padded-div" ng-show="vm.meal.totalNutrition">
+                <div class="panel panel-default">
+                  <div class="panel-body text-center">
+                    <p class="no-b-margin">Meal Total Nutrition:</p>
+                    <ul class="horizontal-list" df-total-nutrition nutrition-data="vm.meal.totalNutrition"></ul>
+                  </div>
                 </div>
-                </div>
-              </div>
-
-              <!-- calculate meal nutrition button -->
-              <!-- difff from new meal ################# (no total button + logic change-->
-<!--               <div class="form-group" ng-if="vm.meal.apiFoods.length !== vm.currentCalcdApiFoods || vm.meal.userFoods.length !== vm.currentCalcdUserFoods">
-                <div class="col-md-4 col-md-offset-4">
-                  <button type="button" class="btn btn-success btn-xs" ng-click="vm.calcNutritionTotal()"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Update Total Nutrition</button>
-                </div>
-              </div> -->
+             </div>
 
 
               <!-- submit new meal -->
               <button type="submit" class="btn btn-primary">Save Changes</button>
-              </div>
+              <!-- </div> -->
             </fieldset>
           </form>
         </div>
@@ -201,17 +236,17 @@
             <div class="input-group">
               <input type="text" id="food-search" class="form-control" placeholder="What did you have?" ng-model="vm.apiSearch" />
               <span class="input-group-btn">
-                <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
               </span>
             </div>
             <p class="text-center text-muted"><small>Powered by <a href="http://www.nutritionix.com/api" target="_blank">Nutritionix API</a></small></p>
           </form>
 
           <!-- search results -->
-          <div ng-show="vm.searchResults">
+          <div ng-if="vm.searchResults">
             <div class="row">
               <div class="col-md-9">
-                <h4>Click an item below to add it to your meal.</h4>
+                <p>Click an item below to add it to your meal.</p>
               </div>
               <div class="col-md-3">
                 <button type="button" class="btn btn-default btn-xs" ng-click="vm.clearFoodSearch()">Clear Results</button>
@@ -220,15 +255,15 @@
             <div id="search-results">
               <div ng-repeat="food in vm.searchResults" class="pointer-cursor panel panel-default" ng-click="vm.addToMeal(food)">
                 <div class="panel-body">
-                  <p>
-                    <span class="glyphicon glyphicon-chevron-left text-primary" aria-hidden="true" ></span> {{ food.fields.item_name }} from {{ food.fields.brand_name }}
+                  <p class="result-title">
+                    <span class="glyphicon glyphicon-chevron-left text-info" aria-hidden="true" ></span><strong> {{ food.fields.item_name }} from {{ food.fields.brand_name }}</strong>
                   </p>
-                  <ul class="horizontal-list" df-search-results food-data="food"></ul>
+                  <small><ul class="horizontal-list" df-search-results food-data="food"></ul></small>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
       </div>
     </div>
   </div>
