@@ -99,10 +99,9 @@
       <div class="insp-mele-text" ng-if="vm.inspiration.type === 'tip' && vm.inspiration.tip">
         <p class=""><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {{ vm.inspiration.tip }}</p>
       </div>
-      <br />
     </div>
     <div class="row text-center">
-      <button type="button" class="btn btn-info" ng-click="vm.showPreview = !vm.showPreview"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Preview Inspiration</button>
+      <button type="button" class="btn btn-info" ng-click="vm.showPreview = !vm.showPreview" ng-show="vm.inspiration.type"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Preview Inspiration</button>
     </div>
   </div>
 </div></div>
