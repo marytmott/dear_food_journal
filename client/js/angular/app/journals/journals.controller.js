@@ -5,15 +5,13 @@
     .module('dearFoodJ.journals')
     .controller('JournalsController', JournalsController);
 
-  JournalsController.$inject = ['UserService', 'JournalService', 'journal', 'user'];
+  JournalsController.$inject = ['$interval', 'UserService', 'JournalService', 'journal', 'user'];
 
-  function JournalsController(UserService, JournalService, journal, user) {
+  function JournalsController($interval, UserService, JournalService, journal, user) {
     var vm = this;
 
     vm.user = user;
     vm.journal = journal;
-    console.log('journal', vm.journal);
-
     vm.temp = {};
     // temp -- in case they change it and go back
 
@@ -33,6 +31,7 @@
     vm.changeAll = changeAll;
     vm.updateJournal = updateJournal;
     vm.weightChangeTypeHeading;
+    vm.calcWeightChange = calcWeightChange;
 
     function checkUserNamePluralGrammar() {
       var userNameLastChar = user.firstName[user.firstName.length - 1];
@@ -74,19 +73,22 @@
       var loseWeightGoal = vm.journal.weightChangeType === 'lose';
       var gainWeightGoal = vm.journal.weightChangeType === 'gain';
 
+
+      console.log('tracking weight', vm.journal);
       if (trackingWeight) {
         weightChange = Math.floor(vm.journal.startWeight - vm.journal.currentWeight);
+        console.log(weightChange);
+
 
         // if lose weight goal && user lost weight OR gain weight goal and user gained weight
         if ((weightChange > 0 && loseWeightGoal) || (weightChange < 0 && gainWeightGoal)) {
           getWeightChangeMessage(loseWeight, weightChange, 'success');
-        } else if ((weightChange < 0 && loseWeightGoal) || (weightChangeType > 0 && gainWeightGoal)) {
         // if lose weight goal && user gained weight OR gain weight goal and user is losing weight
+        } else if ((weightChange < 0 && loseWeightGoal) || (weightChangeType > 0 && gainWeightGoal)) {
           getWeightChangeMessage(gainWeight, weightChange, 'noSuccess');
-
-          vm.weightChangeMessage = 'You\'ve gained ' + weightChange + ' pounds. Don\'t worry, get focused, you can do it!';
+        // if no change
         } else {
-          vm.weightChangeMessage = 'You haven\'t lost any weight yet. Stay focused, you can do it!';
+          getWeightChangeMessage();
         }
 
 
@@ -97,12 +99,12 @@
 
         // if achieving goals?
 
-        // if no change
       }
 
     }
 
     function getWeightChangeMessage(typeOfChange, weightChange, messageName) {
+      weightChange = Math.abs(weightChange);
       if (messageName === 'success') {
         vm.weightChangeMessage = 'You\'re doing great! You' + typeOfChange + weightChange + ' pounds so far! Keep it up!';
       } else if (messageName === 'noSuccess') {
@@ -110,7 +112,7 @@
       } else {
         vm.weightChangeMessage = 'You haven\'t' + typeOfChange + 'any weight yet. Stay focused, you can do it!';
       }
-
+      // vm.$apply();
     }
 
     function updateJournal(property) {
@@ -135,11 +137,13 @@
           if (data.success) {
             vm.change[property] = false;
             vm.journal = data.journal;
+            calcWeightChange();
           }
         });
     }
 
     checkUserNamePluralGrammar();
-    getWeightChangeMessage();
+    calcWeightChange();
+
   }
 })();
