@@ -15,6 +15,7 @@
     vm.clearFields = clearFields;
     vm.showPreview = false;
     vm.clearInspiration = clearInspiration;
+    vm.previewHide = previewHide;
 
     // if user changes type, need to clear out the other fields
     function clearFields() {
@@ -31,7 +32,7 @@
         vm.inspiration.type = 'tip';
       }
 
-      vm.showPreview = false;
+      previewHide();
     }
 
     function clearInspiration() {
@@ -40,6 +41,11 @@
           vm.inspiration[data] = '';
         }
       }
+      previewHide();
+    }
+
+    function previewHide() {
+      vm.showPreview = false;
     }
 
     function addInspiration() {

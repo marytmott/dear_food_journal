@@ -16,7 +16,7 @@ var inspirationSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  title: String,
+  tags: String,
   imageLink: String,
   author: String,
   comment: String,

@@ -29,13 +29,13 @@
           <div class="form-group">
             <label for="insp-quote" class="col-md-3 control-label">Quote:</label>
             <div class="col-md-8">
-              <textarea id="insp-quote" class="form-control" rows="3" placeholder="Which quote do you have to inspire you?" ng-model="vm.inspiration.quote"></textarea>
+              <textarea id="insp-quote" class="form-control" rows="3" placeholder="Which quote do you have to inspire you?" ng-model="vm.inspiration.quote" ng-change="vm.previewHide()"></textarea>
             </div>
           </div>
           <div class="form-group">
             <label for="insp-author" class="col-md-3 control-label">Author:</label>
             <div class="col-md-8">
-              <input type="text" id="insp-author" class="form-control" placeholder="Does the quote have an author?" ng-model="vm.inspiration.author" />
+              <input type="text" id="insp-author" class="form-control" placeholder="Does the quote have an author?" ng-model="vm.inspiration.author" ng-change="vm.previewHide()" />
             </div>
           </div>
         </section>
@@ -43,9 +43,9 @@
         <!-- show image input -->
         <section ng-if="vm.inspiration.type === 'image'">
           <div class="form-group">
-            <label for="insp-img-title" class="col-md-3 control-label">Title:</label>
+            <label for="insp-img-tags" class="col-md-3 control-label">Tags:</label>
             <div class="col-md-8">
-              <input type="text" id="insp-img-title" class="form-control" placeholder="Title for this image inspiration?" ng-model="vm.inspiration.title" />
+              <input type="text" id="insp-img-tags" class="form-control" placeholder="Tags for this image inspiration?" ng-model="vm.inspiration.tags" />
             </div>
           </div>
           <div class="form-group">
@@ -54,12 +54,12 @@
               <input type="text" id="insp-img" class="form-control" placeholder="Please enter a valid url." ng-model="vm.inspiration.imageLink" />
             </div>
           </div>
-          <div class="form-group">
+<!--           <div class="form-group">
             <label for="insp-img-comments" class="col-md-3 control-label">Comments:</label>
             <div class="col-md-8">
               <textarea id="insp-img-comments" class="form-control" rows="3" placeholder="Anything to say about this image?" ng-model="vm.inspiration.quote"></textarea>
             </div>
-          </div>
+          </div> -->
         </section>
 
         <!-- show tip input -->
@@ -90,6 +90,9 @@
       <h5 class="text-center">Preview</h5>
     </div>
   <div class="panel-body">
+    <div class="row text-center">
+      <button type="button" class="btn btn-info" ng-click="vm.showPreview = true" ng-show="vm.inspiration.type" ng-hide="vm.showPreview"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Preview Inspiration</button>
+    </div>
     <div class="insp-mdiv insp-preview" ng-show="vm.showPreview">
       <div class="insp-mele-text" ng-if="vm.inspiration.type === 'quote' && vm.inspiration.quote">
         <p>{{ vm.inspiration.quote }}</p>
@@ -99,9 +102,6 @@
       <div class="insp-mele-text" ng-if="vm.inspiration.type === 'tip' && vm.inspiration.tip">
         <p class=""><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {{ vm.inspiration.tip }}</p>
       </div>
-    </div>
-    <div class="row text-center">
-      <button type="button" class="btn btn-info" ng-click="vm.showPreview = !vm.showPreview" ng-show="vm.inspiration.type"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Preview Inspiration</button>
     </div>
   </div>
 </div></div>

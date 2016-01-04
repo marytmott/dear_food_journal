@@ -33,6 +33,7 @@
     vm.updateInspiration = updateInspiration;
     vm.deleteInspiration = deleteInspiration;
     vm.goToNewInsp = goToNewInsp;
+    vm.showPreview = true;
 
 
     // console.log(vm.inspiration._id)
