@@ -36,6 +36,7 @@
     vm.changeMode = changeMode;
     vm.changeAll = changeAll;
     vm.updateJournal = updateJournal;
+    vm.weightChangeTypeHeading;
 
     function checkUserNamePluralGrammar() {
       var userNameLastChar = user.firstName[user.firstName.length - 1];
