@@ -51,7 +51,7 @@
           <div class="form-group">
             <label for="insp-img" class="col-md-3 control-label">Image Link:</label>
             <div class="col-md-8">
-              <input type="text" id="insp-img" class="form-control" placeholder="Please enter a valid url." ng-model="vm.inspiration.imageLink" />
+              <input type="text" id="insp-img" class="form-control" placeholder="Please enter a valid url." ng-model="vm.inspiration.imageLink" ng-change="vm.previewHide()" />
             </div>
           </div>
 <!--           <div class="form-group">
@@ -67,7 +67,7 @@
           <div class="form-group">
             <label for="insp-tip" class="col-md-3 control-label">Tip:</label>
             <div class="col-md-8">
-              <textarea id="insp-tip" class="form-control" placeholder="Have a tip you want to jot down?" ng-model="vm.inspiration.tip"></textarea>
+              <textarea id="insp-tip" class="form-control" placeholder="Have a tip you want to jot down?" ng-model="vm.inspiration.tip" ng-change="vm.previewHide()"></textarea>
             </div>
           </div>
         </section>
@@ -90,8 +90,8 @@
       <h5 class="text-center">Preview</h5>
     </div>
   <div class="panel-body">
-    <div class="row text-center">
-      <button type="button" class="btn btn-info" ng-click="vm.showPreview = true" ng-show="vm.inspiration.type" ng-hide="vm.showPreview"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Preview Inspiration</button>
+    <div class="row text-center" ng-show="vm.inspiration.type && !vm.showPreview">
+      <button type="button" class="btn btn-info" ng-click="vm.showPreview = true"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Preview Inspiration</button>
     </div>
     <div class="insp-mdiv insp-preview" ng-show="vm.showPreview">
       <div class="insp-mele-text" ng-if="vm.inspiration.type === 'quote' && vm.inspiration.quote">

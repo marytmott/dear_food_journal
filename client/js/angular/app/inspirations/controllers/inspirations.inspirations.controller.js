@@ -34,6 +34,7 @@
     vm.deleteInspiration = deleteInspiration;
     vm.goToNewInsp = goToNewInsp;
     vm.showPreview = true;
+    vm.previewHide = previewHide;
 
 
     // console.log(vm.inspiration._id)
@@ -59,6 +60,10 @@
     function deleteInspiration() {
       console.log(path);
       $location.path(path + '/' + vm.inspiration._id + '/delete');
+    }
+
+    function previewHide() {
+      vm.showPreview = false;
     }
 
   }

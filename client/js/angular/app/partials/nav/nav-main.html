@@ -41,6 +41,7 @@
             <li><a href="/signup">Sign up</a></li>
           </ul>
           <ul ng-if="nv.currentUser" class="nav navbar-nav navbar-right">
+            <li><a ng-href="/journals/{{nv.currentUser.journal}}">Journal</a></li>
             <li><a ng-href="/users/{{nv.currentUser.id}}">Account</a></li>
             <li><a href="/logout">Log out</a></li>
           </ul>
