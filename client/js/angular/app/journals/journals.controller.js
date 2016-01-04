@@ -52,12 +52,13 @@
     function changeMode(property, cancel) {
       vm.change[property] = !vm.change[property];
       // if true, put in temp value for cancelling
-      if (vm.change[property] && property !== 'weightChange') {
-        vm.temp[property] = vm.journal[property];
-      }
+      // if (vm.change[property] && property !== 'weightChange') {
+      // }
       // reset
       if (cancel) {
         vm.journal[property] = vm.temp[property];
+      } else {
+        vm.temp[property] = vm.journal[property];
       }
     }
 
@@ -73,10 +74,10 @@
       console.log(property);
       changeMode(property);
 
-      if (property === 'weightChange') {
-        // update journal object w/ total weight change, then save
-        getChangedWeight();
-      }
+      // if (property === 'weightChange') {
+      //   // update journal object w/ total weight change, then save
+      //   getChangedWeight();
+      // }
       // console.log(property);
 
       // update property in case they change something and cancel, don't want to send the whole modified object!
