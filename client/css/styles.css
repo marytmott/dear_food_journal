@@ -328,6 +328,11 @@ input {
   height: 250px;
 }
 
+#insp-search {
+  margin-top: -5px;
+  /*padding-top: 0;*/
+}
+
 #inspiration-type {
   margin-bottom: 20px;
 }
