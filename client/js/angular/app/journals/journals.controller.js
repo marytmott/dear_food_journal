@@ -5,9 +5,9 @@
     .module('dearFoodJ.journals')
     .controller('JournalsController', JournalsController);
 
-  JournalsController.$inject = ['$interval', 'UserService', 'JournalService', 'journal', 'user'];
+  JournalsController.$inject = ['UserService', 'JournalService', 'journal', 'user'];
 
-  function JournalsController($interval, UserService, JournalService, journal, user) {
+  function JournalsController(UserService, JournalService, journal, user) {
     var vm = this;
 
     vm.user = user;

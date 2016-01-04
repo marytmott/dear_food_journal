@@ -15,9 +15,9 @@ body {
   color: RGBA(99, 93, 97, 1);
 }
 
-header {
-  margin-bottom: 65px;
-}
+/*.view {
+  margin-top: 65px;
+}*/
 
 /******* modifying bootstrap **********/
 .navbar {
