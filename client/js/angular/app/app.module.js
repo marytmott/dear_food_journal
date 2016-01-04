@@ -12,6 +12,7 @@
       'dearFoodJ.users',
       'dearFoodJ.auth',
       'dearFoodJ.nav',
+      'dearFoodJ.home',
       'dearFoodJ.journals',
       'dearFoodJ.meals',
       'dearFoodJ.days',
@@ -25,12 +26,6 @@
   function configRoutes($routeProvider, $locationProvider, $httpProvider) {
 
     $routeProvider
-      .when('/', {
-        templateUrl: '/partials/home/index.html'
-        // controller: 'HomeControl',
-        // controllerAs: 'vm'
-
-      })
       .otherwise({redirectTo: '/'});
 
     $locationProvider.html5Mode(true);

@@ -383,3 +383,33 @@ input {
   width: 400px;
   height: 400px;
 }
+
+.home-div {
+  margin-top: -25px;
+  color: RGBA(255, 255, 255, 1);
+/*  margin: -25px;
+  padding: -25px;*/
+
+}
+
+#top {
+  background: url(/img/desktop1-1600.jpg) no-repeat center;
+  height: 600px;
+  padding-top: 30px;
+}
+
+.lobster {
+  font-family: "Lobster", cursive;
+}
+
+#title {
+  margin: 0 30px;
+  font-size: 100px;
+  color: RGBA(255, 255, 255, 1);
+  text-shadow: 0px 0px 5px RGBA(255, 255, 255, 1);
+}
+
+.top-text {
+  font-family: 'Handlee', cursive;
+  font-size: 40px;
+}
