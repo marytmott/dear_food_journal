@@ -69,6 +69,27 @@
       }
     }
 
+    function getWeightChangeMessage() {
+      var trackingWeight = vm.journal.currentWeight && vm.journal.startWeight;
+      var weightChange;
+
+      if (trackingWeight) {
+        weightChange = vm.journal.startWeight - vm.journal.currentWeight;
+
+        // if gained weight && user is gaining weight?
+        // if (weightChange )
+
+        // if gained weight && user is losing weight
+
+        // if lost weight && user is losing weight
+
+        // if lost weight && user is gaining weight
+
+        // if no change
+      }
+
+    }
+
     function updateJournal(property) {
       var user = UserService.getCurrentUser();
       console.log(property);
@@ -101,5 +122,6 @@
     //   }
     // }
     checkUserNamePluralGrammar();
+    getWeightChangeMessage();
   }
 })();
