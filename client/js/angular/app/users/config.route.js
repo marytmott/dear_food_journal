@@ -42,7 +42,7 @@
           logout: ['UserService', '$location', function(UserService, $location) {
             UserService.logout();
             UserService.isLoggedIn = false;
-            $location.path('/login');
+            $location.path('/');
           }],
           // DO NOT NEED TO RESOLVE THIS ANYMORE b/c of NAVBAR + $rootscope broadcast??
           currentUser: ['UserService', function(UserService) {
