@@ -1,22 +1,98 @@
 <!DOCTYPE html>
-<html ng-app="dearFoodJournal">
+<html ng-app="dearFoodJ">
 <head>
-  <meta charset="utf-8" />
-  <title></title>
-  <base href="/" />
+  <meta charset="utf-8">
+  <title>Dear Food Journal</title>
+  <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet" type="text/css">
+  <base href="/">
 </head>
 <body>
+  <!-- header/nav -->
+  <header>
+    <df-nav-main></df-nav-main>
+  </header>
 
-hi
-  <div ng-view></div>
+  <div class="container-fluid" ng-view></div>
+
+  <!-- footer -->
+  <footer>
+    <df-footer></df-footer>
+  </footer>
 
   <!-- Third-party JS -->
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-messages.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
+  <script src="/node_modules/angular-modal-service/dst/angular-modal-service.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <!-- // <script src="js/angular/app/ui-bootstrap/ui-bootstrap-tpls-0.14.3.js"></script> -->
+  <script src="http://passy.github.io/angular-masonry/angular-masonry.js"></script>
 
   <!-- main app module -->
-  <script src="/app/app.module.js"></script>
+  <script src="/js/angular/app/app.module.js"></script>
+
+  <!-- nav -->
+  <script src="/js/angular/app/nav/nav.module.js"></script>
+  <script src="/js/angular/app/nav/nav.controller.js"></script>
+  <script src="/js/angular/app/nav/directives/nav.navMain.directive.js"></script>
+  <script src="/js/angular/app/nav/directives/nav.menuLeft.directive.js"></script>
+  <script src="/js/angular/app/nav/directives/nav.footer.directive.js"></script>
+
+  <!-- users -->
+  <script src="/js/angular/app/users/users.module.js"></script>
+  <script src="/js/angular/app/users/config.route.js"></script>
+  <script src="/js/angular/app/users/users.controller.js"></script>
+  <script src="/js/angular/app/users/users.factory.js"></script>
+  <script src="/js/angular/app/users/controllers/users.loginController.controller.js"></script>
+
+  <!-- auth -->
+  <script src="/js/angular/app/auth/auth.module.js"></script>
+  <script src="/js/angular/app/auth/auth.factory.js"></script>
+
+  <!-- home -->
+  <script src="/js/angular/app/home/home.module.js"></script>
+  <script src="/js/angular/app/home/config.route.js"></script>
+  <script src="/js/angular/app/home/home.controller.js"></script>
+
+  <!-- journals -->
+  <script src="/js/angular/app/journals/journals.module.js"></script>
+  <script src="/js/angular/app/journals/config.route.js"></script>
+  <script src="/js/angular/app/journals/journals.controller.js"></script>
+  <script src="/js/angular/app/journals/journals.factory.js"></script>
+
+  <!-- meals -->
+  <script src="/js/angular/app/meals/meals.module.js"></script>
+  <script src="/js/angular/app/meals/config.route.js"></script>
+  <script src="/js/angular/app/meals/controllers/meals.newMeals.controller.js"></script>
+  <script src="/js/angular/app/meals/controllers/meals.meals.controller.js"></script>
+  <script src="/js/angular/app/meals/meals.factory.js"></script>
+  <script src="/js/angular/app/meals/directives/meals.searchResults.directive.js"></script>
+  <script src="/js/angular/app/meals/directives/meals.totalNutrition.directive.js"></script>
+
+  <!-- days -->
+  <script src="/js/angular/app/days/days.module.js"></script>
+  <script src="/js/angular/app/days/config.route.js"></script>
+  <script src="/js/angular/app/days/days.controller.js"></script>
+  <script src="/js/angular/app/days/days.factory.js"></script>
+
+  <!-- inspirations -->
+  <script src="/js/angular/app/inspirations/inspirations.module.js"></script>
+  <script src="/js/angular/app/inspirations/config.route.js"></script>
+  <script src="/js/angular/app/inspirations/controllers/inspirations.inspirations.controller.js"></script>
+  <script src="/js/angular/app/inspirations/controllers/inspirations.newInspirations.controller.js"></script>
+  <script src="/js/angular/app/inspirations/inspirations.factory.js"></script>
 
 </body>
 </html>

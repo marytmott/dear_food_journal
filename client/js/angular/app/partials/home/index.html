@@ -1,0 +1,91 @@
+<!-- top div -->
+<div class="row home-div" id="top">
+  <div class="row text-center">
+    <p class="top-text">Welcome to your</p>
+    <h1 class="lobster" id="title">Dear Food Journal</h1>
+    <div class="row home-btns" ng-if="!vm.user">
+      <button type="button" class="btn-home lobster" ng-click="vm.directToSignup()">Sign up</button> <button type="button" class="btn-home lobster"ng-click="nv.showLoginModal()">Log In</button>
+    </div>
+    <p class="top-text">This is more than just your diet journal!</p>
+  </div>
+</div>
+
+<!-- ease of use div -->
+<div class="row">
+  <div class="col-md-6 img-div cover" id="easy-div-img">
+  </div>
+  <div class="col-md-6 info-div text-center oxygen">
+    <div class="row top-info">
+      <p class="info-text">Easily add your daily meals
+      <br />
+      with our simple form!</p>
+    </div>
+    <div class="row">
+      <p class="info-text">Meal and daily nutrition is
+      <br />
+      automatically calculated for you!</p>
+    </div>
+  </div>
+</div>
+
+<!-- nutritionix api info div -->
+<div class="row">
+  <div class="col-md-6 info-div text-center oxygen">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-2">
+        <p class="text-center info-text-sm">Powered By:</p>
+        <a href="http://www.nutritionix.com/api"><img src="/img/nix_api_logo.png" /></a>
+        <ul class="no-bullet info-text-sm">
+          <li>100K+ Menu Items</li>
+          <li>400K+ Grocery Products</li>
+          <li>Entire USDA Common Foods</li>
+        </ul>
+      <div class="row">
+        <!-- <div class="col-md-10 col-md-offset-1"> -->
+        <p class="info-text">A rich resource to find nutrition
+          <br />
+          info to automatically add to your meals!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 img-div" id="nix-div-img">
+  </div>
+</div>
+
+<!-- track goals and insp div -->
+<div class="row">
+  <div class="col-md-4 img-3-div cover" id="goal-div-img">
+  </div>
+  <div class="col-md-4 img-3-div cover" id="keep-div-img">
+  </div>
+  <div class="col-md-4 img-3-div cover" id="beach-div-img">
+  </div>
+</div>
+
+<!-- goals and insp text divs -->
+<div class="row">
+  <div class="col-md-4 info-3-div text-center">
+    <p class="info-text handlee top-info">Track your weight goals!</p>
+    <!-- <div class="row"> -->
+      <p class="info-text-sm oxygen">Whether you want to lose
+        <br />
+        or gain weight, track your weight goals
+        <br />
+        and progress in your journal.</p>
+    <!-- </div> -->
+  </div>
+  <div class="col-md-4 info-3-div text-center">
+    <p class="info-text handlee top-info">What makes this journal different?</p>
+    <p class="info-text-sm oxygen">Inspirations is a special place in
+      <br />
+      your journal for you to collect and view
+      <br />
+      what personally inspires you.</p>
+  </div>
+  <div class="col-md-4 info-3-div text-center">
+    <div class="col-md-10 col-md-offset-1">
+      <p class="info-text handlee top-info-2">Add and view your inspirations to help you stay focused and encourage you to achieve your goals!</p>
+    </div>
+  </div>
+</div>

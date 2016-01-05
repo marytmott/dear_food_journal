@@ -1,0 +1,153 @@
+<div class="row">
+  <div class="col-md-2 text-center">
+    <df-menu-left></df-menu-left>
+  </div>
+  <div class="col-md-10">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <!-- day pagination -->
+      <!-- these arrows do not need ot be buttons? nice click effect thing tho? -->
+      <button class="btn btn-link btn-xs inline" ng-click="vm.routeToDiffDay(vm.previousDay)"><span class="text-primary glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+      <h5 class="text-primary inline default-cursor">{{ vm.date | date: 'fullDate'}}</h5>
+      <button class="btn btn-link btn-xs inline" ng-click="vm.routeToDiffDay(vm.nextDay)"><span class="text-primary glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+    </div>
+
+    <!-- if no meals -->
+    <div class="panel-body text-center" ng-if="!vm.meals.length">
+      <h4>You haven't entered any of your meals yet today!</h4>
+      <button class="btn btn-info btn-lg" ng-click="vm.goToNewMeal()">Add a Meal <span class="glyphicon glyphicon-apple" aria-hidden="true"></span></button>
+    </div>
+
+    <!-- if meal -->
+    <div class="panel-body" ng-if="vm.meals.length">
+      <div class="row">
+        <!-- day's total nutrition -->
+        <div class="col-md-8 padded-div">
+          <div class="panel panel-default day-summary">
+            <div class="panel-body text-center">
+              <!-- <div class="col-md-4"> -->
+                <h5 class="text-info">Current Daily Nutrition:</h5>
+              <!-- </div> -->
+              <!-- <div class="col-md-8"> -->
+              <ul class="horizontal-list-n" df-total-nutrition nutrition-data="vm.todaysNutrition"></ul>
+                <!-- <ul class="horizontal-list-n">
+                  <li>Calories: <strong>{{ vm.todaysNutrition.calories | number:0 }}g</strong></li>
+                  <li>Fat: <strong>{{ vm.todaysNutrition.fat | number:0 }}g</strong></li>
+                  <li>Carbs: <strong>{{ vm.todaysNutrition.carbs | number:0 }}g</strong></li>
+                  <li>Fiber: <strong>{{ vm.todaysNutrition.fiber | number:0 }}g</strong></li>
+                  <li>Protein: <strong>{{ vm.todaysNutrition.protein | number:0 }}g</strong></li>
+                  <li>Sugars: <strong>{{ vm.todaysNutrition.sugars | number:0 }}g</strong></li>
+                </ul> -->
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- current cal count -->
+        <div class="col-md-4 padded-div">
+          <div class="panel panel-default day-summary">
+            <div class="panel-body text-center" ng-if="vm.dailyCalGoal">
+              <!-- if under daily cal goal message -->
+              <h6 class="text-info align-v-center" ng-hide="vm.overCalGoal"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> You currently have eaten <strong>{{ vm.calGoalComparison | number:0 }} calories</strong> of your <strong>{{ vm.dailyCalGoal }} daily calorie goal.</strong></h6>
+
+              <!-- if over daily cal goal message -->
+              <h6 class="text-info align-v-center text-danger" ng-show="vm.overCalGoal"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> You currently have eaten <strong>{{ vm.calGoalComparison | number:0 }} calories OVER</strong> your <strong>{{ vm.dailyCalGoal }} daily calorie goal.</strong></h6>
+            </div>
+
+            <!-- if no daily cal goal message -->
+            <div class="panel-body text-center" ng-if="!vm.dailyCalGoal">
+              <h6 class="text-info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Do you know you can add a <strong>daily calorie goal</strong> to your journal to track your daily calorie progress? <a ng-href="/journals/{{ vm.journalId }}">Click here!</a></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider-light"></div>
+
+      <div class="row">
+        <div class="col-md-5">
+
+          <!-- sorting -->
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="sort-category" class="col-md-5 control-label">Sort meals by:</label>
+              <div class="col-md-6">
+                <select id="sort-category" class="form-control" ng-model="vm.sort">
+                  <option value="+time">Earliest to Latest</option>
+                  <option value="-time">Latest to Earliest</option>
+                  <option value="+name">Name</option>
+                  <option value="-totalNutrition.calories">Most Calories</option>
+                  <option value="+totalNutrition.calories">Least Calories</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- pick new date -->
+        <div class="col-md-7">
+          <form class="form-horizontal" ng-submit="vm.routeToDiffDay(vm.pickNewDate)">
+            <div class="form-group">
+              <label for="pick-new-date" class="col-md-4 control-label">See another date?</label>
+              <div class="col-md-4">
+                <input type="date" id="pick-new-date" class="form-control" ng-model="vm.pickNewDate" />
+              </div>
+              <div class="col-md-2">
+                <button type="submit" class="btn btn-primary btn-sm">Show</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- meals -->
+        <div class="row">
+          <div class="col-md-4 padded-div meal-summary" ng-repeat="meal in vm.meals | orderBy: vm.sort">
+            <div class="panel panel-default">
+              <div class="panel-heading text-center">
+                <h5><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">{{ meal.name }}</a> - {{ meal.time | date: 'shortTime' }}</h5>
+              </div>
+              <div class="panel-body padded-div">
+                <strong>You ate:</strong>
+                <ul class="dash-bullet">
+                  <li ng-repeat="food in meal.foodEntries">{{ food.food[0].name }}
+                    <br />
+                    <small><em>(servings: {{ food.servings }})</em></small></li>
+                </ul>
+                <p class="no-b-margin text-center"><strong>Meal Total Nutrition:</strong></p>
+                  <ul class="horizontal-list text-center">
+                    <li ng-if="meal.totalNutrition.calories">Calories: <strong>{{ meal.totalNutrition.calories | number: 0 }}g</strong></li>
+                    <li ng-if="meal.totalNutrition.fat">Fat: <strong>{{ meal.totalNutrition.fat | number: 0 }}g</strong></li>
+                    <li ng-if="meal.totalNutrition.carbs">Carbs: <strong>{{ meal.totalNutrition.carbs | number: 0 }}g</strong></li>
+                    <br />
+                    <li ng-if="meal.totalNutrition.fiber">Fiber: <strong>{{ meal.totalNutrition.fiber | number: 0 }}g</strong></li>
+                    <li ng-if="meal.totalNutrition.protein">Protein: <strong>{{ meal.totalNutrition.protein | number: 0 }}g</strong></li>
+                    <li ng-if="meal.totalNutrition.sugars">Sugars: <strong>{{ meal.totalNutrition.sugars | number: 0 }}g</strong></li>
+                  </ul>
+
+<!--                   <li ng-repeat="(nutrient, amount) in meal.totalNutrition">{{ nutrient }}: {{ amount | number:0 }}g</li>
+ -->                <h6 class="text-right"><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">View Meal</a> | <a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}/delete">Delete</a></h6>
+              </div>
+            </div>
+
+
+<!--           <ul >
+            <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">{{ meal.name }}</a> - {{ meal.time | date: 'shortTime' }}</li>
+            <li> -->
+
+            <!-- </li> -->
+            <!-- <li>Total Nutrition: -->
+              <!-- another directive to make! -->
+<!--               <ul class="horizontal-list">
+                <li ng-repeat="(nutrient, amount) in meal.totalNutrition">{{ nutrient }}: {{ amount | number:0 }}g</li>
+              </ul>
+            </li> -->
+              <!-- <li>{{ meal.notes }}</li> -->
+<!--             <li><a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}">View Meal</a> | <a ng-href="/journals/{{ meal.journal[0] }}/meals/{{ meal._id }}/delete">Delete</a></li>
+          </ul> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

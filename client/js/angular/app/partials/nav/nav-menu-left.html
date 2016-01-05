@@ -1,0 +1,20 @@
+<ul ng-if="nv.currentUser" class="list-group">
+  <li class="list-group-item">
+    <h4 class="text-green clock">{{ nv.clock | date: 'EEEE' }}</h4>
+    <h4 class="clock">{{ nv.clock | date: 'mediumDate' }}</h4>
+    <h4 class="text-green clock">{{ nv.clock | date: 'shortTime' }}</h4>
+  </li>
+  <li class="list-group-item">
+  <!-- // need to have this update immediately for date now? (in case user sits at this page for a bunch of itme) -->
+    <a ng-href="/journals/{{ nv.currentUser.journal }}/days/{{ nv.clock | date: 'M-d-yyyy' }}">today <span class="glyphicon glyphicon-star" aria-hidden="true"></span></a>
+  </li>
+  <li class="list-group-item">
+    <a ng-href="/journals/{{nv.currentUser.journal}}/meals/new">add meal <span class="glyphicon glyphicon-apple" aria-hidden="true"></span></a>
+  </li>
+  <li class="list-group-item">
+    <a ng-href="/journals/{{ nv.currentUser.journal }}">my journal <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span></a>
+  </li>
+  <li class="list-group-item">
+    <a ng-href="/journals/{{ nv.currentUser.journal }}/inspirations">inspirations <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a>
+  </li>
+</ul>
