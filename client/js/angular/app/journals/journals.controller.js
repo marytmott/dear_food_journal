@@ -67,8 +67,8 @@
     function calcWeightChange(journalInfo) {
       var trackingWeight = journalInfo.currentWeight && journalInfo.startWeight;
       var weightChange;
-      var loseWeight = ' lost ';
-      var gainWeight = ' gained ';
+      var weightLost = ' lost ';
+      var weightGained = ' gained ';
       var loseWeightGoal = journalInfo.weightChangeType === 'lose';
       var gainWeightGoal = journalInfo.weightChangeType === 'gain';
 
@@ -79,28 +79,62 @@
 
 
         // if lose weight goal && user lost weight OR gain weight goal and user gained weight
-        if ((weightChange > 0 && loseWeightGoal) || (weightChange < 0 && gainWeightGoal)) {
-          getWeightChangeMessage(loseWeight, weightChange, 'success');
-        // if lose weight goal && user gained weight OR gain weight goal and user is losing weight
-        } else if ((weightChange < 0 && loseWeightGoal) || (weightChange > 0 && gainWeightGoal)) {
-          getWeightChangeMessage(gainWeight, weightChange, 'noSuccess');
-        // if no change
-        } else {
+      //   if ((weightChange > 0 && loseWeightGoal) || (weightChange < 0 && gainWeightGoal)) {
+      //     getWeightChangeMessage(weightLost, weightChange, 'success');
+      //   // if lose weight goal && user gained weight OR gain weight goal and user is losing weight
+      //   } else if ((weightChange < 0 && loseWeightGoal) || (weightChange < 0 && gainWeightGoal)) {
+      //     getWeightChangeMessage(weightGained, weightChange, 'noSuccess');
+      //   // if no change
+      //   } else {
+      //     if (loseWeightGoal) {
+      //       getWeightChangeMessage(weightLost);
+      //     } else if (gainWeightGoal) {
+      //       getWeightChangeMessage(weightGained);
+      //     }
+      //   }
+      // }
+
+
+        if (weightChange > 0) {
           if (loseWeightGoal) {
-            getWeightChangeMessage(loseWeight);
+            // if lose weight goal && user lost weight
+            getWeightChangeMessage(weightLost, weightChange, 'success');
           } else if (gainWeightGoal) {
-            getWeightChangeMessage(gainWeight);
+            // if user gained weight goal and user gained weight
+            getWeightChangeMessage(weightLost, weightChange, 'noSuccess');
+          }
+        } else if (weightChange < 0) {
+          if (loseWeightGoal) {
+            // if lose weight goal && user gained weight
+            getWeightChangeMessage(weightGained, weightChange, 'noSuccess');
+          } else if (gainWeightGoal) {
+            // if gain weight goal && user gained weight
+            getWeightChangeMessage(weightGained, weightChange, 'success');
+          }
+        } else {
+          // if no change
+          if (loseWeightGoal) {
+            getWeightChangeMessage(weightLost);
+          } else {
+            getWeightChangeMessage(weightGained);
           }
         }
       }
     }
 
     function getWeightChangeMessage(typeOfChange, weightChange, messageName) {
+      var poundText = ' pounds';
       weightChange = Math.abs(weightChange);
+
+      // pluralization for 1 pound
+      if (weightChange === 1) {
+        poundText = ' pound';
+      }
+
       if (messageName === 'success') {
-        vm.weightChangeMessage = 'You\'re doing great! You' + typeOfChange + weightChange + ' pounds so far! Keep it up!';
+        vm.weightChangeMessage = 'You\'re doing great! You' + typeOfChange + weightChange + poundText + ' so far! Keep it up!';
       } else if (messageName === 'noSuccess') {
-        vm.weightChangeMessage = 'You\'ve' + typeOfChange + weightChange + ' pounds. Don\'t worry...get focused, you can do it!';
+        vm.weightChangeMessage = 'You' + typeOfChange + weightChange + poundText + '. Don\'t worry...get focused, you can do it!';
       } else {
         vm.weightChangeMessage = 'You haven\'t' + typeOfChange + 'any weight yet. Stay focused, you can do it!';
       }
