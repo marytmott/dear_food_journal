@@ -77,24 +77,6 @@
         weightChange = Math.floor(journalInfo.startWeight - journalInfo.currentWeight);
         console.log(weightChange);
 
-
-        // if lose weight goal && user lost weight OR gain weight goal and user gained weight
-      //   if ((weightChange > 0 && loseWeightGoal) || (weightChange < 0 && gainWeightGoal)) {
-      //     getWeightChangeMessage(weightLost, weightChange, 'success');
-      //   // if lose weight goal && user gained weight OR gain weight goal and user is losing weight
-      //   } else if ((weightChange < 0 && loseWeightGoal) || (weightChange < 0 && gainWeightGoal)) {
-      //     getWeightChangeMessage(weightGained, weightChange, 'noSuccess');
-      //   // if no change
-      //   } else {
-      //     if (loseWeightGoal) {
-      //       getWeightChangeMessage(weightLost);
-      //     } else if (gainWeightGoal) {
-      //       getWeightChangeMessage(weightGained);
-      //     }
-      //   }
-      // }
-
-
         if (weightChange > 0) {
           if (loseWeightGoal) {
             // if lose weight goal && user lost weight
@@ -145,12 +127,6 @@
       console.log(property);
       changeMode(property);
 
-      // if (property === 'weightChange') {
-      //   // update journal object w/ total weight change, then save
-      //   getChangedWeight();
-      // }
-      // console.log(property);
-
       // update property in case they change something and cancel, don't want to send the whole modified object!
       JournalService.journalResource.update({ journal_id: user.journal },
         {
@@ -168,11 +144,12 @@
     }
 
     checkUserNamePluralGrammar();
+
     // b/c weight change message does not initially load always, load it within a promise
     JournalService.journalResource.get({ journal_id: user.journal }).$promise.then(function(data) {
       console.log(data);
       calcWeightChange(data);
     });
-    // calcWeightChange(journal, true);
+    // calcWeightChange(journal);
   }
 })();
