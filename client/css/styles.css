@@ -1,3 +1,14 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   background: linear-gradient(
       rgba(255, 255, 255, 0.55),
@@ -15,7 +26,17 @@ body {
   color: RGBA(99, 93, 97, 1);
   padding-top: 90px;
   padding-bottom: 40px;
+  position: relative;
+  min-height: 100%;
 }
+
+/*#header-top {
+  z-index: 2;
+}
+
+#content {
+  z-index: 1;
+}*/
 
 /*.view {
   margin-top: 65px;
@@ -466,7 +487,7 @@ input {
 }
 
 #beach-div-img {
-  background: url(/img/inspirational_quotes.jpg) no-repeat bottom;
+  background: url(/img/inspirational_quotes.jpg) no-repeat bottom right;
 }
 
 .cover {
@@ -521,10 +542,11 @@ input {
   font-size: 15px;
   height: 40px;
   width: 100%;
-  position: fixed;
+  /*position: fixed;*/
   left: 0px;
   bottom: 0px;
   width: 100%;
+  position: absolute;
 }
 
 .footer a:link, .footer a:visited, .footer a:hover {

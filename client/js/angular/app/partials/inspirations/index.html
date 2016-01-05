@@ -19,15 +19,10 @@
   <div class="panel panel-default" ng-if="vm.inspirations">
     <div class="panel-heading">
       <div class="row padded-div">
-        <div class="col-md-3 text-center">
-          <!-- <div class="col-md-10 col-md-offset-1"> -->
-            <button type="button" class="btn btn-info" ng-click="vm.goToNewInsp()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> Add Inspiration</button>
-          <!-- </div> -->
-        </div>
         <div class="col-md-1 text-right">
           <strong>Show:</strong>
         </div>
-        <div class="col-md-3  ">
+        <div class="col-md-4">
           <div class="form-inline">
             <div class="form-group">
               <input type="checkbox" id="quotes-cxb" value="true" ng-model="vm.show.quotes" ng-click="vm.reloadMasonry()"><label for="quotes-cxb">Quotes</label>
@@ -40,18 +35,23 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-1">
+          <strong>Search:</strong>
+        </div>
+        <div class="col-md-4">
           <div class="form-horizontal">
             <div class="form-group">
-              <div class="col-md-2">
-              <strong>Search:</strong>
-              </div>
               <label for="insp-search" class="control-label"></label>
-              <div class="col-md-9">
+              <div class="col-md-10">
                 <input type="text" id="insp-search" class="form-control" placeholder="search your inspirations" ng-model="search" />
               </div>
             </div>
           </div>
+        </div>
+        <div class="col-md-2">
+          <!-- <div class="col-md-10 col-md-offset-1"> -->
+            <button type="button" class="btn btn-info" ng-click="vm.goToNewInsp()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> Add Inspiration</button>
+          <!-- </div> -->
         </div>
       </div>
     </div>
