@@ -439,7 +439,7 @@ input {
 }
 
 #easy-div-pic {
-  background: url(/img/forks-in-a-row.jpg) no-repeat center;
+  background: url(/img/forks_in_a_row.jpg) no-repeat center;
 }
 
 #nix-div-pic {
@@ -450,13 +450,21 @@ input {
   background-color: RGBA(255, 255, 255, 1);
 }
 
-.info-text {
+.info-text, .info-text-sm {
   margin-top: 40px;
   font-family: 'Handlee', cursive;
-  font-size: 30px;
   font-weight: bold;
   color: RGBA(0, 0, 0, 1);
   /*text-shadow: 0px 0px 10px RGBA(25, 58, 255, .50);*/
+}
+
+.info-text {
+  font-size: 30px;
+}
+
+.info-text-sm {
+  font-size: 15px;
+
 }
 
 .clock {
