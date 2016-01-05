@@ -434,26 +434,53 @@ input {
   text-shadow: 0px 0px 30px RGBA(126, 126, 126, 1);
 }
 
-.pic-div, .info-div {
+.img-div, .info-div {
   height: 500px;
 }
 
-#easy-div-pic {
+.info-3-div {
+  height: 350px;
+}
+
+.info-div, .info-3-div {
+  background-color: RGBA(255, 255, 255, 1);
+  padding: 20px 0;
+}
+
+#easy-div-img {
   background: url(/img/forks_in_a_row.jpg) no-repeat center;
 }
 
-#nix-div-pic {
+#nix-div-img {
   background: url(/img/api_diagram.png) no-repeat center, RGBA(255, 255, 255, 1);
 }
 
-.info-div {
-  background-color: RGBA(255, 255, 255, 1);
+#goal-div-img {
+  background: url(/img/weight_loss_goals.png) no-repeat center;
+
+}
+
+#keep-div-img {
+    background: url(/img/keep_going.jpg) no-repeat center;
+}
+
+#beach-div-img {
+  background: url(/img/inspirational_quotes.jpg) no-repeat bottom;
+}
+
+.cover {
+  background-size: cover;
+}
+
+#nix-home-img {
+  margin-bottom: 40px;
+  margin-top: 10px;
 }
 
 .info-text, .info-text-sm {
-  margin-top: 40px;
-  font-family: 'Handlee', cursive;
-  font-weight: bold;
+  margin-top: 30px;
+/*  font-family: 'Oxygen', sans-serif;
+*/  font-weight: bold;
   color: RGBA(0, 0, 0, 1);
   /*text-shadow: 0px 0px 10px RGBA(25, 58, 255, .50);*/
 }
@@ -462,9 +489,28 @@ input {
   font-size: 30px;
 }
 
-.info-text-sm {
-  font-size: 15px;
+.handlee {
+  font-family: 'Handlee', cursive;
+}
 
+.top-info {
+  margin-top: 60px;
+}
+
+.top-info-2 {
+  margin-top: 50px;
+}
+
+.info-text-sm {
+  font-size: 20px;
+}
+
+.oxygen {
+  font-family: 'Oxygen', sans-serif;
+}
+
+.img-3-div {
+  height: 250px;
 }
 
 .clock {
