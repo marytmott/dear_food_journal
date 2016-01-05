@@ -19,10 +19,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  /*font-family: "Lobster", cursive;*/
-  /*font-family: 'Istok Web', sans-serif;*/
   font-size: 1.5em;
-  /*font-weight: bold;*/
   color: RGBA(99, 93, 97, 1);
   padding-top: 90px;
   padding-bottom: 40px;
@@ -30,43 +27,13 @@ body {
   min-height: 100%;
 }
 
-/*#header-top {
-  z-index: 2;
-}
-
-#content {
-  z-index: 1;
-}*/
-
-/*.view {
-  margin-top: 65px;
-}*/
-
 /******* modifying bootstrap **********/
 .navbar {
   border-radius: 0;
-  /*border-bottom: 1px solid RGBA(99, 93, 97, 1);*/
-  /*height: 20px;*/
-/*  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;*/
-  /*border-bottom: 1px solid RGBA(221, 221, 221, 1);*/
-    /*background: rgba(255, 255, 255, 0.90);*/
-
-  /*background-color: RGBA(119, 190, 142, 1);*/
 }
-
-/*.nav {
-
-}*/
 
 .navbar a:hover {
   color: RGBA(101, 82, 123, 1);
-}
-
-.btn {
-  /*font-size: 1em;*/
 }
 
 .text-green {
@@ -77,24 +44,15 @@ body {
   color: RGBA(81, 54, 111, 1);
 }
 
-.btn-dp-purp {
+.btn-dp-purp, .btn-dp-purp:focus {
   background-color: RGBA(81, 54, 111, 1);
   border: 0;
-  color: white;
-   /*teal color */
-  /*background-color: RGBA(0, 191, 192, 1);*/
-
-  /*border: RGBA(0, 191, 192, 1);*/
-  /* pretty red-orange color */
-  /*background-color: RGBA(246, 72, 79, 1);*/
-  /*border: RGBA(81, 54, 111, 1);*/
+  color: RGBA(255, 255, 255, 1);
 }
 
 .btn-dp-purp:hover {
-  /*background-color: RGBA(116, 218, 223, 1); teal*/
   background-color: RGBA(101, 82, 123, 1);
   border: 1 px solid RGBA(81, 54, 111, 1);
-
 }
 
 .list-group-item:first-of-type, .list-group-item, .list-group-item:last-of-type {
@@ -105,42 +63,21 @@ body {
 .has-error p {
   font-size: .8em;
 }
-/*
-a {
-  color: RGBA(101, 82, 123, 1);
-}*/
-
 
 a:link, a:visited {
   color: RGBA(0, 167, 151, 1);
 }
 
-/*a:hover {
-  color: RGBA(2, 169, 203, 1);
-}*/
-
 legend {
   color: RGBA(99, 93, 97, 1);
 }
 
-/*label {
-  color: RGBA(99, 93, 97, 1);
-}*/
-
 input {
   color: RGBA(99, 93, 97, 1);
-  /*font-family: 'Shadows Into Light Two', cursive;*/
-  /*font-family: "Courgette", cursive;*/
 }
 
 .text-message {
-  /*color: RGBA(255, 101, 89, 1);*/
-  /*color: RGBA(116, 71, 84, 1);*/
   color: RGBA(81, 54, 111, 1);
-/*  font-family: 'Shadows Into Light Two', cursive;
-  font-weight: bold;*/
-  /*font-family: "Courgette", cursive;*/
-  /*font-size: .9em;*/
 }
 
 .clock {
@@ -187,8 +124,6 @@ input {
 
 .panel {
   background: RGBA(255, 255, 255, 0.85);
-  /*border: 1px solid RGBA(99, 93, 97, 1);*/
-  /*border-radius: 15px;*/
 }
 
 .new-food {
@@ -237,21 +172,19 @@ input {
   padding: 0 30px;
 }
 
-.divider {
+.divider, .divider-light {
   height: 1px;
-  width:100%;
-  display:block; /* for use on default inline elements like span */
+  width: 100%;
+  display: block; /* for use on default inline elements like span */
   margin: 9px 0;
   overflow: hidden;
+}
+
+.divider {
   background-color: RGBA(153, 153, 153, 1);
 }
 
 .divider-light {
-  height: 1px;
-  width:100%;
-  display:block; /* for use on default inline elements like span */
-  margin: 9px 0;
-  overflow: hidden;
   background-color: RGBA(229, 229, 229, 1);
 }
 
@@ -290,10 +223,8 @@ input {
 .insp-mdiv {
   margin-left: 15px;
   margin-right: 15px;
-  /*margin-bottom: 20px;*/
   text-align: center;
   width: 275px;
-
 }
 
 .center-div {
@@ -306,9 +237,6 @@ input {
   padding: 10px 10px 0 10px;
   margin-bottom: 10px;
   margin-top: 10px;
-/*  -moz-box-shadow:    0 0 10px 3px RGBA(204, 204, 204, 1);
-  -webkit-box-shadow: 0 0 10px 3px RGBA(204, 204, 204, 1);
-  box-shadow:         0 0 10px 3px RGBA(204, 204, 204, 1);*/
 }
 
 .insp-mele-tip {
@@ -317,9 +245,6 @@ input {
   padding: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
-/*  -moz-box-shadow:    0 0 10px 3px RGBA(204, 204, 204, 1);
-  -webkit-box-shadow: 0 0 10px 3px RGBA(204, 204, 204, 1);
-  box-shadow:         0 0 10px 3px RGBA(204, 204, 204, 1);*/
 }
 
 .insp-img-m {
@@ -328,9 +253,6 @@ input {
   border-radius: 3px;
   margin-bottom: 10px;
   margin-top: 10px;
-/*  -moz-box-shadow:    0 0 10px 3px RGBA(204, 204, 204, 1);
-  -webkit-box-shadow: 0 0 10px 3px RGBA(204, 204, 204, 1);
-  box-shadow:         0 0 10px 3px RGBA(204, 204, 204, 1);*/
 }
 
 .insp-links, .insp-links:hover, .insp-links:visited, .insp-links:link {
@@ -353,7 +275,6 @@ input {
 
 #insp-search {
   margin-top: -5px;
-  /*padding-top: 0;*/
 }
 
 #inspiration-type {
@@ -398,8 +319,6 @@ input {
 
 #login-modal {
   top: 15%;
-  /*right:50%;*/
-  /*outline: none;*/
 }
 
 #login-modal .modal-dialog  {
@@ -410,9 +329,6 @@ input {
 .home-div {
   margin-top: -25px;
   color: RGBA(255, 255, 255, 1);
-/*  margin: -25px;
-  padding: -25px;*/
-
 }
 
 #top {
@@ -440,9 +356,6 @@ input {
   font-size: 40px;
   font-weight: bold;
   text-shadow: 0px 0px 30px RGBA(126, 126, 126, 1);
-
-/*  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white;*/
 }
 
 .btn-home {
@@ -451,7 +364,6 @@ input {
   width: 200px;
   padding: 10px 0;
   border: 4px solid RGBA(255, 255, 255, 1);
-  /*font-family: "Lobster", cursive;*/
   font-size: 30px;
   text-shadow: 0px 0px 30px RGBA(126, 126, 126, 1);
 }
@@ -501,10 +413,8 @@ input {
 
 .info-text, .info-text-sm {
   margin-top: 30px;
-/*  font-family: 'Oxygen', sans-serif;
-*/  font-weight: bold;
+  font-weight: bold;
   color: RGBA(0, 0, 0, 1);
-  /*text-shadow: 0px 0px 10px RGBA(25, 58, 255, .50);*/
 }
 
 .info-text {
@@ -542,7 +452,6 @@ input {
   font-size: 15px;
   height: 40px;
   width: 100%;
-  /*position: fixed;*/
   left: 0px;
   bottom: 0px;
   width: 100%;
@@ -556,8 +465,6 @@ input {
 
 .footer img {
   height: 15px;
-  /*margin: 0;*/
-  /*padding: 0;*/
 }
 
 .clock {
