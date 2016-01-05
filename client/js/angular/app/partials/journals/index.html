@@ -121,7 +121,7 @@
         <!-- if weight change reason -->
         <section class="pointer-cursor text-primary" ng-if="vm.journal.currentWeight && !vm.change.currentWeight" ng-click="vm.changeMode('currentWeight')">
           <p class="no-b-margin">Your current weight is <strong>{{ vm.journal.currentWeight | number:0 }} pounds</strong>.</strong></p>
-          <p><em>{{ vm.weightChangeMessage }}</em></p>
+          <p class="text-info"><em>{{ vm.weightChangeMessage }}</em></p>
         </section>
 
         <!-- if no weight change reason -->

@@ -31,7 +31,7 @@
     vm.changeAll = changeAll;
     vm.updateJournal = updateJournal;
     vm.weightChangeTypeHeading;
-    vm.calcWeightChange = calcWeightChange;
+    // vm.calcWeightChange = calcWeightChange;
 
     function checkUserNamePluralGrammar() {
       var userNameLastChar = user.firstName[user.firstName.length - 1];
@@ -64,19 +64,17 @@
       }
     }
 
-    function calcWeightChange() {
-      var trackingWeight = vm.journal.currentWeight && vm.journal.startWeight;
+    function calcWeightChange(journalInfo) {
+      var trackingWeight = journalInfo.currentWeight && journalInfo.startWeight;
       var weightChange;
-      var typeOfChange;
       var loseWeight = ' lost ';
       var gainWeight = ' gained ';
-      var loseWeightGoal = vm.journal.weightChangeType === 'lose';
-      var gainWeightGoal = vm.journal.weightChangeType === 'gain';
+      var loseWeightGoal = journalInfo.weightChangeType === 'lose';
+      var gainWeightGoal = journalInfo.weightChangeType === 'gain';
 
-
-      console.log('tracking weight', vm.journal);
+      console.log('tracking weight', journalInfo);
       if (trackingWeight) {
-        weightChange = Math.floor(vm.journal.startWeight - vm.journal.currentWeight);
+        weightChange = Math.floor(journalInfo.startWeight - journalInfo.currentWeight);
         console.log(weightChange);
 
 
@@ -84,23 +82,17 @@
         if ((weightChange > 0 && loseWeightGoal) || (weightChange < 0 && gainWeightGoal)) {
           getWeightChangeMessage(loseWeight, weightChange, 'success');
         // if lose weight goal && user gained weight OR gain weight goal and user is losing weight
-        } else if ((weightChange < 0 && loseWeightGoal) || (weightChangeType > 0 && gainWeightGoal)) {
+        } else if ((weightChange < 0 && loseWeightGoal) || (weightChange > 0 && gainWeightGoal)) {
           getWeightChangeMessage(gainWeight, weightChange, 'noSuccess');
         // if no change
         } else {
-          getWeightChangeMessage();
+          if (loseWeightGoal) {
+            getWeightChangeMessage(loseWeight);
+          } else if (gainWeightGoal) {
+            getWeightChangeMessage(gainWeight);
+          }
         }
-
-
-        // if (weightChange )
-
-        // if gained weight && user is losing weight
-
-
-        // if achieving goals?
-
       }
-
     }
 
     function getWeightChangeMessage(typeOfChange, weightChange, messageName) {
@@ -108,11 +100,10 @@
       if (messageName === 'success') {
         vm.weightChangeMessage = 'You\'re doing great! You' + typeOfChange + weightChange + ' pounds so far! Keep it up!';
       } else if (messageName === 'noSuccess') {
-        vm.weightChangeMessage = 'You\'ve' + typeOfChange + weightChange + ' pounds. Don\'t worry, get focused, you can do it!';
+        vm.weightChangeMessage = 'You\'ve' + typeOfChange + weightChange + ' pounds. Don\'t worry...get focused, you can do it!';
       } else {
         vm.weightChangeMessage = 'You haven\'t' + typeOfChange + 'any weight yet. Stay focused, you can do it!';
       }
-      // vm.$apply();
     }
 
     function updateJournal(property) {
@@ -137,13 +128,17 @@
           if (data.success) {
             vm.change[property] = false;
             vm.journal = data.journal;
-            calcWeightChange();
+            calcWeightChange(data.journal);
           }
         });
     }
 
     checkUserNamePluralGrammar();
-    calcWeightChange();
-
+    // b/c weight change message does not initially load always, load it within a promise
+    JournalService.journalResource.get({ journal_id: user.journal }).$promise.then(function(data) {
+      console.log(data);
+      calcWeightChange(data);
+    });
+    // calcWeightChange(journal, true);
   }
 })();
