@@ -513,6 +513,23 @@ input {
   height: 250px;
 }
 
+.footer {
+  background-color: RGBA(255, 255, 255, 1);
+  padding-left: 20px;
+  font-size: 15px;
+}
+
+.footer a:link, .footer a:visited, .footer a:hover {
+  color: RGBA(0, 0, 0, 1);
+  text-decoration: none;
+}
+
+.footer img {
+  height: 15px;
+  /*margin: 0;*/
+  /*padding: 0;*/
+}
+
 .clock {
   font-family: 'Karla', sans-serif;
 }
