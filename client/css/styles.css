@@ -14,6 +14,7 @@ body {
   /*font-weight: bold;*/
   color: RGBA(99, 93, 97, 1);
   padding-top: 90px;
+  padding-bottom: 40px;
 }
 
 /*.view {
@@ -516,7 +517,14 @@ input {
 .footer {
   background-color: RGBA(255, 255, 255, 1);
   padding-left: 20px;
+  padding-top: 7px;
   font-size: 15px;
+  height: 40px;
+  width: 100%;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
 }
 
 .footer a:link, .footer a:visited, .footer a:hover {
