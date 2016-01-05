@@ -433,6 +433,31 @@ input {
   text-shadow: 0px 0px 30px RGBA(126, 126, 126, 1);
 }
 
+.pic-div, .info-div {
+  height: 500px;
+}
+
+#easy-div-pic {
+  background: url(/img/forks-in-a-row.jpg) no-repeat center;
+}
+
+#nix-div-pic {
+  background: url(/img/api_diagram.png) no-repeat center, RGBA(255, 255, 255, 1);
+}
+
+.info-div {
+  background-color: RGBA(255, 255, 255, 1);
+}
+
+.info-text {
+  margin-top: 40px;
+  font-family: 'Handlee', cursive;
+  font-size: 30px;
+  font-weight: bold;
+  color: RGBA(0, 0, 0, 1);
+  /*text-shadow: 0px 0px 10px RGBA(25, 58, 255, .50);*/
+}
+
 .clock {
-font-family: 'Karla', sans-serif;
+  font-family: 'Karla', sans-serif;
 }
