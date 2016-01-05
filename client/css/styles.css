@@ -13,6 +13,7 @@ body {
   font-size: 1.5em;
   /*font-weight: bold;*/
   color: RGBA(99, 93, 97, 1);
+  padding-top: 90px;
 }
 
 /*.view {
