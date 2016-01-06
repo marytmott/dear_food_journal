@@ -81,12 +81,11 @@
     function dailyCalGoalComparison() {
       var dailyCalComparison = dailyCalGoal - vm.todaysNutrition.calories;
 
-      if (dailyCalComparison >= 0) {
-        vm.calGoalComparison = dailyCalComparison;
+      if (dailyCalComparison > 0) {
+        vm.calGoalComparison = vm.todaysNutrition.calories;
       } else {
         vm.overCalGoal = true;
         vm.calGoalComparison = Math.abs(dailyCalComparison);
-
       }
     }
 
