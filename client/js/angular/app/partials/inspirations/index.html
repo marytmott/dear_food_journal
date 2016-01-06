@@ -3,18 +3,6 @@
     <df-menu-left></df-menu-left>
   </div>
 
-  <div class="col-md-8" ng-if="!vm.inspirations.length">
-    <div class="panel panel-default no-insp">
-      <div class="panel-body text-center">
-        <h4><strong>You don't have any <span class="text-primary">inspiration</span> in your journal!</strong></h4>
-        <br />
-        <h5>Why don't you add some inspirations to your journal to</h5>
-        <h5>help keep you focused on your weight goal?</h5>
-        <button type="button" class="btn btn-info" ng-click="vm.goToNewInsp()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> Add Inspiration</button>
-      </div>
-    </div>
-  </div>
-
 <div class="col-md-10" ng-if="vm.inspirations.length">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -80,4 +68,15 @@
     </div>
   </div>
 </div>
+  <div class="col-md-8" ng-if="!vm.inspirations.length">
+    <div class="panel panel-default no-insp">
+      <div class="panel-body text-center">
+        <h4><strong>You don't have any <span class="text-primary">inspiration</span> in your journal!</strong></h4>
+        <br />
+        <h5>Why don't you add some inspirations to your journal to</h5>
+        <h5>help keep you focused on your weight goal?</h5>
+        <button type="button" class="btn btn-info" ng-click="vm.goToNewInsp()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> Add Inspiration</button>
+      </div>
+    </div>
+  </div>
 </div>
