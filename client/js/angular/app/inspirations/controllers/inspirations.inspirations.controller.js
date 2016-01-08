@@ -5,9 +5,9 @@
     .module('dearFoodJ.inspirations')
     .controller('InspirationsController', InspirationsController);
 
-  InspirationsController.$inject = ['$rootScope', '$routeParams', '$location', 'InspirationService', 'inspirationData'];
+  InspirationsController.$inject = ['$rootScope', '$routeParams', '$location', '$timeout', 'InspirationService', 'inspirationData'];
 
-  function InspirationsController($rootScope, $routeParams, $location, InspirationService, inspirationData) {
+  function InspirationsController($rootScope, $routeParams, $location, $timeout, InspirationService, inspirationData) {
     var vm = this;
 
     var path;
@@ -44,6 +44,7 @@
     path = '/journals/' + vm.journal + '/inspirations';
 
     function reloadMasonry() {
+      console.log('reloading masonry');
       $rootScope.$broadcast('masonry.reload');
     }
 
@@ -65,6 +66,10 @@
     function previewHide() {
       vm.showPreview = false;
     }
+
+    // images loaded not properly working, need to fix better
+    $timeout(reloadMasonry, 300);
+    // reloadMasonry();
 
   }
 
