@@ -31,3 +31,8 @@ Dear Food Journal was built on a MEAN stack:
 Dear Food Journal uses the [Nutritionix API](http://www.nutritionix.com/api) which is a rich resourve with hundreds of thousands of food and nutrition info available so users can easily find foods they ate and add it to their meal.
 
 Though the API is a rich resource, if a food is not found from the API, they can also add their own foods (for such cases as homemade recipes, etc.).
+
+### Demo Account Info for [http://dearfoodjournal.herokuapp.com/](http://dearfoodjournal.herokuapp.com/):
+
+- email: demo@email.com
+- password: demoaccount
