@@ -331,7 +331,7 @@ input {
   color: RGBA(255, 255, 255, 1);
 }
 
-#top {
+.top {
   background: url(/img/desktop1-1600.jpg) no-repeat center;
   height: 650px;
   padding-top: 50px;
@@ -381,24 +381,24 @@ input {
   padding: 20px 0;
 }
 
-#easy-div-img {
+.easy-div-img {
   background: url(/img/forks_in_a_row.jpg) no-repeat center;
 }
 
-#nix-div-img {
+.nix-div-img {
   background: url(/img/api_diagram.png) no-repeat center, RGBA(255, 255, 255, 1);
 }
 
-#goal-div-img {
+.goal-div-img {
   background: url(/img/weight_loss_goals.png) no-repeat center;
 
 }
 
-#keep-div-img {
+.keep-div-img {
   background: url(/img/keep_going.jpg) no-repeat center;
 }
 
-#beach-div-img {
+.beach-div-img {
   background: url(/img/sand_heart.jpg) no-repeat right bottom;
 }
 
