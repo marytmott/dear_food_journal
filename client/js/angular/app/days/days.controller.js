@@ -7,44 +7,29 @@
 
   DaysController.$inject = ['$routeParams', '$location', 'UserService', 'entries', 'dailyCalGoal'];
 
-// NEED TO DO HANDLING FOR NULL FIELDS
+  // NEED TO DO HANDLING FOR NULL FIELDS
   function DaysController($routeParams, $location, UserService, entries, dailyCalGoal) {
     var vm = this;
-    // console.log(dailyCalGoal.dailyCalorieGoal);
-    // only returning meals for now
     // WOW -- dry this up!!? (possible w/ dates? = prob not)
-    console.log(entries);
+    // only returning meals for now
     vm.meals = entries;
-    console.log(vm.meals.length);
     vm.previousDay = new Date(new Date($routeParams.date).setDate(new Date($routeParams.date).getDate() - 1));
     vm.date = new Date($routeParams.date);
     vm.nextDay = new Date(new Date($routeParams.date).setDate(new Date($routeParams.date).getDate() + 1));
-    console.log(vm.previousDay, vm.date, vm.nextDay);
     vm.routeToDiffDay = routeToDiffDay;
     vm.goToNewMeal = goToNewMeal;
-
-    // vm.goToYesterday = goToYesterday;
-    // vm.goToTomorrow = goToTomorrow;
-    // console.log($routeParams);
     vm.dailyCalGoal = dailyCalGoal;
     vm.overCalGoal = false;
-    // console.log(vm.meals);
-// console.log(vm.meals[0].foodEntries);
     vm.sort = '+time';
-    // vm.showNewDate = showNewDate;
     vm.pickNewDate = null;
     vm.journalId = $routeParams.journal_id;
 
-    // make one functino for routing
+    // make one function for routing
     function routeToDiffDay(day) {
       var dayPath = day.toLocaleDateString().replace(/\//g, '-');
-      $location.path('/journals/' + $routeParams.journal_id + '/days/' + dayPath);
+      var user = UserService.getCurrentUser();
+      $location.path('/journals/' + user.journal + '/days/' + dayPath);
     }
-
-    // function goToTomorrow() {
-    //   $location.path('/journals/' + $routeParams.journal_id + '/days/' + vm.nextDay);
-    // }
-
 
     function goToNewMeal() {
       var user = UserService.getCurrentUser();
@@ -73,7 +58,6 @@
         todaysNutrition.protein += currentMeal.totalNutrition.protein;
         todaysNutrition.sugars += currentMeal.totalNutrition.sugars;
       }
-
       vm.todaysNutrition = todaysNutrition;
       dailyCalGoalComparison();
     }
@@ -88,9 +72,6 @@
         vm.calGoalComparison = Math.abs(dailyCalComparison);
       }
     }
-
     todaysTotalNutrition();
-    // dailyCalGoalComparison();
-
   }
 })();
