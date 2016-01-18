@@ -12,8 +12,8 @@
 
     vm.user = user;
     vm.journal = journal;
-    vm.temp = {};
     // temp -- in case they change it and go back
+    vm.temp = {};
 
     // if they clicked to change something
     vm.change = {
@@ -24,32 +24,24 @@
       startWeight: false,
       weightChange: false
     };
-    console.log(vm.journal);
-
     vm.changeAllActive = false;
     vm.changeMode = changeMode;
     vm.changeAll = changeAll;
     vm.updateJournal = updateJournal;
     vm.weightChangeTypeHeading;
-    // vm.calcWeightChange = calcWeightChange;
 
     function checkUserNamePluralGrammar() {
       var userNameLastChar = user.firstName[user.firstName.length - 1];
       if (userNameLastChar === 's' || userNameLastChar === 'z') {
-        console.log('yes');
         vm.userNameLastCharCheck = true;
       } else {
-        console.log('no');
         vm.userNameLastCharCheck = false;
       }
     }
 
     function changeMode(property, cancel) {
       vm.change[property] = !vm.change[property];
-      // if true, put in temp value for cancelling
-      // if (vm.change[property] && property !== 'weightChange') {
-      // }
-      // reset
+
       if (cancel) {
         vm.journal[property] = vm.temp[property];
       } else {
@@ -57,6 +49,7 @@
       }
     }
 
+    // TODO -- if they want to change all their goals at once
     function changeAll() {
       vm.changeAllActive = !vm.changeAllActive;
       for (var property in vm.change) {
@@ -72,17 +65,15 @@
       var loseWeightGoal = journalInfo.weightChangeType === 'lose';
       var gainWeightGoal = journalInfo.weightChangeType === 'gain';
 
-      console.log('tracking weight', journalInfo);
       if (trackingWeight) {
         weightChange = Math.floor(journalInfo.startWeight - journalInfo.currentWeight);
-        console.log(weightChange);
 
         if (weightChange > 0) {
           if (loseWeightGoal) {
             // if lose weight goal && user lost weight
             getWeightChangeMessage(weightLost, weightChange, 'success');
           } else if (gainWeightGoal) {
-            // if user gained weight goal and user gained weight
+            // if user gained weight goal && user gained weight
             getWeightChangeMessage(weightLost, weightChange, 'noSuccess');
           }
         } else if (weightChange < 0) {
@@ -124,7 +115,6 @@
 
     function updateJournal(property) {
       var user = UserService.getCurrentUser();
-      console.log(property);
       changeMode(property);
 
       // update property in case they change something and cancel, don't want to send the whole modified object!
@@ -134,7 +124,6 @@
           [property]: vm.journal[property]
         }
         ).$promise.then(function(data) {
-          console.log(data);
           if (data.success) {
             vm.change[property] = false;
             vm.journal = data.journal;
@@ -147,7 +136,6 @@
 
     // b/c weight change message does not initially load always, load it within a promise
     JournalService.journalResource.get({ journal_id: user.journal }).$promise.then(function(data) {
-      console.log(data);
       calcWeightChange(data);
     });
     // calcWeightChange(journal);
