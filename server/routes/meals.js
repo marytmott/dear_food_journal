@@ -219,6 +219,7 @@ router.put('/:meal_id', function(req, res) {
       totalNutrition: req.body.totalNutrition,
       foodEntries: []
     },
+    { new: true },
     function(err, meal) {
       var total = foodEntries.length;
       var result = [];
