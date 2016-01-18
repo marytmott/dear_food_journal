@@ -2,103 +2,82 @@
   <div class="col-md-2 text-center">
     <df-menu-left></df-menu-left>
   </div>
-    <div class="col-md-7">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <div class="row">
-            <div class="col-md-3">
-              <a ng-href="{{ vm.backLink }}"><span class="small glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back</a>
-            </div>
-            <div class="col-md-9 text-right">
-              <span class="glyphicon glyphicon glyphicon-adjust" aria-hidden="true"></span> Meal Date: <strong>{{ vm.meal.date | date: 'mediumDate' }}, {{ vm.meal.time | date: 'shortTime' }}</strong>
-            </div>
+  <div class="col-md-7">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-3">
+            <a ng-href="{{ vm.backLink }}"><span class="small glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back</a>
           </div>
-        </div>
-        <div class="panel-body">
-          <h4 class="meal-title text-center text-primary">{{ vm.meal.name }}</h4>
-
-          <!-- meal entries -->
-          <div class="padded-div">
-
-          <p class="no-b-margin"><strong>Your food entries for this meal:</strong></p>
-            <!-- make directive -->
-            <div class="row meal-entry" ng-repeat="entry in vm.meal.foodEntries">
-              <ul class="no-bullet">
-                <li><h5 class="text-info">{{ entry.food[0].name }}</h5></li>
-                <!-- <li>serving size is {{ entry.food[0].servingSizeQty }} {{ entry.food[0].servingSizeUnit }}</li> -->
-                <li>You had <strong>{{ entry.servings }} <span ng-if="entry.servings === 1">serving</span><span ng-if="entry.servings !== 1">servings</span></strong> of a <strong>{{ entry.food[0].servingSizeQty }} {{ entry.food[0].servingSizeUnit }} serving size</strong> for this food:</li>
-                  <li><ul class="horizontal-list-n">
-                    <!-- need to add ng-ifs! -->
-                    <li>Calories: <strong>{{ entry.food[0].calories * entry.servings | number:0 }}g</strong></li>
-                    <li>Fat: <strong>{{ entry.food[0].fat * entry.servings | number:0 }}g</strong></li>
-                    <li>Carbs: <strong>{{ entry.food[0].carbohydrates * entry.servings | number:0 }}g</strong></li>
-                    <li>Fiber: <strong>{{ entry.food[0].fiber * entry.servings | number:0 }}g</strong></li>
-                    <li>Protein: <strong>{{ entry.food[0].protein * entry.servings | number:0 }}g</strong></li>
-                    <li>Sugars: <strong>{{ entry.food[0].sugars * entry.servings | number:0 }}g</strong></li>
-                    </ul></li>
-              <div class="divider-light"></div>
-              </div>
+          <div class="col-md-9 text-right">
+            <span class="glyphicon glyphicon glyphicon-adjust" aria-hidden="true"></span> Meal Date: <strong>{{ vm.meal.date | date: 'mediumDate' }}, {{ vm.meal.time | date: 'shortTime' }}</strong>
           </div>
-          <div class="row padded-div" ng-if="vm.meal.emotions">
-            <div class="col-md-2">
-              <strong>Emotions:</strong>
-            </div>
-            <div class="col-md-10">
-              <div class="panel panel-default">
-                <div class="panel-body">
-                {{ vm.meal.emotions }}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row padded-div" ng-if="vm.meal.notes">
-            <div class="col-md-2">
-              <strong>Notes:</strong>
-            </div>
-            <div class="col-md-10">
-              <div class="panel panel-default">
-                <div class="panel-body">
-                  {{ vm.meal.notes }}
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <!-- meal total nutrition -->
-
-          <div class="row padded-div">
-          <!-- <div class="col-md-10 col-md-offset-1"> -->
-              <div class="panel panel-default">
-                <div class="panel-body text-center">
-                  <h5>Meal Total Nutrition:</h5>
-                  <!-- TODO - make this directive with day show total nutrition!! -->
-                  <ul class="horizontal-list-n" df-total-nutrition nutrition-data="vm.meal.totalNutrition"></ul>
-                  <!-- <ul class="horizontal-list-n"> -->
-<!--                     <li ng-if="vm.meal.totalNutrition.calories">Calories: <strong>{{ vm.meal.totalNutrition.calories | number: 0 }}g</strong></li>
-                    <li ng-if="vm.meal.totalNutrition.fat">Fat: <strong>{{ vm.meal.totalNutrition.fat | number: 0 }}g</strong></li>
-                    <li ng-if="vm.meal.totalNutrition.carbs">Carbs: <strong>{{ vm.meal.totalNutrition.carbs | number: 0 }}g</strong></li>
-                    <li ng-if="vm.meal.totalNutrition.fiber">Fiber: <strong>{{ vm.meal.totalNutrition.fiber | number: 0 }}g</strong></li>
-                    <li ng-if="vm.meal.totalNutrition.protein">Protein: <strong>{{ vm.meal.totalNutrition.protein | number: 0 }}g</strong></li>
-                    <li ng-if="vm.meal.totalNutrition.sugars">Sugars: <strong>{{ vm.meal.totalNutrition.sugars | number: 0 }}g</strong></li> -->
-                  <!-- </ul> -->
-                  <!-- <ul class="horizontal-list" df-total-nutrition nutrition-data="vm.meal.totalNutrition"></ul> -->
-                </div>
-              </div>
-           </div>
-           <!-- </div> -->
-            <ul class="pager">
-              <li><a ng-href="{{ vm.mealsPath }}/edit"></span>Edit Meal <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></a></li>
-              <li><a ng-href="{{ vm.mealsPath }}/delete">Delete Meal <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></a></li>
-            </ul>
-
-          <!-- </div> -->
-          <!-- {{ vm.meal }} -->
         </div>
       </div>
-    </div>
-    <div class="col-md-4">
+      <div class="panel-body">
+        <h4 class="meal-title text-center text-primary">{{ vm.meal.name }}</h4>
+
+        <!-- meal entries -->
+        <div class="padded-div">
+          <p class="no-b-margin"><strong>Your food entries for this meal:</strong></p>
+          <!-- make a directive? -->
+          <div class="row meal-entry" ng-repeat="entry in vm.meal.foodEntries">
+            <ul class="no-bullet">
+              <li><h5 class="text-info">{{ entry.food[0].name }}</h5></li>
+              <li>You had <strong>{{ entry.servings }} <span ng-if="entry.servings === 1">serving</span><span ng-if="entry.servings !== 1">servings</span></strong> of a <strong>{{ entry.food[0].servingSizeQty }} {{ entry.food[0].servingSizeUnit }} serving size</strong> for this food:</li>
+              <li><ul class="horizontal-list-n">
+                <!-- need to add ng-ifs? -->
+                <li>Calories: <strong>{{ entry.food[0].calories * entry.servings | number:0 }}g</strong></li>
+                <li>Fat: <strong>{{ entry.food[0].fat * entry.servings | number:0 }}g</strong></li>
+                <li>Carbs: <strong>{{ entry.food[0].carbohydrates * entry.servings | number:0 }}g</strong></li>
+                <li>Fiber: <strong>{{ entry.food[0].fiber * entry.servings | number:0 }}g</strong></li>
+                <li>Protein: <strong>{{ entry.food[0].protein * entry.servings | number:0 }}g</strong></li>
+                <li>Sugars: <strong>{{ entry.food[0].sugars * entry.servings | number:0 }}g</strong></li>
+                </ul>
+              </li>
+            <div class="divider-light"></div>
+          </div>
+        </div>
+        <div class="row padded-div" ng-if="vm.meal.emotions">
+          <div class="col-md-2">
+            <strong>Emotions:</strong>
+          </div>
+          <div class="col-md-10">
+            <div class="panel panel-default">
+              <div class="panel-body">
+              {{ vm.meal.emotions }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row padded-div" ng-if="vm.meal.notes">
+          <div class="col-md-2">
+            <strong>Notes:</strong>
+          </div>
+          <div class="col-md-10">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                {{ vm.meal.notes }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- meal total nutrition -->
+        <div class="row padded-div">
+          <div class="panel panel-default">
+            <div class="panel-body text-center">
+              <h5>Meal Total Nutrition:</h5>
+              <ul class="horizontal-list-n" df-total-nutrition nutrition-data="vm.meal.totalNutrition"></ul>
+            </div>
+          </div>
+        </div>
+
+        <ul class="pager">
+          <li><a ng-href="{{ vm.mealsPath }}/edit"></span>Edit Meal <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></a></li>
+          <li><a ng-href="{{ vm.mealsPath }}/delete">Delete Meal <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></a></li>
+        </ul>
+      </div>
     </div>
   </div>
-<!-- </div> -->
-
-<!-- {"_id":"567453323d7e87eb51e8d0e9","date":"12/18/2015","time":"1970-01-01T19:15:00.000Z","name":"Dinner","emotions":"","notes":"","totalNutrition":{"calories":200,"carbs":37,"fat":3,"fiber":0,"protein":6,"sugars":31},"__v":1,"foodEntries":[{"servings":1,"_id":"567453323d7e87eb51e8d0ea","food":["567196cd37e5d942eaea92e8"]}],"journal":["567109f0508fddb92a75d21d"]} -->
+</div>
