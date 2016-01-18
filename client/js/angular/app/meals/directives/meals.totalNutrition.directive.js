@@ -11,7 +11,7 @@
       scope: {
         totalNutrition: '=nutritionData',
       }
-        // restirct?
+        // restrict?
     }
   }
 })();
