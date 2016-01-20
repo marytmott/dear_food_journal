@@ -10,37 +10,27 @@
   function LoginController($element, UserService, ModalService, close) {
     var lc = this;
 
-    console.log('login controller');
     lc.login = login;
     lc.cancel = cancel;
     lc.user = {};
 
     function login() {
       UserService.login(lc.user).then(function(data) {
-        console.log('DATA from LOGIN', data);
-        // bad requests are coming here too....add handling
+        // TODO - bad requests are coming here too....add handling
         UserService.setCurrentUser(data);
-        // getCurrentUser();
-        // console.log('/' + data.data.user.id + '/' + data.data.user.journal);
-        // $scope.close = function() {
-          $element.modal('hide'); // DRY THIS UP w/ BELOW??
-          close(data, 200); // close, but give 500ms for bootstrap to animate
-        // };
-
-        // close();
-        // $location.path('/journals/' + data.data.user.journal);
+        $element.modal('hide');
+        close(data, 200); // close, but give 200ms for bootstrap to animate
       }).catch(function(errors) {
-        console.log('errors: ', errors);
         if (errors) {
           lc.loginError = 'Invalid login.'
           lc.user = {};
-          // refocus email field
-          document.getElementById('email').focus();
+          // TODO - refocus email field call
         }
       });
     }
 
     function cancel() {
+      // TODO - refocus email field call
       $element.modal('hide');
       closeModal();
     }
@@ -49,7 +39,7 @@
       close(null, 200);
     }
 
+    // TODO - add function to refocus email when user is done w/ modal (logs in or cancels)
+    // document.getElementById('email').focus();
   }
-
-
 })();
