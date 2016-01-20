@@ -14,13 +14,10 @@
         controller: 'DaysController',
         controllerAs: 'vm',
         resolve: {
-          // need to [''] this!!! VVVV
           entries: ['$route', 'UserService', 'DayService', function($route, UserService, DayService) {
             var user = UserService.getCurrentUser();
             var date = $route.current.params.date;
-            // console.log($route);
             return DayService.getDay(user.journal, date).then(function(data) {
-              console.log(data);
               return data;
             });
           }],
@@ -28,7 +25,6 @@
             var user = UserService.getCurrentUser();
 
             return JournalService.journalResource.get({ journal_id: user.journal }).$promise.then(function(data) {
-              console.log(data.dailyCalorieGoal);
               return data.dailyCalorieGoal;
             });
           }]

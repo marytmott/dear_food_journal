@@ -6,6 +6,8 @@ var jwt = require('jsonwebtoken');
 
 // DO THE TOKEN ON ALLLLLL THISSSS!!
 
+// ###### need to send back new stuff for day route ...upsert and return new record
+
 
 // get 1 meal
 router.get('/:meal_id', function(req, res) {
@@ -217,6 +219,7 @@ router.put('/:meal_id', function(req, res) {
       totalNutrition: req.body.totalNutrition,
       foodEntries: []
     },
+    { new: true },
     function(err, meal) {
       var total = foodEntries.length;
       var result = [];

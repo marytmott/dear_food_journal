@@ -11,16 +11,13 @@
     var vm = this;
 
     vm.user = user;
-
     vm.directToSignup = directToSignup;
-    // vm.showLoginModal = showLoginModal;
 
     function directToSignup() {
       $location.path('/signup');
     }
 
     function showLoginModal() {
-      console.log('what');
       ModalService.showModal({
         templateUrl: '/partials/users/login.html',
         controller: 'LoginController',
@@ -34,10 +31,7 @@
           if (result) {
             UserService.setCurrentUser(result);
             $location.path('/journals/' + result.data.user.journal);
-
           }
-
-          // vm.message = result ? "You said Yes" : "You said No";
         });
       });
     }

@@ -7,13 +7,6 @@
 
   ConfigMeals.$inject = ['$routeProvider'];
 
-  // can just use directives?
-  // just use one Controller?
-  // CANNOT INJECT FACTORIES AND SERVICES INTO CONFIG!!!
-
-  // DO THESE NEED TO bE NESTED UNDER JOURNAL?
-
-
   function ConfigMeals($routeProvider) {
     // clean up w/ var for routes?
     $routeProvider
@@ -29,14 +22,11 @@
         controllerAs: 'vm',
         resolve: {
             // dry this up w/ other controllers!!!
-          mealData: ['$route', 'MealService', function($route, MealService) {
-            var journal = $route.current.params.journal_id;
+          mealData: ['$route', 'UserService', 'MealService', function($route, UserService, MealService) {
+            var user = UserService.getCurrentUser();
             var meal = $route.current.params.meal_id;
 
-            // console.log(journal,meal);
-
-            return MealService.mealResource.get({ journal_id: journal, meal_id: meal }).$promise.then(function(data) {
-              // need to set this to new Date() format for proper page rendering!
+            return MealService.mealResource.get({ journal_id: user.journal, meal_id: meal }).$promise.then(function(data) {
               data.date = new Date(data.date);
               return data;
             });
@@ -50,12 +40,11 @@
         controllerAs: 'vm',
         resolve: {
             // dry this up w/ other controllers!!!
-          mealData: ['$route', 'MealService', function($route, MealService) {
-            var journal = $route.current.params.journal_id;
+          mealData: ['$route', 'UserService', 'MealService', function($route, UserService, MealService) {
+            var user = UserService.getCurrentUser();
             var meal = $route.current.params.meal_id;
-            // console.log(journal,meal);
 
-            return MealService.mealResource.get({ journal_id: journal, meal_id: meal }).$promise.then(function(data) {
+            return MealService.mealResource.get({ journal_id: user.journal, meal_id: meal }).$promise.then(function(data) {
               var currentFoodEntry;
               var currentFood;
               var apiFoods = [];
@@ -64,7 +53,6 @@
               // need to set this to new Date() format for proper page rendering!
               data.date = new Date(data.date);
               data.time = new Date(data.time);
-              console.log(data);
               // have to make foodApi array and userFoods arrays
               for (var i = 0; i < data.foodEntries.length; i++) {
                 currentFoodEntry = data.foodEntries[i];
@@ -88,7 +76,6 @@
                     nf_serving_size_qty: currentFood.servingSizeQty,
                     nf_serving_size_unit: currentFood.servingSizeUnit
                   };
-
                   currentFood.userServings = currentFoodEntry.servings;
                   apiFoods.push(currentFood);
                 } else {  // if user food
@@ -107,19 +94,16 @@
       })
       .when('/journals/:journal_id/meals/:meal_id/delete', {
         resolve: {
-          deleteMeal: ['$route', '$location', 'MealService', function($route, $location, MealService) {
-            var journal = $route.current.params.journal_id;
+          deleteMeal: ['$route', '$location', 'UserService', 'MealService', function($route, $location, UserService, MealService) {
+            var user = UserService.getCurrentUser();
             var meal = $route.current.params.meal_id;
 
-            console.log('***ROUTE:', $route);
-            MealService.mealResource.delete({ journal_id: journal, meal_id: meal }).$promise.then(function(data) {
-              // console.log(data.date.replace(/\//g, '-'));
+            MealService.mealResource.delete({ journal_id: user.journal, meal_id: meal }).$promise.then(function(data) {
               var date = data.date.replace(/\//g, '-');
-              // console.log(date);
-              // console.log(journal);
-              $location.path('/journals/' + journal + '/days/' + date);
+              $location.path('/journals/' + user.journal + '/days/' + date);
             });
           }]
+          // need restriction
         }
       });
   }

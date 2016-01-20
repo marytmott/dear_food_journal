@@ -1,192 +1,117 @@
 <div class="row">
   <div class="col-md-2 text-center">
     <df-menu-left></df-menu-left>
-  </div><!-- PUT THIS ON USER SIGN UP PAGE!! -->
-<div class="col-md-8">
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <div class="row">
-      <div class="col-md-6">
-        <h4 class="" ng-if="vm.userNameLastCharCheck">{{ vm.user.firstName }}' Journal</h4>
-        <h4 class="" ng-if="!vm.userNameLastCharCheck">{{ vm.user.firstName }}'s Journal</h4>
-      </div>
-      <div class="col-md-6 text-right">
-        <p><small><span class="glyphicon glyphicon-exclamation-sign text-info" aria-hidden="true"></span> Click the colored text below to change your journal goals.</small></p>
-      </div>
-    </div>
   </div>
-  <div class="panel-body">
-    <div class="col-md-10 col-md-offset-1">
-<!--     <button type="button" class="btn btn-info" ng-click="vm.changeAll()" ng-show="!vm.changeAllActive">Change All</button>
-    <button type="button" class="btn btn-info" ng-click="vm.changeAll()" ng-show="vm.changeAllActive">Cancel</button> -->
-    <form class="form-horizontal">
-
-      <!-- weight change reason -->
-      <!-- <div class="row"> -->
-        <!-- <div class="col-md-5"> -->
-        <!-- </div> -->
-      <!-- </div> -->
-      <div class="row">
-        <h5>My <strong>personal reason</strong> for wanting to {{ vm.journal.weightChangeType }} weight:</h5>
-        <div class="col-md-11 col-md-offset-1">
-          <!-- if weight change reason -->
-          <p class="pointer-cursor text-primary" ng-if="vm.journal.weightChangeReason && !vm.change.weightChangeReason" ng-click="vm.changeMode('weightChangeReason'); vm.changeMode('weightChangeType');">I want to {{ vm.journal.weightChangeType }} weight <strong>because {{ vm.journal.weightChangeReason }}</strong></p>
-
-          <!-- if no weight change reason -->
-          <p class="pointer-cursor text-info" ng-if="!vm.journal.weightChangeReason" ng-hide="vm.change.weightChangeReason" ng-click="vm.changeMode('weightChangeReason'); vm.changeMode('weightChangeType');"><button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Why don't you add a reason for your goal to {{ vm.journal.weightChangeType }} weight?</p>
-
-          <!-- weight change reason form -->
-          <!-- <div class="col-md-10"> -->
-            <div class="form-group" ng-show="vm.change.weightChangeType">
-              <p>I want to
-                <input type="checkbox" id="wt-reason-lose" ng-true-value="'lose'" ng-model="vm.journal.weightChangeType" /><label for="wt-reason-lose">lose</label>
-                <input type="checkbox" id="wt-reason-gain" ng-true-value="'gain'" ng-model="vm.journal.weightChangeType" /><label for="wt-reason-gain">gain</label>
-                weight.
-              </p>
-              <label for="wt-chng-rsn">I want to {{ vm.journal.weightChangeType }} weight because...</label>
-              <textarea id="wt-chng-rsn" class="form-control" rows="2" placeholder="What's your personal reason for wanting to {{ vm.journal.weightChangeType }} weight?" ng-model="vm.journal.weightChangeReason"></textarea>
-              <!-- <input type="text"  /> -->
-              <!-- make this a directive? -->
-              <p class="text-right"><a href="" ng-click="vm.journal.weightChangeReason = ''">clear</a> | <a href="" ng-click="vm.updateJournal('weightChangeReason'); vm.updateJournal('weightChangeType')">save</a> | <a href="" ng-click="vm.changeMode('weightChangeReason', true); vm.changeMode('weightChangeType', true);">cancel</a></p>
-            </div>
-          </div>
-        </div>
-      <!-- </div> -->
-
-
-      <!-- daily calorie goal -->
-      <div class="row">
-        <h5>My <strong>daily calorie</strong> goal:</h5>
-        <div class="col-md-10 col-md-offset-1">
-          <p class="pointer-cursor text-primary" ng-if="vm.journal.dailyCalorieGoal && !vm.change.dailyCalorieGoal" ng-click="vm.changeMode('dailyCalorieGoal')">My daily calorie goal is <strong>{{ vm.journal.dailyCalorieGoal }} calories</strong>.</p>
-          <p class="pointer-cursor text-info" ng-if="!vm.journal.dailyCalorieGoal" ng-hide="vm.change.dailyCalorieGoal" ng-click="vm.changeMode('dailyCalorieGoal')"><button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Do you want to add a daily calorie goal?</p>
-        <!-- </div> -->
-          <div class="form-group" ng-show="vm.change.dailyCalorieGoal">
-            <label for="cal-goal" class="col-md-4 control-label">daily calorie goal:</label>
-            <div class="col-md-4">
-              <input type="number" id="cal-goal" class="form-control" ng-model="vm.journal.dailyCalorieGoal" />
-            </div>
-            <div class="col-md-8">
-              <p class="text-right"><a href="" ng-click="vm.journal.dailyCalorieGoal = null">clear</a> | <a href="" ng-click="vm.updateJournal('dailyCalorieGoal')">save</a> | <a href="" ng-click="vm.changeMode('dailyCalorieGoal', true)">cancel</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-        <!-- weight goal -->
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
         <div class="row">
-          <h5>My <strong>weight goal</strong>:</h5>
-          <div class="col-md-10 col-md-offset-1">
-            <section class="pointer-cursor text-primary" ng-if="vm.journal.weightGoal && !vm.change.weightGoal" ng-click="vm.changeMode('weightGoal'); vm.changeMode('startWeight')">
-              <p class="no-b-margin" ng-if="vm.journal.weightGoal && !vm.change.weightGoal">I <strong>want to weigh</strong> {{ vm.journal.weightGoal }} pounds.</p>
-              <p ng-if="vm.journal.startWeight && !vm.change.startWeight">My <strong>start weight</strong> was {{ vm.journal.startWeight }} pounds.</p>
-            </section>
-            <p class="pointer-cursor text-info" ng-if="!vm.journal.weightGoal" ng-hide="vm.change.weightGoal" ng-click="vm.changeMode('weightGoal'); vm.changeMode('startWeight');"><button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Do you want to set a weight goal?</p>
-          <!-- </div> -->
-          <div class="form-group" ng-show="vm.change.weightGoal">
-            <label for="weight-goal" class="col-md-4 control-label">I want to weigh: </label>
-            <div class="col-md-4">
-              <input type="number" id="weight-goal" class="form-control" ng-model="vm.journal.weightGoal" />
-            </div>
+          <div class="col-md-6">
+            <h4 ng-if="vm.userNameLastCharCheck">{{ vm.user.firstName }}' Journal</h4>
+            <h4 ng-if="!vm.userNameLastCharCheck">{{ vm.user.firstName }}'s Journal</h4>
           </div>
-<!--         <div class="col-md-11">
-          <p class="text-right"><a href="" ng-click="vm.journal.weightGoal = null">clear</a> | <a href="" ng-click="vm.updateJournal('weightGoal')">save</a> | <a href="" ng-click="vm.changeMode('weightGoal', true)">cancel</a></p>
-        </div> -->
-        <!-- </div> -->
-
-        <!-- start weight -->
-        <!-- <div class="row"> -->
-          <!-- <p class="pointer-cursor" ng-if="!vm.journal.startWeight" ng-hide="vm.change.startWeight" ng-click="vm.changeMode('startWeight')"><button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Do you want to enter your starting weight to track weight change?</p> -->
-        <!-- </div> -->
-          <div class="form-group" ng-show="vm.change.startWeight">
-            <label for="orig-weight" class="col-md-4 control-label">Start weight:</label>
-            <div class="col-md-4">
-              <input type="number" id="orig-weight" class="form-control" ng-model="vm.journal.startWeight" />
-            </div>
-<!--           <div class="col-md-8" ng-show="vm.change.startWeight && !vm.change.weightGoal">
-            <p class="text-right"><a href="" ng-click="vm.journal.startWeight = null">clear</a> | <a href="" ng-click="vm.updateJournal('startWeight')">save</a> | <a href="" ng-click="vm.changeMode('startWeight', true)">cancel</a></p>
-          </div> -->
-            <div class="col-md-8">
-              <p class="text-right" ng-show="vm.change.weightGoal && vm.change.startWeight" class="text-center"><a href="" ng-click="vm.journal.weightGoal = null; vm.journal.startWeight = null;">clear</a> | <a href="" ng-click="vm.updateJournal('weightGoal'); vm.updateJournal('startWeight');">save</a> | <a href="" ng-click="vm.changeMode('startWeight', true); vm.changeMode('weightGoal', true);">cancel</a></p>
-            </div>
+          <div class="col-md-6 text-right">
+            <p><small><span class="glyphicon glyphicon-exclamation-sign text-info" aria-hidden="true"></span> Click the colored text below to change your journal goals.</small></p>
           </div>
         </div>
       </div>
+      <div class="panel-body">
+        <div class="col-md-10 col-md-offset-1">
+          <form class="form-horizontal">
 
-
-    <!-- add weight change -->
-    <div class="row">
-      <h5>Weight <strong>goal progress</strong>:</h5>
-      <div class="col-md-10 col-md-offset-1">
-        <!-- if weight change reason -->
-        <section class="pointer-cursor text-primary" ng-if="vm.journal.currentWeight && !vm.change.currentWeight" ng-click="vm.changeMode('currentWeight')">
-          <p class="no-b-margin">Your current weight is <strong>{{ vm.journal.currentWeight | number:0 }} pounds</strong>.</strong></p>
-          <p class="text-info"><em>{{ vm.weightChangeMessage }}</em></p>
-        </section>
-
-        <!-- if no weight change reason -->
-        <p class="pointer-cursor text-info" ng-if="!vm.journal.currentWeight" ng-hide="vm.change.currentWeight" ng-click="vm.changeMode('currentWeight')"><button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Want to update your current weight?</p>
-
-        <!-- weight change reason form -->
-        <!-- <div class="col-md-10"> -->
-        <div class="form-group" ng-show="vm.change.currentWeight">
-          <label for="curr-weight" class="col-md-4 control-label">your current weight:</label>
-          <div class="col-md-4">
-            <input type="number" id="curr-weight" class="form-control" ng-model="vm.journal.currentWeight" />
-          </div>
-          <div class="col-md-8">
-            <p class="text-right"><a href="" ng-click="vm.journal.currentWeight = null">clear</a> | <a href="" ng-click="vm.updateJournal('currentWeight')">save</a> | <a href="" ng-click="vm.changeMode('currentWeight', true)">cancel</a></p>
+            <!-- weight change reason -->
+            <div class="row">
+              <h5>My <strong>personal reason</strong> for wanting to {{ vm.journal.weightChangeType }} weight:</h5>
+              <div class="col-md-11 col-md-offset-1">
+                <!-- if weight change reason -->
+                <p class="pointer-cursor text-primary" ng-if="vm.journal.weightChangeReason && !vm.change.weightChangeReason" ng-click="vm.changeMode('weightChangeReason'); vm.changeMode('weightChangeType');">I want to {{ vm.journal.weightChangeType }} weight <strong>because {{ vm.journal.weightChangeReason }}</strong></p>
+                <!-- if no weight change reason -->
+                <p class="pointer-cursor text-info" ng-if="!vm.journal.weightChangeReason" ng-hide="vm.change.weightChangeReason" ng-click="vm.changeMode('weightChangeReason'); vm.changeMode('weightChangeType');"><button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Why don't you add a reason for your goal to {{ vm.journal.weightChangeType }} weight?</p>
+                <!-- weight change reason form -->
+                <div class="form-group" ng-show="vm.change.weightChangeType">
+                  <p>I want to
+                    <input type="checkbox" id="wt-reason-lose" ng-true-value="'lose'" ng-model="vm.journal.weightChangeType" /><label for="wt-reason-lose">lose</label>
+                    <input type="checkbox" id="wt-reason-gain" ng-true-value="'gain'" ng-model="vm.journal.weightChangeType" /><label for="wt-reason-gain">gain</label>
+                    weight.
+                  </p>
+                  <label for="wt-chng-rsn">I want to {{ vm.journal.weightChangeType }} weight because...</label>
+                  <textarea id="wt-chng-rsn" class="form-control" rows="2" placeholder="What's your personal reason for wanting to {{ vm.journal.weightChangeType }} weight?" ng-model="vm.journal.weightChangeReason"></textarea>
+                  <p class="text-right"><a href="" ng-click="vm.journal.weightChangeReason = ''">clear</a> | <a href="" ng-click="vm.updateJournal('weightChangeReason'); vm.updateJournal('weightChangeType')">save</a> | <a href="" ng-click="vm.changeMode('weightChangeReason', true); vm.changeMode('weightChangeType', true);">cancel</a></p>
+                </div>
+              </div>
             </div>
+
+            <!-- daily calorie goal -->
+            <div class="row">
+              <h5>My <strong>daily calorie</strong> goal:</h5>
+              <div class="col-md-10 col-md-offset-1">
+                <p class="pointer-cursor text-primary" ng-if="vm.journal.dailyCalorieGoal && !vm.change.dailyCalorieGoal" ng-click="vm.changeMode('dailyCalorieGoal')">My daily calorie goal is <strong>{{ vm.journal.dailyCalorieGoal }} calories</strong>.</p>
+                <p class="pointer-cursor text-info" ng-if="!vm.journal.dailyCalorieGoal" ng-hide="vm.change.dailyCalorieGoal" ng-click="vm.changeMode('dailyCalorieGoal')"><button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Do you want to add a daily calorie goal?</p>
+                <div class="form-group" ng-show="vm.change.dailyCalorieGoal">
+                  <label for="cal-goal" class="col-md-4 control-label">daily calorie goal:</label>
+                  <div class="col-md-4">
+                    <input type="number" id="cal-goal" class="form-control" ng-model="vm.journal.dailyCalorieGoal" />
+                  </div>
+                  <div class="col-md-8">
+                    <p class="text-right"><a href="" ng-click="vm.journal.dailyCalorieGoal = null">clear</a> | <a href="" ng-click="vm.updateJournal('dailyCalorieGoal')">save</a> | <a href="" ng-click="vm.changeMode('dailyCalorieGoal', true)">cancel</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- weight goal -->
+            <div class="row">
+              <h5>My <strong>weight goal</strong>:</h5>
+              <div class="col-md-10 col-md-offset-1">
+                <section class="pointer-cursor text-primary" ng-if="vm.journal.weightGoal && !vm.change.weightGoal" ng-click="vm.changeMode('weightGoal'); vm.changeMode('startWeight')">
+                  <p class="no-b-margin" ng-if="vm.journal.weightGoal && !vm.change.weightGoal">I <strong>want to weigh</strong> {{ vm.journal.weightGoal }} pounds.</p>
+                  <p ng-if="vm.journal.startWeight && !vm.change.startWeight">My <strong>start weight</strong> was {{ vm.journal.startWeight }} pounds.</p>
+                </section>
+                <p class="pointer-cursor text-info" ng-if="!vm.journal.weightGoal" ng-hide="vm.change.weightGoal" ng-click="vm.changeMode('weightGoal'); vm.changeMode('startWeight');"><button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Do you want to set a weight goal?</p>
+                <div class="form-group" ng-show="vm.change.weightGoal">
+                  <label for="weight-goal" class="col-md-4 control-label">I want to weigh: </label>
+                  <div class="col-md-4">
+                    <input type="number" id="weight-goal" class="form-control" ng-model="vm.journal.weightGoal" />
+                  </div>
+                </div>
+                <div class="form-group" ng-show="vm.change.startWeight">
+                  <label for="orig-weight" class="col-md-4 control-label">Start weight:</label>
+                  <div class="col-md-4">
+                    <input type="number" id="orig-weight" class="form-control" ng-model="vm.journal.startWeight" />
+                  </div>
+                  <div class="col-md-8">
+                    <p class="text-right" ng-show="vm.change.weightGoal && vm.change.startWeight" class="text-center"><a href="" ng-click="vm.journal.weightGoal = null; vm.journal.startWeight = null;">clear</a> | <a href="" ng-click="vm.updateJournal('weightGoal'); vm.updateJournal('startWeight');">save</a> | <a href="" ng-click="vm.changeMode('startWeight', true); vm.changeMode('weightGoal', true);">cancel</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- weight goal progress -->
+            <div class="row">
+              <h5>Weight <strong>goal progress</strong>:</h5>
+              <div class="col-md-10 col-md-offset-1">
+                <!-- if weight change reason -->
+                <section class="pointer-cursor text-primary" ng-if="vm.journal.currentWeight && !vm.change.currentWeight" ng-click="vm.changeMode('currentWeight')">
+                  <p class="no-b-margin">Your current weight is <strong>{{ vm.journal.currentWeight | number:0 }} pounds</strong>.</strong></p>
+                  <p class="text-info"><em>{{ vm.weightChangeMessage }}</em></p>
+                </section>
+                <!-- if no weight change reason -->
+                <p class="pointer-cursor text-info" ng-if="!vm.journal.currentWeight" ng-hide="vm.change.currentWeight" ng-click="vm.changeMode('currentWeight')"><button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button> Want to update your current weight?</p>
+                <!-- weight change reason form -->
+                <div class="form-group" ng-show="vm.change.currentWeight">
+                  <label for="curr-weight" class="col-md-4 control-label">your current weight:</label>
+                  <div class="col-md-4">
+                    <input type="number" id="curr-weight" class="form-control" ng-model="vm.journal.currentWeight" />
+                  </div>
+                  <div class="col-md-8">
+                    <p class="text-right"><a href="" ng-click="vm.journal.currentWeight = null">clear</a> | <a href="" ng-click="vm.updateJournal('currentWeight')">save</a> | <a href="" ng-click="vm.changeMode('currentWeight', true)">cancel</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-
-    </form>
-        <!-- plural or single weight change -->
-
-
-   <!--  <form class="form-inline">
-      <div class="row">
-        <button type="button" class="btn btn-info btn-sm" ng-click="vm.changeMode('currentWeight')">Add Weight Change</button>
-      </div>
-      <div class="form-group" ng-show="vm.change.currentWeight">
-        I <input type="checkbox" id="wt-change-lose" ng-true-value="'lost'" ng-model="vm.currentWeight.type" /> <label for="wt-change-lose">lost</label>
-          <input type="checkbox" id="wt-change-gain" ng-true-value="'gained'" ng-model="vm.currentWeight.type" /> <label for="wt-change-gain">gained</label>
-        <label for="wgt-change"></label>
-        <input type="number" id="wgt-change" ng-model="vm.currentWeight.input"/> pounds
-        <p class=""><a href="" ng-click="vm.currentWeight.input = null">clear</a> | <a href="" ng-click="vm.updateJournal('currentWeight')">save</a> | <a href="" ng-click="vm.changeMode('currentWeight', true)">cancel</a></p>
-      </div>
-    </form> -->
     </div>
   </div>
 </div>
-</div></div>
-
-<!--
-  <p> dailty calorie goal</p>
-  <p>weight goal</p>
-  <p> start weight</p>
-  <p> to date weigth chante</p>
-  <p> weight change reason</p>
-  <p>daily total nutrition so far</p>
-  </div>
-</div>
-
-
-var journalSchema = mongoose.Schema({
-  user: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  }],
-  dailyCalorieGoal: Number,
-  //other daily goals?
-  weightChangeType: {  // this will indicate whether they want to gain or lose weight
-    type: String,
-    default: 'lose' //set this on user creation?
-  },
-  weightGoal: Number,
-  // add date for when weight is entered to track how much lost in how much time?
-  startWeight: Number,
-  toDateWeightChange: Number,
-  weightChangeReason: String
-// general notes or put in inspirations?
-}); -->
