@@ -5,9 +5,9 @@
     .module('dearFoodJ.users')
     .controller('UsersController', UsersController);
 
-  UsersController.$inject = ['$routeParams', '$location', 'UserService'];
+  UsersController.$inject = ['$location', 'UserService'];
 
-  function UsersController($routeParams, $location, UserService) {
+  function UsersController($location, UserService) {
     var vm = this;
 
     vm.user = {};
