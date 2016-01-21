@@ -6,7 +6,6 @@
       'ngRoute',
       'ngResource',
       'ngMessages',
-      // 'ngAnimate',
       'wu.masonry',
       'angularModalService',
       'dearFoodJ.users',

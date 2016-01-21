@@ -31,7 +31,6 @@
         vm.inspiration = {};
         vm.inspiration.type = 'tip';
       }
-
       previewHide();
     }
 
@@ -49,29 +48,15 @@
     }
 
     function addInspiration() {
-      console.log(vm.inspiration);
       var user = UserService.getCurrentUser();
-      console.log(user);
-      var journal = user.journal;
       vm.inspiration.createdAt = new Date().toLocaleDateString();
+      vm.inspiration.journal = user.journal;
 
-      vm.inspiration.journal = journal;
-
-      InspirationService.inspirationResource.save({ journal_id: journal }, vm.inspiration);
-      $location.path('/journals/' + journal + '/inspirations');
+      InspirationService.inspirationResource.save({ journal_id: user.journal }, vm.inspiration).$promise.then(function(data) {
+        if (data.success) {
+          $location.path('/journals/' + user.journal + '/inspirations');
+        }
+      });
     }
-
   }
 })();
-
-// var inspirationSchema = mongoose.Schema({
-//   journal: [{
-//     type: mongoose.Schema.Types.ObjectId,
-//     ref: 'Journal'
-//   }],
-//   type: String,
-//   imageLink: String,
-//   author: String,
-//   comment: String,
-//   quote: String,
-//   tip: String
