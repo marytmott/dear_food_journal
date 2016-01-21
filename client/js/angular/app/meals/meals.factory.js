@@ -11,7 +11,6 @@
     return {
       foodApiSearch: function(data) {
         var searchData = encodeURIComponent(data);
-        console.log(searchData);
 
         return $http.post('/api/foods/api-search', { search: searchData });
       },
@@ -20,9 +19,6 @@
           { update: { method: 'PUT'}
         }
       )
-        // add meal
-        // update daily total? (skip for now maybe can run script)
-
     };
   }
 })();

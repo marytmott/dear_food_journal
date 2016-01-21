@@ -31,8 +31,6 @@
       getCurrentUser: function() {
        return JSON.parse($window.localStorage.getItem('user'));
       }
-    }
+    };
   }
-
-  // MAKE SEPARATE VARS FOR USERS JOURNAL AND ID?
 })();

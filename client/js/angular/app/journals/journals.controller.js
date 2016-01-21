@@ -132,8 +132,9 @@
         });
     }
 
-    checkUserNamePluralGrammar();
-
+    if (user.firstName) {
+      checkUserNamePluralGrammar();
+    }
     // b/c weight change message does not initially load always, load it within a promise
     JournalService.journalResource.get({ journal_id: user.journal }).$promise.then(function(data) {
       calcWeightChange(data);
