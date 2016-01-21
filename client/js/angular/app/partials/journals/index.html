@@ -7,8 +7,11 @@
       <div class="panel-heading">
         <div class="row">
           <div class="col-md-6">
-            <h4 ng-if="vm.userNameLastCharCheck">{{ vm.user.firstName }}' Journal</h4>
-            <h4 ng-if="!vm.userNameLastCharCheck">{{ vm.user.firstName }}'s Journal</h4>
+            <section ng-if="vm.user.firstName">
+              <h4 ng-if="vm.userNameLastCharCheck">{{ vm.user.firstName }}' Journal</h4>
+              <h4 ng-if="!vm.userNameLastCharCheck">{{ vm.user.firstName }}'s Journal</h4>
+            </section>
+            <h4 ng-if="!vm.user.firstName">My Journal</h4>
           </div>
           <div class="col-md-6 text-right">
             <p><small><span class="glyphicon glyphicon-exclamation-sign text-info" aria-hidden="true"></span> Click the colored text below to change your journal goals.</small></p>
