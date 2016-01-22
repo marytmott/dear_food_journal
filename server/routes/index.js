@@ -12,8 +12,7 @@ var inspirations = require('./inspirations');
 
 // only allow ajax calls
 function checkHeaders(req, res, next) {
-  // console.log(req.headers);
-  // if header does not request with ajax, send to angular main site...?
+  // if header does not request with ajax, send to main site
   // this needs to be in all lowercase as how it is sent from front-end
   if (!req.headers['x-requested-with']) {
     res.sendFile(path.join(__dirname, '../../client', 'index.html'));
