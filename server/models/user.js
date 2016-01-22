@@ -36,7 +36,6 @@ userSchema.pre('save', function(next) {
 
   // skip encrypt if pw is not new or modified
   if (!user.isModified('password')) {
-    // "guard clause"
     return next();
   }
 
@@ -50,7 +49,6 @@ userSchema.pre('save', function(next) {
       }
       // define pw for user
       user.password = hash;
-      console.log(hash);
       return next();
     })
   });

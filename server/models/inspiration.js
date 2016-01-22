@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var db = require('./index');
 var Journal = require('./journal');
 
-// this should probably be a few diff models?
 var inspirationSchema = mongoose.Schema({
   journal: [{
     type: mongoose.Schema.Types.ObjectId,
@@ -23,8 +22,6 @@ var inspirationSchema = mongoose.Schema({
   quote: String,
   tip: String
 });
-
-// hooks?
 
 var Inspiration = mongoose.model('Inspiration', inspirationSchema);
 
