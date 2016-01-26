@@ -75,7 +75,7 @@
       calcNutritionTotal();
     }
 
-    // dry this up!!
+    // dry this up!! put in factory?
     function calcNutritionTotal() {
       var currentFood;
       var servings;
@@ -96,12 +96,12 @@
         currentFood = vm.meal.apiFoods[i];
         servings = currentFood.userServings;
 
-        vm.meal.totalNutrition.calories += (currentFood.fields.nf_calories * servings);
-        vm.meal.totalNutrition.fat += (currentFood.fields.nf_total_fat * servings);
-        vm.meal.totalNutrition.carbs += (currentFood.fields.nf_total_carbohydrate * servings);
-        vm.meal.totalNutrition.fiber += (currentFood.fields.nf_dietary_fiber * servings);
-        vm.meal.totalNutrition.protein += (currentFood.fields.nf_protein * servings);
-        vm.meal.totalNutrition.sugars += (currentFood.fields.nf_sugars * servings);
+        vm.meal.totalNutrition.calories += (currentFood.fields.nf_calories * servings) || 0;
+        vm.meal.totalNutrition.fat += (currentFood.fields.nf_total_fat * servings) || 0;
+        vm.meal.totalNutrition.carbs += (currentFood.fields.nf_total_carbohydrate * servings) || 0;
+        vm.meal.totalNutrition.fiber += (currentFood.fields.nf_dietary_fiber * servings) || 0;
+        vm.meal.totalNutrition.protein += (currentFood.fields.nf_protein * servings) || 0;
+        vm.meal.totalNutrition.sugars += (currentFood.fields.nf_sugars * servings) || 0;
       }
 
       // calculate userFoods nutrition
@@ -109,12 +109,12 @@
         currentFood = vm.meal.userFoods[j];
         servings = currentFood.userServings;
 
-        vm.meal.totalNutrition.calories += (currentFood.calories * servings);
-        vm.meal.totalNutrition.fat += (currentFood.fat * servings);
-        vm.meal.totalNutrition.carbs += (currentFood.carbohydrates * servings);
-        vm.meal.totalNutrition.fiber += (currentFood.fiber * servings);
-        vm.meal.totalNutrition.protein += (currentFood.protein * servings);
-        vm.meal.totalNutrition.sugars += (currentFood.sugars * servings);
+        vm.meal.totalNutrition.calories += (currentFood.calories * servings) || 0;
+        vm.meal.totalNutrition.fat += (currentFood.fat * servings) || 0;
+        vm.meal.totalNutrition.carbs += (currentFood.carbohydrates * servings) || 0;
+        vm.meal.totalNutrition.fiber += (currentFood.fiber * servings) || 0;
+        vm.meal.totalNutrition.protein += (currentFood.protein * servings) || 0;
+        vm.meal.totalNutrition.sugars += (currentFood.sugars * servings) || 0;
       }
 
       // check if all foods have been removed
