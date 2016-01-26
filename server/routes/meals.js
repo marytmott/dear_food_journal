@@ -51,7 +51,7 @@ router.post('/', function(req, res) {
     foodEntry = {
       name: currentUserFood.name.trim(),  // do this on client side?
       calories: currentUserFood.calories,
-      carbohydrates: currentUserFood.carbs,
+      carbohydrates: currentUserFood.carbohydrates,
       fat: currentUserFood.fat,
       fiber: currentUserFood.fiber,
       protein: currentUserFood.protein,
@@ -174,7 +174,7 @@ router.put('/:meal_id', function(req, res) {
     foodEntry = {
       name: currentUserFood.name.trim(),  // do this on client side?
       calories: currentUserFood.calories,
-      carbohydrates: currentUserFood.carbs,
+      carbohydrates: currentUserFood.carbohydrates,
       fat: currentUserFood.fat,
       fiber: currentUserFood.fiber,
       protein: currentUserFood.protein,
