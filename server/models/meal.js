@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 var db = require('./index');
 var Food = require('./food');
 
+// TODO - hooks
+
 var mealSchema = mongoose.Schema({
   journal:[{
     type: mongoose.Schema.Types.ObjectId,
@@ -35,12 +37,9 @@ var mealSchema = mongoose.Schema({
   ],
   emotions: String,
   notes: String,
-  totalNutrition: Object // JSON object w/ details
-  // ADD?: star rating how well did you enjoy it?
+  totalNutrition: Object
 });
 
 var Meal = mongoose.model('Meal', mealSchema);
 
 module.exports = Meal;
-
-// HOOKS TO ADD:

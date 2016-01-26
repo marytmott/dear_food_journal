@@ -3,12 +3,13 @@ var router = express.Router();
 var jwt = require('jsonwebtoken');
 var db = require('../models');
 
-// need jwt!!
+// TODO - JSON WT checks on routes
 
 // get 1 journal
 router.get('/:journal_id', function(req, res) {
   db.Journal.findById(req.params.journal_id, function(err, journal) {
     if (err) {
+      // TODO - error handling
       console.log(err);
     } else {
       res.send(journal);
@@ -17,17 +18,14 @@ router.get('/:journal_id', function(req, res) {
 });
 
 router.put('/:journal_id', function(req, res) {
-  // console.log(req.body);
-  // res.send('ok');
   db.Journal.findByIdAndUpdate(req.body._id, req.body, { new: true }, function(err, journal) {
     if (err) {
+      // TODO - error handling
       console.log(err);
     } else {
-      // console.log(journal);
       res.json({ success: true, journal: journal });
     }
   });
 });
-
 
 module.exports = router;

@@ -24,7 +24,7 @@
         // will need to test this sla
         // SEE NOTES FOR THIS INTERCEPTOR
 
-        console.log(rejection);
+        // console.log(rejection);
         return $q.reject(rejection);
         // error --> logout
         // unauthorized -- redirect + $q.reject(rejection);
