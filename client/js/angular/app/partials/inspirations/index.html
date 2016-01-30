@@ -3,8 +3,22 @@
     <df-menu-left></df-menu-left>
   </div>
 
+  <!-- if user has no inspirations -->
+  <div class="col-md-8" ng-if="!vm.inspirations.length">
+    <div class="panel panel-default no-insp">
+      <div class="panel-body text-center">
+        <h4><strong>You don't have any <span class="text-primary">inspiration</span> in your journal!</strong></h4>
+        <br />
+        <h5>Why don't you add some inspirations to your journal to</h5>
+        <h5>help keep you focused on your weight goal?</h5>
+        <button type="button" class="btn btn-info" ng-click="vm.goToNewInsp()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> Add Inspiration</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- if user has inspirations -->
   <!-- top nav bar -->
-  <div class="col-md-10">
+  <div class="col-md-10" ng-show="vm.inspirations.length">
     <div class="panel panel-default">
       <div class="panel-heading">
         <div class="row padded-div">
@@ -32,7 +46,7 @@
               <div class="form-group">
                 <label for="insp-search" class="control-label"></label>
                 <div class="col-md-10">
-                  <input type="text" id="insp-search" class="form-control" placeholder="search your inspirations" ng-model="search" />
+                  <input type="text" id="insp-search" class="form-control" placeholder="search your inspirations" ng-model="search" ng-change="vm.reloadMasonry()" />
                 </div>
               </div>
             </div>
@@ -46,21 +60,29 @@
       <!-- masonry show of inspirations -->
       <div class="panel-body">
         <div id="insp-all">
-          <div masonry reload-on-show>
-            <div class="masonry-brick insp-mdiv" ng-repeat="inspiration in vm.inspirations | filter: search">
-              <a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit" ng-if="inspiration.type === 'quote'" ng-show="vm.show.quotes">
-                <div class="insp-mele-text">
-                  <p>{{ inspiration.quote }}</p>
-                  <p ng-if="inspiration.author">- {{ inspiration.author }}</p>
-                </div>
-              </a>
-              <div ng-model="inspiration.tags" ng-if="inspiration.type === 'image'" ng-show="vm.show.images">
-                <a ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit"><img ng-src="{{ inspiration.imageLink }}" class="insp-img-m" /></a>
-              </div>
-              <a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit" ng-if="inspiration.type === 'tip'" ng-show="vm.show.tips">
-                <div class="insp-mele-text">
-                  <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {{ inspiration.tip }}</p>
-                </div>
+          <div class="masonry-grid">
+            <div class="insp-mdiv" ng-repeat="inspiration in vm.inspirations | filter: search" images-loaded="vm.imgLoadedEvents">
+              <a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit" >
+
+                <!-- inspirational quote -->
+                <section ng-if="inspiration.type === 'quote'" ng-show="vm.show.quotes">
+                  <div class="insp-mele-text">
+                    <p>{{ inspiration.quote }}</p>
+                    <p ng-if="inspiration.author">- {{ inspiration.author }}</p>
+                  </div>
+                </section>
+
+                <!-- inspirational image -->
+                <section ng-model="inspiration.tags" ng-if="inspiration.type === 'image'" ng-show="vm.show.images">
+                  <img ng-src="{{ inspiration.imageLink }}" class="insp-img-m" />
+                </section>
+
+                <!-- inspirational tip -->
+                <section ng-if="inspiration.type === 'tip'" ng-show="vm.show.tips">
+                  <div class="insp-mele-text">
+                    <p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {{ inspiration.tip }}</p>
+                  </div>
+                </section>
               </a>
             </div>
           </div>
@@ -68,16 +90,4 @@
       </div>
     </div>
   </div>
-    <!-- TODO - need to add button for if they have no inspirations as well as image loader graphic -->
-    <!-- <div class="col-md-8" ng-show="!vm.inspirations.length">
-      <div class="panel panel-default no-insp">
-        <div class="panel-body text-center">
-          <h4><strong>You don't have any <span class="text-primary">inspiration</span> in your journal!</strong></h4>
-          <br />
-          <h5>Why don't you add some inspirations to your journal to</h5>
-          <h5>help keep you focused on your weight goal?</h5>
-          <button type="button" class="btn btn-info" ng-click="vm.goToNewInsp()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> Add Inspiration</button>
-        </div>
-      </div>
-    </div> -->
 </div>
