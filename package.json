@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/marytmott/dear_food_journal#readme",
   "dependencies": {
+    "angular-images-loaded": "^0.1.1",
     "angular-modal-service": "^0.6.9",
     "bcrypt": "^0.8.5",
     "body-parser": "^1.14.1",
