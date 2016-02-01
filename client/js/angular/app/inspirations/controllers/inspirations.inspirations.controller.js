@@ -5,9 +5,9 @@
     .module('dearFoodJ.inspirations')
     .controller('InspirationsController', InspirationsController);
 
-  InspirationsController.$inject = ['$rootScope', '$location', '$route', '$scope', '$timeout', 'UserService', 'InspirationService', 'inspirationData'];
+  InspirationsController.$inject = ['$location','$timeout', 'UserService', 'InspirationService', 'inspirationData'];
 
-  function InspirationsController($rootScope, $location, $route, $scope, $timeout, UserService, InspirationService, inspirationData) {
+  function InspirationsController($location, $timeout, UserService, InspirationService, inspirationData) {
     var vm = this;
     var masonry;
     var path;
@@ -25,6 +25,7 @@
 
     vm.inspirations = inspirationData;
     vm.reloadMasonry = reloadMasonry;
+    vm.timeoutReloadM = timeoutReloadM;
 
     vm.show = {
       quotes: true,
@@ -44,6 +45,10 @@
 
     function reloadMasonry() {
       masonry.layout();
+    }
+
+    function timeoutReloadM() {
+      $timeout(reloadMasonry, 0);
     }
 
     function goToNewInsp() {
