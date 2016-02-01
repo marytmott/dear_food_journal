@@ -3,8 +3,22 @@
     <df-menu-left></df-menu-left>
   </div>
 
+  <!-- if user has inspirations -->
+  <div class="col-md-8" ng-if="!vm.hasInspiration">
+    <div class="panel panel-default no-insp">
+      <div class="panel-body text-center">
+        <h4><strong>You don't have any <span class="text-primary">inspiration</span> in your journal!</strong></h4>
+        <br />
+        <h5>Why don't you add some inspirations to your journal to</h5>
+        <h5>help keep you focused on your weight goal?</h5>
+        <button type="button" class="btn btn-info" ng-click="vm.goToNewInsp()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> Add Inspiration</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- if user has inspiration -->
   <!-- top nav bar -->
-  <div class="col-md-10">
+  <div class="col-md-10" ng-show="vm.hasInspiration">
     <div class="panel panel-default">
       <div class="panel-heading">
         <div class="row padded-div">
@@ -46,9 +60,7 @@
       <!-- masonry show of inspirations -->
       <div class="panel-body">
         <div id="insp-all">
-          <div class="text-center loading-ring" ng-if="!vm.loaded">
-            <img src="/img/loading_ring.svg" />
-          </div>
+          <div class="uil-ring-css text-center" style="transform:scale(0.64);" ng-if="!vm.loaded"><div></div></div>
           <div class="masonry-grid" ng-show="vm.loaded">
             <div class="insp-mdiv" ng-repeat="inspiration in vm.inspirations | filter: search" images-loaded="vm.imgLoadedEvents">
               <a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit">
@@ -79,16 +91,4 @@
       </div>
     </div>
   </div>
-  <!-- TODO - need to add button for if they have no inspirations as well as image loader graphic -->
-<!--   <div class="col-md-8" ng-show="!vm.inspirations.length">
-    <div class="panel panel-default no-insp">
-      <div class="panel-body text-center">
-        <h4><strong>You don't have any <span class="text-primary">inspiration</span> in your journal!</strong></h4>
-        <br />
-        <h5>Why don't you add some inspirations to your journal to</h5>
-        <h5>help keep you focused on your weight goal?</h5>
-        <button type="button" class="btn btn-info" ng-click="vm.goToNewInsp()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> Add Inspiration</button>
-      </div>
-    </div>
-  </div> -->
 </div>

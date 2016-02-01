@@ -1,11 +1,15 @@
 html {
   height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 *,
 *:before,
 *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
   box-sizing: inherit;
 }
 
@@ -213,26 +217,18 @@ input {
 }
 
 #insp-all {
-  width: 831px;
+  width: 872px;
   height: 800px;
   overflow-x: hidden;
   overflow-y: scroll;
   margin: 0 auto;
 }
 
-.loading-ring {
-  margin-top: 150px;
-}
-
 .insp-mdiv {
   margin-left: 5px;
   margin-right: 5px;
   text-align: center;
-  width: 265px;
-}
-
-.center-div {
-  /*width: ;*/
+  width: 275px;
 }
 
 .insp-mele-text {
@@ -252,7 +248,7 @@ input {
 }
 
 .insp-img-m {
-  width: 265px;
+  width: 275px;
   border: 1px solid black;
   border-radius: 3px;
   margin-bottom: 10px;

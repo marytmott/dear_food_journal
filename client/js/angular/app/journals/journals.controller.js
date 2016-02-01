@@ -139,6 +139,5 @@
     JournalService.journalResource.get({ journal_id: user.journal }).$promise.then(function(data) {
       calcWeightChange(data);
     });
-    // calcWeightChange(journal);
   }
 })();
