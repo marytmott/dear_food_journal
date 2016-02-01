@@ -46,7 +46,10 @@
       <!-- masonry show of inspirations -->
       <div class="panel-body">
         <div id="insp-all">
-          <div class="masonry-grid">
+          <div class="text-center loading-ring" ng-if="!vm.loaded">
+            <img src="/img/loading_ring.gif" />
+          </div>
+          <div class="masonry-grid" ng-show="vm.loaded">
             <div class="insp-mdiv" ng-repeat="inspiration in vm.inspirations | filter: search" images-loaded="vm.imgLoadedEvents">
               <a class="insp-links" ng-href="/journals/{{ vm.journal }}/inspirations/{{ inspiration._id }}/edit">
 

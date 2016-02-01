@@ -12,10 +12,13 @@
     var masonry;
     var path;
 
+    vm.loaded = false;
+
     vm.imgLoadedEvents = {
       // other event options available besides always
       always: function(instance) {
         var masonryGrid = document.querySelector('.masonry-grid');
+        vm.loaded = true;
         masonry = new Masonry(masonryGrid, {
           itemSelector: '.insp-mdiv',
           columnWidth: '.insp-mdiv'
