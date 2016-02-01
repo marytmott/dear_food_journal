@@ -5,9 +5,9 @@
     .module('dearFoodJ.inspirations')
     .controller('InspirationsController', InspirationsController);
 
-  InspirationsController.$inject = ['$location', 'UserService', 'InspirationService', 'inspirationData'];
+  InspirationsController.$inject = ['$location', '$timeout', 'UserService', 'InspirationService', 'inspirationData'];
 
-  function InspirationsController($location, UserService, InspirationService, inspirationData) {
+  function InspirationsController($location, $timeout, UserService, InspirationService, inspirationData) {
     var vm = this;
     var user = UserService.getCurrentUser();
     var masonry;
@@ -36,6 +36,7 @@
     };
 
     vm.goToNewInsp = goToNewInsp;
+    vm.hasInspiration = true; // initial value of true to not load "add inspiration view" if user has it
 
     // for edit view
     vm.inspiration = inspirationData;
@@ -74,9 +75,13 @@
       vm.showPreview = false;
     }
 
+    function checkForInspirations(data) {
+      vm.hasInspiration = data.length ? true : false;
+    }
+
     // b/c view not properly updating with resolve data or $timeout, have to check data
     InspirationService.inspirationResource.query({ journal_id: user.journal }).$promise.then(function(data) {
-      vm.hasInspiration = data.length ? true : false;
+      checkForInspirations(data);
     });
   }
 })();
