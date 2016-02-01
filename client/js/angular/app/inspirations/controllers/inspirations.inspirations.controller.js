@@ -73,5 +73,11 @@
     function previewHide() {
       vm.showPreview = false;
     }
+
+    function checkForInspirations() {
+      vm.hasInspiration = inspirationData.length ? true : false;
+    }
+
+    $timeout(checkForInspirations, 0);
   }
 })();
