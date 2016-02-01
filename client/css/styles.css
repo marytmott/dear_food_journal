@@ -224,7 +224,7 @@ input {
   margin-left: 5px;
   margin-right: 5px;
   text-align: center;
-  width: 265px;
+  width: 33%;
 }
 
 .center-div {
@@ -248,7 +248,7 @@ input {
 }
 
 .insp-img-m {
-  width: 265px;
+  width: 33%;
   border: 1px solid black;
   border-radius: 3px;
   margin-bottom: 10px;
