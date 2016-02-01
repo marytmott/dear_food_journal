@@ -220,6 +220,10 @@ input {
   margin: 0 auto;
 }
 
+.loading-ring {
+  margin-top: 150px;
+}
+
 .insp-mdiv {
   margin-left: 5px;
   margin-right: 5px;
