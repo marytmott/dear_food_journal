@@ -60,7 +60,7 @@
             </div>
             <div class="row" ng-if="food.fields.nf_serving_size_unit.length < 7">
               <div class="col-md-3 text-right">
-                <p><small>{{ food.fields.nf_serving_size_qty }} {{ food.fields.nf_serving_size_unit }} has:</small></p>
+                <p><small>{{ food.fields.nf_serving_size_qty }} {{ food.fields.nf_serving_size_unit }} <span ng-if="vm.servingSizePlural(food.fields.nf_serving_size_unit)">have</span><span ng-if="!vm.servingSizePlural(food.fields.nf_serving_size_unit)">has</span>:</small></p>
               </div>
               <div class="col-md-9">
                 <ul class="horizontal-list">
@@ -75,7 +75,7 @@
               </div>
             </div>
             <div class="row" ng-if="food.fields.nf_serving_size_unit.length >= 7">
-              <p class="no-b-margin text-center small"><em>{{ food.fields.nf_serving_size_qty }} {{ food.fields.nf_serving_size_unit }} has:</em></p>
+              <p class="no-b-margin text-center small"><em>{{ food.fields.nf_serving_size_qty }} {{ food.fields.nf_serving_size_unit }} <span ng-if="vm.servingSizePlural(food.fields.nf_serving_size_unit)">have</span><span ng-if="!vm.servingSizePlural(food.fields.nf_serving_size_unit)">has</span>:</em></p>
               <div class="row text-center">
                 <ul class="horizontal-list" df-search-results food-data="food"></ul>
               </div>
@@ -228,6 +228,7 @@
               <p class="result-title">
                 <span class="glyphicon glyphicon-chevron-left text-info" aria-hidden="true"></span><strong> {{ food.fields.item_name }} from {{ food.fields.brand_name }}</strong>
               </p>
+              <p class="no-b-margin smaller"><strong>Serving size: {{ food.fields.nf_serving_size_qty }} {{ food.fields.nf_serving_size_unit }}</strong></p>
               <ul class="horizontal-list" df-search-results food-data="food"></ul>
             </div>
           </div>

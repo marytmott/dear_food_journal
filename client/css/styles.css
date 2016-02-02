@@ -106,7 +106,7 @@ input {
   margin-left: -5px;
 }
 
-.horizontal-list li {
+.horizontal-list li, .smaller {
   font-size: .75em;
 }
 

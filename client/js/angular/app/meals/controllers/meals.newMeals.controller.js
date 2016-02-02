@@ -23,9 +23,10 @@
     vm.meal.notes = '';
     vm.addToMeal = addToMeal;
     vm.clearFoodSearch = clearFoodSearch;
+    vm.calcNutritionTotal = calcNutritionTotal;
     vm.removeFood = removeFood;
     vm.addOwnFood = addOwnFood;
-    vm.calcNutritionTotal = calcNutritionTotal;
+    vm.servingSizePlural = servingSizePlural;
     vm.currentCalcdApiFoods = 0;
     vm.currentCalcdUserFoods = 0;
     vm.addMeal = addMeal;
@@ -43,40 +44,6 @@
     function clearFoodSearch() {
       vm.searchResults = null;
       vm.apiSearch = '';
-    }
-
-    function addToMeal(food) {
-      var id = vm.meal.apiFoods.length;
-      food.id = 'food-' + id;
-      food.servingSzId = 'serv-sz-id' + id;
-      food.userServings = 1;
-
-      vm.meal.apiFoods.push(food);
-      calcNutritionTotal();
-    }
-
-    function removeFood(food, type) {
-      var foodIdx = vm.meal[type].indexOf(food);
-      vm.meal[type].splice(foodIdx, 1);
-      calcNutritionTotal();
-    }
-
-    function addOwnFood() {
-      var newId = 'user-food-' + vm.meal.userFoods.length;
-
-      vm.meal.userFoods.push({
-        id: newId,
-        name: null,
-        userServings: 1,
-        calories: null,
-        carbohydrates: null,
-        fat: null,
-        fiber: null,
-        protein: null,
-        sugars: null,
-        // type: 'userFood'
-      });
-      calcNutritionTotal();
     }
 
     // dry this up!! put in factory?
@@ -129,6 +96,49 @@
       if (!mealNutrients) {
         vm.meal.totalNutrition = null;
       }
+    }
+
+    function addToMeal(food) {
+      var id = vm.meal.apiFoods.length;
+      food.id = 'food-' + id;
+      food.servingSzId = 'serv-sz-id' + id;
+      food.userServings = 1;
+
+      vm.meal.apiFoods.push(food);
+      calcNutritionTotal();
+    }
+
+    function removeFood(food, type) {
+      var foodIdx = vm.meal[type].indexOf(food);
+      vm.meal[type].splice(foodIdx, 1);
+      calcNutritionTotal();
+    }
+
+    function addOwnFood() {
+      var newId = 'user-food-' + vm.meal.userFoods.length;
+
+      vm.meal.userFoods.push({
+        id: newId,
+        name: null,
+        userServings: 1,
+        calories: null,
+        carbohydrates: null,
+        fat: null,
+        fiber: null,
+        protein: null,
+        sugars: null,
+        // type: 'userFood'
+      });
+      calcNutritionTotal();
+    }
+
+    function servingSizePlural(servingSizeUnit) {
+      var unitLastChar = servingSizeUnit[servingSizeUnit.length - 1];
+
+      if (unitLastChar === 's') {
+        return true;
+      }
+      return false; // default
     }
 
     function addMeal() {
