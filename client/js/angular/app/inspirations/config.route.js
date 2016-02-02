@@ -10,6 +10,8 @@
   function ConfigInspirations($routeProvider) {
     $routeProvider
       .when('/journals/:journal_id/inspirations', {
+        restricted: true,
+        preventIfLoggedOut: true,
         templateUrl: '/partials/inspirations/index.html',
         controller: 'InspirationsController',
         controllerAs: 'vm',
@@ -22,11 +24,15 @@
         }
       })
       .when('/journals/:journal_id/inspirations/new', {
+        restricted: true,
+        preventIfLoggedOut: true,
         templateUrl: '/partials/inspirations/new.html',
         controller: 'NewInspirationsController',
         controllerAs: 'vm'
       })
       .when('/journals/:journal_id/inspirations/:inspiration_id/edit', {
+        restricted: true,
+        preventIfLoggedOut: true,
         templateUrl: '/partials/inspirations/edit.html',
         controller: 'InspirationsController',
         controllerAs: 'vm',
@@ -40,6 +46,8 @@
         }
       })
       .when('/journals/:journal_id/inspirations/:inspiration_id/delete', {
+        restricted: true,
+        preventIfLoggedOut: true,
         resolve: {
           deleteInspiration: ['$route', '$location', 'UserService', 'InspirationService', function($route, $location, UserService, InspirationService) {
             var user = UserService.getCurrentUser();

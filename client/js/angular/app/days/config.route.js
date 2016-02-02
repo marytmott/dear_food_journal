@@ -10,6 +10,8 @@
   function ConfigDays($routeProvider) {
     $routeProvider
       .when('/journals/:journal_id/days/:date', {
+        restricted: true,
+        preventIfLoggedOut: true,
         templateUrl: '/partials/days/day.html',
         controller: 'DaysController',
         controllerAs: 'vm',
@@ -28,7 +30,7 @@
               return data.dailyCalorieGoal;
             });
           }]
-          // put daily meal total in resolve as well???
+          // put daily meal total in resolve as well??
         }
       });
   }

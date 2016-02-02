@@ -13,10 +13,10 @@
     // preventIfLoggedOut - don't go here if they are already logged out
     $routeProvider
       .when('/signup', {
+        preventIfLoggedIn: true,
         templateUrl: '/partials/users/signup.html',
         controller: 'UsersController',
-        controllerAs: 'vm',
-        preventIfLoggedIn: true
+        controllerAs: 'vm'
       })
       .when('/logout', {
         preventIfLoggedOut: true,

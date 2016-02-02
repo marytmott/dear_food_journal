@@ -10,6 +10,8 @@
   function ConfigJournals($routeProvider) {
     $routeProvider
       .when('/journals/:journal_id', {
+        restricted: true,
+        preventIfLoggedOut: true,
         templateUrl: '/partials/journals/index.html',
         controller: 'JournalsController',
         controllerAs: 'vm',
@@ -24,7 +26,6 @@
             return UserService.getCurrentUser();
           }]
         }
-        // add restricted
-      });
+    });
   }
 })();

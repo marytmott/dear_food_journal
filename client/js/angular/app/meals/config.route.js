@@ -11,12 +11,15 @@
     // clean up w/ var for routes?
     $routeProvider
       .when('/journals/:journal_id/meals/new', {
+        restricted: true,
+        preventIfLoggedOut: true,
         templateUrl: '/partials/meals/new.html',
         controller: 'NewMealsController',
         controllerAs: 'vm'
-        // restricted
       })
       .when('/journals/:journal_id/meals/:meal_id', {
+        restricted: true,
+        preventIfLoggedOut: true,
         templateUrl: '/partials/meals/meal.html',
         controller: 'MealsController',
         controllerAs: 'vm',
@@ -31,15 +34,16 @@
               return data;
             });
           }]
-          // need restriction
         }
       })
       .when('/journals/:journal_id/meals/:meal_id/edit', {
+        restricted: true,
+        preventIfLoggedOut: true,
         templateUrl: '/partials/meals/edit.html',
         controller: 'MealsController',
         controllerAs: 'vm',
         resolve: {
-            // dry this up w/ other controllers!!!
+          // dry this up w/ other controllers!!!
           mealData: ['$route', 'UserService', 'MealService', function($route, UserService, MealService) {
             var user = UserService.getCurrentUser();
             var meal = $route.current.params.meal_id;
@@ -89,10 +93,11 @@
               return data;
             });
           }]
-          // need restriction
         }
       })
       .when('/journals/:journal_id/meals/:meal_id/delete', {
+        restricted: true,
+        preventIfLoggedOut: true,
         resolve: {
           deleteMeal: ['$route', '$location', 'UserService', 'MealService', function($route, $location, UserService, MealService) {
             var user = UserService.getCurrentUser();
@@ -103,7 +108,6 @@
               $location.path('/journals/' + user.journal + '/days/' + date);
             });
           }]
-          // need restriction
         }
       });
   }
